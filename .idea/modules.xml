@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/rose/rose.iml" filepath="$PROJECT_DIR$/rose/rose.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rose/rose-api/rose-api.iml" filepath="$PROJECT_DIR$/rose/rose-api/rose-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rose/rose-common/rose-common.iml" filepath="$PROJECT_DIR$/rose/rose-common/rose-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rose/rose-core/rose-core.iml" filepath="$PROJECT_DIR$/rose/rose-core/rose-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/rose-framework.iml" filepath="$PROJECT_DIR$/.idea/rose-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rose-parent/rose-parent.iml" filepath="$PROJECT_DIR$/rose-parent/rose-parent.iml" />
+    </modules>
+  </component>
+</project>
