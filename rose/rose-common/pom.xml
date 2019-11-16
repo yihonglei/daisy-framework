@@ -12,12 +12,21 @@
     <artifactId>rose-common</artifactId>
 
     <dependencies>
+        <!-- Spring Boot Start -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!--fastJson-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
-
+        <!-- guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
         <!-- apache -->
         <dependency>
             <groupId>commons-collections</groupId>
@@ -36,13 +45,11 @@
             <artifactId>commons-io</artifactId>
         </dependency>
         <!-- end apache -->
-
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-
         <!-- logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -61,11 +68,14 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
         </dependency>
-
+        <!-- redis -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.redis</groupId>
+            <artifactId>redis-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
 </project>
