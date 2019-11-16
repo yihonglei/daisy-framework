@@ -1,6 +1,8 @@
 # 系统架构
 架构：Spring Boot+MyBatis+MySql+JDK8
 
+数据库连接池：druid
+
 缓存中间件：Redis，MongoDB
 
 消息中间件：RocketMQ，RabbitMQ
@@ -9,7 +11,7 @@
 
 分布式事务：最终一致性
 
-定时任务：elastic-job
+定时任务：elastic-job（当当分布式）
 
 系统日志：logback
 
