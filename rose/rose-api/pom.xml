@@ -12,9 +12,16 @@
     <artifactId>rose-api</artifactId>
 
     <dependencies>
+        <!-- rose-core -->
         <dependency>
             <groupId>com.lanhuigu</groupId>
             <artifactId>rose-core</artifactId>
+        </dependency>
+        <!-- test -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
