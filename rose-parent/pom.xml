@@ -20,7 +20,9 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <rocketmq-client.version>4.0.0-incubating</rocketmq-client.version>
         <lombok.version>1.18.2</lombok.version>
-        <redis-stater.version>2.0.3</redis-stater.version>
+        <apache.commons.collections.version>3.2.2</apache.commons.collections.version>
+        <collections4.version>4.1</collections4.version>
+        <commons-io.version>2.6</commons-io.version>
         <fastjson.version>1.2.49</fastjson.version>
         <latest.release.version>2.1.5</latest.release.version>
     </properties>
@@ -45,6 +47,23 @@
                 <artifactId>rocketmq-client</artifactId>
                 <version>${rocketmq-client.version}</version>
             </dependency>
+            <!-- apache -->
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${apache.commons.collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <!-- end apache -->
             <!-- elastic-job -->
             <dependency>
                 <groupId>com.dangdang</groupId>

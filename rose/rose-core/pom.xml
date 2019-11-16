@@ -13,5 +13,12 @@
   <version>1.0-SNAPSHOT</version>
 
   <dependencies>
+    <!-- rose-common -->
+    <dependency>
+      <groupId>com.lanhuigu</groupId>
+      <artifactId>rose-common</artifactId>
+    </dependency>
+    <!--  -->
+
   </dependencies>
 </project>
