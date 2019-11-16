@@ -16,7 +16,7 @@ public interface TestMapper {
      * @author yihonglei
      * @date 2019/11/16 11:10 AM
      */
-    @Select("select * from user where id = #{id}")
+    @Select("select * from test where id = #{id}")
     TestDO queryTestById(@Param("id") int id);
 
     /**

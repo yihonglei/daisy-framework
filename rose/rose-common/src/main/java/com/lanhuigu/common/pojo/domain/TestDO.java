@@ -9,12 +9,6 @@ import lombok.Data;
  */
 @Data
 public class TestDO {
-    /**
-     * 用户ID
-     */
-    private int id;
-    /**
-     * 用户名
-     */
-    private String userName;
+    private Integer id;
+    private String testName;
 }

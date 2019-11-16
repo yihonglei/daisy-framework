@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author yihonglei
  * @date 2019/11/16 10:57 AM
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.lanhuigu")
 @MapperScan("com.lanhuigu.core.mapper")
 public class ApiApplication {
     public static void main(String[] args) {

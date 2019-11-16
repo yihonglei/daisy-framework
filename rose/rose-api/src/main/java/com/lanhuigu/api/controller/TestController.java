@@ -1,30 +1,32 @@
 package com.lanhuigu.api.controller;
 
+import com.lanhuigu.common.pojo.dto.TestDTO;
 import com.lanhuigu.common.pojo.vo.TestVO;
+import com.lanhuigu.common.response.ApiResponse;
+import com.lanhuigu.core.service.ITestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 用户控制层
+ * 控制层
  *
  * @author yihonglei
  * @date 2019/10/12 3:33 PM
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/test")
 public class TestController {
     @Autowired
-    private TestServiceImpl testService;
+    private ITestService testService;
 
     @RequestMapping("/queryTestById")
-    public TestVO queryTestById(@RequestParam("id") int id) {
-        return testService.queryTestById(id);
+    public ApiResponse<TestVO> queryTestById(TestDTO testDTO) {
+        return ApiResponse.success(testService.queryTestById(testDTO));
     }
 
     @RequestMapping("queryTestByIdXml")
-    public TestVO queryTestByIdXml(@RequestParam("id") int id) {
-        return testService.queryTestByIdXml(id);
+    public ApiResponse<TestVO> queryTestByIdXml(TestDTO testDTO) {
+        return ApiResponse.success(testService.queryTestByIdXml(testDTO));
     }
 }
