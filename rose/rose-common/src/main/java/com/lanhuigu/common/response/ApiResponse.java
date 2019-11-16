@@ -86,7 +86,7 @@ public class ApiResponse<T> implements Serializable {
         return error(ERROR.code, ERROR.msg, null);
     }
 
-    private static ApiResponse error(int code, String msg, Object data) {
+    public static ApiResponse error(int code, String msg, Object data) {
         return new ApiResponse<>(code, msg, data);
     }
 
