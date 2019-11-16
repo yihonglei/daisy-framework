@@ -4,26 +4,27 @@
     <conversionRule conversionWord="tab" converterClass="com.lanhuigu.common.logback.LogTab"/>
     <property name="appName" value="rose-api"/>
     <springProperty scope="context" name="ACTIVE_PROFILE" source="spring.profiles.active"/>
-    <!--开发环境日志配置-->
+    <!-- 开发环境日志配置 -->
     <springProfile name="dev">
         <property name="LOG_HOME" value="log"/>
     </springProfile>
 
-    <!--测试环境日志配置-->
+    <!-- 测试环境日志配置 -->
     <springProfile name="test">
         <property name="LOG_HOME" value="/u01/${appName}/log"/>
     </springProfile>
 
-    <!--预生产环境日志配置-->
+    <!-- 预生产环境日志配置 -->
     <springProfile name="pre">
         <property name="LOG_HOME" value="/u01/${appName}/log"/>
     </springProfile>
 
-    <!--生产环境日志配置-->
+    <!-- 生产环境日志配置 -->
     <springProfile name="prod">
         <property name="LOG_HOME" value="/u01/${appName}/log"/>
     </springProfile>
 
+    <!-- console appender -->
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoder 默认配置为PatternLayoutEncoder -->
         <encoder>
@@ -77,8 +78,7 @@
         </encoder>
     </appender>
 
-
-    <!--okhttp 第三方调用日志-->
+    <!-- http 第三方调用日志 -->
     <appender name="thirdLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/third.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -91,7 +91,7 @@
         </encoder>
     </appender>
 
-    <!--接口请求参数输入输出日志打印-->
+    <!-- 接口请求参数输入输出日志打印 -->
     <appender name="reqInterceptor" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_HOME}/req_interceptor.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -104,8 +104,8 @@
         </encoder>
     </appender>
 
-    <!--异步输出日志-->
-    <!-- 异步输出 -->
+    <!-- 异步输出日志到文件 -->
+    <!-- errorLogFile 异步输出 -->
     <appender name="errorLogFile" class="ch.qos.logback.classic.AsyncAppender">
         <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
         <discardingThreshold>0</discardingThreshold>
@@ -116,7 +116,7 @@
         <appender-ref ref="errorLog"/>
     </appender>
 
-    <!-- 异步输出 -->
+    <!-- allLogFile 异步输出 -->
     <appender name="allLogFile" class="ch.qos.logback.classic.AsyncAppender">
         <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
         <discardingThreshold>0</discardingThreshold>
@@ -127,6 +127,7 @@
         <appender-ref ref="allLog"/>
     </appender>
 
+    <!-- sqlLogFile 异步输出 -->
     <appender name ="sqlLogFile" class= "ch.qos.logback.classic.AsyncAppender">
         <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
         <discardingThreshold >0</discardingThreshold>
@@ -137,7 +138,7 @@
         <appender-ref ref ="sqlLog"/>
     </appender>
 
-    <!-- 异步输出 -->
+    <!-- thirdLogFile 异步输出 -->
     <appender name ="thirdLogFile" class= "ch.qos.logback.classic.AsyncAppender">
         <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
         <discardingThreshold >0</discardingThreshold>
@@ -148,7 +149,7 @@
         <appender-ref ref ="thirdLog"/>
     </appender>
 
-    <!--异步输入参数日志-->
+    <!-- reqInterceptorFile 异步输入参数日志 -->
     <appender name="reqInterceptorFile" class="ch.qos.logback.classic.AsyncAppender">
         <!-- 不丢失日志.默认的,如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
         <discardingThreshold>0</discardingThreshold>
@@ -159,7 +160,7 @@
         <appender-ref ref="reqInterceptor"/>
     </appender>
 
-    <!--开发环境日志配置-->
+    <!-- 开发环境日志配置 -->
     <springProfile name="dev">
         <!-- loggers -->
         <logger name="com.lanhuigu.core.mapper" additivity="false" >
