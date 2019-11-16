@@ -1,5 +1,7 @@
 # 系统架构
-架构：Spring Boot+MyBatis+MySql+JDK8
+开发环境：Mac + JDK8
+
+架构：Spring Boot、MyBatis、MySql
 
 数据库连接池：druid
 
