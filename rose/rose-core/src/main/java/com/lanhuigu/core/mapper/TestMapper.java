@@ -5,9 +5,10 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 /**
- * 用户查询Mapper
+ * Mapper接口
  *
  * @author yihonglei
+ * @date 2019/11/16 2:02 PM
  */
 public interface TestMapper {
     /**
