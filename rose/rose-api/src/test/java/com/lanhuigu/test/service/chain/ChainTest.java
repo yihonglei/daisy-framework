@@ -1,4 +1,4 @@
-package com.lanhuigu.test.service;
+package com.lanhuigu.test.service.chain;
 
 import com.lanhuigu.common.pojo.vo.RiskVO;
 import com.lanhuigu.core.chain.risk.RiskProcessorChainFactory;

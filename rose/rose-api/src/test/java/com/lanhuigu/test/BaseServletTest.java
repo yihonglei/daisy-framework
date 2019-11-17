@@ -5,6 +5,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.lanhuigu.api.ApiApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author yihonglei
  * @date 2019/11/17 1:42 PM
  */
+@AutoConfigureMockMvc
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ContextConfiguration(classes = ApiApplication.class)
@@ -28,7 +30,7 @@ public class BaseServletTest {
         System.out.println("dev...");
     }
 
-    protected void print(Object obj) {
+    protected void printToJson(Object obj) {
         System.out.println(JSON.toJSONString(obj, SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect));
     }
 }

@@ -1,4 +1,4 @@
-package com.lanhuigu.test.service;
+package com.lanhuigu.test.service.interceptor;
 
 import com.lanhuigu.common.spring.interceptor.InterceptorChain;
 import com.lanhuigu.test.BaseServletTest;

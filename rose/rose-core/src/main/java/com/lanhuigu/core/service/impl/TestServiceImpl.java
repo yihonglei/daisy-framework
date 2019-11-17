@@ -29,7 +29,6 @@ public class TestServiceImpl implements ITestService {
         TestVO vo = new TestVO();
         BeanUtils.copyProperties(testDO, vo);
 
-        int i = 1/0;
         return vo;
     }
 
