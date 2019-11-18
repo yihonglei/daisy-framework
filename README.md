@@ -1,27 +1,38 @@
-# 系统架构
-开发环境：Mac + JDK8
+# rose-framework架构说明
+## 开发环境
+Mac + JDK8
 
-架构：Spring Boot、MyBatis、MySql
+## Web框架
+Spring Boot、MyBatis、MySql
 
-数据库连接池：druid
+## 数据库连接池
+druid
 
-缓存中间件：Redis，MongoDB
+## 缓存中间件
+Redis，MongoDB
 
-消息中间件：RocketMQ，RabbitMQ
+## 消息中间件
+RocketMQ，RabbitMQ
 
-分布式锁：支持Redis或Zookeeper
+## 分布式锁
+支持Redis或Zookeeper
 
-分布式事务：最终一致性
+## 分布式事务
+最终一致性
 
-定时任务：elastic-job（当当分布式）
+## 定时任务
+elastic-job（当当分布式）
 
-系统日志：logback
+## 系统日志
+logback
 
-系统监控：待完成
+## 系统监控
+待完成
 
-项目部署：linux
+## 项目部署
+linux
 
-# rose-framework说明
+# rose-framework模块说明
 ## 基础依赖
 rose-parent：基础依赖
 ## 公共组件
