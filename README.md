@@ -22,7 +22,18 @@
 项目部署：linux
 
 # rose-framework说明
+## 基础依赖
 rose-parent：基础依赖
+## 公共组件
+http：rose-http-spring-boot-starter
+redis：rose-redis-spring-boot-starter
+mongodb：rose-mongodb-spring-boot-starter
+rabbitmq：rose-rabbitmq-spring-boot-starter
+rocketmq：rose-rocketmq-spring-boot-starter
 
+## 基础服务
+
+
+## 应用服务
 rose：核心api提供，分为api、common、core三个结构
 
