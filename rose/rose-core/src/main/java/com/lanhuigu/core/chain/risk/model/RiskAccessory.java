@@ -12,11 +12,11 @@ import lombok.Data;
 @Data
 public class RiskAccessory<T> {
     /**
-     * 上下文
+     * 请求上下文
      */
     private RiskContext riskContext;
     /**
-     * 返回结果
+     * 请求返回结果
      */
     private RiskVO riskVO;
 

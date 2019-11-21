@@ -10,6 +10,7 @@ import com.lanhuigu.core.chain.risk.processor.UnfinishedHandlerProcessor;
 import com.lanhuigu.core.chain.risk.processor.UserTypeHandlerProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.Assert;
 
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public class RiskProcessorChainFactory {
         addProcessorChain(chain, HelpCallCarHandlerProcessor.class);
         // 未完成订单
         addProcessorChain(chain, UnfinishedHandlerProcessor.class);
-
+        // 封装存储器
         RiskAccessory<String> accessory = new RiskAccessory<>();
         accessory.setRiskContext(context);
 
@@ -54,10 +55,7 @@ public class RiskProcessorChainFactory {
      */
     private static void addProcessorChain(RiskProcessorChain chain, Class<? extends RiskProcessor> type) {
         RiskProcessor riskProcessor = getRiskProcessor(type);
-        if (null == riskProcessor) {
-            logger.info("获取bean为空,不添加!type={}", type.getName());
-            return;
-        }
+        Assert.notNull(riskProcessor, "RiskProcessor must not be null,type=" + type.getName());
         chain.addProcessorChain(riskProcessor);
     }
 
