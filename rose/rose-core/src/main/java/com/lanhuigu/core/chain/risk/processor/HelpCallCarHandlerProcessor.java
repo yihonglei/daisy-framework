@@ -1,8 +1,7 @@
 package com.lanhuigu.core.chain.risk.processor;
 
 import com.lanhuigu.core.chain.risk.RiskProcessorChain;
-import com.lanhuigu.core.chain.risk.model.Accessory;
-import com.lanhuigu.core.chain.risk.model.RiskResult;
+import com.lanhuigu.core.chain.risk.model.RiskAccessory;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,8 +13,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class HelpCallCarHandlerProcessor extends AbstractRiskProcessor {
     @Override
-    public void doProcessor(Accessory accessory, RiskResult result, RiskProcessorChain chain) {
+    public void doProcessor(RiskAccessory accessory, RiskProcessorChain chain) {
         logger.info("HelpCallCarHandlerProcessor.doProcessor");
-        chain.doProcess(accessory, result);
+        // TODO 业务处理
+        chain.doProcess(accessory);
     }
 }

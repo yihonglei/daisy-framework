@@ -11,5 +11,5 @@ import org.slf4j.LoggerFactory;
  * @date 2019/10/31 6:40 PM
  */
 public abstract class AbstractRiskProcessor implements RiskProcessor {
-    protected Logger logger = LoggerFactory.getLogger(getClass());
+    Logger logger = LoggerFactory.getLogger(getClass());
 }

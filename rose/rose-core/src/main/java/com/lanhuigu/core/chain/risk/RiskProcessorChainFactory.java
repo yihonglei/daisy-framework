@@ -3,9 +3,8 @@ package com.lanhuigu.core.chain.risk;
 import com.google.common.collect.Maps;
 import com.lanhuigu.common.pojo.vo.RiskVO;
 import com.lanhuigu.common.spring.SpringBeanUtil;
-import com.lanhuigu.core.chain.risk.model.Accessory;
+import com.lanhuigu.core.chain.risk.model.RiskAccessory;
 import com.lanhuigu.core.chain.risk.model.RiskContext;
-import com.lanhuigu.core.chain.risk.model.RiskResult;
 import com.lanhuigu.core.chain.risk.processor.HelpCallCarHandlerProcessor;
 import com.lanhuigu.core.chain.risk.processor.UnfinishedHandlerProcessor;
 import com.lanhuigu.core.chain.risk.processor.UserTypeHandlerProcessor;
@@ -41,10 +40,10 @@ public class RiskProcessorChainFactory {
         // 未完成订单
         addProcessorChain(chain, UnfinishedHandlerProcessor.class);
 
-        Accessory<String> accessory = new Accessory<>();
-        accessory.setOrderNO(context.getOrderNo());
+        RiskAccessory<String> accessory = new RiskAccessory<>();
+        accessory.setRiskContext(context);
 
-        return chain.doProcess(accessory, new RiskResult());
+        return chain.doProcess(accessory);
     }
 
     /**
@@ -54,7 +53,12 @@ public class RiskProcessorChainFactory {
      * @date 2019/10/31 5:32 PM
      */
     private static void addProcessorChain(RiskProcessorChain chain, Class<? extends RiskProcessor> type) {
-        chain.addProcessorChain(getRiskProcessor(type));
+        RiskProcessor riskProcessor = getRiskProcessor(type);
+        if (null == riskProcessor) {
+            logger.info("获取bean为空,不添加!type={}", type.getName());
+            return;
+        }
+        chain.addProcessorChain(riskProcessor);
     }
 
     /**

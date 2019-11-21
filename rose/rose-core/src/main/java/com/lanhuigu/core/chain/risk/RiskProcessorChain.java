@@ -1,8 +1,7 @@
 package com.lanhuigu.core.chain.risk;
 
 import com.lanhuigu.common.pojo.vo.RiskVO;
-import com.lanhuigu.core.chain.risk.model.Accessory;
-import com.lanhuigu.core.chain.risk.model.RiskResult;
+import com.lanhuigu.core.chain.risk.model.RiskAccessory;
 
 /**
  * 风险过滤链
@@ -17,7 +16,7 @@ public interface RiskProcessorChain {
      * @author yihonglei
      * @date 2019/10/31 5:08 PM
      */
-    RiskVO doProcess(Accessory accessory, RiskResult result);
+    RiskVO doProcess(RiskAccessory accessory);
 
     /**
      * 添加责任链
@@ -25,6 +24,6 @@ public interface RiskProcessorChain {
      * @author yihonglei
      * @date 2019/10/31 5:12 PM
      */
-    RiskProcessorChain addProcessorChain(RiskProcessor processor);
+    void addProcessorChain(RiskProcessor processor);
 
 }

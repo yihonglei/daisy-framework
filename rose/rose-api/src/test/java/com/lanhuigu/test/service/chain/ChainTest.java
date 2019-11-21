@@ -18,7 +18,7 @@ public class ChainTest extends BaseServletTest {
     @Test
     public void testChain() {
         RiskContext context = new RiskContext();
-        context.setOrderNo("9999999");
+        context.setOrderNo("P999999");
 
         RiskVO riskVO = RiskProcessorChainFactory.riskProcess(context);
         System.out.println("riskVO=" + riskVO);

@@ -1,8 +1,7 @@
 package com.lanhuigu.core.chain.risk;
 
 
-import com.lanhuigu.core.chain.risk.model.Accessory;
-import com.lanhuigu.core.chain.risk.model.RiskResult;
+import com.lanhuigu.core.chain.risk.model.RiskAccessory;
 
 /**
  * 风控过滤器
@@ -17,5 +16,5 @@ public interface RiskProcessor {
      * @author yihonglei
      * @date 2019/10/31 5:43 PM
      */
-    void doProcessor(Accessory accessory, RiskResult result, RiskProcessorChain chain);
+    void doProcessor(RiskAccessory accessory, RiskProcessorChain chain);
 }

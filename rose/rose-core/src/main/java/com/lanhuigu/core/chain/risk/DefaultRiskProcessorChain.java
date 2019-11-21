@@ -2,8 +2,7 @@ package com.lanhuigu.core.chain.risk;
 
 import com.google.common.collect.Lists;
 import com.lanhuigu.common.pojo.vo.RiskVO;
-import com.lanhuigu.core.chain.risk.model.Accessory;
-import com.lanhuigu.core.chain.risk.model.RiskResult;
+import com.lanhuigu.core.chain.risk.model.RiskAccessory;
 
 import java.util.List;
 
@@ -18,19 +17,18 @@ public class DefaultRiskProcessorChain implements RiskProcessorChain {
     private int index = 0;
 
     @Override
-    public RiskVO doProcess(Accessory accessory, RiskResult result) {
+    public RiskVO doProcess(RiskAccessory accessory) {
         if (index == filters.size()) {
-            return result.getRiskVO();
+            return accessory.getRiskVO();
         }
 
-        filters.get(index++).doProcessor(accessory, result, this);
+        filters.get(index++).doProcessor(accessory, this);
 
-        return result.getRiskVO();
+        return accessory.getRiskVO();
     }
 
     @Override
-    public RiskProcessorChain addProcessorChain(RiskProcessor processor) {
+    public void addProcessorChain(RiskProcessor processor) {
         this.filters.add(processor);
-        return this;
     }
 }
