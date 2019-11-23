@@ -1,7 +1,6 @@
 package com.lanhuigu.common.spring;
 
 import com.alibaba.fastjson.JSON;
-import com.google.common.collect.Maps;
 import com.lanhuigu.common.utils.DecodeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -13,11 +12,13 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
 import static com.lanhuigu.common.constant.InterceptorConstant.NGINX;
 import static com.lanhuigu.common.constant.TraceConstant.NG_TRACE_ID;
+import static com.lanhuigu.common.constant.TraceConstant.ORDER_NO;
 import static com.lanhuigu.common.constant.TraceConstant.TRACE_KEY;
 
 /**
@@ -38,6 +39,8 @@ public class TraceLogInterceptor extends HandlerInterceptorAdapter {
             traceId = UUID.randomUUID().toString().replace("-", "");
             MDC.put(TRACE_KEY, traceId);
         }
+        // 日志中增加业务编号，比如订单号，要求订单号参数必须是orderNo
+        MDC.put(ORDER_NO, request.getParameter("orderNo"));
         String ngTraceId = MDC.get(NG_TRACE_ID);
         if (StringUtils.isBlank(ngTraceId)) {
             ngTraceId = request.getHeader(NG_TRACE_ID);
@@ -53,7 +56,8 @@ public class TraceLogInterceptor extends HandlerInterceptorAdapter {
         //打印所有入参
         Enumeration<String> names = request.getParameterNames();
         if (names != null) {
-            Map<String, String> params = Maps.newHashMap();
+            Map<String, String> params = new HashMap<>(16);
+            ;
             while (names.hasMoreElements()) {
                 String name = names.nextElement();
                 params.put(name, DecodeUtils.decode(request.getParameter(name)));
@@ -69,6 +73,7 @@ public class TraceLogInterceptor extends HandlerInterceptorAdapter {
         logger.info("api[{}]接口耗时:[{}]ms", request.getRequestURI(), THREAD_LOCAL.get().getTotalTimeMillis());
         MDC.remove(TRACE_KEY);
         MDC.remove(NG_TRACE_ID);
+        MDC.remove(ORDER_NO);
         THREAD_LOCAL.remove();
     }
 }

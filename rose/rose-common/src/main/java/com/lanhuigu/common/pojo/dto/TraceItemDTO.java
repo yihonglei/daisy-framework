@@ -5,8 +5,7 @@ import org.slf4j.MDC;
 
 import java.io.Serializable;
 
-import static com.lanhuigu.common.constant.TraceConstant.NG_TRACE_ID;
-import static com.lanhuigu.common.constant.TraceConstant.TRACE_KEY;
+import static com.lanhuigu.common.constant.TraceConstant.*;
 
 /**
  * MDC中存放的记录，便于查询日志
@@ -23,12 +22,17 @@ public class TraceItemDTO implements Serializable {
      */
     private String traceId;
     /**
+     * 订单号
+     */
+    private String orderNo;
+    /**
      * ngTraceId
      */
     private String ngTraceId;
 
-    public TraceItemDTO(String traceId, String ngTraceId) {
+    public TraceItemDTO(String traceId, String orderNo, String ngTraceId) {
         this.traceId = traceId;
+        this.orderNo = orderNo;
         this.ngTraceId = ngTraceId;
     }
 
@@ -36,7 +40,7 @@ public class TraceItemDTO implements Serializable {
      * 基于当前MDC创建item
      */
     public static TraceItemDTO createByCurrentMDC() {
-        return new TraceItemDTO(MDC.get(TRACE_KEY), MDC.get(NG_TRACE_ID));
+        return new TraceItemDTO(MDC.get(TRACE_KEY), MDC.get(ORDER_NO), MDC.get(NG_TRACE_ID));
     }
 
     /**
@@ -44,6 +48,7 @@ public class TraceItemDTO implements Serializable {
      */
     public void putAll() {
         MDC.put(TRACE_KEY, getTraceId());
+        MDC.put(ORDER_NO, getTraceId());
         MDC.put(NG_TRACE_ID, getNgTraceId());
     }
 
@@ -53,5 +58,6 @@ public class TraceItemDTO implements Serializable {
     public void removeAll() {
         MDC.remove(TRACE_KEY);
         MDC.remove(NG_TRACE_ID);
+        MDC.put(ORDER_NO, getTraceId());
     }
 }

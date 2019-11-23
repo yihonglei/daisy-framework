@@ -14,4 +14,9 @@ import javax.validation.constraints.NotBlank;
 public class TestDTO {
     @NotBlank(message = "id不能为空")
     private Integer id;
+    /**
+     * 测试日志追踪业务编号
+     */
+    @NotBlank(message = "orderNo不能为空")
+    private String orderNo;
 }
