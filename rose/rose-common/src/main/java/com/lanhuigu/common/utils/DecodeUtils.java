@@ -1,4 +1,4 @@
-package com.lanhuigu.common.util;
+package com.lanhuigu.common.utils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -12,8 +12,8 @@ import java.net.URLDecoder;
  * @author yihonglei
  * @date 2019/11/16 2:31 PM
  */
-public final class DecodeUtil {
-    private static Logger LOGGER = LoggerFactory.getLogger(DecodeUtil.class);
+public final class DecodeUtils {
+    private static Logger LOGGER = LoggerFactory.getLogger(DecodeUtils.class);
 
     /**
      * 解码

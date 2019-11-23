@@ -2,7 +2,7 @@ package com.lanhuigu.common.spring;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
-import com.lanhuigu.common.util.DecodeUtil;
+import com.lanhuigu.common.utils.DecodeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,7 +56,7 @@ public class TraceLogInterceptor extends HandlerInterceptorAdapter {
             Map<String, String> params = Maps.newHashMap();
             while (names.hasMoreElements()) {
                 String name = names.nextElement();
-                params.put(name, DecodeUtil.decode(request.getParameter(name)));
+                params.put(name, DecodeUtils.decode(request.getParameter(name)));
             }
             logger.info("url:[{}] 请求参数:[{}]", request.getRequestURI(), JSON.toJSONString(params));
         }

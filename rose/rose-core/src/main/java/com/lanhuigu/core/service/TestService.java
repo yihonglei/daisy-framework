@@ -9,7 +9,7 @@ import com.lanhuigu.common.pojo.vo.TestVO;
  * @author yihonglei
  * @date 2019/11/16 11:21 AM
  */
-public interface ITestService {
+public interface TestService {
     TestVO queryTestById(TestDTO testDTO);
 
     TestVO queryTestByIdXml(TestDTO testDTO);

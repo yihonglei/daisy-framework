@@ -1,4 +1,4 @@
-package com.lanhuigu.common.util;
+package com.lanhuigu.common.utils;
 
 import com.lanhuigu.common.enums.ErrorCodeEnum;
 import lombok.Getter;

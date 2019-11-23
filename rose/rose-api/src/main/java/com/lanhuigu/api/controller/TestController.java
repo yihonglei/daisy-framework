@@ -1,8 +1,8 @@
 package com.lanhuigu.api.controller;
 
 import com.lanhuigu.common.pojo.dto.TestDTO;
-import com.lanhuigu.common.util.ApiResponse;
-import com.lanhuigu.core.service.ITestService;
+import com.lanhuigu.common.utils.ApiResponse;
+import com.lanhuigu.core.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestController {
     @Autowired
-    private ITestService testService;
+    private TestService testService;
 
     @RequestMapping("/queryTestById")
     public ApiResponse queryTestById(TestDTO testDTO) {
