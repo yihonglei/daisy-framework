@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * 业务接口实现
+ * 发送短信业务实现
  *
  * @author yihonglei
  * @date 2019/11/22 1:46 PM

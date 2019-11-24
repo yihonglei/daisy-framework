@@ -48,7 +48,7 @@ public class TraceItemDTO implements Serializable {
      */
     public void putAll() {
         MDC.put(TRACE_KEY, getTraceId());
-        MDC.put(ORDER_NO, getTraceId());
+        MDC.put(ORDER_NO, getOrderNo());
         MDC.put(NG_TRACE_ID, getNgTraceId());
     }
 
@@ -57,7 +57,7 @@ public class TraceItemDTO implements Serializable {
      */
     public void removeAll() {
         MDC.remove(TRACE_KEY);
+        MDC.remove(ORDER_NO);
         MDC.remove(NG_TRACE_ID);
-        MDC.put(ORDER_NO, getTraceId());
     }
 }

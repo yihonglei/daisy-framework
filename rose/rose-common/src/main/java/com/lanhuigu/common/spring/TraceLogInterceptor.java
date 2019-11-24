@@ -29,35 +29,38 @@ import static com.lanhuigu.common.constant.TraceConstant.TRACE_KEY;
  */
 public class TraceLogInterceptor extends HandlerInterceptorAdapter {
     private Logger logger = LoggerFactory.getLogger(getClass());
-
     private static ThreadLocal<StopWatch> THREAD_LOCAL = new ThreadLocal<>();
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String traceId = MDC.get(TRACE_KEY);
-        if (StringUtils.isBlank(traceId)) {
-            traceId = UUID.randomUUID().toString().replace("-", "");
-            MDC.put(TRACE_KEY, traceId);
-        }
+        String uuid = UUID.randomUUID().toString().replace("-", "");
+        MDC.put(TRACE_KEY, uuid);
         // 日志中增加业务编号，比如订单号，要求订单号参数必须是orderNo
-        MDC.put(ORDER_NO, request.getParameter("orderNo"));
-        String ngTraceId = MDC.get(NG_TRACE_ID);
+        MDC.put(ORDER_NO, request.getParameter(ORDER_NO));
+        String ngTraceId = request.getHeader(NG_TRACE_ID);
         if (StringUtils.isBlank(ngTraceId)) {
-            ngTraceId = request.getHeader(NG_TRACE_ID);
-            if (StringUtils.isBlank(ngTraceId)) {
-                ngTraceId = traceId;
-            }
-            MDC.put(NG_TRACE_ID, ngTraceId);
+            ngTraceId = uuid;
         }
+        MDC.put(NG_TRACE_ID, ngTraceId);
         if (NGINX.equals(request.getRequestURI())) {
             return true;
         }
 
-        //打印所有入参
+        // 打印请求头
+        Enumeration<String> headerNames = request.getHeaderNames();
+        if (headerNames != null) {
+            Map<String, String> headers = new HashMap<>(16);
+            while (headerNames.hasMoreElements()) {
+                String name = headerNames.nextElement();
+                headers.put(name, request.getHeader(name));
+            }
+            logger.info("url:[{}] 请求header:[{}]", request.getRequestURI(), JSON.toJSONString(headers));
+        }
+
+        // 打印所有入参
         Enumeration<String> names = request.getParameterNames();
         if (names != null) {
             Map<String, String> params = new HashMap<>(16);
-            ;
             while (names.hasMoreElements()) {
                 String name = names.nextElement();
                 params.put(name, DecodeUtils.decode(request.getParameter(name)));
@@ -72,8 +75,8 @@ public class TraceLogInterceptor extends HandlerInterceptorAdapter {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         logger.info("api[{}]接口耗时:[{}]ms", request.getRequestURI(), THREAD_LOCAL.get().getTotalTimeMillis());
         MDC.remove(TRACE_KEY);
-        MDC.remove(NG_TRACE_ID);
         MDC.remove(ORDER_NO);
+        MDC.remove(NG_TRACE_ID);
         THREAD_LOCAL.remove();
     }
 }
