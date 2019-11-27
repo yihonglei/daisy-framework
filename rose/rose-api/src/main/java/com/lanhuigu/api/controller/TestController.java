@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
  * 控制层
  *
  * @author yihonglei
- * @date 2019/10/12 3:33 PM
  */
 @Validated
 @RestController

@@ -7,10 +7,9 @@ import com.lanhuigu.core.service.CPUDemo2Service;
 import com.lanhuigu.core.service.impl.CPUDemo2ServiceImpl;
 
 /**
- * Demo：异步处理订单
+ * 异步业务处理
  *
  * @author yihonglei
- * @date 2019/11/22 1:49 PM
  */
 public class CPUDemo2Worker extends AbstractWorker {
     /**

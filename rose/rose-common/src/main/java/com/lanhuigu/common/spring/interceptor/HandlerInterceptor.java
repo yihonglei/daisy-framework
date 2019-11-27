@@ -4,7 +4,6 @@ package com.lanhuigu.common.spring.interceptor;
  * 拦截器接口
  *
  * @author yihonglei
- * @date 2019/11/2 9:59 AM
  */
 public interface HandlerInterceptor {
     /**

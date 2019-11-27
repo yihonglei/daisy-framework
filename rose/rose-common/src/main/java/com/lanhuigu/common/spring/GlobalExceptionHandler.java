@@ -23,7 +23,6 @@ import java.util.Set;
  * 统一异常处理
  *
  * @author yihonglei
- * @date 2019/11/16 3:18 PM
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -33,7 +32,6 @@ public class GlobalExceptionHandler {
      * 处理业务异常
      *
      * @author yihonglei
-     * @date 2019/11/16 3:19 PM
      */
     @ExceptionHandler(value = {BizException.class})
     @ResponseBody
@@ -48,7 +46,6 @@ public class GlobalExceptionHandler {
      * 处理未知的Throwable异常
      *
      * @author yihonglei
-     * @date 2019/11/16 3:19 PM
      */
     @ExceptionHandler(value = {Throwable.class})
     @ResponseBody
@@ -57,7 +54,6 @@ public class GlobalExceptionHandler {
         logger.error("url:[{}] error trace:", request.getRequestURI(), ex);
         return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
     }
-
 
     @ExceptionHandler(value = {MissingServletRequestParameterException.class, ConstraintViolationException.class,
             TypeMismatchException.class, BindException.class})

@@ -10,7 +10,6 @@ import java.util.List;
  * 负责链条的添加和执行，链条内容为各个处理器
  *
  * @author yihonglei
- * @date 2019/10/31 5:33 PM
  */
 public class DefaultRiskProcessorChain implements RiskProcessorChain {
     private List<RiskProcessor> filters = Lists.newArrayList();

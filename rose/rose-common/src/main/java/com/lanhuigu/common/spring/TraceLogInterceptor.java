@@ -25,7 +25,6 @@ import static com.lanhuigu.common.constant.TraceConstant.TRACE_KEY;
  * 日志跟踪
  *
  * @author yihonglei
- * @date 2019/11/16 2:28 PM
  */
 public class TraceLogInterceptor extends HandlerInterceptorAdapter {
     private Logger logger = LoggerFactory.getLogger(getClass());

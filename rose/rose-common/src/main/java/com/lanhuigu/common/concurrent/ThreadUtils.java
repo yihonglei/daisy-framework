@@ -9,7 +9,6 @@ import java.util.concurrent.*;
  * 线程工具
  *
  * @author yihonglei
- * @date 2019/11/22 1:59 PM
  */
 public class ThreadUtils {
     private static final Logger logger = LoggerFactory.getLogger(ThreadUtils.class);

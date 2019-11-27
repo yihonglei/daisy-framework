@@ -7,7 +7,6 @@ import lombok.Data;
  * 异常类
  *
  * @author yihonglei
- * @date 2019/11/16 3:14 PM
  */
 @Data
 public class BizException extends RuntimeException {

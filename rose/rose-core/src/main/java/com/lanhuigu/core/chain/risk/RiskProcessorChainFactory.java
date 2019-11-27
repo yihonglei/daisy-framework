@@ -18,7 +18,6 @@ import java.util.Map;
  * 责任链工厂
  *
  * @author yihonglei
- * @date 2019/10/31 5:13 PM
  */
 public class RiskProcessorChainFactory {
     private static final Logger logger = LoggerFactory.getLogger(RiskProcessorChainFactory.class);
@@ -51,7 +50,6 @@ public class RiskProcessorChainFactory {
      * 添加责任链
      *
      * @author yihonglei
-     * @date 2019/10/31 5:32 PM
      */
     private static void addProcessorChain(RiskProcessorChain chain, Class<? extends RiskProcessor> type) {
         RiskProcessor riskProcessor = getRiskProcessor(type);
@@ -63,7 +61,6 @@ public class RiskProcessorChainFactory {
      * 获取processor
      *
      * @author yihonglei
-     * @date 2019/10/31 5:31 PM
      */
     private static RiskProcessor getRiskProcessor(Class<? extends RiskProcessor> type) {
         return BEAN_MAP.get(type.getName());

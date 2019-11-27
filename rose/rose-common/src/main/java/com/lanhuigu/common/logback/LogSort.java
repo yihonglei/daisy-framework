@@ -9,7 +9,6 @@ import java.util.concurrent.atomic.LongAdder;
  * 自定义logback自增数字
  *
  * @author yihonglei
- * @date 2019/11/16 2:41 PM
  */
 public class LogSort extends ClassicConverter {
     private static LongAdder adder = new LongAdder();

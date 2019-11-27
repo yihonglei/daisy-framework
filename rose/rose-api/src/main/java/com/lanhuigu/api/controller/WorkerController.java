@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
  * 异步处理
  *
  * @author yihonglei
- * @date 2019/11/23 10:30 PM
  */
 @RestController
 @RequestMapping("/worker")

@@ -7,10 +7,9 @@ import com.lanhuigu.core.service.CPUDemo1Service;
 import com.lanhuigu.core.service.impl.CPUDemo1ServiceImpl;
 
 /**
- * Demo：异步发送短信
+ * 异步业务处理
  *
  * @author yihonglei
- * @date 2019/11/22 1:40 PM
  */
 public class CPUDemo1Worker extends AbstractCallableWorker<Integer> {
     /**

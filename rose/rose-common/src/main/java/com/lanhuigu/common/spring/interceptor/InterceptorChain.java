@@ -4,7 +4,6 @@ package com.lanhuigu.common.spring.interceptor;
  * 智能拦截器链, 能排序和添加数据
  *
  * @author yihonglei
- * @date 2019/11/2 9:57 AM
  */
 public interface InterceptorChain {
     /**

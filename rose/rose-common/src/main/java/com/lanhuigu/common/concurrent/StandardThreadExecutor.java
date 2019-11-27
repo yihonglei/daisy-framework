@@ -17,7 +17,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 优先扩充线程到maximumPoolSize，再offer到queue，如果满了就reject，比较适合于业务处理需要远程资源的场景
  *
  * @author yihonglei
- * @date 2019/11/23 5:30 PM
  */
 public class StandardThreadExecutor extends ThreadPoolExecutor {
     /**
@@ -126,7 +125,6 @@ public class StandardThreadExecutor extends ThreadPoolExecutor {
  * 不过LinkedTransferQueue的缺点是没有队列长度控制，需要在外层协助控制。
  *
  * @author yihonglei
- * @date 2019/11/23 7:46 PM
  */
 class TaskQueue extends LinkedTransferQueue<Runnable> {
     private static final long serialVersionUID = -265236426751004839L;
@@ -144,7 +142,6 @@ class TaskQueue extends LinkedTransferQueue<Runnable> {
      * Note：The code comes from Tomcat's TaskQueue modification.
      *
      * @author yihonglei
-     * @date 2019/11/23 8:27 PM
      */
     public boolean force(Runnable o) {
         if (threadPoolExecutor.isShutdown()) {
@@ -158,7 +155,6 @@ class TaskQueue extends LinkedTransferQueue<Runnable> {
      * Note：The code comes from Tomcat's TaskQueue modification.
      *
      * @author yihonglei
-     * @date 2019/11/23 8:27 PM
      */
     @Override
     public boolean offer(Runnable o) {

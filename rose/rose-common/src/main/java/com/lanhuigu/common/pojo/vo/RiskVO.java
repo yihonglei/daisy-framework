@@ -4,7 +4,6 @@ import lombok.Data;
 
 /**
  * @author yihonglei
- * @date 2019/10/30 1:57 PM
  */
 @Data
 public class RiskVO {

@@ -10,7 +10,6 @@ import java.util.concurrent.Callable;
  * 带有返回值的业务工作线程
  *
  * @author yihonglei
- * @date 2019/11/22 1:28 PM
  */
 public abstract class AbstractCallableWorker<V> implements Callable<V> {
     protected Logger logger = LoggerFactory.getLogger(getClass());

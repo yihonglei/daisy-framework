@@ -10,7 +10,6 @@ import java.io.Serializable;
  * 响应规范
  *
  * @author yihonglei
- * @date 2019/11/16 12:01 PM
  */
 public class ApiResponse<T> implements Serializable {
     /**

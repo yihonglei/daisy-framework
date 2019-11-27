@@ -11,7 +11,6 @@ import static com.lanhuigu.common.constant.TraceConstant.*;
  * MDC中存放的记录，便于查询日志
  *
  * @author yihonglei
- * @date 2019/11/22 11:45 AM
  */
 @Data
 public class TraceItemDTO implements Serializable {

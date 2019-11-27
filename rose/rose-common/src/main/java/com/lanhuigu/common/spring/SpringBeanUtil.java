@@ -12,7 +12,6 @@ import java.util.Map;
  * 获取springBean工具类
  *
  * @author yihonglei
- * @date 2019/10/31 5:21 PM
  */
 @Configuration
 public class SpringBeanUtil implements ApplicationContextAware {
@@ -33,6 +32,10 @@ public class SpringBeanUtil implements ApplicationContextAware {
     }
 
     public static <T> T getBean(Class<T> type) {
+        if (null == applicationContext) {
+            return null;
+        }
+
         return applicationContext.getBean(type);
     }
 

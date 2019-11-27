@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
  * 没有返回值的业务工作线程
  *
  * @author yihonglei
- * @date 2019/11/22 11:54 AM
  */
 public abstract class AbstractWorker implements Runnable {
     protected Logger logger = LoggerFactory.getLogger(getClass());

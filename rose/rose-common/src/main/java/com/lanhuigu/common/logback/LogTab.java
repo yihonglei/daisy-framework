@@ -5,10 +5,9 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.CoreConstants;
 
 /**
- * 自定义logback tab(\t)
+ * 自定义logback tab
  *
  * @author yihonglei
- * @date 2019/11/16 2:41 PM
  */
 public class LogTab extends ClassicConverter {
     @Override

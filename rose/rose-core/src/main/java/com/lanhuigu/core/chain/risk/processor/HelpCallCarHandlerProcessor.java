@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
  * 代叫车风控
  *
  * @author yihonglei
- * @date 2019/10/31 5:56 PM
  */
 @Service
 public class HelpCallCarHandlerProcessor extends AbstractRiskProcessor {

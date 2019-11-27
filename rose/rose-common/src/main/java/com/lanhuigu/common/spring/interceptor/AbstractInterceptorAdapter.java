@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
  * 拦截器执行适配
  *
  * @author yihonglei
- * @date 2019/11/2 10:01 AM
  */
 public abstract class AbstractInterceptorAdapter implements HandlerInterceptor {
     protected Logger logger = LoggerFactory.getLogger(getClass());

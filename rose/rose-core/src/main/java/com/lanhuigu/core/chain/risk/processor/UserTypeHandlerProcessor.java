@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
  * 用户类型风控
  *
  * @author yihonglei
- * @date 2019/10/31 5:45 PM
  */
 @Service
 public class UserTypeHandlerProcessor extends AbstractRiskProcessor {

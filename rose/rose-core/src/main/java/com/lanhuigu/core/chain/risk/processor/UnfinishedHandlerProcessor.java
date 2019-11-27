@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
  * 未完成订单风控
  *
  * @author yihonglei
- * @date 2019/10/31 5:54 PM
  */
 @Service
 public class UnfinishedHandlerProcessor extends AbstractRiskProcessor {

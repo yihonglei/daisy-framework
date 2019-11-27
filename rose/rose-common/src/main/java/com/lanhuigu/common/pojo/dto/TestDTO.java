@@ -8,7 +8,6 @@ import javax.validation.constraints.NotBlank;
  * 参数传递对象DTO
  *
  * @author yihonglei
- * @date 2019/10/12 3:18 PM
  */
 @Data
 public class TestDTO {

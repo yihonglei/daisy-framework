@@ -22,7 +22,6 @@ import static com.lanhuigu.common.constant.InterceptorConstant.NGINX;
  * 启动类
  *
  * @author yihonglei
- * @date 2019/11/16 10:57 AM
  */
 @SpringBootApplication(scanBasePackages = "com.lanhuigu")
 @MapperScan("com.lanhuigu.core.mapper")
@@ -35,7 +34,6 @@ public class ApiApplication implements WebMvcConfigurer {
      * 添加日志追踪拦截器
      *
      * @author yihonglei
-     * @date 2019/11/16 2:51 PM
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -46,7 +44,6 @@ public class ApiApplication implements WebMvcConfigurer {
      * 不使用默认jackson框架解析json，重写configureMessageConverters，使用fastjson框架解析json
      *
      * @author yihonglei
-     * @date 2019/11/16 2:51 PM
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {

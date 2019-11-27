@@ -7,7 +7,7 @@ import com.lanhuigu.core.service.IODemoService;
 import com.lanhuigu.core.service.impl.IODemoServiceImpl;
 
 /**
- * 业务接口实现
+ * 异步业务处理
  *
  * @author yihonglei
  * @date 2019/11/22 1:49 PM
@@ -22,7 +22,7 @@ public class IODemoWorker extends AbstractWorker {
      */
     private TraceItemDTO traceItemDTO;
     /**
-     * 订单业务
+     * 业务处理
      */
     private IODemoService ioDemo1Service;
 

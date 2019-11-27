@@ -7,7 +7,6 @@ import com.lanhuigu.common.spring.interceptor.AbstractInterceptorAdapter;
  * 白名单拦截
  *
  * @author yihonglei
- * @date 2019/11/2 10:23 AM
  */
 @Intercept(order = 1)
 public class WhiteInterceptor extends AbstractInterceptorAdapter {

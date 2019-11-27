@@ -11,7 +11,6 @@ import java.util.List;
  * 拦截器链
  *
  * @author yihonglei
- * @date 2019/11/2 10:06 AM
  */
 @Component
 public class HandlerInterceptorChain implements SmartInterceptorChain {

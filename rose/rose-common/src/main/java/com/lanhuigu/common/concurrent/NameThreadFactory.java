@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 线程池命名
  *
  * @author yihonglei
- * @date 2019/11/23 5:33 PM
  */
 public class NameThreadFactory implements ThreadFactory {
     private static final AtomicInteger POOL_NUMBER = new AtomicInteger(1);

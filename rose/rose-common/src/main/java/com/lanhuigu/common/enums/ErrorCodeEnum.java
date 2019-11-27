@@ -6,7 +6,6 @@ import lombok.Getter;
  * 错误码
  *
  * @author yihonglei
- * @date 2019/11/16 1:18 PM
  */
 public enum ErrorCodeEnum {
     SYSTEM_DEFAULT_ERROR(0, "网络异常,请您重试!"),
