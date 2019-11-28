@@ -11,11 +11,12 @@ import java.io.Serializable;
  *
  * @author yihonglei
  */
-public class ApiResponse<T> implements Serializable {
+public final class ApiResponse<T> implements Serializable {
     /**
      * 1 成功
      */
     private static final int SUCCESS_CODE = 1;
+
     /**
      * 0 失败
      */
@@ -25,6 +26,7 @@ public class ApiResponse<T> implements Serializable {
      * 成功
      */
     private static final ApiResponse SUCCESS = new ApiResponse(SUCCESS_CODE, "SUCCESS", null);
+
     /**
      * 失败
      */

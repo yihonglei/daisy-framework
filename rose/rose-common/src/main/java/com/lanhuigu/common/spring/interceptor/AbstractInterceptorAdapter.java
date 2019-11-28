@@ -32,7 +32,7 @@ public abstract class AbstractInterceptorAdapter implements HandlerInterceptor {
      * 是否启用拦截器
      *
      * @param context 上下文
-     * @return true表示启用拦截器; false表示不启用,跳过本拦截器,继续后续拦截器处理
+     * @return true 表示启用拦截器; false 表示不启用拦截器;
      */
     protected abstract boolean isSupport(String context);
 }
