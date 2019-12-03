@@ -1,4 +1,4 @@
-package com.lanhuigu;
+package com.lanhuigu.xa.transaction;
 
 import static org.junit.Assert.assertTrue;
 

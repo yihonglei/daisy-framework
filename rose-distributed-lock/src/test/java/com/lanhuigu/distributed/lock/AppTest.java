@@ -1,4 +1,4 @@
-package com.lanhuigu;
+package com.lanhuigu.distributed.lock;
 
 import static org.junit.Assert.assertTrue;
 

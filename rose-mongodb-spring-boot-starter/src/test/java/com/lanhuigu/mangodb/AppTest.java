@@ -1,4 +1,4 @@
-package com.lanhuigu;
+package com.lanhuigu.mangodb;
 
 import static org.junit.Assert.assertTrue;
 

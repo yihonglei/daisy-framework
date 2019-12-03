@@ -1,4 +1,4 @@
-package com.lanhuigu;
+package com.lanhuigu.file;
 
 /**
  * Hello world!
