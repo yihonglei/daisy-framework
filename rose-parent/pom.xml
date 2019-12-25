@@ -189,24 +189,4 @@
             </testResource>
         </testResources>
     </build>
-
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <name>im20 Snapshots Repository</name>
-            <url>http://nexus.hqzhuanche.com:9000/content/repositories/snapshots</url>
-        </repository>
-    </repositories>
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Nexus Release Repository</name>
-            <url>http://nexus.hqzhuanche.com:9000/content/repositories/nexus-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Nexus Snapshots Repository</name>
-            <url>http://nexus.hqzhuanche.com:9000/content/repositories/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
