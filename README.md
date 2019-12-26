@@ -35,11 +35,16 @@ linux
 # rose-framework模块说明
 ## 基础依赖
 rose-parent：基础依赖
+
 ## 公共组件
 http：rose-http-spring-boot-starter
+
 redis：rose-redis-spring-boot-starter
+
 mongodb：rose-mongodb-spring-boot-starter
+
 rabbitmq：rose-rabbitmq-spring-boot-starter
+
 rocketmq：rose-rocketmq-spring-boot-starter
 
 ## 基础服务
