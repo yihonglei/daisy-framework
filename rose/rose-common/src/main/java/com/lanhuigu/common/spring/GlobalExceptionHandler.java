@@ -4,7 +4,7 @@ package com.lanhuigu.common.spring;
 import com.alibaba.fastjson.JSON;
 import com.lanhuigu.common.enums.ErrorCodeEnum;
 import com.lanhuigu.common.exception.BizException;
-import com.lanhuigu.common.utils.ApiResponse;
+import com.lanhuigu.common.util.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;

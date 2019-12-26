@@ -1,7 +1,7 @@
 package com.lanhuigu.api.controller;
 
 import com.lanhuigu.common.concurrent.ThreadUtils;
-import com.lanhuigu.common.utils.ApiResponse;
+import com.lanhuigu.common.util.ApiResponse;
 import com.lanhuigu.core.worker.CPUDemo1Worker;
 import com.lanhuigu.core.worker.CPUDemo2Worker;
 import com.lanhuigu.core.worker.IODemoWorker;

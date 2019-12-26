@@ -1,7 +1,7 @@
 package com.lanhuigu.api.controller;
 
 import com.lanhuigu.common.pojo.dto.TestDTO;
-import com.lanhuigu.common.utils.ApiResponse;
+import com.lanhuigu.common.util.ApiResponse;
 import com.lanhuigu.core.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
