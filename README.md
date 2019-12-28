@@ -22,7 +22,7 @@ ORM框架：MyBatis
 
 系统日志：logback
 
-系统监控：sunflower（）
+系统监控：sunflower https://github.com/swordslotus/sunflower
 
 项目部署：tomcat，linux
 
