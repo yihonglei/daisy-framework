@@ -1,38 +1,32 @@
-# rose-framework架构说明
+# 一 rose-framework架构说明
 ## 开发环境
 Mac + JDK8
 
-## Web框架
-Spring Boot、MyBatis、MySql
+## 技术架构
 
-## 数据库连接池
-druid
+Web框架：Spring Boot
 
-## 缓存中间件
-Redis，MongoDB
+数据库：MySql，druid连接池
 
-## 消息中间件
-RocketMQ，RabbitMQ
+ORM框架：MyBatis
 
-## 分布式锁
-支持Redis或Zookeeper
+缓存中间件：Redis，MongoDB
 
-## 分布式事务
-最终一致性
+消息中间件：RocketMQ
 
-## 定时任务
-elastic-job（当当分布式）
+分布式锁：Redis实现
 
-## 系统日志
-logback
+分布式事务：RocketMQ最终一致性，定时任务做双层防护
 
-## 系统监控
-待完成
+定时任务：elastic-job（当当分布式）
 
-## 项目部署
-linux
+系统日志：logback
 
-# rose-framework模块说明
+系统监控：sunflower https://github.com/swordslotus/sunflower
+
+项目部署：tomcat，linux
+
+# 二 rose-framework模块说明
 ## 基础依赖
 rose-parent：基础依赖
 
@@ -46,9 +40,6 @@ mongodb：rose-mongodb-spring-boot-starter
 rabbitmq：rose-rabbitmq-spring-boot-starter
 
 rocketmq：rose-rocketmq-spring-boot-starter
-
-## 基础服务
-
 
 ## 应用服务
 rose：核心api提供，分为api、common、core三个结构
