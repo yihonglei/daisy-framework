@@ -12,7 +12,7 @@
 
     <groupId>com.lanhuigu</groupId>
     <artifactId>rose-parent</artifactId>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0.RELEASE</version>
     <packaging>pom</packaging>
 
     <properties>
