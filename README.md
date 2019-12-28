@@ -1,4 +1,4 @@
-# rose-framework说明
+# 一 rose-framework架构说明
 ## 开发环境
 Mac + JDK8
 
@@ -24,7 +24,7 @@ Mac + JDK8
 
 项目部署：tomcat，linux
 
-# rose-framework模块说明
+# 二 rose-framework模块说明
 ## 基础依赖
 rose-parent：基础依赖
 
