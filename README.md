@@ -4,9 +4,11 @@ Mac + JDK8
 
 ## 技术架构
 
-框架：Spring Boot、MyBatis、MySql
+Web框架：Spring Boot
 
-数据库连接池：druid
+数据库：MySql，druid连接池
+
+ORM框架：MyBatis
 
 缓存中间件：Redis，MongoDB
 
@@ -14,13 +16,13 @@ Mac + JDK8
 
 分布式锁：Redis实现
 
-分布式事务：最终一致性
+分布式事务：RocketMQ最终一致性，定时任务做双层防护
 
 定时任务：elastic-job（当当分布式）
 
 系统日志：logback
 
-系统监控：sunflower
+系统监控：sunflower（）
 
 项目部署：tomcat，linux
 
