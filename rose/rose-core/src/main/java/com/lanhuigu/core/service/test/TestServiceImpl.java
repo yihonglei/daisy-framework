@@ -1,4 +1,4 @@
-package com.lanhuigu.core.service.impl;
+package com.lanhuigu.core.service.test;
 
 import com.lanhuigu.common.pojo.domain.TestDO;
 import com.lanhuigu.common.pojo.dto.TestDTO;
