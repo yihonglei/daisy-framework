@@ -44,3 +44,7 @@ rocketmq：rose-rocketmq-spring-boot-starter
 ## 应用服务
 rose：核心api提供，分为api、common、core三个结构
 
+
+# 三 rose-framework技术博客
+
+
