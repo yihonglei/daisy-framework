@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.lanhuigu.rocketmq.starter.config.LifeCycleConfig
+com.lanhuigu.rocketmq.spring.configuration.RocketMqAutoConfiguration

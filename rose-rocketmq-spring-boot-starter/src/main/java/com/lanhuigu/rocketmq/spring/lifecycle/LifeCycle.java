@@ -1,26 +1,23 @@
-package com.lanhuigu.rocketmq.starter.lifecycle;
+package com.lanhuigu.rocketmq.spring.lifecycle;
 
 /**
- * 生命周期
+ * 生命周期管理
  *
  * @author yihonglei
  */
 public interface LifeCycle {
-
     /**
      * 启动
      */
     void start();
 
     /**
-     * 是否启动
-     *
-     * @return true表示启动成功 false表示启动失败
+     * 是否启动 true表示启动 false表示未启动
      */
     boolean isStart();
 
     /**
-     * 关闭
+     * 关闭资源
      */
     void shutdown();
 }
