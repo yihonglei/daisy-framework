@@ -1,8 +1,8 @@
 package com.lanhuigu.core.mq;
 
 import com.lanhuigu.rocketmq.spring.annotation.RocketMqConsumer;
+import com.lanhuigu.rocketmq.spring.annotation.RocketMqProducer;
 import com.lanhuigu.rocketmq.spring.consumer.AbstractRocketMqConsumer;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
@@ -12,18 +12,19 @@ import org.apache.rocketmq.common.message.MessageExt;
 import java.util.List;
 
 /**
+ * 消息消费者
+ *
  * @author yihonglei
  */
 @RocketMqConsumer(
-        namesrvAddr = "rocketmq.consumer.testConsumer.namesrvAddr",
-        topic = "rocketmq.consumer.testConsumer.topic",
-        tag = "rocketmq.consumer.testConsumer.tag",
-        groupName = "rocketmq.consumer.testConsumer.group",
-        instanceName = "rocketmq.consumer.testConsumer.instanceName")
-public class TestRocketConsumer extends AbstractRocketMqConsumer {
+        namesrvAddr = "${rocketmq.consumer.testConsumer.namesrvAddr}",
+        groupName = "${rocketmq.consumer.testConsumer.groupName}",
+        topic = "${rocketmq.consumer.testConsumer.topic}",
+        tag = "${rocketmq.consumer.testConsumer.tag}")
+public class TestRocketMqConsumer extends AbstractRocketMqConsumer {
     @Override
-    public ConsumeOrderlyStatus handleMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
-        logger.info("TestRocketConsumer.ConsumeOrderlyStatus.handleMessage:{}", context);
+    public ConsumeOrderlyStatus handleOrderlyMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
+        logger.info("TestRocketConsumer.ConsumeOrderlyStatus.handleOrderlyMessage:{}", context);
         return ConsumeOrderlyStatus.SUCCESS;
     }
 
