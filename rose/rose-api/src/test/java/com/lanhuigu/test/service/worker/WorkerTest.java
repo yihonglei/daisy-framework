@@ -1,10 +1,10 @@
-package com.lanhuigu.test.service.worker;
+package com.jpeony.test.service.worker;
 
-import com.lanhuigu.common.concurrent.ThreadUtils;
-import com.lanhuigu.core.worker.CPUDemo2Worker;
-import com.lanhuigu.core.worker.CPUDemo1Worker;
-import com.lanhuigu.core.worker.IODemoWorker;
-import com.lanhuigu.test.BaseServletTest;
+import com.jpeony.common.concurrent.ThreadUtils;
+import com.jpeony.core.worker.CPUDemo2Worker;
+import com.jpeony.core.worker.CPUDemo1Worker;
+import com.jpeony.core.worker.IODemoWorker;
+import com.jpeony.test.BaseServletTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

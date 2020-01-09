@@ -10,7 +10,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.lanhuigu</groupId>
+    <groupId>com.jpeony</groupId>
     <artifactId>rose-parent</artifactId>
     <version>1.0.0.RELEASE</version>
     <packaging>pom</packaging>
@@ -73,7 +73,7 @@
             </dependency>
             <!-- rocketmq -->
             <dependency>
-                <groupId>com.lanhuigu</groupId>
+                <groupId>com.jpeony</groupId>
                 <artifactId>rose-rocketmq-spring-boot-starter</artifactId>
                 <version>${rose-rocketmq-spring-boot-starter.version}</version>
             </dependency>

@@ -1,9 +1,9 @@
-package com.lanhuigu.test.service.chain;
+package com.jpeony.test.service.chain;
 
-import com.lanhuigu.common.pojo.vo.RiskVO;
-import com.lanhuigu.core.chain.risk.RiskProcessorChainFactory;
-import com.lanhuigu.core.chain.risk.model.RiskContext;
-import com.lanhuigu.test.BaseServletTest;
+import com.jpeony.common.pojo.vo.RiskVO;
+import com.jpeony.core.chain.risk.RiskProcessorChainFactory;
+import com.jpeony.core.chain.risk.model.RiskContext;
+import com.jpeony.test.BaseServletTest;
 import org.junit.Test;
 
 

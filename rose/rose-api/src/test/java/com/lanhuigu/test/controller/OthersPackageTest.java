@@ -1,4 +1,4 @@
-package com.lanhuigu.test.controller;
+package com.jpeony.test.controller;
 
 /**
  * @author yihonglei

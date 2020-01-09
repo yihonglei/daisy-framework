@@ -1,7 +1,7 @@
-package com.lanhuigu.test.service.interceptor;
+package com.jpeony.test.service.interceptor;
 
-import com.lanhuigu.common.spring.interceptor.InterceptorChain;
-import com.lanhuigu.test.BaseServletTest;
+import com.jpeony.common.spring.interceptor.InterceptorChain;
+import com.jpeony.test.BaseServletTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

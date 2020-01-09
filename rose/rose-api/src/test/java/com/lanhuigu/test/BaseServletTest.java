@@ -1,8 +1,8 @@
-package com.lanhuigu.test;
+package com.jpeony.test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.lanhuigu.api.ApiApplication;
+import com.jpeony.api.ApiApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

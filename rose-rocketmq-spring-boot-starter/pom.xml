@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.lanhuigu</groupId>
+    <groupId>com.jpeony</groupId>
     <artifactId>rose-rocketmq-spring-boot-starter</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>

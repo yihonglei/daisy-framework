@@ -44,7 +44,21 @@ rocketmq：rose-rocketmq-spring-boot-starter
 ## 应用服务
 rose：核心api提供，分为api、common、core三个结构
 
+# 三 rose-framework构建
+1、基础组件打包 clean install
 
-# 三 rose-framework技术博客
+1）rose-parent
+
+2）rose-rocketmq-spring-boot-starter
+
+3）rose-mongodb-spring-boot-starter
+
+4）rose-redis-spring-boot-starter
+
+2、rose工程clean install
+
+找到com/jpeony/api/ApiApplication.java,启动main方法即可
+
+# 四 rose-framework技术博客
 
 

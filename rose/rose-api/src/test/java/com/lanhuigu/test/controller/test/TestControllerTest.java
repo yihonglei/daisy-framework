@@ -1,6 +1,6 @@
-package com.lanhuigu.test.controller.test;
+package com.jpeony.test.controller.test;
 
-import com.lanhuigu.test.BaseServletTest;
+import com.jpeony.test.BaseServletTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.After;
 import org.junit.Before;

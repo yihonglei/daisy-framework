@@ -1,8 +1,8 @@
-package com.lanhuigu.test.mapper.test;
+package com.jpeony.test.mapper.test;
 
-import com.lanhuigu.common.pojo.domain.TestDO;
-import com.lanhuigu.core.mapper.TestMapper;
-import com.lanhuigu.test.BaseServletTest;
+import com.jpeony.common.pojo.domain.TestDO;
+import com.jpeony.core.mapper.TestMapper;
+import com.jpeony.test.BaseServletTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

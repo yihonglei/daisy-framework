@@ -1,4 +1,4 @@
-package com.lanhuigu.test.mapper;
+package com.jpeony.test.mapper;
 
 /**
  * @author yihonglei
