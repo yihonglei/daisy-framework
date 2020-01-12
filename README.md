@@ -14,7 +14,7 @@ ORM框架：MyBatis
 
 消息中间件：RocketMQ
 
-分布式锁：Redis实现
+分布式锁：支持Redis、Zookeeper实现
 
 分布式事务：RocketMQ最终一致性，定时任务做双层防护
 
@@ -55,7 +55,7 @@ rose：核心api提供，分为api、common、core三个结构
 
 4）rose-redis-spring-boot-starter
 
-2、rose工程clean install
+2、rose工程打包 clean install
 
 找到com/jpeony/api/ApiApplication.java,启动main方法即可
 
