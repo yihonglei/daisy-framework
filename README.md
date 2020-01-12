@@ -28,9 +28,9 @@ ORM框架：MyBatis
 
 系统监控：sunflower https://github.com/swordslotus/sunflower
 
-工程化：idea，Maven，Git
+工程化：idea，Maven，Git，jenkins，Docker&k8s
 
-项目部署：jenkins，tomcat，linux
+项目部署：tomcat，linux
 
 # 二 rose-framework模块说明
 
