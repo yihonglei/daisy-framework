@@ -4,6 +4,8 @@ Mac + JDK8
 
 ## 技术架构
 
+开发语言：Java + JDK8
+
 Web框架：Spring Boot
 
 数据库：MySql，druid连接池
@@ -24,7 +26,9 @@ ORM框架：MyBatis
 
 系统监控：sunflower https://github.com/swordslotus/sunflower
 
-项目部署：tomcat，linux
+工程化：idea，Maven，Git
+
+项目部署：jenkins，tomcat，linux
 
 # 二 rose-framework模块说明
 ## 基础依赖
