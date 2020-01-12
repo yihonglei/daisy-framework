@@ -1,5 +1,7 @@
 # 一 rose-framework架构说明
+
 ## 开发环境
+
 Mac + JDK8
 
 ## 技术架构
@@ -31,11 +33,14 @@ ORM框架：MyBatis
 项目部署：jenkins，tomcat，linux
 
 # 二 rose-framework模块说明
+
 ## 基础依赖
+
 rose-parent：基础依赖
 
 ## 公共组件
-http：rose-http-spring-boot-starter
+
+http：rose-okhttp
 
 redis：rose-redis-spring-boot-starter
 
@@ -49,6 +54,7 @@ rocketmq：rose-rocketmq-spring-boot-starter
 rose：核心api提供，分为api、common、core三个结构
 
 # 三 rose-framework构建
+
 1、基础组件打包 clean install
 
 1）rose-parent
