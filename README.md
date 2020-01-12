@@ -24,7 +24,7 @@ ORM框架：MyBatis
 
 定时任务：elastic-job（当当分布式）
 
-系统日志：logback
+系统日志：logback，elk
 
 系统监控：sunflower https://github.com/swordslotus/sunflower
 
@@ -46,12 +46,14 @@ redis：rose-redis-spring-boot-starter
 
 mongodb：rose-mongodb-spring-boot-starter
 
-rabbitmq：rose-rabbitmq-spring-boot-starter
-
 rocketmq：rose-rocketmq-spring-boot-starter
 
+分布式锁：rose-distributed-lock
+
+
 ## 应用服务
-rose：核心api提供，分为api、common、core三个结构
+
+rose核心业务服务，rose-job定时任务服务。
 
 # 三 rose-framework构建
 
