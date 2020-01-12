@@ -1,4 +1,4 @@
-# 一 rose-framework架构说明
+# 一 rose-framework技术架构
 
 ## 开发环境
 
