@@ -59,13 +59,13 @@ rose核心业务服务，rose-job定时任务服务。
 
 1、基础组件打包 clean install
 
-1）rose-parent
+.rose-parent
 
-2）rose-rocketmq-spring-boot-starter
+.rose-rocketmq-spring-boot-starter
 
-3）rose-mongodb-spring-boot-starter
+.rose-mongodb-spring-boot-starter
 
-4）rose-redis-spring-boot-starter
+.rose-redis-spring-boot-starter
 
 2、rose工程打包 clean install
 
