@@ -50,6 +50,8 @@ rocketmq：rose-rocketmq-spring-boot-starter
 
 分布式锁：rose-distributed-lock
 
+......
+
 
 ## 应用服务
 
