@@ -79,5 +79,6 @@ rose核心业务服务，rose-job定时任务服务。
 
 rose-framework快速开始 https://blog.csdn.net/yhl_jxy/article/details/103946580
 
+rose-framework集成rocketmq https://blog.csdn.net/yhl_jxy/article/details/103968635
 
 
