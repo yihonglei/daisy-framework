@@ -26,7 +26,7 @@ ORM框架：MyBatis
 
 系统日志：logback，elk
 
-系统监控：sunflower https://github.com/swordslotus/sunflower
+系统监控：sunflower https://github.com/jchry/sunflower
 
 工程化：idea，Maven，Git，jenkins，Docker&k8s
 
