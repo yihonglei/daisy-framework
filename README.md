@@ -55,7 +55,7 @@ rocketmq：rose-rocketmq-spring-boot-starter
 
 在实际应用中基础依赖，公共组件都发布到私服，别人要用直接引用即可。
 
-# 三 rose-framework构建
+# 三 rose-framework项目构建
 
 1、基础组件打包 clean install
 
