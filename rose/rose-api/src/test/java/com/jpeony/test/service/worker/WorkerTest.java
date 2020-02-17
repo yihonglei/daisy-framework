@@ -11,10 +11,9 @@ import org.junit.Test;
 import java.util.concurrent.ExecutionException;
 
 /**
- * 来，老铁，测试下线程
+ * 测试下线程
  *
  * @author yihonglei
- * @date 2019/11/23 9:43 PM
  */
 @Slf4j
 public class WorkerTest extends BaseServletTest {

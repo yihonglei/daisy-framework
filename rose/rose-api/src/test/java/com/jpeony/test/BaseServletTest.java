@@ -14,7 +14,6 @@ import org.springframework.test.context.junit4.SpringRunner;
  * 测试基类
  *
  * @author yihonglei
- * @date 2019/11/17 1:42 PM
  */
 @AutoConfigureMockMvc
 @RunWith(SpringRunner.class)

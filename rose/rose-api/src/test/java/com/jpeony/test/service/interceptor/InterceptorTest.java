@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 拦截器测试
  *
  * @author yihonglei
- * @date 2019/11/2 10:33 AM
  */
 public class InterceptorTest extends BaseServletTest {
     @Autowired

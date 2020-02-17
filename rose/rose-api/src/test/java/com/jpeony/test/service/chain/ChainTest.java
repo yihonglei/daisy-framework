@@ -11,7 +11,6 @@ import org.junit.Test;
  * 责任链测试
  *
  * @author yihonglei
- * @date 2019/10/31 6:22 PM
  */
 public class ChainTest extends BaseServletTest {
 

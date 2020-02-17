@@ -1,4 +1,4 @@
-package com.jpeony.test.controller.test;
+package com.jpeony.test.controller;
 
 import com.jpeony.test.BaseServletTest;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * controller测试
  *
  * @author yihonglei
- * @date 2019/11/17 8:54 PM
  */
 @Slf4j
 public class TestControllerTest extends BaseServletTest {
@@ -39,6 +38,5 @@ public class TestControllerTest extends BaseServletTest {
                 .param("id", "1"))
                 .andDo(print())
                 .andExpect(status().isOk());
-//                .andExpect(jsonPath("$.success", is(false)));
     }
 }
