@@ -26,7 +26,7 @@ ORM框架：MyBatis
 
 系统日志：logback，elk
 
-系统监控：sunflower https://github.com/swordslotus/sunflower
+系统监控：sunflower https://github.com/jchry/sunflower
 
 工程化：idea，Maven，Git，jenkins，Docker&k8s
 
@@ -53,13 +53,9 @@ rocketmq：rose-rocketmq-spring-boot-starter
 ......
 
 
-## 应用服务
+在实际应用中基础依赖，公共组件都发布到私服，别人要用直接引用即可。
 
-rose核心业务服务，rose-job定时任务服务。
-
-注意：实际应用中基础依赖，公共组件都发布到私服，别人要用直接引用即可。
-
-# 三 rose-framework构建
+# 三 rose-framework项目构建
 
 1、基础组件打包 clean install
 
@@ -73,12 +69,12 @@ rose核心业务服务，rose-job定时任务服务。
 
 2、rose工程打包 clean install
 
-找到com/jpeony/api/ApiApplication.java,启动main方法即可
+rose工程找到com/jpeony/api/ApiApplication.java，启动main方法即可！
 
 # 四 rose-framework技术博客
 
-rose-framework快速开始 https://blog.csdn.net/yhl_jxy/article/details/103946580
+【rose-framework快速开始】 https://blog.csdn.net/yhl_jxy/article/details/103946580
 
-rose-framework集成rocketmq https://blog.csdn.net/yhl_jxy/article/details/103968635
+【rose-framework集成rocketmq】 https://blog.csdn.net/yhl_jxy/article/details/103968635
 
 
