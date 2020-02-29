@@ -1,4 +1,4 @@
-package com.jpeony.common.worker;
+package com.jpeony.core.worker;
 
 import com.jpeony.common.pojo.dto.TraceItemDTO;
 import org.slf4j.Logger;

@@ -2,7 +2,6 @@ package com.jpeony.core.worker;
 
 import com.jpeony.common.pojo.dto.TraceItemDTO;
 import com.jpeony.common.spring.SpringBeanUtil;
-import com.jpeony.common.worker.AbstractWorker;
 import com.jpeony.core.service.IODemoService;
 import com.jpeony.core.service.impl.IODemoServiceImpl;
 
