@@ -52,12 +52,15 @@ rocketmq：rose-rocketmq-spring-boot-starter
 
 ......
 
-
 在实际应用中基础依赖，公共组件都发布到私服，别人要用直接引用即可。
+
+## 应用程序
+
+rose：由rose-api，rose-common，rose-core组成。api负责controller层，对外提供接口；common公用代码和工具包；core负责核心业务的编写；
 
 # 三 rose-framework项目构建
 
-1、基础组件打包 clean install
+1、基础组件构建顺序(clean install)
 
 .rose-parent
 
@@ -67,13 +70,15 @@ rocketmq：rose-rocketmq-spring-boot-starter
 
 .rose-redis-spring-boot-starter
 
-2、rose工程打包 clean install
+2、rose工程构建(clean install)
 
-rose工程找到com/jpeony/api/ApiApplication.java，启动main方法即可！
+rose-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动！
 
 # 四 rose-framework技术博客
 
 【rose-framework快速开始】 https://blog.csdn.net/yhl_jxy/article/details/103946580
+
+【rose-framework规范说明】。。。。。。
 
 【rose-framework集成rocketmq】 https://blog.csdn.net/yhl_jxy/article/details/103968635
 
