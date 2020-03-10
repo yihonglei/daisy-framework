@@ -76,9 +76,7 @@ rose-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动！
 
 # 四 rose-framework技术博客
 
-【rose-framework快速开始】 https://blog.csdn.net/yhl_jxy/article/details/103946580
-
-【rose-framework规范说明】。。。。。。
+【rose-framework开发规范】 https://blog.csdn.net/yhl_jxy/article/details/103946580
 
 【rose-framework集成rocketmq】 https://blog.csdn.net/yhl_jxy/article/details/103968635
 
