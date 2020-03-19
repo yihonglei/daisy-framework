@@ -1,6 +1,6 @@
-package com.jpeony.core.service.impl;
+package com.jpeony.core.service.worker;
 
-import com.jpeony.core.service.IODemoService;
+import com.jpeony.core.service.CPUDemo2Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-public class IODemoServiceImpl implements IODemoService {
+public class CPUDemo2ServiceImpl implements CPUDemo2Service {
     @Override
     public void demo(String bizContext) {
         // 业务处理

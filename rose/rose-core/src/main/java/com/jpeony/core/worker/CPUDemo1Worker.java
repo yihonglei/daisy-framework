@@ -3,7 +3,7 @@ package com.jpeony.core.worker;
 import com.jpeony.common.pojo.dto.TraceItemDTO;
 import com.jpeony.common.spring.SpringBeanUtil;
 import com.jpeony.core.service.CPUDemo1Service;
-import com.jpeony.core.service.impl.CPUDemo1ServiceImpl;
+import com.jpeony.core.service.worker.CPUDemo1ServiceImpl;
 
 /**
  * 异步业务处理

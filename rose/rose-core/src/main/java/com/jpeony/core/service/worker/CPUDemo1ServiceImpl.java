@@ -1,4 +1,4 @@
-package com.jpeony.core.service.impl;
+package com.jpeony.core.service.worker;
 
 import com.jpeony.core.service.CPUDemo1Service;
 import lombok.extern.slf4j.Slf4j;
