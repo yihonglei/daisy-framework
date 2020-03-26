@@ -1,4 +1,4 @@
-# 一 rose-framework技术架构
+# 一 daisy-framework技术架构
 
 ## 开发环境
 
@@ -32,23 +32,23 @@ ORM框架：MyBatis
 
 项目部署：tomcat，linux
 
-# 二 rose-framework模块说明
+# 二 daisy-framework模块说明
 
 ## 基础依赖
 
-rose-parent：基础依赖
+daisy-parent：基础依赖
 
 ## 公共组件
 
-http：rose-okhttp
+http：daisy-okhttp
 
-redis：rose-redis-spring-boot-starter
+redis：daisy-redis-spring-boot-starter
 
-mongodb：rose-mongodb-spring-boot-starter
+mongodb：daisy-mongodb-spring-boot-starter
 
-rocketmq：rose-rocketmq-spring-boot-starter
+rocketmq：daisy-rocketmq-spring-boot-starter
 
-分布式锁：rose-distributed-lock
+分布式锁：daisy-distributed-lock
 
 ......
 
@@ -56,28 +56,28 @@ rocketmq：rose-rocketmq-spring-boot-starter
 
 ## 应用程序
 
-rose：由rose-api，rose-common，rose-core组成。api负责controller层，对外提供接口；common公用代码和工具包；core负责核心业务的编写；
+daisy：由daisy-api，daisy-common，daisy-core组成。api负责controller层，对外提供接口；common公用代码和工具包；core负责核心业务的编写；
 
-# 三 rose-framework项目构建
+# 三 daisy-framework项目构建
 
 1、基础组件构建顺序(clean install)
 
-.rose-parent
+.daisy-parent
 
-.rose-rocketmq-spring-boot-starter
+.daisy-rocketmq-spring-boot-starter
 
-.rose-mongodb-spring-boot-starter
+.daisy-mongodb-spring-boot-starter
 
-.rose-redis-spring-boot-starter
+.daisy-redis-spring-boot-starter
 
-2、rose工程构建(clean install)
+2、daisy工程构建(clean install)
 
-rose-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动！
+daisy-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动！
 
-# 四 rose-framework技术博客
+# 四 daisy-framework技术博客
 
-【rose-framework开发规范】 https://blog.csdn.net/yhl_jxy/article/details/103946580
+【daisy-framework开发规范】 https://blog.csdn.net/yhl_jxy/article/details/103946580
 
-【rose-framework集成rocketmq】 https://blog.csdn.net/yhl_jxy/article/details/103968635
+【daisy-framework集成rocketmq】 https://blog.csdn.net/yhl_jxy/article/details/103968635
 
 

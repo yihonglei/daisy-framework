@@ -1,0 +1,5 @@
+spring:
+  profiles:
+    active: dev
+  jpeony:
+    instance: daisy-api
