@@ -56,7 +56,13 @@ rocketmq：daisy-rocketmq-spring-boot-starter
 
 ## 应用程序
 
-daisy：由daisy-api，daisy-common，daisy-core组成。api负责controller层，对外提供接口；common公用代码和工具包；core负责核心业务的编写；
+daisy：由daisy-api，daisy-common，daisy-core组成。
+
+api负责controller层，对外提供接口；
+
+common公用代码和工具包；
+
+core负责核心业务的编写；
 
 # 三 daisy-framework项目构建
 
