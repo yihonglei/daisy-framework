@@ -4,17 +4,16 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 代码和思路主要来自于：
- * tomcat：org.apache.catalina.core.StandardThreadExecutor
+ * 源码逻辑源于Tomcat：org.apache.catalina.core.StandardThreadExecutor
  * <p>
  * 1、CPU密集（主要进行本地大量业务处理，计算等等，这个时候要控制好线程，否则，CPU占用大量资源，系统极度缓慢和崩掉）
  * java.util.concurrent#ThreadPoolExecutor execute()执行策略：
- * 优先offer到queue，queue满后再扩充线程到maximumPoolSize，如果已经到了maximumPoolSize就reject
- * 比较适合于CPU密集型应用（比如runnable内部执行的操作都在JVM内部，memory copy, or compute等等）
+ * 超过核心线程的任务，优先offer到queue，queue满后再扩充线程到maximumPoolSize，如果已经到了maximumPoolSize就reject
+ * 比较适合于CPU密集型应用（比如runnable内部执行的操作都在JVM内部，memory copy, or compute等等）。
  * <p>
  * 2、IO密集（本地处理比较少，大量远程调用希望得到及时响应，这个时候在资源允许范围内开启尽量多的线程去处理）
  * StandardThreadExecutor execute()执行策略：
- * 优先扩充线程到maximumPoolSize，再offer到queue，如果满了就reject，比较适合于业务处理需要远程资源的场景
+ * 超过核心线程的任务，优先扩充线程到maximumPoolSize处理，再offer到queue，如果满了就reject，比较适合于业务处理需要远程资源的场景。
  *
  * @author yihonglei
  */
