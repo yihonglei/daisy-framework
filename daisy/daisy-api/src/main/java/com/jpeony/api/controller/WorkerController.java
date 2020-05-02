@@ -1,6 +1,6 @@
 package com.jpeony.api.controller;
 
-import com.jpeony.common.concurrent.ThreadUtils;
+import com.jpeony.common.util.ThreadUtil;
 import com.jpeony.common.util.ApiResponse;
 import com.jpeony.core.worker.CPUDemo1Worker;
 import com.jpeony.core.worker.CPUDemo2Worker;
@@ -22,7 +22,7 @@ public class WorkerController {
      */
     @RequestMapping("/cpu1Demo")
     public ApiResponse cup1Demo(String bizContext, String orderNo) {
-        ThreadUtils.submit(new CPUDemo1Worker(bizContext));
+        ThreadUtil.submit(new CPUDemo1Worker(bizContext));
 
         return ApiResponse.success();
     }
@@ -32,7 +32,7 @@ public class WorkerController {
      */
     @RequestMapping("/cpu2Demo")
     public ApiResponse cpu2Demo(String bizContext, String orderNo) {
-        ThreadUtils.execute(new CPUDemo2Worker(bizContext));
+        ThreadUtil.execute(new CPUDemo2Worker(bizContext));
 
         return ApiResponse.success();
     }
@@ -42,7 +42,7 @@ public class WorkerController {
      */
     @RequestMapping("/ioDemo")
     public ApiResponse ioDemo(String bizContext, String orderNo) {
-        ThreadUtils.executeStandard(new IODemoWorker(bizContext));
+        ThreadUtil.executeStandard(new IODemoWorker(bizContext));
 
         return ApiResponse.success();
     }

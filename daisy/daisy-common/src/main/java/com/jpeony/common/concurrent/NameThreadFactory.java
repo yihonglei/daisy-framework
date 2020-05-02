@@ -30,7 +30,7 @@ public class NameThreadFactory implements ThreadFactory {
         this.namePrefix = "pool-" + POOL_NUMBER.getAndIncrement() + "-" + name;
     }
 
-    NameThreadFactory(String name) {
+    public NameThreadFactory(String name) {
         this(name, false, Thread.NORM_PRIORITY);
     }
 
