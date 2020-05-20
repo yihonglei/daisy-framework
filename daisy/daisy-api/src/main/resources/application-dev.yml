@@ -12,9 +12,10 @@ spring:
 
 # MyBatis
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:/config/mybatis/**/*Mapper.xml
   configuration:
     map-underscore-to-camel-case: true
+
 # rocketmq
 rocketmq:
   producer:
