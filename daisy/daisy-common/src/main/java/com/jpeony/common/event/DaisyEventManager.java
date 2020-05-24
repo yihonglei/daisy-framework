@@ -67,8 +67,8 @@ public class DaisyEventManager {
         if (listeners == null) {
             return;
         }
-        for (DaisyEventListener l : listeners) {
-            l.fire(obj);
+        for (DaisyEventListener listener : listeners) {
+            listener.fire(obj);
         }
     }
 }
