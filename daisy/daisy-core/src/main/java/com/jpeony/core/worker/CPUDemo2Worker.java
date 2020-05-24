@@ -1,5 +1,6 @@
 package com.jpeony.core.worker;
 
+import com.jpeony.common.concurrent.AbstractWorker;
 import com.jpeony.common.pojo.dto.TraceItemDTO;
 import com.jpeony.common.spring.SpringBeanUtil;
 import com.jpeony.core.service.CPUDemo2Service;
