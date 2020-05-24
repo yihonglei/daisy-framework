@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.EnumMap;
 import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * 事件管理器
@@ -13,22 +14,22 @@ import java.util.Vector;
  */
 public class DaisyEventManager {
     private static Logger logger = LoggerFactory.getLogger(DaisyEventManager.class);
-    private static EnumMap<DaisyEventEnum, Vector<DaisyEventListener>> eventListeners = new EnumMap<>(DaisyEventEnum.class);
+    private static EnumMap<DaisyEventEnum, CopyOnWriteArrayList<DaisyEventListener>> eventListeners = new EnumMap<>(DaisyEventEnum.class);
 
     public static void addListener(DaisyEventEnum event, DaisyEventListener el) {
-        Vector<DaisyEventListener> listeners = eventListeners.get(event);
+        CopyOnWriteArrayList<DaisyEventListener> listeners = eventListeners.get(event);
         if (listeners == null) {
-            listeners = new Vector<>();
+            listeners = new CopyOnWriteArrayList<>();
             eventListeners.put(event, listeners);
         } else {
-            for (DaisyEventListener l : listeners) {
-                if (l.getClass() == el.getClass()) {
-                    logger.info("more than one instances added, this class is {}", l.getClass());
+            for (DaisyEventListener listener : listeners) {
+                if (listener.getClass() == el.getClass()) {
+                    logger.info("more than one instances added, this class is {}", listener.getClass());
                     return;
                 }
             }
         }
-        listeners.addElement(el);
+        listeners.add(el);
     }
 
     /**
@@ -37,7 +38,7 @@ public class DaisyEventManager {
      * @author yihonglei
      */
     public static synchronized void removeListener(DaisyEventEnum event, DaisyEventListener el) {
-        Vector<DaisyEventListener> listeners = eventListeners.get(event);
+        CopyOnWriteArrayList<DaisyEventListener> listeners = eventListeners.get(event);
         if (listeners != null) {
             listeners.remove(el);
         }
@@ -49,7 +50,7 @@ public class DaisyEventManager {
      * @author yihonglei
      */
     public static void purgeListeners(DaisyEventEnum event) {
-        Vector<DaisyEventListener> listeners = eventListeners.get(event);
+        CopyOnWriteArrayList<DaisyEventListener> listeners = eventListeners.get(event);
         if (listeners != null) {
             listeners.clear();
             // 移除该事件
@@ -63,7 +64,7 @@ public class DaisyEventManager {
      * @author yihonglei
      */
     public static void fireEvent(DaisyEvent obj) {
-        Vector<DaisyEventListener> listeners = eventListeners.get(obj.getEvent());
+        CopyOnWriteArrayList<DaisyEventListener> listeners = eventListeners.get(obj.getEvent());
         if (listeners == null) {
             return;
         }
