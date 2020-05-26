@@ -84,8 +84,10 @@ daisy-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动！
 
 # 四 daisy-framework技术博客
 
-[daisy-framework开发规范](https://blog.csdn.net/yhl_jxy/article/details/103946580)
+[开发规范](https://blog.csdn.net/yhl_jxy/article/details/103946580)
 
-[daisy-framework集成rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
+[集成rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
+
+[事件监听机制（event，listener）](https://blog.csdn.net/yhl_jxy/article/details/106317858)
 
 
