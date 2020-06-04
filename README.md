@@ -6,9 +6,7 @@
 
 Mac + JDK8
 
-## 统一架构
-
-开发语言：Java + JDK8
+## 技术栈
 
 Web框架：Spring Boot
 
@@ -16,7 +14,7 @@ Web框架：Spring Boot
 
 ORM框架：MyBatis
 
-缓存中间件：Redis，MongoDB
+缓存中间件：Redis
 
 消息中间件：RocketMQ
 
