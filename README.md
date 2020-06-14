@@ -26,7 +26,7 @@ ORM框架：MyBatis
 
 系统日志：logback，elk
 
-系统监控：sunflower https://github.com/jchry/sunflower
+系统监控：[sunflower](https://github.com/jchry/sunflower)
 
 工程化：idea，Maven，Git，jenkins，Docker&k8s
 
@@ -86,6 +86,7 @@ daisy-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动！
 
 [集成rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
-[事件监听机制（event，listener）](https://blog.csdn.net/yhl_jxy/article/details/106317858)
+[事件监听设计](https://blog.csdn.net/yhl_jxy/article/details/106317858)
 
+[延时任务设计](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
