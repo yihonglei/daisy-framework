@@ -1,13 +1,16 @@
 package com.jpeony.test.service.worker;
 
 import com.jpeony.common.util.ThreadUtil;
+import com.jpeony.core.service.DelayService;
 import com.jpeony.core.worker.CPUDemo2Worker;
 import com.jpeony.core.worker.CPUDemo1Worker;
 import com.jpeony.core.worker.IODemoWorker;
 import com.jpeony.test.BaseServletTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -17,6 +20,8 @@ import java.util.concurrent.ExecutionException;
  */
 @Slf4j
 public class WorkerTest extends BaseServletTest {
+    @Autowired
+    private DelayService delayService;
 
     /**
      * CPU密集，有返回值
@@ -44,5 +49,22 @@ public class WorkerTest extends BaseServletTest {
     public void testIODemoWorker() throws ExecutionException, InterruptedException {
         String bizContext = "IO密集型";
         ThreadUtil.executeStandard(new IODemoWorker(bizContext));
+    }
+
+    /**
+     * 延时任务测试
+     */
+    @Test
+    public void testDelayTask() {
+        delayService.delayTask(0, new Date());
+        sleep();
+    }
+
+    public void sleep() {
+        try {
+            Thread.sleep(30000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
