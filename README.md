@@ -18,7 +18,7 @@ ORM框架：MyBatis
 
 消息中间件：RocketMQ
 
-分布式锁：支持Redis、Zookeeper实现
+分布式锁：支持Redis
 
 分布式事务：RocketMQ最终一致性，定时任务做双层防护
 
