@@ -60,6 +60,9 @@ public class WorkerTest extends BaseServletTest {
         sleep();
     }
 
+    /**
+     * 休眠，保持服务存活
+     */
     public void sleep() {
         try {
             Thread.sleep(30000);
