@@ -12,8 +12,8 @@ import java.util.concurrent.*;
  *
  * @author yihonglei
  */
-public class ThreadUtil {
-    private static final Logger logger = LoggerFactory.getLogger(ThreadUtil.class);
+public class ThreadUtils {
+    private static final Logger logger = LoggerFactory.getLogger(ThreadUtils.class);
     private static volatile ThreadPoolExecutor executor = null;
     private static volatile StandardThreadExecutor standardExecutor = null;
     private static final int CORE_SIZE = Runtime.getRuntime().availableProcessors();
@@ -28,11 +28,11 @@ public class ThreadUtil {
             int maxSize = getMaxThreadSize();
             executor = new ThreadPoolExecutor(CORE_SIZE, maxSize, KEEP_ALIVE_TIME, TimeUnit.SECONDS, new LinkedBlockingQueue<>(QUEUE_SIZE), new NameThreadFactory("common"));
             executor.allowCoreThreadTimeOut(true);
-            Runtime.getRuntime().addShutdownHook(new Thread(ThreadUtil::shutDown));
+            Runtime.getRuntime().addShutdownHook(new Thread(ThreadUtils::shutDown));
             // IO密集型
             standardExecutor = new StandardThreadExecutor(2 * CORE_SIZE, maxSize, KEEP_ALIVE_TIME, TimeUnit.SECONDS, QUEUE_SIZE, new NameThreadFactory("standard-common"));
             standardExecutor.allowCoreThreadTimeOut(true);
-            Runtime.getRuntime().addShutdownHook(new Thread(ThreadUtil::shutDownStand));
+            Runtime.getRuntime().addShutdownHook(new Thread(ThreadUtils::shutDownStand));
         } catch (Exception e) {
             logger.error("初始化线程池异常");
         }

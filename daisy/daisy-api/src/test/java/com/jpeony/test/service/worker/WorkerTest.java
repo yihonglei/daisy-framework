@@ -1,6 +1,6 @@
 package com.jpeony.test.service.worker;
 
-import com.jpeony.common.util.ThreadUtil;
+import com.jpeony.common.util.ThreadUtils;
 import com.jpeony.core.service.DelayService;
 import com.jpeony.core.worker.CPUDemo2Worker;
 import com.jpeony.core.worker.CPUDemo1Worker;
@@ -29,7 +29,7 @@ public class WorkerTest extends BaseServletTest {
     @Test
     public void testCPUDemo1Worker() throws ExecutionException, InterruptedException {
         String bizContext = "CPU密集型";
-        Integer result = ThreadUtil.submit(new CPUDemo1Worker(bizContext)).get();
+        Integer result = ThreadUtils.submit(new CPUDemo1Worker(bizContext)).get();
         log.info("result={}", result);
     }
 
@@ -39,7 +39,7 @@ public class WorkerTest extends BaseServletTest {
     @Test
     public void testCPUDemo2Worker() {
         String bizContext = "CPU密集型";
-        ThreadUtil.execute(new CPUDemo2Worker(bizContext));
+        ThreadUtils.execute(new CPUDemo2Worker(bizContext));
     }
 
     /**
@@ -48,7 +48,7 @@ public class WorkerTest extends BaseServletTest {
     @Test
     public void testIODemoWorker() throws ExecutionException, InterruptedException {
         String bizContext = "IO密集型";
-        ThreadUtil.executeStandard(new IODemoWorker(bizContext));
+        ThreadUtils.executeStandard(new IODemoWorker(bizContext));
     }
 
     /**

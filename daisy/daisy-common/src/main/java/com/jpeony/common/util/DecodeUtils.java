@@ -11,8 +11,8 @@ import java.net.URLDecoder;
  *
  * @author yihonglei
  */
-public final class DecodeUtil {
-    private static Logger LOGGER = LoggerFactory.getLogger(DecodeUtil.class);
+public final class DecodeUtils {
+    private static Logger LOGGER = LoggerFactory.getLogger(DecodeUtils.class);
 
     /**
      * 解码

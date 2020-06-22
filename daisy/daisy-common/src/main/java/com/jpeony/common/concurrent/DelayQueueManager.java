@@ -1,6 +1,6 @@
 package com.jpeony.common.concurrent;
 
-import com.jpeony.common.util.ThreadUtil;
+import com.jpeony.common.util.ThreadUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -64,7 +64,7 @@ public class DelayQueueManager {
                     continue;
                 }
                 // 任务提交线程池执行
-                ThreadUtil.execute(task);
+                ThreadUtils.execute(task);
             } catch (Exception e) {
                 logger.error("监控延时队列线程异常!", e);
             }
