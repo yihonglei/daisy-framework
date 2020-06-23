@@ -18,8 +18,14 @@ public class MapperTest extends BaseServletTest {
     private TestMapper testMapper;
 
     @Test
-    public void test() {
+    public void testAnnotation() {
         TestDO testDO = testMapper.queryTestById(1);
-        log.info("testDO={}", testDO);
+        log.info("testDO annotation={}", testDO);
+    }
+
+    @Test
+    public void testXml() {
+        TestDO testDO = testMapper.queryTestByIdXml(1);
+        log.info("testDO xml={}", testDO);
     }
 }

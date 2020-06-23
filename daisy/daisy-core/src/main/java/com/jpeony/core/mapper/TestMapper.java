@@ -1,5 +1,7 @@
 package com.jpeony.core.mapper;
 
+import com.jpeony.common.annotation.DataSource;
+import com.jpeony.common.enums.DataSourceType;
 import com.jpeony.common.pojo.domain.TestDO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -12,16 +14,15 @@ import org.apache.ibatis.annotations.Select;
 public interface TestMapper {
     /**
      * MyBatis注解方式
-     *
-     * @author yihonglei
+     * <p>
+     * 通过@DataSource(value = DataSourceType.SLAVE)，指定使用从库数据源
      */
+//    @DataSource(value = DataSourceType.SLAVE)
     @Select("select * from test where id = #{id}")
     TestDO queryTestById(@Param("id") int id);
 
     /**
      * MyBatis XML方式
-     *
-     * @author yihonglei
      */
     TestDO queryTestByIdXml(@Param("id") int id);
 }

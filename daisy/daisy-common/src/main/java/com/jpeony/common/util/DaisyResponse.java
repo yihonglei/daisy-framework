@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author yihonglei
  */
-public final class ApiResponse<T> implements Serializable {
+public final class DaisyResponse<T> implements Serializable {
     /**
      * 1 成功
      */
@@ -25,12 +25,12 @@ public final class ApiResponse<T> implements Serializable {
     /**
      * 成功
      */
-    private static final ApiResponse SUCCESS = new ApiResponse(SUCCESS_CODE, "SUCCESS", null);
+    private static final DaisyResponse SUCCESS = new DaisyResponse(SUCCESS_CODE, "SUCCESS", null);
 
     /**
      * 失败
      */
-    private static final ApiResponse ERROR = new ApiResponse(ERROR_CODE, "ERROR", null);
+    private static final DaisyResponse ERROR = new DaisyResponse(ERROR_CODE, "ERROR", null);
 
     /**
      * 返回状态码
@@ -53,53 +53,53 @@ public final class ApiResponse<T> implements Serializable {
     @Setter
     private T data;
 
-    private ApiResponse(int code, String msg, T data) {
+    private DaisyResponse(int code, String msg, T data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
     }
 
-    private static <T> ApiResponse<T> success(int code, String msg, T data) {
-        return new ApiResponse<>(code, msg, data);
+    private static <T> DaisyResponse<T> success(int code, String msg, T data) {
+        return new DaisyResponse<>(code, msg, data);
     }
 
-    private static <T> ApiResponse<T> success(String msg, T data) {
+    private static <T> DaisyResponse<T> success(String msg, T data) {
         return success(SUCCESS.getCode(), msg, data);
     }
 
-    public static <T> ApiResponse<T> success(T data) {
+    public static <T> DaisyResponse<T> success(T data) {
         return success(SUCCESS.getMsg(), data);
     }
 
-    public static <T> ApiResponse<T> success(String msg) {
+    public static <T> DaisyResponse<T> success(String msg) {
         return success(msg, null);
     }
 
-    public static <T> ApiResponse<T> success() {
+    public static <T> DaisyResponse<T> success() {
         return success(SUCCESS.code, SUCCESS.msg, null);
     }
 
-    public static <T> ApiResponse error(ErrorCodeEnum errorCodeEnum) {
+    public static <T> DaisyResponse error(ErrorCodeEnum errorCodeEnum) {
         return error(errorCodeEnum.getCode(), errorCodeEnum.getMsg(), null);
     }
 
-    public static <T> ApiResponse error() {
+    public static <T> DaisyResponse error() {
         return error(ERROR.code, ERROR.msg, null);
     }
 
-    public static ApiResponse error(int code, String msg, Object data) {
-        return new ApiResponse<>(code, msg, data);
+    public static DaisyResponse error(int code, String msg, Object data) {
+        return new DaisyResponse<>(code, msg, data);
     }
 
-    private static ApiResponse error(String msg, Object data) {
+    private static DaisyResponse error(String msg, Object data) {
         return error(ERROR.getCode(), msg, data);
     }
 
-    public static ApiResponse error(Object data) {
+    public static DaisyResponse error(Object data) {
         return error(ERROR.getMsg(), data);
     }
 
-    public static ApiResponse error(String msg) {
+    public static DaisyResponse error(String msg) {
         return error(msg, null);
     }
 

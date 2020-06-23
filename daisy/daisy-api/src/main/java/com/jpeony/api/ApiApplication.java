@@ -8,6 +8,7 @@ import com.jpeony.common.spring.TraceLogInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -23,7 +24,7 @@ import static com.jpeony.common.constant.InterceptorConstant.NGINX;
  *
  * @author yihonglei
  */
-@SpringBootApplication(scanBasePackages = "com.jpeony")
+@SpringBootApplication(scanBasePackages = "com.jpeony.*", exclude = {DataSourceAutoConfiguration.class})
 @MapperScan("com.jpeony.core.mapper")
 public class ApiApplication implements WebMvcConfigurer {
     public static void main(String[] args) {

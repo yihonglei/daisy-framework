@@ -3,7 +3,7 @@ package com.jpeony.api.controller;
 import com.jpeony.common.event.DaisyEvent;
 import com.jpeony.common.event.DaisyEventEnum;
 import com.jpeony.common.event.DaisyEventManager;
-import com.jpeony.common.util.ApiResponse;
+import com.jpeony.common.util.DaisyResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class EventController {
 
     @RequestMapping("/eventDemo")
-    public ApiResponse eventDemo(String userName) {
+    public DaisyResponse eventDemo(String userName) {
         // 事件发布，支持任意参数，可以是一个值，也可以传入对象
         DaisyEventManager.fireEvent(new DaisyEvent(DaisyEventEnum.TEST_EVENT, userName));
-        return ApiResponse.success();
+        return DaisyResponse.success();
     }
 }
