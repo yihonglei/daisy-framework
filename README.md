@@ -66,17 +66,19 @@ core负责核心业务的编写；
 
 # 三 daisy-framework项目构建
 
-1、基础组件构建顺序(clean install)
+## 1、基础组件构建顺序(clean install)
 
-.daisy-parent
+daisy-parent
 
-.daisy-rocketmq-spring-boot-starter
+daisy-rocketmq-spring-boot-starter
 
-.daisy-mongodb-spring-boot-starter
+daisy-mongodb-spring-boot-starter
 
-.daisy-redis-spring-boot-starter
+daisy-redis-spring-boot-starter
 
-2、daisy工程构建(clean install)
+......
+
+## 2、daisy工程构建(clean install)
 
 daisy-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动！
 
