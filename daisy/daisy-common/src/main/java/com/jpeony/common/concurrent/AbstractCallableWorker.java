@@ -15,7 +15,7 @@ public abstract class AbstractCallableWorker<V> implements Callable<V> {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public V call() throws Exception {
+    public V call() {
         TraceItemDTO item = getTraceItem();
         try {
             item.putAll();

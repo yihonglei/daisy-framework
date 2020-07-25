@@ -2,7 +2,7 @@ package com.jpeony.core.chain.risk;
 
 import com.google.common.collect.Maps;
 import com.jpeony.common.pojo.vo.RiskVO;
-import com.jpeony.common.spring.SpringBeanUtil;
+import com.jpeony.common.util.SpringBeanUtils;
 import com.jpeony.core.chain.risk.model.RiskAccessory;
 import com.jpeony.core.chain.risk.model.RiskContext;
 import com.jpeony.core.chain.risk.processor.HelpCallCarHandlerProcessor;
@@ -25,7 +25,7 @@ public class RiskProcessorChainFactory {
     private static final Map<String, RiskProcessor> BEAN_MAP;
 
     static {
-        Map<String, RiskProcessor> beanMap = SpringBeanUtil.beansOfTypeIncludingAncestors(RiskProcessor.class);
+        Map<String, RiskProcessor> beanMap = SpringBeanUtils.beansOfTypeIncludingAncestors(RiskProcessor.class);
         BEAN_MAP = Maps.newHashMapWithExpectedSize(beanMap.size());
         beanMap.forEach((k, v) -> BEAN_MAP.put(v.getClass().getName(), v));
     }

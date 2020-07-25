@@ -2,7 +2,7 @@ package com.jpeony.core.worker;
 
 import com.jpeony.common.concurrent.AbstractWorker;
 import com.jpeony.common.pojo.dto.TraceItemDTO;
-import com.jpeony.common.spring.SpringBeanUtil;
+import com.jpeony.common.util.SpringBeanUtils;
 import com.jpeony.core.service.DelayService;
 import com.jpeony.core.service.delay.DelayServiceImpl;
 
@@ -24,7 +24,7 @@ public class DelayTaskWorker extends AbstractWorker {
         this.passTime = passTime;
         this.startTime = startTime;
         traceItemDTO = TraceItemDTO.createByCurrentMDC();
-        delayService = SpringBeanUtil.getBean(DelayServiceImpl.class);
+        delayService = SpringBeanUtils.getBean(DelayServiceImpl.class);
     }
 
     /**

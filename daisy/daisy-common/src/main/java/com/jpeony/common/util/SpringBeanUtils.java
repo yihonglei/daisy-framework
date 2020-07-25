@@ -1,4 +1,4 @@
-package com.jpeony.common.spring;
+package com.jpeony.common.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactoryUtils;
@@ -9,18 +9,18 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 /**
- * 获取springBean工具类
+ * 获取SpringBean工具类
  *
  * @author yihonglei
  */
 @Configuration
-public class SpringBeanUtil implements ApplicationContextAware {
+public class SpringBeanUtils implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext = null;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        SpringBeanUtil.applicationContext = applicationContext;
+        SpringBeanUtils.applicationContext = applicationContext;
     }
 
     public static Object getBeanByName(String beanName) {

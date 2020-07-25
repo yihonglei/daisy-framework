@@ -2,7 +2,7 @@ package com.jpeony.core.worker;
 
 import com.jpeony.common.concurrent.AbstractCallableWorker;
 import com.jpeony.common.pojo.dto.TraceItemDTO;
-import com.jpeony.common.spring.SpringBeanUtil;
+import com.jpeony.common.util.SpringBeanUtils;
 import com.jpeony.core.service.CPUDemo1Service;
 import com.jpeony.core.service.cpu.CPUDemo1ServiceImpl;
 
@@ -28,7 +28,7 @@ public class CPUDemo1Worker extends AbstractCallableWorker<Integer> {
     public CPUDemo1Worker(String bizContext) {
         this.bizContext = bizContext;
         traceItemDTO = TraceItemDTO.createByCurrentMDC();
-        cpuDemo1Service = SpringBeanUtil.getBean(CPUDemo1ServiceImpl.class);
+        cpuDemo1Service = SpringBeanUtils.getBean(CPUDemo1ServiceImpl.class);
     }
 
     @Override
