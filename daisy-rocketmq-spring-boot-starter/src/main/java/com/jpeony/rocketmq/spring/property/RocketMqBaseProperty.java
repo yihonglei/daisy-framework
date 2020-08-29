@@ -14,6 +14,5 @@ public class RocketMqBaseProperty {
     private String topic;
     private String tag;
     private int batchMaxSize;
-
     private String instanceName;
 }
