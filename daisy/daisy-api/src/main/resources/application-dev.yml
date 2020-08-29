@@ -69,13 +69,13 @@ mybatis:
 # rocketmq
 rocketmq:
   producer:
-    testProducer:
+    test-producer:
       namesrvAddr: 10.6.202.110:9876;10.6.202.111:9876
       groupName: testProducerGroup
       topic: testTopic
       instanceName: testProducerInstance
   consumer:
-    testConsumer:
+    test-consumer:
       namesrvAddr: 10.6.202.110:9876;10.6.202.111:9876
       groupName: testConsumerGroup
       topic: testTopic

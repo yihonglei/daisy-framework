@@ -6,7 +6,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 /**
  * @author yihonglei
  */
-public abstract class AbstractLifeCycle implements LifeCycle, EnvironmentAware {
+public abstract class AbstractLifeCycle implements LifeCycle {
 
     /**
      * 从spring配置中读取value值

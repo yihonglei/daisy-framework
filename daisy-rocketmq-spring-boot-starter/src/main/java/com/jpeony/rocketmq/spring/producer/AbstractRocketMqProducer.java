@@ -1,15 +1,13 @@
 package com.jpeony.rocketmq.spring.producer;
 
-import com.jpeony.rocketmq.spring.annotation.RocketMqProducer;
 import com.jpeony.rocketmq.spring.lifecycle.AbstractLifeCycle;
+import com.jpeony.rocketmq.spring.property.RocketMqBaseProperty;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.client.producer.SendStatus;
 import org.apache.rocketmq.common.message.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.Environment;
 
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -24,16 +22,11 @@ import static java.lang.System.currentTimeMillis;
 public abstract class AbstractRocketMqProducer extends AbstractLifeCycle implements Producer {
     protected Logger logger = LoggerFactory.getLogger(getClass());
     protected DefaultMQProducer producer = null;
-    private static AtomicInteger number = new AtomicInteger(0);
-    protected ConfigurableEnvironment env;
-    protected String topic;
-    private String namesrvAddr;
-    private String groupName;
-
     /**
-     * 是否忽略日志
+     * mq相关配置
      */
-    private boolean ignoreLog = false;
+    private RocketMqBaseProperty mqProperty;
+    private static AtomicInteger number = new AtomicInteger(0);
 
     /**
      * 是否开启
@@ -43,6 +36,7 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
     @Override
     public void start() {
         synchronized (AbstractRocketMqProducer.class) {
+            this.mqProperty = getMqProperty();
             init();
         }
     }
@@ -55,46 +49,22 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
             logger.warn("the producer [{}] is started.", this);
             return;
         }
-        RocketMqProducer rocketMqProducer = this.getClass().getAnnotation(RocketMqProducer.class);
-        if (rocketMqProducer == null) {
-            throw new IllegalStateException("RocketMqProducer annotation is required");
-        }
-        namesrvAddr = getValue(env, rocketMqProducer.namesrvAddr());
+        String namesrvAddr = mqProperty.getNamesrvAddr();
         if (isEmpty(namesrvAddr)) {
             throw new IllegalStateException("RocketMqProducer.namesrvAddr is required");
         }
-        groupName = getValue(env, rocketMqProducer.groupName());
+        String groupName = mqProperty.getGroupName();
         if (isEmpty(groupName)) {
             throw new IllegalStateException("RocketMqProducer.groupName is required");
         }
-        this.topic = getValue(env, rocketMqProducer.topic());
-        String instanceName = getValue(env, rocketMqProducer.instanceName());
+        String topic = mqProperty.getTopic();
+        String instanceName = mqProperty.getInstanceName();
         if (isEmpty(instanceName)) {
             instanceName = "producer-" + number.incrementAndGet() + "-" + currentTimeMillis();
         }
-        String customizedTraceTopic = getValue(env, rocketMqProducer.customizedTraceTopic());
-        if (isEmpty(customizedTraceTopic)) {
-            customizedTraceTopic = null;
-        }
-        int sendMsgTimeout = rocketMqProducer.sendMsgTimeout();
-        if (rocketMqProducer.sendMsgTimeout() <= 0) {
-            sendMsgTimeout = RocketMqProducer.SEND_MSG_TIMEOUT;
-        }
-        int retryTimesWhenSendFailed = rocketMqProducer.retryTimesWhenSendFailed();
-        if (retryTimesWhenSendFailed < 0) {
-            retryTimesWhenSendFailed = RocketMqProducer.RETRY_TIMES_WHEN_SEND_FAILED;
-        }
-        int defaultTopicQueueNums = rocketMqProducer.defaultTopicQueueNums();
-        if (defaultTopicQueueNums <= 0) {
-            defaultTopicQueueNums = RocketMqProducer.TOPIC_QUEUE_NUMS;
-        }
-        ignoreLog = rocketMqProducer.ignoreLog();
-        producer = new DefaultMQProducer(groupName, rocketMqProducer.enableMsgTrace(), customizedTraceTopic);
-        producer.setSendMsgTimeout(sendMsgTimeout);
+        producer = new DefaultMQProducer(groupName);
         producer.setInstanceName(instanceName);
         producer.setNamesrvAddr(namesrvAddr);
-        producer.setRetryTimesWhenSendFailed(retryTimesWhenSendFailed);
-        producer.setDefaultTopicQueueNums(defaultTopicQueueNums);
         try {
             producer.start();
             start = true;
@@ -117,16 +87,12 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
         try {
             result = producer.send(message);
         } catch (Exception e) {
-            if (!ignoreLog) {
-                logger.error("发送异常topic:[{}] tags:[{}] keys:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
-                        tags, keys, body, ext, currentTimeMillis() - start, e);
-            }
+            logger.error("发送异常topic:[{}] tags:[{}] keys:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
+                    tags, keys, body, ext, currentTimeMillis() - start, e);
             throw e;
         }
-        if (!ignoreLog) {
-            logger.info("发送完成topic:[{}] tags:[{}] keys:[{}] result:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
-                    tags, keys, result, body, ext, currentTimeMillis() - start);
-        }
+        logger.info("发送完成topic:[{}] tags:[{}] keys:[{}] result:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
+                tags, keys, result, body, ext, currentTimeMillis() - start);
         if (result == null || result.getSendStatus() != SendStatus.SEND_OK) {
             return false;
         }
@@ -161,16 +127,12 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
                 return mqs.get(index);
             }, keys);
         } catch (Exception e) {
-            if (!ignoreLog) {
-                logger.error("发送异常topic:[{}] tags:[{}] keys:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
-                        tags, keys, body, ext, currentTimeMillis() - start, e);
-            }
+            logger.error("发送异常topic:[{}] tags:[{}] keys:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
+                    tags, keys, body, ext, currentTimeMillis() - start, e);
             throw e;
         }
-        if (!ignoreLog) {
-            logger.info("发送完成topic:[{}] tags:[{}] keys:[{}] result:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
-                    tags, keys, result, body, ext, currentTimeMillis() - start);
-        }
+        logger.info("发送完成topic:[{}] tags:[{}] keys:[{}] result:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
+                tags, keys, result, body, ext, currentTimeMillis() - start);
         if (result == null || result.getSendStatus() != SendStatus.SEND_OK) {
             return false;
         }
@@ -184,12 +146,12 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
 
     @Override
     public boolean sendOrderMessage(String topic, String tags, String body) throws Exception {
-        return sendOrderMessage(this.topic, tags, "keys", body);
+        return sendOrderMessage(mqProperty.getTopic(), tags, "keys", body);
     }
 
     @Override
     public boolean sendOrderMessage(String topic, String body) throws Exception {
-        return sendOrderMessage(this.topic, "", body);
+        return sendOrderMessage(mqProperty.getTopic(), "", body);
     }
 
     protected void checkState(String state, String field) {
@@ -215,13 +177,13 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
         }
     }
 
-    @Override
-    public void setEnvironment(Environment environment) {
-        this.env = (ConfigurableEnvironment) environment;
-    }
-
     private int hash(Object key) {
         int h;
         return key == null ? 0 : (h = key.hashCode()) ^ h >>> 16;
     }
+
+    /**
+     * 获取配信息
+     */
+    public abstract RocketMqBaseProperty getMqProperty();
 }

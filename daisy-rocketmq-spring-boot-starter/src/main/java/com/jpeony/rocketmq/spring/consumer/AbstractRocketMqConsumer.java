@@ -1,17 +1,14 @@
 package com.jpeony.rocketmq.spring.consumer;
 
 import com.alibaba.fastjson.JSON;
-import com.jpeony.rocketmq.spring.annotation.RocketMqConsumer;
 import com.jpeony.rocketmq.spring.lifecycle.AbstractLifeCycle;
+import com.jpeony.rocketmq.spring.property.RocketMqBaseProperty;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.*;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.EnvironmentAware;
-import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.Environment;
 
 import java.util.List;
 import java.util.Map;
@@ -22,13 +19,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  *
  * @author yihonglei
  */
-public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle implements EnvironmentAware {
+public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
     protected DefaultMQPushConsumer consumer = null;
     private static AtomicInteger number = new AtomicInteger(0);
-    private ConfigurableEnvironment env;
-    private boolean ignoreLog;
+    /**
+     * mq相关配置
+     */
+    private RocketMqBaseProperty mqProperty;
 
     /**
      * 是否开启
@@ -38,6 +37,7 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle impleme
     @Override
     public void start() {
         synchronized (this.getClass()) {
+            this.mqProperty = getMqProperty();
             init();
         }
     }
@@ -50,71 +50,57 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle impleme
             logger.warn("the consumer [{}] is started.", this);
             return;
         }
-        RocketMqConsumer rocketMqConsumer = this.getClass().getAnnotation(RocketMqConsumer.class);
-        if (rocketMqConsumer == null) {
-            throw new IllegalStateException("RocketMqConsumer annotation is required");
-        }
-        String namesrvAddr = getValue(env, rocketMqConsumer.namesrvAddr());
+        String namesrvAddr = mqProperty.getNamesrvAddr();
         if (isEmpty(namesrvAddr)) {
             throw new IllegalStateException("RocketMqConsumer.namesrvAddr is required");
         }
-        String groupName = getValue(env, rocketMqConsumer.groupName());
+        String groupName = mqProperty.getGroupName();
         if (isEmpty(groupName)) {
             throw new IllegalStateException("RocketMqConsumer.groupName is required");
         }
-        String topic = getValue(env, rocketMqConsumer.topic());
+        String topic = mqProperty.getTopic();
         if (isEmpty(topic)) {
             throw new IllegalStateException("RocketMqConsumer.topic is required");
         }
-        String instanceName = getValue(env, rocketMqConsumer.instanceName());
+        String instanceName = mqProperty.getInstanceName();
         if (isEmpty(instanceName)) {
             instanceName = "consumer-" + number.incrementAndGet() + "-" + System.currentTimeMillis();
         }
-        int batchSize = rocketMqConsumer.batchMaxSize();
+        int batchSize = mqProperty.getBatchMaxSize();
         if (batchSize <= 0) {
             batchSize = 16;
         }
-        String tag = getValue(env, rocketMqConsumer.tag());
+        String tag = mqProperty.getTag();
         if (isEmpty(tag)) {
             tag = "*";
         }
-        String customizedTraceTopic = getValue(env, rocketMqConsumer.customizedTraceTopic());
-        if (isEmpty(customizedTraceTopic)) {
-            customizedTraceTopic = null;
-        }
 
         String finalTag = tag;
-        ignoreLog = rocketMqConsumer.ignoreLog();
-        consumer = new DefaultMQPushConsumer(groupName, rocketMqConsumer.enableMsgTrace(), customizedTraceTopic);
-        consumer.setConsumeFromWhere(rocketMqConsumer.from());
+        consumer = new DefaultMQPushConsumer(groupName);
         consumer.setInstanceName(instanceName);
         consumer.setNamesrvAddr(namesrvAddr);
         consumer.setConsumeMessageBatchMaxSize(batchSize);
         try {
             consumer.subscribe(topic, finalTag);
             // 注册监听
-            if (rocketMqConsumer.listener() == MessageListenerConcurrently.class) {
+            if (this.listener() == MessageListenerConcurrently.class) {
                 consumer.registerMessageListener((MessageListenerConcurrently) (msg, context) -> {
                     ConsumeConcurrentlyStatus status = null;
                     try {
                         status = handleMessage(msg, context);
                     } catch (Exception e) {
-                        if (!ignoreLog) {
-                            logger.error("消费失败topic:[{}] tag:[{}] msg:[{}]", topic, finalTag, JSON.toJSONString(msg), e);
-                        }
+                        logger.error("消费失败topic:[{}] tag:[{}] msg:[{}]", topic, finalTag, JSON.toJSONString(msg), e);
                         throw e;
                     }
                     return status;
                 });
-            } else if (rocketMqConsumer.listener() == MessageListenerOrderly.class) {
+            } else if (this.listener() == MessageListenerOrderly.class) {
                 consumer.registerMessageListener((MessageListenerOrderly) (msg, context) -> {
                     ConsumeOrderlyStatus status = null;
                     try {
                         status = handleOrderlyMessage(msg, context);
                     } catch (Exception e) {
-                        if (!ignoreLog) {
-                            logger.error("消费失败topic:[{}] tag:[{}] msg:[{}]", topic, finalTag, JSON.toJSONString(msg), e);
-                        }
+                        logger.error("消费失败topic:[{}] tag:[{}] msg:[{}]", topic, finalTag, JSON.toJSONString(msg), e);
                         throw e;
                     }
                     return status;
@@ -125,10 +111,10 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle impleme
             consumer.start();
             start = true;
             logger.info("rocketMq consumer [namesrvAddr={} groupName={} topic={} tag={} instanceName={}] 启动完成",
-                    namesrvAddr, groupName, topic, rocketMqConsumer.tag(), instanceName);
+                    namesrvAddr, groupName, topic, mqProperty.getTag(), instanceName);
         } catch (MQClientException e) {
             logger.warn("rocketMq consumer [namesrvAddr={} groupName={} topic={} tag={} instanceName={}] 启动失败",
-                    namesrvAddr, groupName, topic, rocketMqConsumer.tag(), instanceName);
+                    namesrvAddr, groupName, topic, mqProperty.getTag(), instanceName);
             throw new IllegalStateException("mq consumer init fail", e);
         }
 
@@ -155,6 +141,18 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle impleme
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * 获取配信息
+     */
+    public abstract RocketMqBaseProperty getMqProperty();
+
+    /**
+     * 消费顺序 默认无序
+     */
+    public Class<? extends MessageListener> listener() {
+        return MessageListenerConcurrently.class;
+    }
+
     @Override
     public boolean isStart() {
         return start;
@@ -167,10 +165,5 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle impleme
             start = false;
             logger.info("the consumer [{}] shutdown OK", this);
         }
-    }
-
-    @Override
-    public void setEnvironment(Environment environment) {
-        this.env = (ConfigurableEnvironment) environment;
     }
 }

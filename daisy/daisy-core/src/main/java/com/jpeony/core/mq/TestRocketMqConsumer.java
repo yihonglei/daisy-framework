@@ -1,12 +1,15 @@
 package com.jpeony.core.mq;
 
-import com.jpeony.rocketmq.spring.annotation.RocketMqConsumer;
 import com.jpeony.rocketmq.spring.consumer.AbstractRocketMqConsumer;
+import com.jpeony.rocketmq.spring.property.RocketMqBaseProperty;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
 import org.apache.rocketmq.common.message.MessageExt;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -15,21 +18,27 @@ import java.util.List;
  *
  * @author yihonglei
  */
-@RocketMqConsumer(
-        namesrvAddr = "${rocketmq.consumer.testConsumer.namesrvAddr}",
-        groupName = "${rocketmq.consumer.testConsumer.groupName}",
-        topic = "${rocketmq.consumer.testConsumer.topic}",
-        tag = "${rocketmq.consumer.testConsumer.tag}")
+@Component
 public class TestRocketMqConsumer extends AbstractRocketMqConsumer {
-    @Override
-    public ConsumeOrderlyStatus handleOrderlyMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
-        logger.info("TestRocketConsumer.ConsumeOrderlyStatus.handleOrderlyMessage:{}", context);
-        return ConsumeOrderlyStatus.SUCCESS;
-    }
+    @Autowired
+    private TestRocketMqConsumerProperty testRocketMqConsumerProperty;
+
+//    @Override
+//    public ConsumeOrderlyStatus handleOrderlyMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
+//        logger.info("TestRocketConsumer.ConsumeOrderlyStatus.handleOrderlyMessage:{}", context);
+//        return ConsumeOrderlyStatus.SUCCESS;
+//    }
 
     @Override
     public ConsumeConcurrentlyStatus handleMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
         logger.info("TestRocketConsumer.ConsumeConcurrentlyStatus.handleMessage:{}", context);
         return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+    }
+
+    @Override
+    public RocketMqBaseProperty getMqProperty() {
+        RocketMqBaseProperty rocketMqBaseProperty = new RocketMqBaseProperty();
+        BeanUtils.copyProperties(testRocketMqConsumerProperty, rocketMqBaseProperty);
+        return rocketMqBaseProperty;
     }
 }

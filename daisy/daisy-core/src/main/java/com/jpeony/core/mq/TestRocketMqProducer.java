@@ -1,7 +1,10 @@
 package com.jpeony.core.mq;
 
-import com.jpeony.rocketmq.spring.annotation.RocketMqProducer;
 import com.jpeony.rocketmq.spring.producer.AbstractRocketMqProducer;
+import com.jpeony.rocketmq.spring.property.RocketMqBaseProperty;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * 消息发送
@@ -11,9 +14,15 @@ import com.jpeony.rocketmq.spring.producer.AbstractRocketMqProducer;
  *
  * @author yihonglei
  */
-@RocketMqProducer(
-        namesrvAddr = "${rocketmq.producer.testProducer.namesrvAddr}",
-        groupName = "${rocketmq.producer.testProducer.groupName}",
-        topic = "${rocketmq.producer.testProducer.topic}")
+@Component
 public class TestRocketMqProducer extends AbstractRocketMqProducer {
+    @Autowired
+    private TestRocketMqProducerProperty testRocketMqProducerProperty;
+
+    @Override
+    public RocketMqBaseProperty getMqProperty() {
+        RocketMqBaseProperty rocketMqBaseProperty = new RocketMqBaseProperty();
+        BeanUtils.copyProperties(testRocketMqProducerProperty, rocketMqBaseProperty);
+        return rocketMqBaseProperty;
+    }
 }
