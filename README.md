@@ -92,3 +92,5 @@ daisy-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动！
 
 [延时任务设计](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
+[消息中间件](https://blog.csdn.net/yhl_jxy/article/details/107849198)
+
