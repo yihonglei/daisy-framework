@@ -14,7 +14,7 @@
     <groupId>com.jpeony</groupId>
     <artifactId>daisy-redis-spring-boot-starter</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0-SNAPSHOT</version>
     <name>daisy-redis-spring-boot-starter</name>
 
     <properties>

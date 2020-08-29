@@ -12,7 +12,7 @@
 
     <groupId>com.jpeony</groupId>
     <artifactId>daisy-parent</artifactId>
-    <version>1.0.0.RELEASE</version>
+    <version>1.0-SNAPSHOT.RELEASE</version>
     <packaging>pom</packaging>
 
     <properties>
@@ -31,7 +31,7 @@
         <swagger-ui.version>1.9.6</swagger-ui.version>
 
         <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
-        <daisy-rocketmq-spring-boot-starter.version>1.0.0</daisy-rocketmq-spring-boot-starter.version>
+        <daisy-rocketmq-spring-boot-starter.version>1.0-SNAPSHOT</daisy-rocketmq-spring-boot-starter.version>
     </properties>
 
     <dependencyManagement>
