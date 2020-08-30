@@ -3,8 +3,6 @@ package com.jpeony.rocketmq.spring.property;
 import lombok.Data;
 
 /**
- * 基础配置
- *
  * @author yihonglei
  */
 @Data

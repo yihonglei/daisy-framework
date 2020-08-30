@@ -15,8 +15,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.lang.System.currentTimeMillis;
 
 /**
- * 抽象rocket-mq生产者
- *
  * @author yihonglei
  */
 public abstract class AbstractRocketMqProducer extends AbstractLifeCycle implements Producer {
@@ -76,7 +74,7 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
             throw new IllegalStateException("mq producer init fail", e);
         }
     }
-    
+
     @Override
     public boolean sendMessage(String topic, String tags, String keys, String body, Map<String, Object> ext) throws Exception {
         checkState(topic, "topic");

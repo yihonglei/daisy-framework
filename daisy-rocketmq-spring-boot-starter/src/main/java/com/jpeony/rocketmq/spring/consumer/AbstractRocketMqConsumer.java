@@ -15,8 +15,6 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 抽象rocket-mq消费者
- *
  * @author yihonglei
  */
 public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle {
@@ -41,10 +39,7 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle {
             init();
         }
     }
-
-    /**
-     * 初始化
-     */
+    
     private void init() {
         if (start) {
             logger.warn("the consumer [{}] is started.", this);
