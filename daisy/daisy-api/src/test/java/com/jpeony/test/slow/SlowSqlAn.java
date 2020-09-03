@@ -1,8 +1,13 @@
 package com.jpeony.test.slow;
 
+import com.jpeony.common.util.DateUtils;
+
 import java.io.*;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -40,6 +45,13 @@ public class SlowSqlAn {
                 if (str.contains("Query_time")) {
                     String[] time = str.split(":");
                     contentBO.setOpeTime(new BigDecimal(time[1].replace("Lock_time", "").trim()));
+                }
+                // executeTime
+                if (str.contains("timestamp")) {
+                    String[] time = str.split("=");
+                    long timestamp = Long.valueOf(time[1].split(";")[0].trim()) * 1000L;
+                    String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date(timestamp));
+                    contentBO.setExecuteTime(date);
                 }
                 // opeType
                 if (str.contains("select ") || str.contains("SELECT ")) {
@@ -111,15 +123,17 @@ public class SlowSqlAn {
             // insert
             for (ContentBO bo : insertList) {
 //                System.out.println("insert操作, Schema: " + bo.getSchema() +
+//                        ", 操作时间: " + bo.getExecuteTime() +
 //                        ", 耗时: " + bo.getOpeTime() +
 //                        ", SQL: " + bo.getSqlContent());
             }
 
             // update
             for (ContentBO bo : updateList) {
-//                System.out.println("update操作, Schema: " + bo.getSchema() +
-//                        ", 耗时: " + bo.getOpeTime() +
-//                        ", SQL: " + bo.getSqlContent());
+                System.out.println("update操作, Schema: " + bo.getSchema() +
+                        ", 操作时间: " + bo.getExecuteTime() +
+                        ", 耗时: " + bo.getOpeTime() +
+                        ", SQL: " + bo.getSqlContent());
             }
 
             // delete
@@ -130,22 +144,23 @@ public class SlowSqlAn {
             }
 
             // select
-            for (ContentBO bo : selectList) {
+//            for (ContentBO bo : selectList) {
 //                System.out.println("select操作, Schema: " + bo.getSchema() +
+//                        ", 操作时间: " + bo.getExecuteTime() +
 //                        ", 耗时: " + bo.getOpeTime() +
 //                        ", SQL: " + bo.getSqlContent());
-            }
+//            }
             // select ip 分组
-            Map<String, List<ContentBO>> ipGroupMap = selectList.stream().collect(Collectors.groupingBy(ContentBO::getAppIp));
-            for (Map.Entry<String, List<ContentBO>> entry : ipGroupMap.entrySet()) {
-                System.out.println("===========ip:" + entry.getKey());
-                List<ContentBO> list = entry.getValue();
-                for (ContentBO bo : list) {
-                    System.out.println("select操作, Schema: " + bo.getSchema() +
-                            ", 耗时: " + bo.getOpeTime() +
-                            ", SQL: " + bo.getSqlContent());
-                }
-            }
+//            Map<String, List<ContentBO>> ipGroupMap = selectList.stream().collect(Collectors.groupingBy(ContentBO::getAppIp));
+//            for (Map.Entry<String, List<ContentBO>> entry : ipGroupMap.entrySet()) {
+//                System.out.println("===========ip:" + entry.getKey());
+//                List<ContentBO> list = entry.getValue();
+//                for (ContentBO bo : list) {
+//                    System.out.println("select操作, Schema: " + bo.getSchema() +
+//                            ", 耗时: " + bo.getOpeTime() +
+//                            ", SQL: " + bo.getSqlContent());
+//                }
+//            }
 
             bf.close();
             inputReader.close();
@@ -168,6 +183,10 @@ public class SlowSqlAn {
          * s
          */
         private BigDecimal opeTime;
+        /**
+         * 执行日期
+         */
+        private String executeTime;
         /**
          * select insert update delete
          */
@@ -199,6 +218,14 @@ public class SlowSqlAn {
 
         public void setOpeTime(BigDecimal opeTime) {
             this.opeTime = opeTime;
+        }
+
+        public String getExecuteTime() {
+            return executeTime;
+        }
+
+        public void setExecuteTime(String executeTime) {
+            this.executeTime = executeTime;
         }
 
         public String getOpeType() {
