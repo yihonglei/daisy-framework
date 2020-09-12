@@ -90,7 +90,7 @@ daisy-parent：基础依赖
 
 - daisy-redis-spring-boot-starter
 
-## daisy
+## daisy应用
 
 1、配置修改
 
