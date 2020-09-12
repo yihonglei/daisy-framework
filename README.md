@@ -4,33 +4,33 @@
 
 ## 开发环境
 
-Mac + JDK8
+- Mac + JDK8
 
 ## 技术栈
 
-Web框架：Spring Boot
+- Web框架：Spring Boot
 
-数据库：MySql，druid 连接池
+- 数据库：MySql，druid 连接池
 
-ORM框架：MyBatis
+- ORM框架：MyBatis
 
-缓存中间件：Redis
+- 缓存中间件：Redis
 
-消息中间件：RocketMQ
+- 消息中间件：RocketMQ
 
-分布式锁：支持 Redis 或 Zookeeper
+- 分布式锁：支持 Redis 或 Zookeeper
 
-分布式事务：柔性事务，RocketMQ 最终一致性，定时任务做双层防护
+- 分布式事务：柔性事务，RocketMQ 最终一致性，定时任务做双层防护
 
-定时任务：elastic-job（当当分布式）
+- 定时任务：elastic-job（当当分布式）
 
-系统日志：logback，elk
+- 系统日志：logback，elk
 
-系统监控：[sunflower](https://github.com/jchry/sunflower)
+- 系统监控：[sunflower](https://github.com/jchry/sunflower)
 
-工程化：idea，Maven，Git，jenkins，Docker&k8s
+- 工程化：idea，Maven，Git，jenkins，Docker&k8s
 
-项目部署：tomcat，linux
+- 项目部署：tomcat，linux
 
 # 二 daisy-framework 模块说明
 
@@ -40,17 +40,15 @@ daisy-parent：基础依赖
 
 ## 公共组件
 
-http：daisy-okhttp
+- http：daisy-okhttp
 
-redis：daisy-redis-spring-boot-starter
+- redis：daisy-redis-spring-boot-starter
 
-mongodb：daisy-mongodb-spring-boot-starter
+- mongodb：daisy-mongodb-spring-boot-starter
 
-rocketmq：daisy-rocketmq-spring-boot-starter
+- rocketmq：daisy-rocketmq-spring-boot-starter
 
-分布式锁：daisy-distributed-lock
-
-......
+- 分布式锁：daisy-distributed-lock
 
 在实际应用中基础依赖，公共组件按版本维护，发布到私服。
 
@@ -78,8 +76,6 @@ daisy项目：由 daisy-api，daisy-common，daisy-core组成。
 
 - daisy-redis-spring-boot-starter
 
-- ......
-
 ## 应用配置修改
 
 daisy-api/resources/application-dev.yml 修改相关配置。
@@ -87,8 +83,6 @@ daisy-api/resources/application-dev.yml 修改相关配置。
 - MySql 地址
 
 - RocketMQ 地址
-
-- ......
 
 ## 应用工程构建、启动、访问
 
