@@ -54,13 +54,27 @@ daisy-parent：基础依赖
 
 ## 应用程序
 
-daisy项目：由 daisy-api，daisy-common，daisy-core组成。
+1、daisy
+
+提供API访问，由 daisy-api，daisy-common，daisy-core组成。
 
 - api 负责对外提供接口访问；
 
 - common 公用代码和工具包；
 
 - core 负责核心业务的编写；
+
+2、daisy-canal
+
+监控binlog，发送MQ。
+
+3、daisy-canal-consumer
+
+消费binlog消息，触发业务。
+
+4、daisy-job
+
+基于elastic-job实现分布式job。
 
 # 三 daisy-framework 项目构建
 
@@ -76,7 +90,9 @@ daisy项目：由 daisy-api，daisy-common，daisy-core组成。
 
 - daisy-redis-spring-boot-starter
 
-## 应用配置修改
+## daisy应用
+
+1、配置修改
 
 daisy-api/resources/application-dev.yml 修改相关配置。
 
@@ -84,7 +100,7 @@ daisy-api/resources/application-dev.yml 修改相关配置。
 
 - RocketMQ 地址
 
-## 应用工程构建、启动、访问
+2、工程构建、启动、访问
 
 - 构建: clean install确保能编译打包通过
 
