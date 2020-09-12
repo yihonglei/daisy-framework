@@ -24,6 +24,11 @@ public class TestController {
     @Autowired
     private TestService testService;
 
+    @RequestMapping("/test")
+    public ApiResponse test() {
+        return ApiResponse.success("daisy启动成功了!");
+    }
+
     @ApiOperation(value = "查询用户信息", notes = "用户查询", response = ApiResponse.class)
     @PostMapping("/queryTestById")
     public ApiResponse queryTestById(TestDTO testDTO) {
