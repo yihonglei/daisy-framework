@@ -27,14 +27,13 @@ import static com.jpeony.common.constant.InterceptorConstant.NGINX;
 @SpringBootApplication(scanBasePackages = "com.jpeony.*", exclude = {DataSourceAutoConfiguration.class})
 @MapperScan("com.jpeony.core.mapper")
 public class ApiApplication implements WebMvcConfigurer {
+
     public static void main(String[] args) {
         SpringApplication.run(ApiApplication.class, args);
     }
 
     /**
      * 添加日志追踪拦截器
-     *
-     * @author yihonglei
      */
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -43,8 +42,6 @@ public class ApiApplication implements WebMvcConfigurer {
 
     /**
      * 不使用默认jackson框架解析json，重写configureMessageConverters，使用fastjson框架解析json
-     *
-     * @author yihonglei
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {

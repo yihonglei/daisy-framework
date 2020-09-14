@@ -11,8 +11,6 @@ import com.jpeony.core.chain.risk.model.RiskAccessory;
 public interface RiskProcessor {
     /**
      * 执行过滤
-     *
-     * @author yihonglei
      */
     void doProcessor(RiskAccessory accessory, RiskProcessorChain chain);
 }

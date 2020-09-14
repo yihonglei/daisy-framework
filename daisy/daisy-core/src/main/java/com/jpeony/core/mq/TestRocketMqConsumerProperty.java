@@ -2,6 +2,7 @@ package com.jpeony.core.mq;
 
 import com.jpeony.rocketmq.spring.property.RocketMqBaseProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author yihonglei
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @ConfigurationProperties(prefix = "rocketmq.consumer.test-consumer")
 @Configuration

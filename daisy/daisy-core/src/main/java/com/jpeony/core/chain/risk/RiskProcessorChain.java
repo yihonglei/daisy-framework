@@ -11,15 +11,11 @@ import com.jpeony.core.chain.risk.model.RiskAccessory;
 public interface RiskProcessorChain {
     /**
      * 筛选风险用户，如果是风险用户，则链条中断返回
-     *
-     * @author yihonglei
      */
     RiskVO doProcess(RiskAccessory accessory);
 
     /**
      * 添加责任链
-     *
-     * @author yihonglei
      */
     void addProcessorChain(RiskProcessor processor);
 

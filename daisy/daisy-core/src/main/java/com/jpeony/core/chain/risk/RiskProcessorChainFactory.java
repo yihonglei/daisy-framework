@@ -48,8 +48,6 @@ public class RiskProcessorChainFactory {
 
     /**
      * 添加责任链
-     *
-     * @author yihonglei
      */
     private static void addProcessorChain(RiskProcessorChain chain, Class<? extends RiskProcessor> type) {
         RiskProcessor riskProcessor = getRiskProcessor(type);
@@ -59,8 +57,6 @@ public class RiskProcessorChainFactory {
 
     /**
      * 获取processor
-     *
-     * @author yihonglei
      */
     private static RiskProcessor getRiskProcessor(Class<? extends RiskProcessor> type) {
         return BEAN_MAP.get(type.getName());
