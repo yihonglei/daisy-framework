@@ -66,12 +66,12 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
         try {
             producer.start();
             start = true;
-            logger.info("rocketMq producer [namesrvAddr={} groupName={} topic={} instanceName={}] 启动完成",
+            logger.info("rocketMq producer namesrvAddr=[{}] groupName=[{}] topic=[{}] instanceName=[{}] 启动完成",
                     namesrvAddr, groupName, topic, instanceName);
         } catch (Exception e) {
-            logger.warn("rocketMq producer [namesrvAddr={} groupName={} topic={} instanceName={}] 启动失败",
+            logger.warn("rocketMq producer namesrvAddr=[{}] groupName=[{}] topic=[{}] instanceName=[{}] 启动失败",
                     namesrvAddr, groupName, topic, instanceName);
-            throw new IllegalStateException("mq producer init fail", e);
+            throw new IllegalStateException("mq producer init failed", e);
         }
     }
 
@@ -84,11 +84,11 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
         try {
             result = producer.send(message);
         } catch (Exception e) {
-            logger.error("发送异常topic:[{}] tags:[{}] keys:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
+            logger.error("发送异常 topic:[{}] tags:[{}] keys:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
                     tags, keys, body, ext, currentTimeMillis() - start, e);
             throw e;
         }
-        logger.info("发送完成topic:[{}] tags:[{}] keys:[{}] result:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
+        logger.info("发送完成 topic:[{}] tags:[{}] keys:[{}] result:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
                 tags, keys, result, body, ext, currentTimeMillis() - start);
         if (result == null || result.getSendStatus() != SendStatus.SEND_OK) {
             return false;
@@ -124,11 +124,11 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
                 return mqs.get(index);
             }, keys);
         } catch (Exception e) {
-            logger.error("发送异常topic:[{}] tags:[{}] keys:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
+            logger.error("发送异常 topic:[{}] tags:[{}] keys:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
                     tags, keys, body, ext, currentTimeMillis() - start, e);
             throw e;
         }
-        logger.info("发送完成topic:[{}] tags:[{}] keys:[{}] result:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
+        logger.info("发送完成 topic:[{}] tags:[{}] keys:[{}] result:[{}] body:[{}] ext:[{}] 耗时:[{}]ms", topic,
                 tags, keys, result, body, ext, currentTimeMillis() - start);
         if (result == null || result.getSendStatus() != SendStatus.SEND_OK) {
             return false;
