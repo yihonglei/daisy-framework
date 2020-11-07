@@ -11,8 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class DelayTask<T extends Runnable> implements Delayed {
     private final long time;
     private final T task;
-
-
+    
     /**
      * @param timeout 超时时间（秒）
      * @param task    任务

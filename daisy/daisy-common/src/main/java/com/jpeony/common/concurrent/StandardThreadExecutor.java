@@ -4,16 +4,16 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * 源码逻辑源于Tomcat：org.apache.catalina.core.StandardThreadExecutor
- * <p>
- * 1、CPU密集（主要进行本地大量业务处理，计算等等，这个时候要控制好线程，否则，CPU占用大量资源，系统极度缓慢和崩掉）
+ * 【源码逻辑源于 Tomcat：org.apache.catalina.core.StandardThreadExecutor】
+ * 1、CPU 密集
+ * 主要进行本地大量业务处理，计算等等，这个时候要控制好线程，否则，CPU 占用大量资源，系统极度缓慢和崩掉。
  * java.util.concurrent#ThreadPoolExecutor execute()执行策略：
- * 超过核心线程的任务，优先offer到queue，queue满后再扩充线程到maximumPoolSize，如果已经到了maximumPoolSize就reject
- * 比较适合于CPU密集型应用（比如runnable内部执行的操作都在JVM内部，memory copy, or compute等等）。
- * <p>
- * 2、IO密集（本地处理比较少，大量远程调用希望得到及时响应，这个时候在资源允许范围内开启尽量多的线程去处理）
- * StandardThreadExecutor execute()执行策略：
- * 超过核心线程的任务，优先扩充线程到maximumPoolSize处理，再offer到queue，如果满了就reject，比较适合于业务处理需要远程资源的场景。
+ * 超过核心线程的任务，优先 offer 到 queue，queue 满后再扩充线程到 maximumPoolSize，如果已经到了 maximumPoolSize 就 reject
+ * 比较适合于 CPU 密集型应用（比如 runnable 内部执行的操作都在 JVM 内部，memory copy, or compute等等）。
+ * 2、IO密集
+ * 本地处理比较少，大量远程调用希望得到及时响应，这个时候在资源允许范围内开启尽量多的线程去处理。
+ * StandardThreadExecutor#execute()执行策略：
+ * 超过核心线程的任务，优先扩充线程到 maximumPoolSize 处理，再 offer 到 queue，如果满了就 reject，比较适合于业务处理需要远程资源的场景。
  *
  * @author yihonglei
  */
@@ -78,8 +78,7 @@ public class StandardThreadExecutor extends ThreadPoolExecutor {
 
         submittedTasksCount = new AtomicInteger(0);
 
-        // 最大并发任务限制：队列buffer数 + 最大线程数
-        // 这种队列首先创建线程，其次放到任务队列
+        // 最大并发任务限制：队列buffer数 + 最大线程数，这种队列首先创建线程，其次放到任务队列
         maxSubmittedTaskCount = queueCapacity + maxThreads;
     }
 
@@ -87,8 +86,7 @@ public class StandardThreadExecutor extends ThreadPoolExecutor {
     public void execute(Runnable command) {
         int count = submittedTasksCount.incrementAndGet();
 
-        // 超过最大的并发任务限制，进行reject
-        // 依赖的LinkedTransferQueue没有长度限制，因此这里进行控制
+        // 超过最大的并发任务限制，进行reject，依赖的LinkedTransferQueue没有长度限制，因此这里进行控制
         if (count > maxSubmittedTaskCount) {
             submittedTasksCount.decrementAndGet();
             getRejectedExecutionHandler().rejectedExecution(command, this);

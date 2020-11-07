@@ -16,14 +16,14 @@ public abstract class AbstractCallableWorker<V> implements Callable<V> {
 
     @Override
     public V call() {
-        LogTraceInfo item = getLogTraceInfo();
+        LogTraceInfo traceInfo = getLogTraceInfo();
         try {
-            item.putAll();
+            traceInfo.putAll();
             return execute();
         } catch (Throwable e) {
             logger.error("线程运行异常", e);
         } finally {
-            item.removeAll();
+            traceInfo.removeAll();
         }
 
         return null;

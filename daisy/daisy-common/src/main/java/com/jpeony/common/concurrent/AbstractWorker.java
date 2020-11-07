@@ -14,14 +14,14 @@ public abstract class AbstractWorker implements Runnable {
 
     @Override
     public void run() {
-        LogTraceInfo item = getLogTraceInfo();
+        LogTraceInfo traceInfo = getLogTraceInfo();
         try {
-            item.putAll();
+            traceInfo.putAll();
             execute();
         } catch (Throwable e) {
             logger.error("线程执行异常", e);
         } finally {
-            item.removeAll();
+            traceInfo.removeAll();
         }
     }
 
