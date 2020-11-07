@@ -4,7 +4,7 @@ package com.jpeony.common.spring;
 import com.alibaba.fastjson.JSON;
 import com.jpeony.common.enums.ErrorCodeEnum;
 import com.jpeony.common.exception.BizException;
-import com.jpeony.common.util.ApiResponse;
+import com.jpeony.common.utils.ApiResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;

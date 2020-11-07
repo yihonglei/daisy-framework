@@ -1,4 +1,4 @@
-package com.jpeony.common.pojo.dto;
+package com.jpeony.common.concurrent;
 
 import lombok.Data;
 import org.slf4j.MDC;
@@ -13,7 +13,7 @@ import static com.jpeony.common.constant.TraceConstant.*;
  * @author yihonglei
  */
 @Data
-public class TraceItemDTO implements Serializable {
+public class TraceItem implements Serializable {
     private static final long serialVersionUID = 3697722045461880439L;
 
     /**
@@ -29,7 +29,7 @@ public class TraceItemDTO implements Serializable {
      */
     private String ngTraceId;
 
-    public TraceItemDTO(String traceId, String orderNo, String ngTraceId) {
+    public TraceItem(String traceId, String orderNo, String ngTraceId) {
         this.traceId = traceId;
         this.orderNo = orderNo;
         this.ngTraceId = ngTraceId;
@@ -38,8 +38,8 @@ public class TraceItemDTO implements Serializable {
     /**
      * 基于当前MDC创建item
      */
-    public static TraceItemDTO createByCurrentMDC() {
-        return new TraceItemDTO(MDC.get(TRACE_KEY), MDC.get(ORDER_NO), MDC.get(NG_TRACE_ID));
+    public static TraceItem createByCurrentMDC() {
+        return new TraceItem(MDC.get(TRACE_KEY), MDC.get(ORDER_NO), MDC.get(NG_TRACE_ID));
     }
 
     /**

@@ -3,7 +3,7 @@ package com.jpeony.api.controller;
 import com.jpeony.common.event.DaisyEvent;
 import com.jpeony.common.event.DaisyEventEnum;
 import com.jpeony.common.event.DaisyEventManager;
-import com.jpeony.common.util.ApiResponse;
+import com.jpeony.common.utils.ApiResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

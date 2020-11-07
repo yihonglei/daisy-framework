@@ -1,7 +1,7 @@
 package com.jpeony.api.controller;
 
-import com.jpeony.common.util.ThreadUtils;
-import com.jpeony.common.util.ApiResponse;
+import com.jpeony.common.utils.ThreadUtils;
+import com.jpeony.common.utils.ApiResponse;
 import com.jpeony.core.worker.CPUDemo1Worker;
 import com.jpeony.core.worker.CPUDemo2Worker;
 import com.jpeony.core.worker.IODemoWorker;

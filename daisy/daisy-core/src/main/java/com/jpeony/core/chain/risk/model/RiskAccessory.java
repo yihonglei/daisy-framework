@@ -1,6 +1,6 @@
 package com.jpeony.core.chain.risk.model;
 
-import com.jpeony.common.pojo.vo.RiskVO;
+import com.jpeony.core.pojo.vo.RiskVO;
 import lombok.Data;
 
 /**

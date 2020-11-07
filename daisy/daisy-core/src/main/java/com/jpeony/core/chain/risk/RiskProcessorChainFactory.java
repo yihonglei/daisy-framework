@@ -1,8 +1,8 @@
 package com.jpeony.core.chain.risk;
 
 import com.google.common.collect.Maps;
-import com.jpeony.common.pojo.vo.RiskVO;
-import com.jpeony.common.util.SpringBeanUtils;
+import com.jpeony.core.pojo.vo.RiskVO;
+import com.jpeony.common.utils.SpringBeanUtils;
 import com.jpeony.core.chain.risk.model.RiskAccessory;
 import com.jpeony.core.chain.risk.model.RiskContext;
 import com.jpeony.core.chain.risk.processor.HelpCallCarHandlerProcessor;

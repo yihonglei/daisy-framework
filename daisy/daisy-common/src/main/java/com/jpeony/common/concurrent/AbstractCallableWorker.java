@@ -1,6 +1,5 @@
 package com.jpeony.common.concurrent;
 
-import com.jpeony.common.pojo.dto.TraceItemDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,7 +15,7 @@ public abstract class AbstractCallableWorker<V> implements Callable<V> {
 
     @Override
     public V call() {
-        TraceItemDTO item = getTraceItem();
+        TraceItem item = getTraceItem();
         try {
             item.putAll();
             return execute();
@@ -32,7 +31,7 @@ public abstract class AbstractCallableWorker<V> implements Callable<V> {
     /**
      * 返回追踪日志信息
      */
-    protected abstract TraceItemDTO getTraceItem();
+    protected abstract TraceItem getTraceItem();
 
     /**
      * 执行线程

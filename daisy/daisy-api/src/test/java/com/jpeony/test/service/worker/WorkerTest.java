@@ -1,6 +1,6 @@
 package com.jpeony.test.service.worker;
 
-import com.jpeony.common.util.ThreadUtils;
+import com.jpeony.common.utils.ThreadUtils;
 import com.jpeony.core.service.DelayService;
 import com.jpeony.core.worker.CPUDemo2Worker;
 import com.jpeony.core.worker.CPUDemo1Worker;

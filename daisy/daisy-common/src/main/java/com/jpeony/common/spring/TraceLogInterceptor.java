@@ -1,7 +1,7 @@
 package com.jpeony.common.spring;
 
 import com.alibaba.fastjson.JSON;
-import com.jpeony.common.util.DecodeUtils;
+import com.jpeony.common.utils.DecodeUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

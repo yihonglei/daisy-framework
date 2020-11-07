@@ -1,8 +1,8 @@
 package com.jpeony.core.service.test;
 
-import com.jpeony.common.pojo.domain.TestDO;
-import com.jpeony.common.pojo.dto.TestDTO;
-import com.jpeony.common.pojo.vo.TestVO;
+import com.jpeony.core.pojo.domain.TestDO;
+import com.jpeony.core.pojo.dto.TestDTO;
+import com.jpeony.core.pojo.vo.TestVO;
 import com.jpeony.core.mapper.TestMapper;
 import com.jpeony.core.service.TestService;
 import lombok.extern.slf4j.Slf4j;

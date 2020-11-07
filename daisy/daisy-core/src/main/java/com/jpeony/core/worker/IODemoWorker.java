@@ -1,8 +1,8 @@
 package com.jpeony.core.worker;
 
 import com.jpeony.common.concurrent.AbstractWorker;
-import com.jpeony.common.pojo.dto.TraceItemDTO;
-import com.jpeony.common.util.SpringBeanUtils;
+import com.jpeony.common.concurrent.TraceItem;
+import com.jpeony.common.utils.SpringBeanUtils;
 import com.jpeony.core.service.IODemoService;
 import com.jpeony.core.service.cpu.IODemoServiceImpl;
 
@@ -20,7 +20,7 @@ public class IODemoWorker extends AbstractWorker {
     /**
      * 日志追踪对象
      */
-    private TraceItemDTO traceItemDTO;
+    private TraceItem traceItem;
     /**
      * 业务处理
      */
@@ -28,13 +28,13 @@ public class IODemoWorker extends AbstractWorker {
 
     public IODemoWorker(String bizContext) {
         this.bizContext = bizContext;
-        traceItemDTO = TraceItemDTO.createByCurrentMDC();
+        traceItem = TraceItem.createByCurrentMDC();
         ioDemo1Service = SpringBeanUtils.getBean(IODemoServiceImpl.class);
     }
 
     @Override
-    protected TraceItemDTO getTraceItem() {
-        return this.traceItemDTO;
+    protected TraceItem getTraceItem() {
+        return this.traceItem;
     }
 
     @Override

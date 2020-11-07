@@ -1,7 +1,7 @@
 package com.jpeony.api.controller;
 
-import com.jpeony.common.pojo.dto.TestDTO;
-import com.jpeony.common.util.ApiResponse;
+import com.jpeony.core.pojo.dto.TestDTO;
+import com.jpeony.common.utils.ApiResponse;
 import com.jpeony.core.service.TestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

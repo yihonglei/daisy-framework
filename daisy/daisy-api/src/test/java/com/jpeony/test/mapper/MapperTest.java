@@ -1,7 +1,7 @@
 package com.jpeony.test.mapper;
 
-import com.jpeony.common.pojo.domain.SchemaTablesDO;
-import com.jpeony.common.pojo.domain.TestDO;
+import com.jpeony.core.pojo.domain.SchemaTablesDO;
+import com.jpeony.core.pojo.domain.TestDO;
 import com.jpeony.core.mapper.InformationSchemaMapper;
 import com.jpeony.core.mapper.TestMapper;
 import com.jpeony.test.BaseServletTest;

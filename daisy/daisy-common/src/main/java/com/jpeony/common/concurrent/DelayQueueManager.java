@@ -1,6 +1,6 @@
 package com.jpeony.common.concurrent;
 
-import com.jpeony.common.util.ThreadUtils;
+import com.jpeony.common.utils.ThreadUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

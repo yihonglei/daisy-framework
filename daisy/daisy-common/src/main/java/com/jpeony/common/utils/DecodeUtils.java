@@ -1,4 +1,4 @@
-package com.jpeony.common.util;
+package com.jpeony.common.utils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;

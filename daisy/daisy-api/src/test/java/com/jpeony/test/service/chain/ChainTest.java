@@ -1,6 +1,6 @@
 package com.jpeony.test.service.chain;
 
-import com.jpeony.common.pojo.vo.RiskVO;
+import com.jpeony.core.pojo.vo.RiskVO;
 import com.jpeony.core.chain.risk.RiskProcessorChainFactory;
 import com.jpeony.core.chain.risk.model.RiskContext;
 import com.jpeony.test.BaseServletTest;

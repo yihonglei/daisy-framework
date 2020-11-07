@@ -1,6 +1,5 @@
 package com.jpeony.common.concurrent;
 
-import com.jpeony.common.pojo.dto.TraceItemDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +13,7 @@ public abstract class AbstractWorker implements Runnable {
 
     @Override
     public void run() {
-        TraceItemDTO item = getTraceItem();
+        TraceItem item = getTraceItem();
         try {
             item.putAll();
             execute();
@@ -28,7 +27,7 @@ public abstract class AbstractWorker implements Runnable {
     /**
      * 返回追踪日志信息
      */
-    protected abstract TraceItemDTO getTraceItem();
+    protected abstract TraceItem getTraceItem();
 
     /**
      * 执行线程方法

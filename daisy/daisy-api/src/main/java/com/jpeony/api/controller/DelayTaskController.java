@@ -1,6 +1,6 @@
 package com.jpeony.api.controller;
 
-import com.jpeony.common.util.ApiResponse;
+import com.jpeony.common.utils.ApiResponse;
 import com.jpeony.core.service.DelayService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

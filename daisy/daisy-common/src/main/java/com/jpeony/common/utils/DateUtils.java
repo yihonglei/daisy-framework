@@ -1,4 +1,4 @@
-package com.jpeony.common.util;
+package com.jpeony.common.utils;
 
 /**
  * 时间工具包

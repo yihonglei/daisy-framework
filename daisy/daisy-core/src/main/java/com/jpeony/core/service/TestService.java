@@ -1,7 +1,7 @@
 package com.jpeony.core.service;
 
-import com.jpeony.common.pojo.dto.TestDTO;
-import com.jpeony.common.pojo.vo.TestVO;
+import com.jpeony.core.pojo.dto.TestDTO;
+import com.jpeony.core.pojo.vo.TestVO;
 
 /**
  * 接口列表

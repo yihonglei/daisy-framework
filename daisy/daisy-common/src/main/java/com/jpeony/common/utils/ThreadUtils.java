@@ -1,4 +1,4 @@
-package com.jpeony.common.util;
+package com.jpeony.common.utils;
 
 import com.jpeony.common.concurrent.NameThreadFactory;
 import com.jpeony.common.concurrent.StandardThreadExecutor;

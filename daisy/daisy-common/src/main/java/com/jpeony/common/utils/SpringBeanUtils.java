@@ -1,4 +1,4 @@
-package com.jpeony.common.util;
+package com.jpeony.common.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactoryUtils;

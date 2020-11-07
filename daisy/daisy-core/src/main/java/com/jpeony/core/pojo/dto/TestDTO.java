@@ -1,4 +1,4 @@
-package com.jpeony.common.pojo.dto;
+package com.jpeony.core.pojo.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

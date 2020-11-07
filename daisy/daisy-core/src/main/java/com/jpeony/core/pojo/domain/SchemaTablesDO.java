@@ -1,4 +1,4 @@
-package com.jpeony.common.pojo.domain;
+package com.jpeony.core.pojo.domain;
 
 import lombok.Data;
 

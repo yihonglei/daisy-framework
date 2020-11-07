@@ -1,6 +1,6 @@
 package com.jpeony.core.mapper;
 
-import com.jpeony.common.pojo.domain.SchemaTablesDO;
+import com.jpeony.core.pojo.domain.SchemaTablesDO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 

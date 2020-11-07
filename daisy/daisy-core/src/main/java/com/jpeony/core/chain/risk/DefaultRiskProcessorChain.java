@@ -1,7 +1,7 @@
 package com.jpeony.core.chain.risk;
 
 import com.google.common.collect.Lists;
-import com.jpeony.common.pojo.vo.RiskVO;
+import com.jpeony.core.pojo.vo.RiskVO;
 import com.jpeony.core.chain.risk.model.RiskAccessory;
 
 import java.util.List;

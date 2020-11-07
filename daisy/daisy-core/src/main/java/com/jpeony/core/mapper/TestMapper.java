@@ -1,8 +1,6 @@
 package com.jpeony.core.mapper;
 
-import com.jpeony.common.annotation.DataSource;
-import com.jpeony.common.enums.DataSourceType;
-import com.jpeony.common.pojo.domain.TestDO;
+import com.jpeony.core.pojo.domain.TestDO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
