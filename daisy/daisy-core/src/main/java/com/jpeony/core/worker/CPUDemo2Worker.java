@@ -1,7 +1,7 @@
 package com.jpeony.core.worker;
 
 import com.jpeony.common.concurrent.AbstractWorker;
-import com.jpeony.common.concurrent.TraceItem;
+import com.jpeony.common.logback.LogTraceInfo;
 import com.jpeony.common.utils.SpringBeanUtils;
 import com.jpeony.core.service.CPUDemo2Service;
 import com.jpeony.core.service.cpu.CPUDemo2ServiceImpl;
@@ -19,7 +19,7 @@ public class CPUDemo2Worker extends AbstractWorker {
     /**
      * 日志追踪对象
      */
-    private TraceItem traceItem;
+    private LogTraceInfo logTraceInfo;
     /**
      * 业务处理
      */
@@ -27,13 +27,13 @@ public class CPUDemo2Worker extends AbstractWorker {
 
     public CPUDemo2Worker(String bizContext) {
         this.bizContext = bizContext;
-        traceItem = TraceItem.createByCurrentMDC();
+        logTraceInfo = LogTraceInfo.createByCurrentMDC();
         cpuDemo2Service = SpringBeanUtils.getBean(CPUDemo2ServiceImpl.class);
     }
 
     @Override
-    protected TraceItem getTraceItem() {
-        return this.traceItem;
+    protected LogTraceInfo getLogTraceInfo() {
+        return this.logTraceInfo;
     }
 
     @Override

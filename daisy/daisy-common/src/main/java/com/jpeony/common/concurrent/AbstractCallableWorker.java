@@ -1,5 +1,6 @@
 package com.jpeony.common.concurrent;
 
+import com.jpeony.common.logback.LogTraceInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +16,7 @@ public abstract class AbstractCallableWorker<V> implements Callable<V> {
 
     @Override
     public V call() {
-        TraceItem item = getTraceItem();
+        LogTraceInfo item = getLogTraceInfo();
         try {
             item.putAll();
             return execute();
@@ -31,7 +32,7 @@ public abstract class AbstractCallableWorker<V> implements Callable<V> {
     /**
      * 返回追踪日志信息
      */
-    protected abstract TraceItem getTraceItem();
+    protected abstract LogTraceInfo getLogTraceInfo();
 
     /**
      * 执行线程

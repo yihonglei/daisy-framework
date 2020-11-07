@@ -1,7 +1,7 @@
 package com.jpeony.core.worker;
 
 import com.jpeony.common.concurrent.AbstractWorker;
-import com.jpeony.common.concurrent.TraceItem;
+import com.jpeony.common.logback.LogTraceInfo;
 import com.jpeony.common.utils.SpringBeanUtils;
 import com.jpeony.core.service.DelayService;
 import com.jpeony.core.service.delay.DelayServiceImpl;
@@ -18,12 +18,12 @@ public class DelayTaskWorker extends AbstractWorker {
     /**
      * 日志追踪对象
      */
-    private TraceItem traceItem;
+    private LogTraceInfo logTraceInfo;
 
     public DelayTaskWorker(long passTime, Date startTime) {
         this.passTime = passTime;
         this.startTime = startTime;
-        traceItem = TraceItem.createByCurrentMDC();
+        logTraceInfo = LogTraceInfo.createByCurrentMDC();
         delayService = SpringBeanUtils.getBean(DelayServiceImpl.class);
     }
 
@@ -31,8 +31,8 @@ public class DelayTaskWorker extends AbstractWorker {
      * ignore
      */
     @Override
-    protected TraceItem getTraceItem() {
-        return this.traceItem;
+    protected LogTraceInfo getLogTraceInfo() {
+        return this.logTraceInfo;
     }
 
     /**
