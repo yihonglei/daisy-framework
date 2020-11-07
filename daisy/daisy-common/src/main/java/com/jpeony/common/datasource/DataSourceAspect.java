@@ -1,4 +1,4 @@
-package com.jpeony.common.aspectj;
+package com.jpeony.common.datasource;
 
 import com.jpeony.common.annotation.DataSource;
 import com.jpeony.common.datasource.DynamicDataSourceContextHolder;
