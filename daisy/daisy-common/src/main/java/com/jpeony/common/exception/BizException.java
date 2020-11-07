@@ -10,7 +10,6 @@ import lombok.Data;
  */
 @Data
 public class BizException extends RuntimeException {
-
     protected int errCode;
     protected String errMessage;
     protected Object data;

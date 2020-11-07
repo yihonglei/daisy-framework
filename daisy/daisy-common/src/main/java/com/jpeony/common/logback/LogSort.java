@@ -6,7 +6,7 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import java.util.concurrent.atomic.LongAdder;
 
 /**
- * 自定义logback自增数字
+ * 自定义 logback 自增数字
  *
  * @author yihonglei
  */
