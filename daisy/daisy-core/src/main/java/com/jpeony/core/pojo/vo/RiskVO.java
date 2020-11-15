@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class RiskVO {
     /**
-     * 用户类型(0，默认；1，纯C用户；)
+     * 用户类型(0，个人；1 企业；)
      */
     private Integer userType;
     /**

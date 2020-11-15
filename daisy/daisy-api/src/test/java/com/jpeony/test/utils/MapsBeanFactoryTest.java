@@ -1,6 +1,6 @@
 package com.jpeony.test.utils;
 
-import com.jpeony.core.chain.risk.RiskProcessor;
+import com.jpeony.core.chain.demo.DemoProcessor;
 import com.jpeony.core.service.MapsBeanService;
 import com.jpeony.test.BaseServletTest;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +18,7 @@ public class MapsBeanFactoryTest extends BaseServletTest {
      * 使用默认bean id
      */
     @Autowired
-    private Map<String, RiskProcessor> maps;
+    private Map<String, DemoProcessor> maps;
     /**
      * 重命名bean id
      */
@@ -27,7 +27,7 @@ public class MapsBeanFactoryTest extends BaseServletTest {
 
     @Test
     public void testMaps() {
-        RiskProcessor helpCallCarHandlerProcessor = maps.get("helpCallCarHandlerProcessor");
+        DemoProcessor helpCallCarHandlerProcessor = maps.get("helpCallCarHandlerProcessor");
         log.info("helpCallCarHandlerProcessor={}", helpCallCarHandlerProcessor.getClass());
     }
 

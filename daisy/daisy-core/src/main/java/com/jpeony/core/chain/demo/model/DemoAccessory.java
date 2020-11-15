@@ -1,4 +1,4 @@
-package com.jpeony.core.chain.risk.model;
+package com.jpeony.core.chain.demo.model;
 
 import com.jpeony.core.pojo.vo.RiskVO;
 import lombok.Data;
@@ -9,17 +9,13 @@ import lombok.Data;
  * @author yihonglei
  */
 @Data
-public class RiskAccessory<T> {
+public class DemoAccessory<T> {
     /**
      * 请求上下文
      */
-    private RiskContext riskContext;
+    private DemoContext demoContext;
     /**
      * 请求返回结果
      */
-    private RiskVO riskVO;
-
-    public RiskAccessory() {
-        riskVO = new RiskVO();
-    }
+    private Object result;
 }
