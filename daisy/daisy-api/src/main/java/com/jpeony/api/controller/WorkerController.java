@@ -5,6 +5,7 @@ import com.jpeony.common.utils.ApiResponse;
 import com.jpeony.core.worker.CPUDemo1Worker;
 import com.jpeony.core.worker.CPUDemo2Worker;
 import com.jpeony.core.worker.IODemoWorker;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,30 +19,30 @@ import org.springframework.web.bind.annotation.RestController;
 public class WorkerController {
 
     /**
-     * orderNo主要用于测试日志追踪业务编号
+     * CPU 密集型线程池有返回值任务提交
      */
-    @RequestMapping("/cpu1Demo")
-    public ApiResponse cup1Demo(String bizContext, String orderNo) {
+    @GetMapping("/cpu1Demo")
+    public ApiResponse cup1Demo(String bizContext) {
         ThreadUtils.submit(new CPUDemo1Worker(bizContext));
 
         return ApiResponse.success();
     }
 
     /**
-     * orderNo主要用于测试日志追踪业务编号
+     * CPU 密集型线程池无返回值任务提交
      */
-    @RequestMapping("/cpu2Demo")
-    public ApiResponse cpu2Demo(String bizContext, String orderNo) {
+    @GetMapping("/cpu2Demo")
+    public ApiResponse cpu2Demo(String bizContext) {
         ThreadUtils.execute(new CPUDemo2Worker(bizContext));
 
         return ApiResponse.success();
     }
 
     /**
-     * orderNo主要用于测试日志追踪业务编号
+     * IO 密集型线程池无返回值任务提交
      */
-    @RequestMapping("/ioDemo")
-    public ApiResponse ioDemo(String bizContext, String orderNo) {
+    @GetMapping("/ioDemo")
+    public ApiResponse ioDemo(String bizContext) {
         ThreadUtils.executeStandard(new IODemoWorker(bizContext));
 
         return ApiResponse.success();

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Validated
 @RestController
-@RequestMapping("swagger")
+@RequestMapping("/swagger/test")
 @Api(value = "SwaggerController", tags = {"Swagger相关"})
 public class SwaggerController {
     @Autowired

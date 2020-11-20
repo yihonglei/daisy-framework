@@ -9,6 +9,8 @@ import com.jpeony.core.service.delay.DelayServiceImpl;
 import java.util.Date;
 
 /**
+ * 延时任务
+ *
  * @author yihonglei
  */
 public class DelayTaskWorker extends AbstractWorker {

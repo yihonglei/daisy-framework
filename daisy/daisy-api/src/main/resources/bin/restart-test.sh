@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /u01/projectCAR/service/daisy-api/
+cd /u01/project/service/daisy-api/
 project=daisy-api-1.0-SNAPSHOT.jar
 
 #kill -9

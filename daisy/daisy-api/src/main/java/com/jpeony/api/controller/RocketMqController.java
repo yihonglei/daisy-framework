@@ -3,11 +3,12 @@ package com.jpeony.api.controller;
 import com.jpeony.common.utils.ApiResponse;
 import com.jpeony.core.mq.TestRocketMqProducer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * RocketMq生产者消费者测试
+ * RocketMq 生产者消费者测试
  *
  * @author yihonglei
  */
@@ -17,7 +18,7 @@ public class RocketMqController {
     @Autowired
     private TestRocketMqProducer producer;
 
-    @RequestMapping("/producer")
+    @GetMapping("/producer")
     public ApiResponse producer() {
         boolean b = false;
         try {

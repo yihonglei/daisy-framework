@@ -72,7 +72,7 @@ export JAVA_OPTS="
   -XX:+PrintTenuringDistribution
   -XX:-OmitStackTraceInFastThrow
   -Xloggc:/u01/daisy-api/log/gc.log
-  -javaagent:/u01/projectCAR/service/jmx_prometheus_javaagent-0.12.0.jar=${jmx_port}:/u01/projectCAR/service/saf-api/bin/jmx.yml
+  -javaagent:/u01/project/service/jmx_prometheus_javaagent-0.12.0.jar=${jmx_port}:/u01/projectCAR/service/saf-api/bin/jmx.yml
   "
 
 export JAVA_HOME=/usr/local/java

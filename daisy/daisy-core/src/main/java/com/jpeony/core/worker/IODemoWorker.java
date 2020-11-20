@@ -7,10 +7,7 @@ import com.jpeony.core.service.IODemoService;
 import com.jpeony.core.service.cpu.IODemoServiceImpl;
 
 /**
- * 异步业务处理
- *
  * @author yihonglei
- * @date 2019/11/22 1:49 PM
  */
 public class IODemoWorker extends AbstractWorker {
     /**

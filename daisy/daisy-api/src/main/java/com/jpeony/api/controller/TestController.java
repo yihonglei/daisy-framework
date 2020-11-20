@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +24,7 @@ public class TestController {
     @Autowired
     private TestService testService;
 
-    @RequestMapping("/test")
+    @GetMapping("/test")
     public ApiResponse test() {
         return ApiResponse.success("daisy启动成功了!");
     }
@@ -33,7 +34,7 @@ public class TestController {
         return ApiResponse.success(testService.queryTestById(testDTO));
     }
 
-    @RequestMapping("queryTestByIdXml")
+    @PostMapping("queryTestByIdXml")
     public ApiResponse queryTestByIdXml(TestDTO testDTO) {
         return ApiResponse.success(testService.queryTestByIdXml(testDTO));
     }
