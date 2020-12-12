@@ -30,7 +30,7 @@
 
 - 工程化：idea，Maven，Git，jenkins，Docker&k8s
 
-- 项目部署：tomcat，linux
+- 运维部署：tomcat，linux
 
 # 二 daisy-framework 模块说明
 
@@ -38,7 +38,7 @@
 
 daisy-parent：基础依赖
 
-## 公共组件
+## 基础组件
 
 - http：daisy-okhttp
 
@@ -50,7 +50,7 @@ daisy-parent：基础依赖
 
 - 分布式锁：daisy-distributed-lock
 
-在实际应用中基础依赖，公共组件按版本维护，发布到私服。
+在实际应用中基础依赖，基础组件按版本维护，发布到私服。
 
 ## 应用程序
 
@@ -90,11 +90,11 @@ daisy-parent：基础依赖
 
 - daisy-redis-spring-boot-starter
 
-## daisy应用
+## daisy 应用
 
 1、配置修改
 
-daisy-api/resources/application-dev.yml 修改相关配置。
+daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 - MySql 地址
 
