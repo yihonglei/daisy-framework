@@ -112,6 +112,10 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [项目命名规范](https://blog.csdn.net/yhl_jxy/article/details/103946580)
 
+[代码和工程规范]
+
+[MySql开发规范]
+
 [集成rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
 [事件监听设计](https://blog.csdn.net/yhl_jxy/article/details/106317858)
