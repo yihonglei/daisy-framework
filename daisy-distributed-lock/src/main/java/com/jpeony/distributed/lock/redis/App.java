@@ -1,4 +1,4 @@
-package com.jpeony.distributed.lock;
+package com.jpeony.distributed.lock.redis;
 
 /**
  * Hello world!
