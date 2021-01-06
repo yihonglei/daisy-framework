@@ -8,14 +8,20 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: com.mysql.jdbc.Driver
     druid:
-      # 主库数据源
-      master:
+      jpeony-master:
         url: jdbc:mysql://127.0.0.1:3306/jpeony?characterEncoding=utf-8&useSSL=false
         username: root
         password: 123456
-      # 从库数据源
-      slave:
-        # 从数据源开关/默认关闭
+      jpeony-slave:
+        enabled: true
+        url: jdbc:mysql://127.0.0.1:3306/jpeony?characterEncoding=utf-8&useSSL=false
+        username: root
+        password: 123456
+      user-master:
+        url: jdbc:mysql://127.0.0.1:3306/jpeony?characterEncoding=utf-8&useSSL=false
+        username: root
+        password: 123456
+      user-slave:
         enabled: true
         url: jdbc:mysql://127.0.0.1:3306/jpeony?characterEncoding=utf-8&useSSL=false
         username: root

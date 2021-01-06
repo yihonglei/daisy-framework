@@ -1,23 +1,32 @@
 package com.jpeony.core.mapper;
 
+import com.jpeony.common.annotation.DB;
+import com.jpeony.common.annotation.UseMaster;
+import com.jpeony.common.constant.DBConstant;
 import com.jpeony.core.pojo.domain.TestDO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * Mapper接口
  *
  * @author yihonglei
  */
+@DB(name = DBConstant.JPEONY)
 public interface TestMapper {
     /**
-     * MyBatis注解方式
-     * <p>
-     * 通过@DataSource(value = DataSourceType.SLAVE)，指定使用从库数据源
+     * MyBatis 注解形式
      */
-//    @DataSource(value = DataSourceType.SLAVE)
     @Select("select * from test where id = #{id}")
     TestDO queryTestById(@Param("id") int id);
+
+    @UseMaster
+    @Select("select * from test where id = #{id}")
+    TestDO queryTestByIdMaster(@Param("id") int id);
+
+    @Update("update test set test_name = #{testName} where id = #{id}")
+    int updateTestById(@Param("id") int id, @Param("testName") String testName);
 
     /**
      * MyBatis XML方式

@@ -5,7 +5,7 @@ import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatProperties;
 import com.alibaba.druid.util.Utils;
 import com.jpeony.common.config.properties.DruidProperties;
-import com.jpeony.common.datasource.DynamicDataSource;
+import com.jpeony.common.datasource.MultipleDataSource;
 import com.jpeony.common.enums.DataSourceType;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -28,27 +28,50 @@ import java.util.Map;
 @Configuration
 public class DruidConfig {
     @Bean
-    @ConfigurationProperties("spring.datasource.druid.master")
-    public DataSource masterDataSource(DruidProperties druidProperties) {
+    @ConfigurationProperties("spring.datasource.druid.jpeony-master")
+    public DataSource jpeonyMasterDataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.druid.slave")
-    @ConditionalOnProperty(prefix = "spring.datasource.druid.slave", name = "enabled", havingValue = "true")
-    public DataSource slaveDataSource(DruidProperties druidProperties) {
+    @ConfigurationProperties("spring.datasource.druid.jpeony-slave")
+    @ConditionalOnProperty(prefix = "spring.datasource.druid.jpeony-slave", name = "enabled", havingValue = "true")
+    public DataSource jpeonySlaveDataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
     }
 
-    @Bean(name = "dynamicDataSource")
+    @Bean
+    @ConfigurationProperties("spring.datasource.druid.user-master")
+    public DataSource userMasterDataSource(DruidProperties druidProperties) {
+        DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
+        return druidProperties.dataSource(dataSource);
+    }
+
+    @Bean
+    @ConfigurationProperties("spring.datasource.druid.user-slave")
+    @ConditionalOnProperty(prefix = "spring.datasource.druid.user-slave", name = "enabled", havingValue = "true")
+    public DataSource userSlaveDataSource(DruidProperties druidProperties) {
+        DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
+        return druidProperties.dataSource(dataSource);
+    }
+
+    @Bean(name = "multipleDataSource")
     @Primary
-    public DynamicDataSource dataSource(DataSource masterDataSource, DataSource slaveDataSource) {
+    public MultipleDataSource dataSource(DataSource jpeonyMasterDataSource, DataSource jpeonySlaveDataSource,
+                                         DataSource userMasterDataSource, DataSource userSlaveDataSource) {
         Map<Object, Object> targetDataSources = new HashMap<>(16);
-        targetDataSources.put(DataSourceType.MASTER.name(), masterDataSource);
-        targetDataSources.put(DataSourceType.SLAVE.name(), slaveDataSource);
-        return new DynamicDataSource(masterDataSource, targetDataSources);
+        targetDataSources.put(DataSourceType.JPEONY_MASTER, jpeonyMasterDataSource);
+        targetDataSources.put(DataSourceType.JPEONY_SLAVE, jpeonySlaveDataSource);
+        targetDataSources.put(DataSourceType.USER_MASTER, userMasterDataSource);
+        targetDataSources.put(DataSourceType.USER_SLAVE, userSlaveDataSource);
+
+        // 路由数据源
+        MultipleDataSource multipleDataSource = new MultipleDataSource();
+        multipleDataSource.setDefaultTargetDataSource(jpeonyMasterDataSource);
+        multipleDataSource.setTargetDataSources(targetDataSources);
+        return multipleDataSource;
     }
 
     /**

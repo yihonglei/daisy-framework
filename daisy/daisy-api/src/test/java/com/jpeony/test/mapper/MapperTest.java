@@ -1,17 +1,11 @@
 package com.jpeony.test.mapper;
 
-import com.jpeony.core.pojo.domain.SchemaTablesDO;
-import com.jpeony.core.pojo.domain.TestDO;
-import com.jpeony.core.mapper.InformationSchemaMapper;
 import com.jpeony.core.mapper.TestMapper;
+import com.jpeony.core.pojo.domain.TestDO;
 import com.jpeony.test.BaseServletTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Mapper测试
@@ -22,8 +16,6 @@ import java.util.Map;
 public class MapperTest extends BaseServletTest {
     @Autowired
     private TestMapper testMapper;
-    @Autowired
-    private InformationSchemaMapper schemaMapper;
 
     @Test
     public void testAnnotation() {
@@ -32,25 +24,20 @@ public class MapperTest extends BaseServletTest {
     }
 
     @Test
-    public void testXml() {
-        TestDO testDO = testMapper.queryTestByIdXml(1);
-        log.info("testDO xml={}", testDO);
+    public void testUseMaster() {
+        TestDO testDO = testMapper.queryTestByIdMaster(1);
+        log.info("testDO useMaster={}", testDO);
     }
 
     @Test
-    public void queryTables() {
-        List<SchemaTablesDO> tables = schemaMapper.queryTables();
-        HashMap<String/*table*/, String/*schema*/> targetMap = new HashMap<>();
-        for (SchemaTablesDO table : tables) {
-            String[] arrs = table.getTableName().split("2020");
-            String tableKey = arrs[0];
-            targetMap.put(tableKey, table.getTableSchema());
-        }
+    public void testUpdate() {
+        int i = testMapper.updateTestById(1, "oneone");
+        log.info("testUpdate={}", i);
+    }
 
-        HashMap<String/*schema*/, String/*table*/> finalMap = new HashMap<>();
-        for (Map.Entry entry : targetMap.entrySet()) {
-            String tableName = schemaMapper.getTable(entry.getKey().toString());
-            System.out.println(entry.getValue() + "." + tableName);
-        }
+    @Test
+    public void testXml() {
+        TestDO testDO = testMapper.queryTestByIdXml(1);
+        log.info("testDO xml={}", testDO);
     }
 }

@@ -6,13 +6,8 @@ package com.jpeony.common.enums;
  * @author yihonglei
  */
 public enum DataSourceType {
-    /**
-     * 主库
-     */
-    MASTER,
-
-    /**
-     * 从库
-     */
-    SLAVE
+    JPEONY_MASTER,
+    JPEONY_SLAVE,
+    USER_MASTER,
+    USER_SLAVE
 }
