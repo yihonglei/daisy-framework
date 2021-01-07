@@ -76,7 +76,7 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
-# rocketmq
+# RocketMQ
 rocketmq:
   producer:
     test-producer:
@@ -93,7 +93,7 @@ rocketmq:
       batchMaxSize: 16
       instanceName: testConsumerInstance
 
-# Swagger配置
+# Swagger 配置
 swagger:
   isShow: true
   title: 接口文档
