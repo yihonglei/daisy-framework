@@ -5,9 +5,10 @@ package com.jpeony.common.enums;
  *
  * @author yihonglei
  */
-public enum DataSourceType {
+public enum DataSourceTypeEnum {
     JPEONY_MASTER,
-    JPEONY_SLAVE,
+    JPEONY_SLAVE01,
+    JPEONY_SLAVE02,
     USER_MASTER,
     USER_SLAVE
 }

@@ -6,7 +6,7 @@ import com.alibaba.druid.spring.boot.autoconfigure.properties.DruidStatPropertie
 import com.alibaba.druid.util.Utils;
 import com.jpeony.common.config.properties.DruidProperties;
 import com.jpeony.common.datasource.MultipleDataSource;
-import com.jpeony.common.enums.DataSourceType;
+import com.jpeony.common.enums.DataSourceTypeEnum;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -26,32 +26,37 @@ import java.util.Map;
  * @author yihonglei
  */
 @Configuration
-public class DruidConfig {
+public class DruidDataSourceConfig {
     @Bean
-    @ConfigurationProperties("spring.datasource.druid.jpeony-master")
+    @ConfigurationProperties("spring.datasource.druid.jpeony.master")
     public DataSource jpeonyMasterDataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.druid.jpeony-slave")
-    @ConditionalOnProperty(prefix = "spring.datasource.druid.jpeony-slave", name = "enabled", havingValue = "true")
-    public DataSource jpeonySlaveDataSource(DruidProperties druidProperties) {
+    @ConfigurationProperties("spring.datasource.druid.jpeony.slave01")
+    public DataSource jpeonySlave01DataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.druid.user-master")
+    @ConfigurationProperties("spring.datasource.druid.jpeony.slave02")
+    public DataSource jpeonySlave02DataSource(DruidProperties druidProperties) {
+        DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
+        return druidProperties.dataSource(dataSource);
+    }
+
+    @Bean
+    @ConfigurationProperties("spring.datasource.druid.user.master")
     public DataSource userMasterDataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.druid.user-slave")
-    @ConditionalOnProperty(prefix = "spring.datasource.druid.user-slave", name = "enabled", havingValue = "true")
+    @ConfigurationProperties("spring.datasource.druid.user.slave")
     public DataSource userSlaveDataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
@@ -59,13 +64,16 @@ public class DruidConfig {
 
     @Bean(name = "multipleDataSource")
     @Primary
-    public MultipleDataSource dataSource(DataSource jpeonyMasterDataSource, DataSource jpeonySlaveDataSource,
-                                         DataSource userMasterDataSource, DataSource userSlaveDataSource) {
+    public MultipleDataSource dataSource(DataSource jpeonyMasterDataSource, DataSource jpeonySlave01DataSource,
+                                         DataSource jpeonySlave02DataSource, DataSource userMasterDataSource,
+                                         DataSource userSlaveDataSource) {
+        // 数据源
         Map<Object, Object> targetDataSources = new HashMap<>(16);
-        targetDataSources.put(DataSourceType.JPEONY_MASTER, jpeonyMasterDataSource);
-        targetDataSources.put(DataSourceType.JPEONY_SLAVE, jpeonySlaveDataSource);
-        targetDataSources.put(DataSourceType.USER_MASTER, userMasterDataSource);
-        targetDataSources.put(DataSourceType.USER_SLAVE, userSlaveDataSource);
+        targetDataSources.put(DataSourceTypeEnum.JPEONY_MASTER, jpeonyMasterDataSource);
+        targetDataSources.put(DataSourceTypeEnum.JPEONY_SLAVE01, jpeonySlave01DataSource);
+        targetDataSources.put(DataSourceTypeEnum.JPEONY_SLAVE02, jpeonySlave02DataSource);
+        targetDataSources.put(DataSourceTypeEnum.USER_MASTER, userMasterDataSource);
+        targetDataSources.put(DataSourceTypeEnum.USER_SLAVE, userSlaveDataSource);
 
         // 路由数据源
         MultipleDataSource multipleDataSource = new MultipleDataSource();

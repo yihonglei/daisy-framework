@@ -2,9 +2,11 @@ package com.jpeony.common.datasource;
 
 import com.jpeony.common.annotation.DB;
 import com.jpeony.common.annotation.UseMaster;
-import com.jpeony.common.constant.DBConstant;
-import com.jpeony.common.enums.DataSourceType;
-import com.jpeony.common.exception.BizException;
+import com.jpeony.common.enums.DataSourceTypeEnum;
+import com.jpeony.common.enums.ErrorCodeEnum;
+import com.jpeony.common.exception.DBException;
+import com.jpeony.common.utils.MatchUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -21,6 +23,8 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * 多数据源处理
@@ -40,6 +44,10 @@ public class DataSourceAop {
     @Around("dsPointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         String targetDataSource = getTargetDataSource(point);
+        if (StringUtils.isBlank(targetDataSource)) {
+            throw new DBException(ErrorCodeEnum.DATA_SOURCE_ERROR);
+        }
+
         MultipleDataSourceContextHolder.setDataSourceType(targetDataSource);
 
         try {
@@ -53,38 +61,31 @@ public class DataSourceAop {
         String dbName = getDBName(point);
         boolean useMaster = getUseMaster(point);
 
-        String targetDataSource = StringUtils.EMPTY;
-        switch (dbName) {
-            case DBConstant.JPEONY:
-                if (useMaster) {
-                    targetDataSource = DataSourceType.JPEONY_MASTER.name();
-                } else {
-                    // TODO Optimize 可以配置多个从库，通过随机等负载方式，选取一个从库
-                    targetDataSource = DataSourceType.JPEONY_SLAVE.name();
+        DataSourceTypeEnum[] values = DataSourceTypeEnum.values();
+        ArrayList<String> slaves = new ArrayList<>(DataSourceTypeEnum.values().length);
+        for (DataSourceTypeEnum dataSourceType : values) {
+            if (useMaster) {
+                boolean matchMaster = MatchUtils.matchDataSource(dbName.toUpperCase() + MatchUtils.PATTERN_MATCH_MASTER, dataSourceType.name());
+                if (!matchMaster) {
+                    continue;
                 }
-                break;
-            case DBConstant.USER:
-                if (useMaster) {
-                    targetDataSource = DataSourceType.USER_MASTER.name();
-                } else {
-                    // TODO Optimize 可以配置多个从库，通过随机等负载方式，选取一个从库
-                    targetDataSource = DataSourceType.USER_SLAVE.name();
+                return dataSourceType.name();
+            } else {
+                boolean matchSlave = MatchUtils.matchDataSource(dbName.toUpperCase() + MatchUtils.PATTERN_MATCH_SLAVE, dataSourceType.name());
+                if (matchSlave) {
+                    slaves.add(dataSourceType.name());
                 }
-                break;
-            default:
-                break;
+            }
         }
-        if (StringUtils.isBlank(targetDataSource)) {
-            throw new BizException("数据源获取异常");
-        }
-        return targetDataSource;
+
+        return randomSlave(slaves);
     }
 
     public String getDBName(ProceedingJoinPoint point) {
         Class<?> targetClass = point.getTarget().getClass();
         DB dbName = AnnotationUtils.findAnnotation(targetClass, DB.class);
         if (dbName == null) {
-            // TODO 抛异常
+            throw new DBException(targetClass.getName() + "未指定数据库");
         }
         return dbName.name();
     }
@@ -101,5 +102,13 @@ public class DataSourceAop {
             return true;
         }
         return false;
+    }
+
+    private String randomSlave(ArrayList<String> slaves) {
+        if (CollectionUtils.isEmpty(slaves)) {
+            return null;
+        }
+        Random random = new Random();
+        return slaves.get(random.nextInt(slaves.size()));
     }
 }
