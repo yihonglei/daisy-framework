@@ -6,6 +6,7 @@ import com.jpeony.common.enums.DataSourceTypeEnum;
 import com.jpeony.common.enums.ErrorCodeEnum;
 import com.jpeony.common.exception.DBException;
 import com.jpeony.common.utils.MatchUtils;
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -42,10 +43,6 @@ public class DataSourceAop {
     @Around("dsPointCut()")
     public Object around(ProceedingJoinPoint point) throws Throwable {
         String targetDataSource = getTargetDataSource(point);
-        if (StringUtils.isBlank(targetDataSource)) {
-            throw new DBException(ErrorCodeEnum.DATA_SOURCE_ERROR);
-        }
-
         MultipleDataSourceContextHolder.setDataSourceType(targetDataSource);
 
         try {
@@ -58,16 +55,17 @@ public class DataSourceAop {
     private String getTargetDataSource(ProceedingJoinPoint point) {
         String dbName = getDBName(point).toUpperCase();
         boolean useMaster = getUseMaster(point);
+        String targetDataSource = StringUtils.EMPTY;
 
         DataSourceTypeEnum[] values = DataSourceTypeEnum.values();
         ArrayList<String> slaves = new ArrayList<>(values.length);
         for (DataSourceTypeEnum dst : values) {
             if (useMaster) {
                 boolean match = MatchUtils.matchDataSource(dbName + MatchUtils.PATTERN_MATCH_MASTER, dst.name());
-                if (!match) {
-                    continue;
+                if (match) {
+                    targetDataSource = dst.name();
+                    break;
                 }
-                return dst.name();
             } else {
                 // Match all slaves
                 boolean match = MatchUtils.matchDataSource(dbName + MatchUtils.PATTERN_MATCH_SLAVE, dst.name());
@@ -77,6 +75,14 @@ public class DataSourceAop {
             }
         }
 
+        if (StringUtils.isNotBlank(targetDataSource)) {
+            return targetDataSource;
+        }
+
+        if (CollectionUtils.isEmpty(slaves)) {
+            throw new DBException(ErrorCodeEnum.DATA_SOURCE_ERROR);
+        }
+
         return slaves.get(random.nextInt(slaves.size()));
     }
 
@@ -84,7 +90,7 @@ public class DataSourceAop {
         Class<?> targetClass = point.getTarget().getClass();
         DB dbName = AnnotationUtils.findAnnotation(targetClass, DB.class);
         if (dbName == null) {
-            throw new DBException(targetClass.getName() + ", no database specified");
+            throw new DBException(targetClass.getName() + ", no specified database");
         }
         return dbName.name();
     }
@@ -98,6 +104,6 @@ public class DataSourceAop {
         Insert insert = method.getAnnotation(Insert.class);
         Delete delete = method.getAnnotation(Delete.class);
 
-        return useMaster != null || update != null || insert != null || delete != null;
+        return (useMaster != null || update != null || insert != null || delete != null);
     }
 }

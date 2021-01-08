@@ -75,7 +75,6 @@ public class DruidDataSourceConfig {
 
         // 路由数据源
         MultipleDataSource multipleDataSource = new MultipleDataSource();
-        multipleDataSource.setDefaultTargetDataSource(jpeonyMasterDataSource);
         multipleDataSource.setTargetDataSources(targetDataSources);
         return multipleDataSource;
     }
