@@ -120,3 +120,5 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
+[SpringBoot+MyBatis+Druid 动态多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
+
