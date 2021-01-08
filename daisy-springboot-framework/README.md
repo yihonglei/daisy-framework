@@ -1,5 +1,3 @@
-# 持续完善中......
-
 # 一 daisy-springboot-framework 技术架构
 
 ## 开发环境
@@ -118,9 +116,11 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [集成rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
-[事件监听设计](https://blog.csdn.net/yhl_jxy/article/details/106317858)
+[事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
 
-[延时任务设计](https://blog.csdn.net/yhl_jxy/article/details/106750450)
+[延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
-[消息中间件](https://blog.csdn.net/yhl_jxy/article/details/107849198)
+[消息队列](https://blog.csdn.net/yhl_jxy/article/details/107849198)
+
+[缓存](https://blog.csdn.net/yhl_jxy/article/details/107849198)
 
