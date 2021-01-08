@@ -6,7 +6,6 @@ import com.jpeony.common.enums.DataSourceTypeEnum;
 import com.jpeony.common.enums.ErrorCodeEnum;
 import com.jpeony.common.exception.DBException;
 import com.jpeony.common.utils.MatchUtils;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -27,8 +26,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * 多数据源处理
- *
  * @author yihonglei
  */
 @Aspect
@@ -36,6 +33,7 @@ import java.util.Random;
 @Component
 public class DataSourceAop {
     protected Logger logger = LoggerFactory.getLogger(getClass());
+    private final Random random = new Random();
 
     @Pointcut("execution(* com.jpeony.core..*.*(..))")
     public void dsPointCut() {
@@ -57,58 +55,49 @@ public class DataSourceAop {
         }
     }
 
-    public String getTargetDataSource(ProceedingJoinPoint point) {
-        String dbName = getDBName(point);
+    private String getTargetDataSource(ProceedingJoinPoint point) {
+        String dbName = getDBName(point).toUpperCase();
         boolean useMaster = getUseMaster(point);
 
         DataSourceTypeEnum[] values = DataSourceTypeEnum.values();
-        ArrayList<String> slaves = new ArrayList<>(DataSourceTypeEnum.values().length);
-        for (DataSourceTypeEnum dataSourceType : values) {
+        ArrayList<String> slaves = new ArrayList<>(values.length);
+        for (DataSourceTypeEnum dst : values) {
             if (useMaster) {
-                boolean matchMaster = MatchUtils.matchDataSource(dbName.toUpperCase() + MatchUtils.PATTERN_MATCH_MASTER, dataSourceType.name());
-                if (!matchMaster) {
+                boolean match = MatchUtils.matchDataSource(dbName + MatchUtils.PATTERN_MATCH_MASTER, dst.name());
+                if (!match) {
                     continue;
                 }
-                return dataSourceType.name();
+                return dst.name();
             } else {
-                boolean matchSlave = MatchUtils.matchDataSource(dbName.toUpperCase() + MatchUtils.PATTERN_MATCH_SLAVE, dataSourceType.name());
-                if (matchSlave) {
-                    slaves.add(dataSourceType.name());
+                // Match all slaves
+                boolean match = MatchUtils.matchDataSource(dbName + MatchUtils.PATTERN_MATCH_SLAVE, dst.name());
+                if (match) {
+                    slaves.add(dst.name());
                 }
             }
         }
 
-        return randomSlave(slaves);
+        return slaves.get(random.nextInt(slaves.size()));
     }
 
-    public String getDBName(ProceedingJoinPoint point) {
+    private String getDBName(ProceedingJoinPoint point) {
         Class<?> targetClass = point.getTarget().getClass();
         DB dbName = AnnotationUtils.findAnnotation(targetClass, DB.class);
         if (dbName == null) {
-            throw new DBException(targetClass.getName() + "未指定数据库");
+            throw new DBException(targetClass.getName() + ", no database specified");
         }
         return dbName.name();
     }
 
-    public boolean getUseMaster(ProceedingJoinPoint point) {
+    private boolean getUseMaster(ProceedingJoinPoint point) {
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
+
         UseMaster useMaster = method.getAnnotation(UseMaster.class);
         Update update = method.getAnnotation(Update.class);
         Insert insert = method.getAnnotation(Insert.class);
         Delete delete = method.getAnnotation(Delete.class);
 
-        if (useMaster != null || update != null || insert != null || delete != null) {
-            return true;
-        }
-        return false;
-    }
-
-    private String randomSlave(ArrayList<String> slaves) {
-        if (CollectionUtils.isEmpty(slaves)) {
-            return null;
-        }
-        Random random = new Random();
-        return slaves.get(random.nextInt(slaves.size()));
+        return useMaster != null || update != null || insert != null || delete != null;
     }
 }

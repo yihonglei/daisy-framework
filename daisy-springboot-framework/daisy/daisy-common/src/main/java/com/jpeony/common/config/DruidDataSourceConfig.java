@@ -21,8 +21,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * druid 配置多数据源
- *
  * @author yihonglei
  */
 @Configuration
@@ -49,15 +47,15 @@ public class DruidDataSourceConfig {
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.druid.user.master")
-    public DataSource userMasterDataSource(DruidProperties druidProperties) {
+    @ConfigurationProperties("spring.datasource.druid.order.master")
+    public DataSource orderMasterDataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.druid.user.slave")
-    public DataSource userSlaveDataSource(DruidProperties druidProperties) {
+    @ConfigurationProperties("spring.datasource.druid.order.slave")
+    public DataSource orderSlaveDataSource(DruidProperties druidProperties) {
         DruidDataSource dataSource = DruidDataSourceBuilder.create().build();
         return druidProperties.dataSource(dataSource);
     }
@@ -65,15 +63,15 @@ public class DruidDataSourceConfig {
     @Bean(name = "multipleDataSource")
     @Primary
     public MultipleDataSource dataSource(DataSource jpeonyMasterDataSource, DataSource jpeonySlave01DataSource,
-                                         DataSource jpeonySlave02DataSource, DataSource userMasterDataSource,
-                                         DataSource userSlaveDataSource) {
+                                         DataSource jpeonySlave02DataSource, DataSource orderMasterDataSource,
+                                         DataSource orderSlaveDataSource) {
         // 数据源
         Map<Object, Object> targetDataSources = new HashMap<>(16);
         targetDataSources.put(DataSourceTypeEnum.JPEONY_MASTER, jpeonyMasterDataSource);
         targetDataSources.put(DataSourceTypeEnum.JPEONY_SLAVE01, jpeonySlave01DataSource);
         targetDataSources.put(DataSourceTypeEnum.JPEONY_SLAVE02, jpeonySlave02DataSource);
-        targetDataSources.put(DataSourceTypeEnum.USER_MASTER, userMasterDataSource);
-        targetDataSources.put(DataSourceTypeEnum.USER_SLAVE, userSlaveDataSource);
+        targetDataSources.put(DataSourceTypeEnum.ORDER_MASTER, orderMasterDataSource);
+        targetDataSources.put(DataSourceTypeEnum.ORDER_SLAVE, orderSlaveDataSource);
 
         // 路由数据源
         MultipleDataSource multipleDataSource = new MultipleDataSource();
@@ -82,9 +80,6 @@ public class DruidDataSourceConfig {
         return multipleDataSource;
     }
 
-    /**
-     * 去除监控页面底部的广告
-     */
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Bean
     @ConditionalOnProperty(name = "spring.datasource.druid.statViewServlet.enabled", havingValue = "true")

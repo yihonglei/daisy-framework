@@ -4,8 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 线程持有数据源上下文
- *
  * @author yihonglei
  */
 public class MultipleDataSourceContextHolder {
