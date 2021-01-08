@@ -8,5 +8,5 @@ package com.jpeony.common.constant;
 public class DBConstant {
     public final static String JPEONY = "jpeony";
 
-    public final static String USER = "user";
+    public final static String ORDER = "order";
 }

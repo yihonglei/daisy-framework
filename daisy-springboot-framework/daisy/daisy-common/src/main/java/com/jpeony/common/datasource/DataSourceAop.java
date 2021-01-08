@@ -36,7 +36,7 @@ public class DataSourceAop {
     protected Logger logger = LoggerFactory.getLogger(getClass());
     private final Random random = new Random();
 
-    @Pointcut("execution(* com.jpeony.core..*.*(..))")
+    @Pointcut("execution(* com.jpeony.core.mapper..*.*(..))")
     public void dsPointCut() {
     }
 
