@@ -1,5 +1,3 @@
-# 持续完善中......
-
 # 一 daisy-springboot-framework 技术架构
 
 ## 开发环境
