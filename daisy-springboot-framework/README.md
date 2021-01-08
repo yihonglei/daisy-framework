@@ -120,7 +120,3 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
-[消息队列](https://blog.csdn.net/yhl_jxy/article/details/107849198)
-
-[缓存](https://blog.csdn.net/yhl_jxy/article/details/107849198)
-
