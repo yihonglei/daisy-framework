@@ -114,6 +114,10 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [MySql开发规范]
 
+[缓存](https://jpeony.blog.csdn.net/article/details/105379126)
+
+[消息队列](https://jpeony.blog.csdn.net/article/details/105350892)
+
 [集成rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
 [事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
