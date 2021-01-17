@@ -112,7 +112,7 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [代码和工程规范]
 
-[MySql开发规范]
+[MySQL开发规范](https://jpeony.blog.csdn.net/article/details/111880983)
 
 [缓存](https://jpeony.blog.csdn.net/article/details/105379126)
 
