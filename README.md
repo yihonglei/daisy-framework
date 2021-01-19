@@ -1,4 +1,4 @@
-# 【daisy-springboot-framework】
+# [daisy-springboot-framework]
 
 基于 SpringBoot 分布式架构，以及各种互联网技术。
 
@@ -128,10 +128,10 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [SpringBoot+MyBatis+Druid 动态多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
 
-# 【daisy-dubbo-framework】
+# [daisy-dubbo-framework]
 
 基于 Dubbo 微服务架构脚手架，相关互联网技术参考 daisy-springboot-framework。
 
-# 【daisy-springcloud-framework】
+# [daisy-springcloud-framework]
 
 基于 SpringCloud 微服务架构脚手架，相关互联网技术参考 daisy-springboot-framework。
