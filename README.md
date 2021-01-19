@@ -6,8 +6,8 @@
 
 ## daisy-dubbo-framework
 
-基于 Dubbo 微服务架构模型，相关互联网技术参考 daisy-springboot-framework。
+基于 Dubbo 微服务架构脚手架，相关互联网技术参考 daisy-springboot-framework。
 
 ## daisy-springcloud-framework
 
-基于 SpringCloud 微服务架构模型，相关互联网技术参考 daisy-springboot-framework。
+基于 SpringCloud 微服务架构脚手架，相关互联网技术参考 daisy-springboot-framework。
