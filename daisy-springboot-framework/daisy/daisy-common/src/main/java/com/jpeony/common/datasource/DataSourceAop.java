@@ -30,7 +30,7 @@ import java.util.Random;
  * @author yihonglei
  */
 @Aspect
-@Order(1)
+@Order(-1)// 在 Spring 事务生成代理对象之前指定数据源
 @Component
 public class DataSourceAop {
     protected Logger logger = LoggerFactory.getLogger(getClass());
