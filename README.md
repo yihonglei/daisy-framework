@@ -130,8 +130,8 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 # [daisy-dubbo-framework]
 
-基于 Dubbo 微服务架构脚手架，相关互联网技术参考 daisy-springboot-framework。
+基于 Dubbo 微服务架构脚手架。
 
 # [daisy-springcloud-framework]
 
-基于 SpringCloud 微服务架构脚手架，相关互联网技术参考 daisy-springboot-framework。
+基于 SpringCloud 微服务架构脚手架。
