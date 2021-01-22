@@ -118,6 +118,8 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 # D、技术博客
 
+## 1、技术选型
+
 [技术选型之微服务框架]
 
 [技术选型之API网关]
@@ -150,28 +152,27 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [技术选型之海量数据存储]
 
+## 2、开发实战
+
 [项目命名规范](https://blog.csdn.net/yhl_jxy/article/details/103946580)
 
 [代码和工程规范]
 
-[MySQL开发规范](https://jpeony.blog.csdn.net/article/details/111880983)
+[MySQL 开发规范](https://jpeony.blog.csdn.net/article/details/111880983)
 
-[线程池]
+[ThreadPoolExecutror 线程池]
 
 [集成 rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
-[事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
+[Event Listener 事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
 
-[延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
+[Delayed 延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
-[多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
+[SpringBoot+MyBatis+Druid 动态多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
 
 [分布式事务](https://jpeony.blog.csdn.net/article/details/107828429)
 
-[序列化]
+[JSON 序列化]
 
-[系统监控]
+[Sunflower 系统监控]
 
-[注册中心]
-
-[配置中心]
