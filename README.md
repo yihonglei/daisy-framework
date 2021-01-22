@@ -118,6 +118,38 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 # D、技术博客
 
+[技术选型之微服务框架]
+
+[技术选型之API网关]
+
+[技术选型之注册中心]
+
+[技术选型之配置中心]
+
+[技术选型之ORM框架]
+
+[技术选型之JSON框架]
+
+[技术选型之分布式通信]
+
+[技术选型之限流降级框架]
+
+[技术选型之数据库连接池]
+
+[技术选型之定时任务框架]
+
+[技术选型之分库分表中间件]
+
+[技术选型之缓存中间件](https://jpeony.blog.csdn.net/article/details/105379126)
+
+[技术选型之消息中间件](https://jpeony.blog.csdn.net/article/details/105350892)
+
+[技术选型之系统监控框架]
+
+[技术选型之日志框架]
+
+[技术选型之海量数据存储]
+
 [项目命名规范](https://blog.csdn.net/yhl_jxy/article/details/103946580)
 
 [代码和工程规范]
@@ -126,11 +158,7 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [线程池]
 
-[缓存](https://jpeony.blog.csdn.net/article/details/105379126)
-
-[消息队列](https://jpeony.blog.csdn.net/article/details/105350892)
-
-[集成rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
+[集成 rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
 [事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
 
