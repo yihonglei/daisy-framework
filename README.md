@@ -1,4 +1,4 @@
-# [daisy-springboot-framework]
+# A、daisy-springboot-framework
 
 基于 SpringBoot 分布式架构，以及各种互联网技术。
 
@@ -108,13 +108,23 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 - 访问: http://localhost:8765/test/test, 返回结果: {"code":1,"data":null,"msg":"daisy启动成功了!"}
 
-## 技术博客
+# B、daisy-dubbo-framework
+
+基于 Dubbo 微服务架构脚手架。
+
+# C、daisy-springcloud-framework
+
+基于 SpringCloud 微服务架构脚手架。
+
+# D、技术博客
 
 [项目命名规范](https://blog.csdn.net/yhl_jxy/article/details/103946580)
 
 [代码和工程规范]
 
 [MySQL开发规范](https://jpeony.blog.csdn.net/article/details/111880983)
+
+[线程池]
 
 [缓存](https://jpeony.blog.csdn.net/article/details/105379126)
 
@@ -126,12 +136,14 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
-[SpringBoot+MyBatis+Druid 动态多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
+[多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
 
-# [daisy-dubbo-framework]
+[分布式事务](https://jpeony.blog.csdn.net/article/details/107828429)
 
-基于 Dubbo 微服务架构脚手架。
+[序列化]
 
-# [daisy-springcloud-framework]
+[系统监控]
 
-基于 SpringCloud 微服务架构脚手架。
+[注册中心]
+
+[配置中心]
