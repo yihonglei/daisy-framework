@@ -172,6 +172,12 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [OkHttp 分布式通信]
 
+[Redis 实现分布式锁]
+
+[Zookeeper 实现分布式锁]
+
+[可靠消息最终一致性分布式事务]
+
 [RocketMQ 集成](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
 [Event Listener 事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
