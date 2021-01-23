@@ -162,7 +162,11 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [ThreadPoolExecutror 线程池]
 
-[集成 rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
+[Fastjson 序列化]
+
+[Druid 连接池]
+
+[RocketMQ 集成](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
 [Event Listener 事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
 
@@ -172,7 +176,19 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [分布式事务](https://jpeony.blog.csdn.net/article/details/107828429)
 
-[JSON 序列化]
+[Nacos 注册中心]
+
+[Sentinel 限流降级]
+
+[Redis 集群模式]
+
+[SpringBoot+shardingsphere 动态分表]
+
+[Elastic-job+Zookeeper 分布式定时任务]
+
+[logback 日志]
+
+[Kafka+Filebeat+ELK 日志处理和数据分析] 
 
 [Sunflower 系统监控]
 
