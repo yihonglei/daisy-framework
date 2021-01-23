@@ -166,6 +166,8 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [Druid 连接池]
 
+[OkHttp 分布式通信]
+
 [RocketMQ 集成](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
 [Event Listener 事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
