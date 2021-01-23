@@ -138,6 +138,10 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [连接池选型]
 
+[分布式事务选型](https://jpeony.blog.csdn.net/article/details/107828429)
+
+[分布式锁选型]
+
 [分布式定时任务选型]
 
 [分库分表选型]
@@ -175,8 +179,6 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 [Delayed 延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
 [SpringBoot+MyBatis+Druid 动态多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
-
-[分布式事务](https://jpeony.blog.csdn.net/article/details/107828429)
 
 [Nacos 注册中心]
 
