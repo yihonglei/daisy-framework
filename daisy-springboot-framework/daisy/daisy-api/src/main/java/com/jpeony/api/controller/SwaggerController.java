@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Swagger测试
+ * Swagger API 接口文档
  *
  * @author yihonglei
  */

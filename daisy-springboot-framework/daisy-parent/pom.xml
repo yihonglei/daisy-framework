@@ -29,6 +29,7 @@
         <swagger.version>2.9.2</swagger.version>
         <swagger-io.version>1.5.21</swagger-io.version>
         <swagger-ui.version>1.9.6</swagger-ui.version>
+        <canal.version>1.0.26</canal.version>
 
         <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
         <daisy-rocketmq-spring-boot-starter.version>1.0-SNAPSHOT</daisy-rocketmq-spring-boot-starter.version>
@@ -125,6 +126,18 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- canal -->
+            <dependency>
+                <groupId>com.alibaba.otter</groupId>
+                <artifactId>canal.client</artifactId>
+                <version>${canal.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- rocketmq -->
             <dependency>

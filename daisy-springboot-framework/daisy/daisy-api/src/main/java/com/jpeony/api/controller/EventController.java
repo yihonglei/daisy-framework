@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 事件机制使用测试，观察者模式使用，一个事件发布，相关监听能够收到
+ * 事件机制使用测试，观察者模式使用，一个事件发布，相关监听能够收到。
  *
  * @author yihonglei
  */
