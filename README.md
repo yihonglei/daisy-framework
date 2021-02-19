@@ -118,32 +118,87 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 # D、技术博客
 
+## 1、技术选型
+
+[微服务框架选型]
+
+[API网关选型]
+
+[注册中心选型]
+
+[配置中心选型]
+
+[ORM选型]
+
+[JSON选型]
+
+[分布式通信选型]
+
+[限流降级选型]
+
+[连接池选型]
+
+[分布式事务选型](https://jpeony.blog.csdn.net/article/details/107828429)
+
+[分布式锁选型]
+
+[分布式定时任务选型]
+
+[分库分表选型]
+
+[缓存中间件选型](https://jpeony.blog.csdn.net/article/details/105379126)
+
+[消息中间件选型](https://jpeony.blog.csdn.net/article/details/105350892)
+
+[系统监控选型]
+
+[日志选型]
+
+[海量存储选型]
+
+## 2、开发实战
+
 [项目命名规范](https://blog.csdn.net/yhl_jxy/article/details/103946580)
 
 [代码和工程规范]
 
-[MySQL开发规范](https://jpeony.blog.csdn.net/article/details/111880983)
+[MySQL 开发规范](https://jpeony.blog.csdn.net/article/details/111880983)
 
-[线程池]
+[ThreadPoolExecutror 线程池]
 
-[缓存](https://jpeony.blog.csdn.net/article/details/105379126)
+[Fastjson 序列化]
 
-[消息队列](https://jpeony.blog.csdn.net/article/details/105350892)
+[Druid 连接池]
 
-[集成rocketmq](https://blog.csdn.net/yhl_jxy/article/details/103968635)
+[OkHttp 分布式通信]
 
-[事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
+[Redis 实现分布式锁]
 
-[延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
+[Zookeeper 实现分布式锁]
 
-[多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
+[可靠消息最终一致性分布式事务]
 
-[分布式事务](https://jpeony.blog.csdn.net/article/details/107828429)
+[RocketMQ 集成](https://blog.csdn.net/yhl_jxy/article/details/103968635)
 
-[序列化]
+[Event Listener 事件监听](https://blog.csdn.net/yhl_jxy/article/details/106317858)
 
-[系统监控]
+[Delayed 延时任务](https://blog.csdn.net/yhl_jxy/article/details/106750450)
 
-[注册中心]
+[SpringBoot+MyBatis+Druid 动态多数据源](https://jpeony.blog.csdn.net/article/details/112360427)
 
-[配置中心]
+[Nacos 注册中心]
+
+[Sentinel 限流降级]
+
+[Redis 集群模式]
+
+[SpringBoot+shardingsphere 动态分表]
+
+[Elastic-job+Zookeeper 分布式定时任务]
+
+[logback 日志]
+
+[Kafka+Filebeat+ELK 日志处理和数据分析] 
+
+[Sunflower 系统监控]
+
