@@ -20,6 +20,7 @@ import java.util.Set;
  */
 @Component
 public class CacheManager {
+
     private static Logger logger = LoggerFactory.getLogger(CacheManager.class);
 
     private static RedisSupport redisSupport;

@@ -25,6 +25,7 @@ import org.springframework.util.StringUtils;
 public class RedisClientBuilder implements BeanFactoryPostProcessor, ApplicationContextAware {
 
     private ClusterProperties clusterProperties;
+    
     private ApplicationContext applicationContext;
 
     private static final String DEFAULT_CLUSTER_BEAN_NAME = "redisSupport";

@@ -10,11 +10,11 @@ import org.springframework.util.StringUtils;
  *
  * @author yihonglei
  */
-public class SeriaLizerFactory {
+public class SerializerFactory {
 
     private static final String JACKSON_SERIALIZER = "jackson";
-    private static final String JDK_SERIALIZER = "jdk";
 
+    private static final String JDK_SERIALIZER = "jdk";
 
     public static Serializer create(String serializer) {
         if (StringUtils.isEmpty(serializer) || JACKSON_SERIALIZER.equalsIgnoreCase(serializer)) {

@@ -16,8 +16,7 @@ public class SerializationUtils {
     public static final byte[] EMPTY_ARRAY = new byte[0];
 
     public static final Map<byte[], byte[]> EMPTY_MAP = new HashMap<>();
-
-
+    
     public static boolean isEmpty(byte[] data) {
         return (data == null || data.length == 0);
     }

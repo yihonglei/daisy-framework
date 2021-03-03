@@ -24,6 +24,14 @@ public interface RedisSupport {
     String set(final String key, final int expTime, final Object value);
 
 
+    /**
+     * 设置缓存对象
+     *
+     * @param key
+     * @param value
+     * @param nxxx
+     * @param time
+     */
     boolean set(final String key, final Object value, final String nxxx, final String expx, final long time);
 
     /**

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.jpeony.redis.exception.SerializationException;
 import com.jpeony.redis.facade.RedisSupport;
 import com.jpeony.redis.property.RedisProperties;
-import com.jpeony.redis.serializer.SeriaLizerFactory;
+import com.jpeony.redis.serializer.SerializerFactory;
 import com.jpeony.redis.serializer.Serializer;
 import com.jpeony.redis.serializer.impl.Jackson2JsonSerializer;
 import com.jpeony.redis.utils.SerializationUtils;
@@ -50,7 +50,9 @@ public class RedisClient implements RedisSupport {
     private byte[] prefix;
 
     private Serializer<Object> serializer;
+
     private String cluster;
+
     private String system;
 
     public RedisClient(RedisProperties param) {
@@ -116,7 +118,7 @@ public class RedisClient implements RedisSupport {
             genericObjectPoolConfig.setEvictionPolicyClassName(evictionPolicyClassName);
             jc = new JedisCluster(jedisClusterNodesSet, connectionTimeout, soTimeout, maxAttempts, password, genericObjectPoolConfig);
             this.prefix = SerializationUtils.encode(prefix);
-            this.serializer = SeriaLizerFactory.create(serializer);
+            this.serializer = SerializerFactory.create(serializer);
         } catch (Exception e) {
             logger.error("redis client init error", e);
         }
