@@ -76,6 +76,26 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+# Redis
+redis:
+  pool:
+    maxActive: 1024
+    maxIdle: 200
+    maxWait: 3000
+    testOnBorrow: true
+    testOnReturn: true
+    testWhileIdle: true
+  enable: true
+  cluster: 10.6.202.104:6381,10.6.202.105:6381,10.6.202.106:6381,10.6.202.104:6380,10.6.202.105:6380,10.6.202.106:6380
+  prefix: 'daisy-api:test'
+  password: 'qBa39fA&?@-o'
+  maxIdle: 50
+  maxTotal: 256
+  minIdle: 20
+  connectionTimeout: 2000
+  soTimeout: 2000
+  maxAttempts: 2
+
 # RocketMQ
 rocketmq:
   producer:

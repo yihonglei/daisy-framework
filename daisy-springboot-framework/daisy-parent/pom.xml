@@ -33,6 +33,7 @@
 
         <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
         <daisy-rocketmq-spring-boot-starter.version>1.0-SNAPSHOT</daisy-rocketmq-spring-boot-starter.version>
+        <daisy-redis-spring-boot-starter.version>1.0-SNAPSHOT</daisy-redis-spring-boot-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -139,11 +140,17 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- rocketmq -->
+            <!-- RocketMQ -->
             <dependency>
                 <groupId>com.jpeony</groupId>
                 <artifactId>daisy-rocketmq-spring-boot-starter</artifactId>
                 <version>${daisy-rocketmq-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- Redis -->
+            <dependency>
+                <groupId>com.jpeony</groupId>
+                <artifactId>daisy-redis-spring-boot-starter</artifactId>
+                <version>${daisy-redis-spring-boot-starter.version}</version>
             </dependency>
             <!--druid -->
             <dependency>
