@@ -23,7 +23,7 @@
         <lombok.version>1.18.2</lombok.version>
         <slf4j.api.version>1.7.5</slf4j.api.version>
         <redis.clients.version>2.9.0</redis.clients.version>
-        <jackson.version>2.9.6</jackson.version>
+        <jackson.version>2.9.10.7</jackson.version>
     </properties>
 
     <dependencies>
