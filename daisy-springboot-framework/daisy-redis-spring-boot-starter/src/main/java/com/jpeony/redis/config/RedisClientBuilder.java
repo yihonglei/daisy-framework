@@ -16,9 +16,9 @@ import org.springframework.util.StringUtils;
 
 /**
  * RedisClientBuilder：
- * 1. 读取集群配置
- * 2. 根据配置实例化 RedisClient
- * 3. 注册 RedisClient 的多个实例到 beanFactory
+ * 1、读取集群配置
+ * 2、根据配置实例化 RedisClient
+ * 3、注册 RedisClient 的多个实例到 beanFactory
  *
  * @author yihonglei
  */

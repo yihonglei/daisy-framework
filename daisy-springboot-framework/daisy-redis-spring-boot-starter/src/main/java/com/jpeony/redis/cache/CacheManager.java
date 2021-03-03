@@ -66,6 +66,15 @@ public class CacheManager {
         return null;
     }
 
+    /**
+     * 设置一个 key 的 value 值
+     *
+     * @param key
+     * @param value
+     * @param nxxx
+     * @param expx
+     * @param time
+     */
     public static boolean set(final String key, final Object value, final String nxxx, final String expx, final long time) {
         try {
             return redisSupport.set(key, value, nxxx, expx, time);
@@ -99,7 +108,6 @@ public class CacheManager {
      * @param key
      * @param tr
      * @param <T>
-     * @return
      */
     public static <T> T get(final String key, TypeReference<T> tr) {
         try {
@@ -126,6 +134,13 @@ public class CacheManager {
         return 0L;
     }
 
+    /**
+     * Hash 里面指定字段增加值
+     *
+     * @param key
+     * @param field
+     * @param value
+     */
     private static long hincrBy(final String key, final String field, final long value) {
         try {
             return redisSupport.hincrBy(key, field, value);
@@ -136,17 +151,29 @@ public class CacheManager {
         return 0L;
     }
 
+    /**
+     * 设置 Hash 里面一个字段的值
+     *
+     * @param key
+     * @param field
+     * @param value
+     */
     public static Long hset(String key, String field, Object value) {
         try {
             return redisSupport.hset(key, field, value);
         } catch (Exception e) {
             logger.error("hmset cache error:{}", e.getMessage(), e);
-        } finally {
         }
 
         return null;
     }
 
+    /**
+     * 删除一个或多个 Hash 的 field
+     *
+     * @param key
+     * @param field
+     */
     public static Long hdel(String key, String... field) {
         try {
             return redisSupport.hdel(key, field);
@@ -157,6 +184,12 @@ public class CacheManager {
         return null;
     }
 
+    /**
+     * 从 Hash 里面获取全部的域或值
+     *
+     * @param key
+     * @param valueType
+     */
     public static <T> Map<String, T> hgetAll(String key, Class<T> valueType) {
         try {
             return redisSupport.hgetAll(key, valueType);
@@ -167,6 +200,12 @@ public class CacheManager {
         return null;
     }
 
+    /**
+     * 从 Hash 中获取对应域的值
+     *
+     * @param key
+     * @param field
+     */
     private static byte[] hget(final String key, final String field) {
         try {
             return redisSupport.hget(key, field);
@@ -178,6 +217,8 @@ public class CacheManager {
     }
 
     /**
+     * 执行原子操作，增加一个整数
+     *
      * @param key
      * @param delta 累加值，非负值
      */
@@ -191,6 +232,12 @@ public class CacheManager {
         return 0;
     }
 
+    /**
+     * 从队列的右边入队一个元素
+     *
+     * @param key
+     * @param value
+     */
     public static long rpush(final String key, final Object value) {
         try {
             return redisSupport.rpush(key, value);
@@ -201,6 +248,12 @@ public class CacheManager {
         return 0;
     }
 
+    /**
+     * 从队列的左边出队一个元素
+     *
+     * @param key
+     * @param javaType
+     */
     public static <T> T lpop(final String key, Class<T> javaType) {
         try {
             return redisSupport.lpop(key, javaType);
@@ -211,6 +264,13 @@ public class CacheManager {
         return null;
     }
 
+    /**
+     * 删除，并获取该列表中的第一个元素，或者阻塞，直到获取到元素
+     *
+     * @param key
+     * @param timeout
+     * @param javaType
+     */
     public static <T> T blpop(final String key, final int timeout, Class<T> javaType) {
         try {
             return redisSupport.blpop(key, timeout, javaType);
@@ -221,6 +281,14 @@ public class CacheManager {
         return null;
     }
 
+    /**
+     * 从列表中获取指定返回的元素
+     *
+     * @param key
+     * @param start
+     * @param end
+     * @param javaType
+     */
     public static <T> List<T> lrange(final String key, int start, int end, Class<T> javaType) {
         try {
             return redisSupport.lrange(key, start, end, javaType);
@@ -231,6 +299,12 @@ public class CacheManager {
         return null;
     }
 
+    /**
+     * 添加一个或多个元素到集合(set)里
+     *
+     * @param key
+     * @param values
+     */
     public static long sadd4Sets(String key, Object... values) {
         try {
             return redisSupport.sadd4Sets(key, values);
@@ -241,6 +315,12 @@ public class CacheManager {
         return 0;
     }
 
+    /**
+     * 获取集合里面的所有元素
+     *
+     * @param key
+     * @param javaType
+     */
     public static <T> Set<T> smembers4Sets(String key, Class<T> javaType) {
         try {
             return redisSupport.smembers4Sets(key, javaType);
@@ -251,6 +331,12 @@ public class CacheManager {
         return Collections.emptySet();
     }
 
+    /**
+     * 从集合里删除一个或多个元素
+     *
+     * @param key
+     * @param values
+     */
     public static long srem4Sets(String key, Object... values) {
         try {
             return redisSupport.srem4Sets(key, values);
@@ -261,6 +347,12 @@ public class CacheManager {
         return 0;
     }
 
+    /**
+     * 设置超时时间
+     *
+     * @param key
+     * @param seconds
+     */
     public static long expire(final String key, final int seconds) {
         try {
             return redisSupport.expire(key, seconds);
@@ -272,6 +364,8 @@ public class CacheManager {
     }
 
     /**
+     * 判断 key 是否存在 redis
+     *
      * @param key
      */
     public static Boolean exists(final String key) {
@@ -284,6 +378,11 @@ public class CacheManager {
         return false;
     }
 
+    /**
+     * 获取队列(List)的长度
+     *
+     * @param key
+     */
     public static Long llen(final String key) {
         try {
             return redisSupport.llen(key);
@@ -295,7 +394,7 @@ public class CacheManager {
     }
 
     /**
-     * 设置缓存对象并返回旧的值
+     * 设置一个 key 的值，并返回设置前的值
      *
      * @param key
      * @param value
@@ -312,6 +411,13 @@ public class CacheManager {
         return null;
     }
 
+    /**
+     * 从列表中删除元素
+     *
+     * @param key
+     * @param count
+     * @param value
+     */
     public static Long lrem(String key, int count, Object value) {
         try {
             return redisSupport.lrem(key, count, value);
