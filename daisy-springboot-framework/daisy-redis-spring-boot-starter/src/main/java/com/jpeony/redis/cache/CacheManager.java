@@ -68,13 +68,13 @@ public class CacheManager {
     }
 
     /**
-     * 设置一个 key 的 value 值
+     * 存储数据到缓存中，并制定过期时间和当Key存在时是否覆盖
      *
      * @param key
      * @param value
-     * @param nxxx
-     * @param expx
-     * @param time
+     * @param nxxx  只能取 NX 或者 XX，如果取 NX，则只有当 key 不存在是才进行 set，如果取 XX，则只有当 key 已经存在时才进行 set
+     * @param expx  只能取 EX 或者 PX，代表数据过期时间的单位，EX 代表秒，PX 代表毫秒
+     * @param time  过期时间，单位是 expx 所代表的单位
      */
     public static boolean set(final String key, final Object value, final String nxxx, final String expx, final long time) {
         try {
