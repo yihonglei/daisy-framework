@@ -56,16 +56,14 @@ public class RedisClient implements RedisSupport {
     private String system;
 
     public RedisClient(RedisProperties param) {
-        this(param.getCluster(), param.getPrefix(), param.getPassword(),
-                param.getMaxIdle(), param.getMaxTotal(), param.getMinIdle(),
-                param.getConnectionTimeout(), param.getSoTimeout(), param.getMaxAttempts(),
+        this(param.getCluster(), param.getPrefix(), param.getPassword(), param.getMaxIdle(), param.getMaxTotal(),
+                param.getMinIdle(), param.getConnectionTimeout(), param.getSoTimeout(), param.getMaxAttempts(),
                 param.getMinEvictableIdleTimeMillis(), param.getTimeBetweenEvictionRunsMillis(), param.getEvictionPolicyClassName(), param.getSerializer());
     }
 
     public RedisClient(RedisProperties param, String system) {
-        this(param.getCluster(), param.getPrefix(), param.getPassword(),
-                param.getMaxIdle(), param.getMaxTotal(), param.getMinIdle(),
-                param.getConnectionTimeout(), param.getSoTimeout(), param.getMaxAttempts(),
+        this(param.getCluster(), param.getPrefix(), param.getPassword(), param.getMaxIdle(), param.getMaxTotal(),
+                param.getMinIdle(), param.getConnectionTimeout(), param.getSoTimeout(), param.getMaxAttempts(),
                 param.getMinEvictableIdleTimeMillis(), param.getTimeBetweenEvictionRunsMillis(), param.getEvictionPolicyClassName(), param.getSerializer());
         this.system = system;
     }
@@ -74,8 +72,9 @@ public class RedisClient implements RedisSupport {
      * 重载构造函数,提供默认参数
      */
     public RedisClient(String cluster, String prefix, String password) {
-        this(cluster, prefix, password, DEFAULT_MAX_IDLE, DEFAULT_MAX_TOTAL, DEFAULT_MIN_IDLE,
-                CONNECTION_TIMEOUT, SO_TIMEOUT, MAX_REDIRECTIONS, MIN_EVICTABLE_IDLE_TIME_MILLIS, TIME_BETWEEN_EVICTION_RUNS_MILLIS, BaseObjectPoolConfig.DEFAULT_EVICTION_POLICY_CLASS_NAME, DEFAULT_SERIALIZER);
+        this(cluster, prefix, password, DEFAULT_MAX_IDLE, DEFAULT_MAX_TOTAL, DEFAULT_MIN_IDLE, CONNECTION_TIMEOUT,
+                SO_TIMEOUT, MAX_REDIRECTIONS, MIN_EVICTABLE_IDLE_TIME_MILLIS, TIME_BETWEEN_EVICTION_RUNS_MILLIS,
+                BaseObjectPoolConfig.DEFAULT_EVICTION_POLICY_CLASS_NAME, DEFAULT_SERIALIZER);
     }
 
     /**
@@ -89,10 +88,9 @@ public class RedisClient implements RedisSupport {
      * @param soTimeout         返回值的超时时间
      * @param maxAttempts       出现异常最大重试次数
      */
-    public RedisClient(String cluster, String prefix, String password,
-                       int maxIdle, int maxTotal, int minIdle,
-                       int connectionTimeout, int soTimeout, int maxAttempts,
-                       long minEvictableIdleTimeMillis, long timeBetweenEvictionRunsMillis, String evictionPolicyClassName, String serializer) {
+    public RedisClient(String cluster, String prefix, String password, int maxIdle, int maxTotal, int minIdle,
+                       int connectionTimeout, int soTimeout, int maxAttempts, long minEvictableIdleTimeMillis,
+                       long timeBetweenEvictionRunsMillis, String evictionPolicyClassName, String serializer) {
         try {
             if (cluster == null || cluster.trim().length() == 0) {
                 throw new JedisClusterException("cluster str is null.");
@@ -173,11 +171,11 @@ public class RedisClient implements RedisSupport {
         byte[] rawKey = SerializationUtils.encode(key);
         if (!this.hasPrefix()) {
             return rawKey;
-        } else {
-            byte[] prefixedKey = Arrays.copyOf(this.prefix, this.prefix.length + rawKey.length);
-            System.arraycopy(rawKey, 0, prefixedKey, this.prefix.length, rawKey.length);
-            return prefixedKey;
         }
+
+        byte[] prefixedKey = Arrays.copyOf(this.prefix, this.prefix.length + rawKey.length);
+        System.arraycopy(rawKey, 0, prefixedKey, this.prefix.length, rawKey.length);
+        return prefixedKey;
     }
 
     /**
@@ -186,12 +184,12 @@ public class RedisClient implements RedisSupport {
     private String getOriginalKey(byte[] key) {
         if (!this.hasPrefix()) {
             return new String(key);
-        } else {
-            int keyLen = key.length - this.prefix.length;
-            byte[] originalKey = new byte[keyLen];
-            System.arraycopy(key, this.prefix.length, originalKey, 0, keyLen);
-            return new String(originalKey);
         }
+
+        int keyLen = key.length - this.prefix.length;
+        byte[] originalKey = new byte[keyLen];
+        System.arraycopy(key, this.prefix.length, originalKey, 0, keyLen);
+        return new String(originalKey);
     }
 
     @Override
@@ -229,9 +227,9 @@ public class RedisClient implements RedisSupport {
         List<byte[]> list = jc.blpop(timeout, getKey(key));
         if (list == null || list.isEmpty()) {
             return null;
-        } else {
-            return serializer.deserialize(list.get(1), javaType);
         }
+
+        return serializer.deserialize(list.get(1), javaType);
     }
 
     @Override
@@ -246,6 +244,7 @@ public class RedisClient implements RedisSupport {
         for (byte[] data : list) {
             res.add(serializer.deserialize(data, javaType));
         }
+
         return res;
     }
 
@@ -259,6 +258,7 @@ public class RedisClient implements RedisSupport {
         for (int i = 0; i < values.length; i++) {
             valBytes[i] = serializer.serialize(values[i]);
         }
+
         return jc.sadd(getKey(key), valBytes);
     }
 
@@ -294,17 +294,17 @@ public class RedisClient implements RedisSupport {
     private <T extends Collection<?>> T deserializeValues(Collection<byte[]> rawValues, Class<T> type) {
         if (rawValues == null) {
             return null;
-        } else {
-            Object values = List.class.isAssignableFrom(type) ? new ArrayList(rawValues.size()) : new LinkedHashSet(rawValues.size());
-            Iterator i$ = rawValues.iterator();
-
-            while (i$.hasNext()) {
-                byte[] bs = (byte[]) i$.next();
-                ((Collection) values).add(serializer.deserialize(bs, Object.class));
-            }
-
-            return (T) values;
         }
+
+        Object values = List.class.isAssignableFrom(type) ? new ArrayList(rawValues.size()) : new LinkedHashSet(rawValues.size());
+        Iterator i$ = rawValues.iterator();
+
+        while (i$.hasNext()) {
+            byte[] bs = (byte[]) i$.next();
+            ((Collection) values).add(serializer.deserialize(bs, Object.class));
+        }
+
+        return (T) values;
     }
 
     private boolean hasPrefix() {
@@ -377,6 +377,7 @@ public class RedisClient implements RedisSupport {
         for (byte[] k : hkeys) {
             res.add(getOriginalKey(k));
         }
+
         return res;
     }
 
@@ -394,6 +395,7 @@ public class RedisClient implements RedisSupport {
         } catch (Exception e) {
             throw new SerializationException("Could not encode map: " + e.getMessage(), e);
         }
+
         return res;
     }
 
@@ -409,8 +411,7 @@ public class RedisClient implements RedisSupport {
 
     @Override
     public Long lrem(String key, long count, Object value) {
-        Long r = jc.lrem(getKey(key), count, serializer.serialize(value));
-        return r;
+        return jc.lrem(getKey(key), count, serializer.serialize(value));
     }
 
     @Override
@@ -453,6 +454,7 @@ public class RedisClient implements RedisSupport {
         for (Map.Entry<Object, Double> entry : entries) {
             sm.put(serializer.serialize(entry.getKey()), entry.getValue());
         }
+
         return jc.zadd(getKey(key), sm);
     }
 
@@ -497,6 +499,7 @@ public class RedisClient implements RedisSupport {
         for (Map.Entry<byte[], byte[]> e : entries) {
             res.put(getOriginalKey(e.getKey()), serializer.deserialize(e.getValue(), valueType));
         }
+
         return res;
     }
 
@@ -545,6 +548,7 @@ public class RedisClient implements RedisSupport {
         for (byte[] data : set) {
             result.add(serializer.deserialize(data, valueType));
         }
+
         return result;
     }
 
@@ -556,6 +560,7 @@ public class RedisClient implements RedisSupport {
             T deserialize = serializer.deserialize(data, valueType);
             result.add(deserialize);
         }
+
         return result;
     }
 
