@@ -230,7 +230,7 @@ public class CacheManager {
             logger.error("incrBy cache error:{}", e.getMessage(), e);
         }
 
-        return 0;
+        return 0L;
     }
 
     /**
@@ -246,7 +246,7 @@ public class CacheManager {
             logger.error("rpush cache error:{}", e.getMessage(), e);
         }
 
-        return 0;
+        return 0L;
     }
 
     /**
@@ -313,7 +313,7 @@ public class CacheManager {
             logger.error("sadd4Sets cache error:{}", e.getMessage(), e);
         }
 
-        return 0;
+        return 0L;
     }
 
     /**
@@ -345,7 +345,7 @@ public class CacheManager {
             logger.error("srem4Sets cache error:{}", e.getMessage(), e);
         }
 
-        return 0;
+        return 0L;
     }
 
     /**
@@ -361,7 +361,7 @@ public class CacheManager {
             logger.error("expire cache error:{}", e.getMessage(), e);
         }
 
-        return 0;
+        return 0L;
     }
 
     /**
