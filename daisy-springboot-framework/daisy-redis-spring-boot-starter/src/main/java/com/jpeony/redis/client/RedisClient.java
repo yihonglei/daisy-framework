@@ -151,7 +151,7 @@ public class RedisClient implements RedisSupport {
     }
 
     /**
-     * 当serializerType不等于DEFAULT_SERIALIZER时, 使用该方法会抛出异常
+     * 当 SerializerType 不等于 DEFAULT_SERIALIZER 时, 使用该方法会抛出异常
      */
     @Override
     public <T> T get(final String key, TypeReference<T> tr) {
@@ -181,7 +181,7 @@ public class RedisClient implements RedisSupport {
     }
 
     /**
-     * getKey的逆操作 获取原始key值
+     * getKey 的逆操作 获取原始 key 值
      */
     private String getOriginalKey(byte[] key) {
         if (!this.hasPrefix()) {
