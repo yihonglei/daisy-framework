@@ -402,7 +402,6 @@ public class CacheManager {
      * @param javaType
      */
     public static <T> T getSet(String key, Object value, Class<T> javaType) {
-        long startTime = System.currentTimeMillis();
         try {
             return redisSupport.getSet(key, value, javaType);
         } catch (Exception e) {
