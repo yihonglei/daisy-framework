@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 /**
- * 延时任务。
+ * 延时任务
  *
  * @author yihonglei
  */

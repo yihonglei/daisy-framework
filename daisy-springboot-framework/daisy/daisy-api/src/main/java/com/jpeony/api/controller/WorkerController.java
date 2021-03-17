@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * 异步处理，工作线程。
+ * 异步处理，工作线程
  *
  * @author yihonglei
  */
