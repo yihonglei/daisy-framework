@@ -44,7 +44,7 @@ public class ApiApplication implements WebMvcConfigurer {
     }
 
     /**
-     * 不使用默认jackson框架解析json，重写configureMessageConverters，使用fastjson框架解析json
+     * 不使用默认 jackson 框架解析 json，重写 configureMessageConverters，使用 fastjson 框架解析 json
      */
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
