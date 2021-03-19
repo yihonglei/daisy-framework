@@ -3,7 +3,7 @@ package com.jpeony.core.pojo.domain;
 import lombok.Data;
 
 /**
- * 与数据库对应，与数据库打交道的对象DO
+ * 数据库映射对象 DO
  *
  * @author yihonglei
  */

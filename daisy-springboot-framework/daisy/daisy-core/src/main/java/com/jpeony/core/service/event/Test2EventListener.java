@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * 实现daisyEventListener接口，在构造方法添加你的事件即可!
+ * 实现 daisyEventListener 接口，在构造方法添加你的事件即可
  *
  * @author yihonglei
  */

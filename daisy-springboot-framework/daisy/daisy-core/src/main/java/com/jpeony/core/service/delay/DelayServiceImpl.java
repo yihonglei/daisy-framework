@@ -15,13 +15,15 @@ import java.util.concurrent.TimeUnit;
  */
 @Service
 public class DelayServiceImpl implements DelayService {
+
     private Logger logger = LoggerFactory.getLogger(DelayServiceImpl.class);
+    
     private DelayQueueManager delayQueueManager = DelayQueueManager.getInstance();
 
     @Override
     public void delayTask(long passTime, Date startTime) {
         logger.info("测试延时任务，passTime={}", passTime);
-        logger.info("写你的业务代码。。。。。。");
+        logger.info("写你的业务代码......");
         // 判断过去多久了
         passTime = (System.currentTimeMillis() - startTime.getTime()) / 1000;
         if (passTime > 20) {

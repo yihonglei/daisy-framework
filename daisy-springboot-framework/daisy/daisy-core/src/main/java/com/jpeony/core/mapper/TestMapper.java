@@ -9,12 +9,13 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 /**
- * Mapper接口
+ * Mapper 接口
  *
  * @author yihonglei
  */
 @DB(name = DBConstant.JPEONY)
 public interface TestMapper {
+
     /**
      * MyBatis 注解形式
      */

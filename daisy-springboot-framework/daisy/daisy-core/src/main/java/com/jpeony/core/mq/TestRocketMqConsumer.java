@@ -20,6 +20,7 @@ import java.util.List;
  */
 @Component
 public class TestRocketMqConsumer extends AbstractRocketMqConsumer {
+    
     @Autowired
     private TestRocketMqConsumerProperty testRocketMqConsumerProperty;
 

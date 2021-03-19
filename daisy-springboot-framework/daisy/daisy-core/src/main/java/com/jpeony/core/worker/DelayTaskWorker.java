@@ -14,13 +14,17 @@ import java.util.Date;
  * @author yihonglei
  */
 public class DelayTaskWorker extends AbstractWorker {
+
     private long passTime;
+
     private Date startTime;
-    private DelayService delayService;
+
     /**
      * 日志追踪对象
      */
     private LogTraceInfo logTraceInfo;
+
+    private DelayService delayService;
 
     public DelayTaskWorker(long passTime, Date startTime) {
         this.passTime = passTime;

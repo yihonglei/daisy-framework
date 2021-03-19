@@ -12,14 +12,17 @@ import com.jpeony.core.service.cpu.CPUDemo2ServiceImpl;
  * @author yihonglei
  */
 public class CPUDemo2Worker extends AbstractWorker {
+
     /**
      * 业务处理内容，可以是字符串或者对象等等
      */
     private String bizContext;
+
     /**
      * 日志追踪对象
      */
     private LogTraceInfo logTraceInfo;
+    
     /**
      * 业务处理
      */

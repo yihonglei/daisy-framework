@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * RocketMq 生产者-消费者
+ * RocketMQ 生产者-消费者
  *
  * @author yihonglei
  */
 @RestController
 @RequestMapping("/rocketmq/test")
 public class RocketMqController {
+
     @Autowired
     private TestRocketMqProducer producer;
 

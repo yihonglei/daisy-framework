@@ -10,6 +10,7 @@ import com.jpeony.common.spring.interceptor.AbstractInterceptorAdapter;
  */
 @Intercept(order = 1)
 public class WhiteInterceptor extends AbstractInterceptorAdapter {
+    
     @Override
     protected boolean handle(String context) {
         logger.info("WhiteInterceptor.handle");

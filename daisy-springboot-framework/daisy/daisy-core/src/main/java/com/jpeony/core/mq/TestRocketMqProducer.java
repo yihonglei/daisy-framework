@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * 消息发送
- * 业务使用注入对象：@Autowired private TestRocketMqProducer producer;
+ * 消息发送业务使用注入对象：@Autowired private TestRocketMqProducer producer
  * 调用发送方法：producer.sendMessage*
  * topic发送时如果不显示传入，则用配置文件里面的，一般进行显示传入!
  *

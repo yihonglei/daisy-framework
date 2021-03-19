@@ -3,7 +3,7 @@ package com.jpeony.core.pojo.vo;
 import lombok.Data;
 
 /**
- * 响应对象VO
+ * 响应对象 VO
  *
  * @author yihonglei
  */
