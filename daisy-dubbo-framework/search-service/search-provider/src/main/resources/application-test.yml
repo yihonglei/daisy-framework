@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://192.168.1.105:3306/gpmall?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    url: jdbc:mysql://127.0.0.1:3306/jpeony?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,37 +20,37 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
     useGlobalDataSourceStat: true
   redisson:
-      address: 192.168.1.105:6379
-      timeout: 3000
-      database: 0
-      pool:
-        max-active: 20
-        max-idle: 10
-        max-wait: 3000
-        min-idle: 4
+    address: 192.168.1.105:6379
+    timeout: 3000
+    database: 0
+    pool:
+      max-active: 20
+      max-idle: 10
+      max-wait: 3000
+      min-idle: 4
   data:
     elasticsearch:
       cluster-name: docker-cluster
-      cluster-nodes: es.gupaoedu.com:9300
+      cluster-nodes: 127.0.0.1:9300
 dubbo:
   application:
     name: pay-services
-    owner: Mic
+    owner: yihonglei
   protocol:
     name: dubbo
     port: 20884
   registry:
-    address: zookeeper://192.168.1.105:2181
+    address: zookeeper://127.0.0.1:2181
     check: true
     group: dubbo-dev
     simplified: true
   metadata-report:
-    address: zookeeper://192.168.1.105:2181
+    address: zookeeper://127.0.0.1:2181
     retry-times: 30
     cycle-report: false
     group: dubbo-dev
   scan:
-    base-packages: com.gpmall.pay.services
+    base-packages: com.jpeony.pay.services
 
 
 

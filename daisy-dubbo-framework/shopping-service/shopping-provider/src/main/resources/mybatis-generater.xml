@@ -11,7 +11,7 @@
 
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.gpmall.commons.tool.tkmapper.TkMapper"/>
+            <property name="mappers" value="com.jpeony.commons.tool.tkmapper.TkMapper"/>
         </plugin>
 
         <!--去除注释  -->

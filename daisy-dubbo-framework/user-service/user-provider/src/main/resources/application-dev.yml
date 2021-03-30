@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://mysql.gpmall.com:3306/gpmall?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/jpeony?useUnicode=true&characterEncoding=utf8&useOldAliasMetadataBehavior=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&serverTimezone=UTC
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,9 +20,7 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
     useGlobalDataSourceStat: true
   redisson:
-    address: redis.gpmall.com:6379
-#    address: redis4gpmall.redis.rds.aliyuncs.com:6379
-#    password: redis4GPMALL
+    address: 127.0.0.1:6379
     timeout: 3000
     database: 0
     pool:
@@ -33,7 +31,7 @@ spring:
   ##以下下配置是springboot autoconfig 认初始化时会加载的参数，但是user可以重现构建一下参数
   ##自定义构造的bean可查看kafkaConfig
   kafka:
-    bootstrapServers: kafka.gpmall.com:9092,kafka.gpmall.com:9092
+    bootstrapServers: 127.0.0.1:9092,127.0.0.1:9092
     consumer:
       auto-offset-reset: latest
       key-serializer: org.apache.kafka.common.serialization.StringDeserializer
@@ -42,7 +40,7 @@ spring:
         spring:
           json:
             trusted:
-              packages: com.gpmall.user.*
+              packages: com.jpeony.user.*
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -50,25 +48,25 @@ spring:
 dubbo:
   application:
     name: user-service
-    owner: Mic
+    owner: yihonglei
   protocol:
     name: dubbo
     port: 20880
   registry:
-    address: zookeeper://zk.gpmall.com:2181
+    address: zookeeper://127.0.0.1:2181
     check: true
     group: dubbo-dev
     simplified: true
   metadata-report:
-    address: zookeeper://zk.gpmall.com:2181
+    address: zookeeper://127.0.0.1:2181
     retry-times: 30
     cycle-report: false
     group: dubbo-dev
   scan:
-    base-packages: com.gpmall.user.services
+    base-packages: com.jpeony.user.services
 lock:
   zookeeper:
-    zkHosts: zookeeper://zk.gpmall.com:2181,zookeeper://zk.gpmall.com:2181
+    zkHosts: zookeeper://127.0.0.1:2181,zookeeper://127.0.0.1:2181
     sessionTimeout: 30000
     connectionTimeout: 30000
     ## 共享一个zk链接
@@ -87,4 +85,4 @@ email:
   subject: 激活邮件，请点击激活
   content:
   template-path: emailTemplate
-  userMailActiveUrl: http://localhost:9999/gpmall-user/gpuser/verify
+  userMailActiveUrl: http://127.0.0.1:9999/user/user/verify

@@ -5,7 +5,7 @@ spring:
     name: search-provider
 
 mybatis:
-  mapper-locations: classpath*:com/gpmall/search/dal/persistence/*Mapper.xml"
-  type-aliases-package: com.gpmall.search.dal.entitys
+  mapper-locations: classpath*:com/jpeony/search/dal/persistence/*Mapper.xml"
+  type-aliases-package: com.jpeony.search.dal.entitys
 
 

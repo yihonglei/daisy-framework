@@ -10,7 +10,7 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
         <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.gpmall.commons.tool.tkmapper.TkMapper"/>
+            <property name="mappers" value="com.jpeony.commons.tool.tkmapper.TkMapper"/>
         </plugin>
         <plugin type="com.github.trang.mybatis.generator.plugins.MapperSqlMapConfigPlugin"/>
 

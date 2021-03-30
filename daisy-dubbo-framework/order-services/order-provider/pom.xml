@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.gpmall.parent</groupId>
-        <artifactId>gpmall-parent</artifactId>
+        <groupId>com.jpeony.parent</groupId>
+        <artifactId>dependencies-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.gpmall.order</groupId>
+    <groupId>com.jpeony.order</groupId>
     <artifactId>order-provider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>order-provider</name>
@@ -74,15 +74,15 @@
         </dependency>
 
         <dependency>
-            <groupId>com.gpmall.order</groupId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.jpeony.order</groupId>
             <artifactId>order-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <artifactId>user-api</artifactId>
-            <groupId>com.gpmall.user</groupId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.jpeony.user</groupId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
@@ -91,7 +91,7 @@
         </dependency>
         <dependency>
             <artifactId>shopping-api</artifactId>
-            <groupId>com.gpmall.shopping</groupId>
+            <groupId>com.jpeony.shopping</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -107,7 +107,7 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.gpmall.commons</groupId>
+            <groupId>com.jpeony.commons</groupId>
             <artifactId>commons-mq</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -119,7 +119,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.gpmall.order.bootstrap.OrderProviderApplication</mainClass>
+                    <mainClass>com.jpeony.order.bootstrap.OrderProviderApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>

@@ -2,8 +2,8 @@ spring:
   profiles:
     active: dev
 mybatis:
-  mapper-locations: classpath*:com/gpmall/shopping/dal/persistence/*Mapper.xml"
-  type-aliases-package: com.gpmall.shopping.dal.entitys
+  mapper-locations: classpath*:com/jpeony/shopping/dal/persistence/*Mapper.xml"
+  type-aliases-package: com.jpeony.shopping.dal.entitys
 pagehelper:
   helper-dialect: mysql
   reasonable: true

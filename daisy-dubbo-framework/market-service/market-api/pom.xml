@@ -2,16 +2,17 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <groupId>com.gpmall.parent</groupId>
-        <artifactId>gpmall-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.gpmall.market</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <parent>
+        <groupId>com.jpeony.parent</groupId>
+        <artifactId>dependencies-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.jpeony.market</groupId>
     <artifactId>market-api</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>market-api</name>
 
@@ -22,7 +23,7 @@
     <dependencies>
         <dependency>
             <artifactId>commons-core</artifactId>
-            <groupId>com.gpmall.commons</groupId>
+            <groupId>com.jpeony.commons</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -35,7 +36,7 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.gpmall.commons</groupId>
+            <groupId>com.jpeony.commons</groupId>
             <artifactId>commons-tool</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

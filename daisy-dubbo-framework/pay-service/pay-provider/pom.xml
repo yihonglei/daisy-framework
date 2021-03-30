@@ -2,16 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <groupId>com.gpmall.parent</groupId>
-        <artifactId>gpmall-parent</artifactId>
+        <groupId>com.jpeony.parent</groupId>
+        <artifactId>dependencies-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>com.gpmall.pay</groupId>
+
+    <groupId>com.jpeony.pay</groupId>
     <artifactId>pay-provider</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>pay-provider</name>
-    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
@@ -77,7 +78,7 @@
             <artifactId>mapstruct-processor</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.gupaoedu.pay</groupId>
+            <groupId>com.jpeony.pay</groupId>
             <version>1.0-SNAPSHOT</version>
             <artifactId>pay-api</artifactId>
         </dependency>
@@ -111,22 +112,22 @@
             <version>1.0</version>
         </dependency>
         <dependency>
-            <groupId>com.gpmall.commons</groupId>
+            <groupId>com.jpeony.commons</groupId>
             <artifactId>commons-lock</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.gpmall.order</groupId>
+            <groupId>com.jpeony.order</groupId>
             <version>1.0-SNAPSHOT</version>
             <artifactId>order-api</artifactId>
         </dependency>
         <dependency>
             <artifactId>user-api</artifactId>
-            <groupId>com.gpmall.user</groupId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>com.jpeony.user</groupId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.gpmall.shopping</groupId>
+            <groupId>com.jpeony.shopping</groupId>
             <artifactId>shopping-api</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
@@ -135,11 +136,6 @@
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
         </dependency>
-        <!--<dependency>
-            <groupId>com.github.wxpay</groupId>
-            <artifactId>wxpay-sdk</artifactId>
-            <version>3.0.9</version>
-        </dependency>-->
         <dependency>
             <groupId>com.github.tedzhdz</groupId>
             <artifactId>wxpay-sdk</artifactId>
@@ -153,7 +149,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.gpmall.pay.bootstrap.PayProviderApplication</mainClass>
+                    <mainClass>com.jpeony.pay.bootstrap.PayProviderApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -172,8 +168,8 @@
                 </configuration>
             </plugin>
             <!--<plugin>-->
-                <!--<groupId>org.mybatis.generator</groupId>-->
-                <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+            <!--<groupId>org.mybatis.generator</groupId>-->
+            <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
             <!--</plugin>-->
         </plugins>
         <resources>

@@ -1,0 +1,4 @@
+redis=DistributedRedisLock
+zookeeper=ZkMutexDistributedLock
+wrapper=DistributedLockWrapper
+zookeeper_v1=DistributedZooKeeperReentrantLock

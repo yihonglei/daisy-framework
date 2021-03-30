@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: cashier
+  profiles:
+    active: dev
+server:
+  port: 8083
