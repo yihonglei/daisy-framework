@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: gpmall-shopping
+  profiles:
+      active: prod
+server:
+  port: 8081
+
+

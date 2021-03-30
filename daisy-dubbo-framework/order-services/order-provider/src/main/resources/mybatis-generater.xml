@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="application-dev.yml"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.gpmall.commons.tool.tkmapper.TkMapper"/>
+        </plugin>
+        <plugin type="com.github.trang.mybatis.generator.plugins.MapperSqlMapConfigPlugin"/>
+
+        <!--数据库连接 -->
+<!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/gpmall"
+                        userId="root"
+                        password="123">
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://mysql.gpmall.com:3306/gpmall"
+                        userId="root"
+                        password="123">
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.gpmall.order.dal.entitys"
+                            targetProject="src/main/java">
+            <!--继承BaseModel-->
+            <!--<property name="rootClass" value="BaseModel"/>-->
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.gpmall.order.dal.persistence" targetProject="src/main/java"/>
+
+        <javaClientGenerator targetPackage="com.gpmall.order.dal.persistence"
+                             targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <!--已生成的表
+         <table tableName="tb_payment" domainObjectName="Payment"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        -->
+        <table tableName="tb_order" domainObjectName="Order"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="tb_order_item" domainObjectName="OrderItem"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="tb_order_shipping" domainObjectName="OrderShipping"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>

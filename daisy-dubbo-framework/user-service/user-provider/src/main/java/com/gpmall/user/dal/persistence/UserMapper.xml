@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gpmall.user.dal.persistence.UserMapper">
+  <resultMap id="BaseResultMap" type="com.gpmall.user.dal.entitys.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="file" jdbcType="VARCHAR" property="file" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+  </resultMap>
+  
+  <sql id="BaseColumns">
+    <!-- WARNING - @mbg.generated -->
+    id, username, password, phone, email, sex, address, state, description, role_id, file, created, updated
+  </sql>
+  
+</mapper>

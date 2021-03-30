@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: gpmall-user
+  profiles:
+    active: dev
+server:
+  port: 8082

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gpmall.shopping.dal.persistence.PanelMapper">
+  <resultMap id="BaseResultMap" type="com.gpmall.shopping.dal.entitys.Panel">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="sort_order" jdbcType="INTEGER" property="sortOrder" />
+    <result column="position" jdbcType="INTEGER" property="position" />
+    <result column="limit_num" jdbcType="INTEGER" property="limitNum" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+    <result column="updated" jdbcType="TIMESTAMP" property="updated" />
+    <result column="product_id" jdbcType="INTEGER" property="productId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, type, sort_order, position, limit_num, status, remark, created, updated
+  </sql>
+  <select id="selectPanelContentById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select a.*,b.product_id
+from tb_panel a inner join tb_panel_content b on a.id=b.panel_id where a.id=#{panelId} and status=1
+  </select>
+</mapper>

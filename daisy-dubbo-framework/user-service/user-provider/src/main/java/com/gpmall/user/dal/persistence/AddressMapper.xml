@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gpmall.user.dal.persistence.AddressMapper">
+  <resultMap id="BaseResultMap" type="com.gpmall.user.dal.entitys.Address">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="address_id" jdbcType="BIGINT" property="addressId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="street_name" jdbcType="VARCHAR" property="streetName" />
+    <result column="is_default" jdbcType="BIT" property="isDefault" />
+  </resultMap>
+  
+</mapper>
