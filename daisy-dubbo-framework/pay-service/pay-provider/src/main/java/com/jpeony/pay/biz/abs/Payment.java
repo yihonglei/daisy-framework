@@ -1,7 +1,7 @@
 package com.jpeony.pay.biz.abs;
 
-import com.jpeony.commons.result.AbstractRequest;
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractRequest;
+import com.jpeony.commons.core.AbstractResponse;
 import com.jpeony.commons.tool.exception.BizException;
 import com.jpeony.pay.dto.PaymentNotifyRequest;
 

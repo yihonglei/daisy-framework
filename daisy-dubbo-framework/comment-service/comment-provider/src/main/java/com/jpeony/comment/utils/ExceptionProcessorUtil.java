@@ -1,7 +1,7 @@
 package com.jpeony.comment.utils;
 
 import com.jpeony.comment.constant.CommentRetCode;
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import com.jpeony.commons.tool.exception.ExceptionUtil;
 
 public class ExceptionProcessorUtil {

@@ -1,6 +1,6 @@
 package com.jpeony.pay.dto;
 
-import com.jpeony.commons.result.AbstractRequest;
+import com.jpeony.commons.core.AbstractRequest;
 import com.jpeony.pay.validatorextend.PayChannel;
 import lombok.Data;
 

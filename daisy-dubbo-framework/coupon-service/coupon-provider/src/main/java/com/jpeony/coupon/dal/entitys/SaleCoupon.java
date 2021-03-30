@@ -14,7 +14,7 @@ public class SaleCoupon implements Serializable {
     private String desc;
 
     /**
-     * // 1 满减券 2 通用0元减价券
+     * 1 满减券 2 通用0元减价券
      */
     private Byte type;
 

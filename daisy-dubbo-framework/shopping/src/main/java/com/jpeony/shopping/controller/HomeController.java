@@ -1,12 +1,12 @@
 package com.jpeony.shopping.controller;
 
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
-import com.gpmall.shopping.IContentService;
-import com.gpmall.shopping.IHomeService;
-import com.gpmall.shopping.constants.ShoppingRetCode;
-import com.gpmall.shopping.dto.HomePageResponse;
-import com.gpmall.shopping.dto.NavListResponse;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
+import com.jpeony.shopping.IContentService;
+import com.jpeony.shopping.IHomeService;
+import com.jpeony.shopping.constants.ShoppingRetCode;
+import com.jpeony.shopping.dto.HomePageResponse;
+import com.jpeony.shopping.dto.NavListResponse;
 import com.jpeony.user.annotation.Anoymous;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -15,12 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/7/23-17:06
- */
 @RestController
 @RequestMapping("/shopping")
 @Api(tags = "HomeController", description = "导航控制层")

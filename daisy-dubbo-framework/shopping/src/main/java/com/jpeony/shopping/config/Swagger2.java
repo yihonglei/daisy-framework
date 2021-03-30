@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 配置Swagger2。
- * Created by ZZZ on 2019/2/18.
+ * 配置Swagger2
  */
 @Setter
 @Configuration
@@ -37,7 +36,6 @@ public class Swagger2 {
     private static final String SCHEMA_NAME = "Authorization";
     private static final String KEY_NAME = "access_token";
     private static final String PASS_AS = "header";
-
 
     private List<ApiKey> securitySchemes() {
         List<ApiKey> apiKeyList = new ArrayList();

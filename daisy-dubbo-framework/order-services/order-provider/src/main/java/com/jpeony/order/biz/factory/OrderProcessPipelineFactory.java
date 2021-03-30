@@ -1,8 +1,6 @@
-package com.jpeony.order.biz.factory;/**
- * Created by mic on 2019/8/2.
- */
+package com.jpeony.order.biz.factory;
 
-import com.gpmall.order.biz.handler.*;
+import com.jpeony.order.biz.handler.*;
 import com.jpeony.order.biz.context.CreateOrderContext;
 import com.jpeony.order.biz.context.TransHandlerContext;
 import com.jpeony.order.biz.convert.CreateOrderConvert;
@@ -14,11 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/8/2-下午10:52
- *
  * 构建订单处理链
  */
 @Slf4j
@@ -38,10 +31,9 @@ public class OrderProcessPipelineFactory extends AbstranctTransPipelineFactory<C
     @Autowired
     private SendMessageHandler sendMessageHandler;
 
-
     @Override
     protected TransHandlerContext createContext() {
-        CreateOrderContext createOrderContext=new CreateOrderContext();
+        CreateOrderContext createOrderContext = new CreateOrderContext();
         return createOrderContext;
     }
 

@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Table(name="tb_item")
+@Table(name = "tb_item")
 @Data
 @ToString
 public class Item implements Serializable {

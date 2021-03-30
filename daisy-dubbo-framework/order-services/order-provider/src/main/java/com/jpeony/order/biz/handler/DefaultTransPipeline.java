@@ -1,19 +1,10 @@
-package com.jpeony.order.biz.handler;/**
- * Created by mic on 2019/8/2.
- */
+package com.jpeony.order.biz.handler;
 
 import com.jpeony.order.biz.context.TransHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/8/2-下午10:37
- */
 @Slf4j
-public class DefaultTransPipeline implements TransPipeline{
-
+public class DefaultTransPipeline implements TransPipeline {
 
     private TransHandlerNode tail;
 
@@ -30,7 +21,7 @@ public class DefaultTransPipeline implements TransPipeline{
     public void addFirst(TransHandler... handlers) {
         TransHandlerNode pre = head.getNext();
         for (TransHandler handler : handlers) {
-            if(handler == null) {
+            if (handler == null) {
                 continue;
             }
             TransHandlerNode node = new TransHandlerNode();
@@ -47,7 +38,7 @@ public class DefaultTransPipeline implements TransPipeline{
     public void addLast(TransHandler... handlers) {
         TransHandlerNode next = tail;
         for (TransHandler handler : handlers) {
-            if(handler == null) {
+            if (handler == null) {
                 continue;
             }
 
@@ -77,7 +68,7 @@ public class DefaultTransPipeline implements TransPipeline{
 
     @Override
     public <T extends TransHandlerContext> T getContext() {
-        return (T)context;
+        return (T) context;
     }
 
     public void setContext(TransHandlerContext context) {

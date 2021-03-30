@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 商品评价dto
+ * 商品评价
  */
 @Data
 public class CommentDto implements Serializable {
@@ -48,4 +48,5 @@ public class CommentDto implements Serializable {
     private Date deletionTime;
 
     private Long deletionUserId;
+    
 }

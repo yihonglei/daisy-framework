@@ -3,8 +3,8 @@ package com.jpeony.cashier.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.jpeony.cashier.form.PayForm;
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
 import com.jpeony.user.annotation.Anoymous;
 import com.jpeony.user.intercepter.TokenIntercepter;
 import com.jpeony.pay.PayCoreService;
@@ -34,7 +34,6 @@ public class PayController {
     @PostMapping("/pay")
     @Anoymous
     public ResponseData pay(@RequestBody PayForm payForm, HttpServletRequest httpServletRequest) {
-        log.info("支付表单数据:{}", payForm);
         PaymentRequest request = new PaymentRequest();
         String userInfo = (String) httpServletRequest.getAttribute(TokenIntercepter.USER_INFO_KEY);
         JSONObject object = JSON.parseObject(userInfo);
@@ -52,14 +51,11 @@ public class PayController {
             return new ResponseUtil<>().setData(response.getHtmlStr());
         }
         return new ResponseUtil<>().setErrorMsg(response.getMsg());
-
     }
-
 
     @PostMapping("/refund")
     @Anoymous
     public ResponseData refund(@RequestBody PayForm refundForm, HttpServletRequest httpServletRequest) {
-        log.info("订单退款入参:{}", JSON.toJSONString(refundForm));
         RefundRequest refundRequest = new RefundRequest();
         String userInfo = (String) httpServletRequest.getAttribute(TokenIntercepter.USER_INFO_KEY);
         JSONObject object = JSON.parseObject(userInfo);
@@ -69,9 +65,7 @@ public class PayController {
         refundRequest.setRefundAmount(refundForm.getMoney());
         refundRequest.setPayChannel(refundForm.getPayType());
         RefundResponse refundResponse = payCoreService.execRefund(refundRequest);
-        log.info("订单退款同步返回结果:{}", JSON.toJSONString(refundResponse));
         return new ResponseUtil<>().setData(refundResponse);
     }
-
 
 }

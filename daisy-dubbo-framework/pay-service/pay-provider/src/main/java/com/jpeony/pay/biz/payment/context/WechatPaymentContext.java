@@ -8,9 +8,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class WechatPaymentContext extends PaymentContext {
-    /** 商品描述（必填）*/
+    /**
+     * 商品描述（必填）
+     */
     private String body;
-    /** 终端IP */
+    /**
+     * 终端IP
+     */
     private String spbillCreateIp;
 
     /**
@@ -18,7 +22,7 @@ public class WechatPaymentContext extends PaymentContext {
      * NATIVE--原生扫码支付
      * APP--app支付，统一下单接口trade_type的传参可参考这里
      * MICROPAY--刷卡支付，刷卡支付有单独的支付接口，不调用统一下单接口
-     *
+     * <p>
      * 交易类型（必填）
      */
     private String tradeType;
@@ -27,7 +31,9 @@ public class WechatPaymentContext extends PaymentContext {
      * 商品id
      */
     private String productId;
-    /** 拼接的xml格式数据，用于传递给微信服务端的参数 */
+    /**
+     * 拼接的xml格式数据，用于传递给微信服务端的参数
+     */
     private String xml;
 
     public String getBody() {

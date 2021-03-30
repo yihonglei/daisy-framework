@@ -29,7 +29,6 @@ spring:
       max-wait: 3000
       min-idle: 4
 
-
 dubbo:
   application:
     name: pay-services

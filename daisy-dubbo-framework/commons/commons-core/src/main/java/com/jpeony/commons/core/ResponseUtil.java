@@ -1,4 +1,4 @@
-package com.jpeony.commons.result;
+package com.jpeony.commons.core;
 
 public class ResponseUtil<T> {
 
@@ -39,4 +39,5 @@ public class ResponseUtil<T> {
         responseData.setCode(500);
         return this.responseData;
     }
+    
 }

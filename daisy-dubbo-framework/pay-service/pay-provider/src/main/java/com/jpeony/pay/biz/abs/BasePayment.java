@@ -1,8 +1,8 @@
 package com.jpeony.pay.biz.abs;
 
 import com.alibaba.fastjson.JSON;
-import com.jpeony.commons.result.AbstractRequest;
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractRequest;
+import com.jpeony.commons.core.AbstractResponse;
 import com.jpeony.commons.tool.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,7 +1,7 @@
 
 package com.jpeony.pay.biz.abs;
 
-import com.jpeony.commons.result.AbstractRequest;
+import com.jpeony.commons.core.AbstractRequest;
 import com.jpeony.commons.tool.exception.BizException;
 import com.jpeony.order.OrderQueryService;
 import com.jpeony.order.dto.OrderDetailRequest;
@@ -34,6 +34,7 @@ public abstract class BaseValidator implements Validator {
 
     /**
      * 检验订单的公共方法
+     *
      * @param request
      * @param orderQueryService
      */
@@ -52,8 +53,8 @@ public abstract class BaseValidator implements Validator {
                 throw new BizException(PayReturnCodeEnum.HAD_PAY_ERROR.getCode(), PayReturnCodeEnum.HAD_PAY_ERROR.getMsg());
             }
             // 防止金额篡改等
-            if(orderDetailResponse.getPayment().compareTo(paymentRequest.getOrderFee())!=0){
-                throw new BizException(PayReturnCodeEnum.ORDER_AMOUNT_ERROR.getCode(),PayReturnCodeEnum.ORDER_AMOUNT_ERROR.getMsg());
+            if (orderDetailResponse.getPayment().compareTo(paymentRequest.getOrderFee()) != 0) {
+                throw new BizException(PayReturnCodeEnum.ORDER_AMOUNT_ERROR.getCode(), PayReturnCodeEnum.ORDER_AMOUNT_ERROR.getMsg());
             }
         }
         //如果是退款请求

@@ -3,11 +3,6 @@ package com.jpeony.order.biz.mock;
 import com.jpeony.shopping.ICartService;
 import com.jpeony.shopping.dto.*;
 
-/**
- * @author jiangnan
- * @description GP17513-成都-Rigel
- * @date 2019/8/9 14:22
- **/
 public class MockCartService implements ICartService {
     @Override
     public CartListByIdResponse getCartListById(CartListByIdRequest request) {

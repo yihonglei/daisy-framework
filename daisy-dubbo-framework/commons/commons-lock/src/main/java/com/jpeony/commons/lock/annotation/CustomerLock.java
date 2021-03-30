@@ -12,41 +12,31 @@ public @interface CustomerLock {
     /**
      * lock key
      * eg  #arg.id
-     *
-     * @return
      */
     String lockKey();
 
     /**
      * 后缀
-     *
-     * @return
      */
     String lockSuffix() default "";
 
     /**
      * 前缀
-     *
-     * @return
      */
     String lockPrefix() default "";
 
     /**
      * 分割符
-     *
-     * @return
      */
     String separator() default "#";
 
     /**
-     * 实现类对应的名称 默认使用redis
-     *
-     * @return
+     * 实现类对应的名称 默认使用 redis
      */
     String lockType() default "";
 
     /**
-     * 是否使用尝试锁。
+     * 是否使用尝试锁
      */
     boolean tryLock() default false;
 
@@ -65,4 +55,5 @@ public @interface CustomerLock {
     int leaseTime() default 30;
 
     TimeUnit timeUnit() default TimeUnit.SECONDS;
+    
 }

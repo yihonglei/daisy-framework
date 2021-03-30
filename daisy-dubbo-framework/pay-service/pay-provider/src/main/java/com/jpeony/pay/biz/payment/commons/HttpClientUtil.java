@@ -51,9 +51,6 @@ public class HttpClientUtil {
 
     /**
      * 不需要参数
-     * @param url
-     * @return
-     * @throws Exception
      */
     public static String httpGet(String url) throws Exception {
         HttpGet httpGet = null;
@@ -90,6 +87,7 @@ public class HttpClientUtil {
     /**
      * 发送 Post请求
      * 参数为string
+     *
      * @param url
      * @param data
      * @return

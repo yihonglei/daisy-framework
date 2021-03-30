@@ -15,14 +15,8 @@
         <plugin type="com.github.trang.mybatis.generator.plugins.MapperSqlMapConfigPlugin"/>
 
         <!--数据库连接 -->
-<!--        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/gpmall"
-                        userId="root"
-                        password="123">
-            <property name="useInformationSchema" value="true"/>
-        </jdbcConnection>-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://mysql.gpmall.com:3306/gpmall"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/jpeony"
                         userId="root"
                         password="123">
             <property name="useInformationSchema" value="true"/>
@@ -31,17 +25,17 @@
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
            NUMERIC 类型解析为java.math.BigDecimal -->
         <javaTypeResolver>
-            <property name="forceBigDecimals" value="false" />
+            <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="com.gpmall.order.dal.entitys"
+        <javaModelGenerator targetPackage="com.jpeony.order.dal.entitys"
                             targetProject="src/main/java">
             <!--继承BaseModel-->
             <!--<property name="rootClass" value="BaseModel"/>-->
             <property name="enableSubPackages" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="com.gpmall.order.dal.persistence" targetProject="src/main/java"/>
+        <sqlMapGenerator targetPackage="com.jpeony.order.dal.persistence" targetProject="src/main/java"/>
 
         <javaClientGenerator targetPackage="com.gpmall.order.dal.persistence"
                              targetProject="src/main/java"

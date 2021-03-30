@@ -1,11 +1,13 @@
 package com.jpeony.pay.dto;
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import lombok.Data;
 
 @Data
-public class PaymentNotifyResponse extends AbstractResponse{
-    /** 返回给服务端的执行结果的报文 */
+public class PaymentNotifyResponse extends AbstractResponse {
+    /**
+     * 返回给服务端的执行结果的报文
+     */
     private String result;
 
     public String getResult() {

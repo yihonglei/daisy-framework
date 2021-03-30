@@ -1,6 +1,6 @@
 package com.jpeony.pay.dto;
 
-import com.jpeony.commons.result.AbstractRequest;
+import com.jpeony.commons.core.AbstractRequest;
 import com.jpeony.pay.validatorextend.PayChannel;
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 
 @Data
-public class PaymentRequest extends AbstractRequest{
+public class PaymentRequest extends AbstractRequest {
     /**
      * 用户id
      */
@@ -66,7 +66,7 @@ public class PaymentRequest extends AbstractRequest{
 
     public String getSubject() {
         try {
-            return new String(subject.getBytes(),"utf-8");
+            return new String(subject.getBytes(), "utf-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

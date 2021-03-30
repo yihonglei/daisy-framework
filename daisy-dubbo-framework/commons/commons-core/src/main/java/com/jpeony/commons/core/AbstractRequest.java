@@ -1,4 +1,4 @@
-package com.jpeony.commons.result;
+package com.jpeony.commons.core;
 
 import java.io.Serializable;
 

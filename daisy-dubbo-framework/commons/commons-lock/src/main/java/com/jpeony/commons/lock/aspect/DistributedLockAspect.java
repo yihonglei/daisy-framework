@@ -27,28 +27,31 @@ import java.util.concurrent.TimeUnit;
 @EnableAspectJAutoProxy
 public class DistributedLockAspect {
 
-
     public static final Logger logger = LoggerFactory.getLogger(DistributedLockAspect.class);
 
-    //切入点：有这个注解的方法
+    /**
+     * 切入点：有这个注解的方法
+     */
     @Pointcut("@annotation(com.jpeony.commons.lock.annotation.CustomerLock)")
     public void distributedLockPointcut() {
     }
 
-    //环绕通知，通知+切入点(distributedLockPointcut) = 切面
+    /**
+     * 环绕通知，通知+切入点(distributedLockPointcut) = 切面
+     */
     @Around("distributedLockPointcut()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
-        //组成key
-        //切点所在的类
+        // 组成key
+        // 切点所在的类
         Method method = ((MethodSignature) pjp.getSignature()).getMethod();
-        //根据注解获取锁对应的key
+        // 根据注解获取锁对应的key
         final String lockKey = getLockKey(method, pjp.getArgs());
         return startLock(lockKey, pjp, method);
     }
 
     private Object startLock(final String lockKey, ProceedingJoinPoint pjp, Method method) throws Throwable {
         CustomerLock annotation = method.getAnnotation(CustomerLock.class);
-        //是否尝试获得锁 com.gpmall.commons.lock.annotation.CustomerLock.tryLock
+        // 是否尝试获得锁
         boolean tryLock = annotation.tryLock();
         if (tryLock) {
             return tryLock(pjp, annotation, lockKey);
@@ -61,16 +64,16 @@ public class DistributedLockAspect {
         int leaseTime = annotation.leaseTime();
         TimeUnit timeUnit = annotation.timeUnit();
         String type = annotation.lockType();
-        //获得分布式锁的具体实现类
+        // 获得分布式锁的具体实现类
         DistributedLock distributedLock = getByType(type);
         try {
-            distributedLock.lock(lockKey, timeUnit, leaseTime);//获得不到会抛出异常
+            // 获得不到会抛出异常
+            distributedLock.lock(lockKey, timeUnit, leaseTime);
             return pjp.proceed();
         } finally {
             distributedLock.unlock(lockKey);
         }
     }
-
 
     private Object tryLock(ProceedingJoinPoint pjp, CustomerLock customerLock, String lockKey) throws Throwable {
         int leaseTime = customerLock.leaseTime();
@@ -80,18 +83,18 @@ public class DistributedLockAspect {
         DistributedLock distributedLock = getByType(type);
 
         try {
-            //如果等待时间为0，则redis如果获得不到锁就直接返回false
+            // 如果等待时间为0，则redis如果获得不到锁就直接返回false
             if (waitTime == 0) {
                 if (distributedLock.tryLock(lockKey)) {
-                    //执行业务方法
+                    // 执行业务方法
                     return pjp.proceed();
                 }
             } else {
-                //如果等待时间不等于0，则redis最长的等待时间为waitTime
+                // 如果等待时间不等于0，则redis最长的等待时间为waitTime
                 // 如果没有获得锁则放回false
-                //如果获得锁则放回true，让后上锁后自动释放锁时间leaseTime
+                // 如果获得锁则放回true，让后上锁后自动释放锁时间leaseTime
                 distributedLock.tryLock(lockKey, timeUnit, waitTime, leaseTime);
-                //执行业务方法
+                // 执行业务方法
                 return pjp.proceed();
             }
         } finally {
@@ -102,11 +105,7 @@ public class DistributedLockAspect {
 
 
     /**
-     * 生成分布式锁key
-     *
-     * @param method
-     * @param args
-     * @return
+     * 生成分布式锁 key
      */
     public String getLockKey(Method method, Object[] args) {
         Objects.requireNonNull(method);
@@ -127,7 +126,7 @@ public class DistributedLockAspect {
             keyGenerator.append(separator).append(suffix);
         }
         lockKey = keyGenerator.toString().trim();
-        // key不允许为空
+        // key 不允许为空
         if (StringUtils.isBlank(lockKey)) {
             throw new IllegalArgumentException("Can't get or generate lock accurately!");
         }
@@ -141,16 +140,16 @@ public class DistributedLockAspect {
      * key 定义在注解上，支持SPEL表达式
      */
     private String parseKey(String key, Method method, Object[] args) {
-        //获取被拦截方法参数名列表(使用Spring支持类库)
+        // 获取被拦截方法参数名列表(使用Spring支持类库)
         LocalVariableTableParameterNameDiscoverer u =
                 new LocalVariableTableParameterNameDiscoverer();
         String[] paraNameArr = u.getParameterNames(method);
 
-        //使用SPEL进行key的解析
+        // 使用SPEL进行key的解析
         ExpressionParser parser = new SpelExpressionParser();
-        //SPEL上下文
+        // SPEL上下文
         StandardEvaluationContext context = new StandardEvaluationContext();
-        //把方法参数放入SPEL上下文中
+        // 把方法参数放入SPEL上下文中
         for (int i = 0; i < paraNameArr.length; i++) {
             context.setVariable(paraNameArr[i], args[i]);
         }
@@ -159,9 +158,6 @@ public class DistributedLockAspect {
 
     /**
      * type =  customerLock.lockType
-     *
-     * @param type
-     * @return
      */
     private DistributedLock getByType(String type) {
         return (DistributedLock) ExtensionLoader.getExtensionLoader(DistributedLock.class).getExtension(type);

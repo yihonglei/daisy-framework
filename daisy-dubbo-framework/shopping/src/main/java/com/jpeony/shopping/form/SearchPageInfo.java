@@ -4,10 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-/**
- * @author lanwp
- * @Date 2019/8/14 11:36
- */
 @Data
 @ApiModel
 public class SearchPageInfo {

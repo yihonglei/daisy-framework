@@ -1,6 +1,6 @@
 package com.jpeony.comment.dto;
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import lombok.Data;
 
 import java.util.List;
@@ -18,4 +18,5 @@ public class CommentReplyListResponse extends AbstractResponse {
     private int page;
 
     private int size;
+    
 }

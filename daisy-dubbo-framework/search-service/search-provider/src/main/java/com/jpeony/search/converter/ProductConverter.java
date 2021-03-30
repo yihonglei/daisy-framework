@@ -13,19 +13,19 @@ import java.util.List;
 public interface ProductConverter {
 
     @Mappings({
-            @Mapping(source = "id",target = "productId"),
-            @Mapping(source = "title",target = "productName"),
-            @Mapping(source = "price",target = "salePrice"),
-            @Mapping(source = "sell_point",target = "subTitle"),
-            @Mapping(source = "image",target = "picUrl")
+            @Mapping(source = "id", target = "productId"),
+            @Mapping(source = "title", target = "productName"),
+            @Mapping(source = "price", target = "salePrice"),
+            @Mapping(source = "sell_point", target = "subTitle"),
+            @Mapping(source = "image", target = "picUrl")
     })
     ProductDto item2Dto(ItemDocument item);
 
     List<ProductDto> items2Dto(List<ItemDocument> items);
 
     @Mappings({
-            @Mapping(source = "sellPoint",target = "sell_point"),
-            @Mapping(source = "limitNum",target = "limit_num")
+            @Mapping(source = "sellPoint", target = "sell_point"),
+            @Mapping(source = "limitNum", target = "limit_num")
     })
     ItemDocument item2Document(Item item);
 }

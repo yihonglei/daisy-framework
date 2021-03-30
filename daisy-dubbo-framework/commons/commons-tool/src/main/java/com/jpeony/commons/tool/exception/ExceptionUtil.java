@@ -2,7 +2,7 @@
 package com.jpeony.commons.tool.exception;
 
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 
 public class ExceptionUtil {
     /**

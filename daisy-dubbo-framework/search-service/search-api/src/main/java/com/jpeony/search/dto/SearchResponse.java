@@ -1,7 +1,7 @@
 package com.jpeony.search.dto;
 
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import com.jpeony.search.consts.SearchRetCode;
 import lombok.Data;
 

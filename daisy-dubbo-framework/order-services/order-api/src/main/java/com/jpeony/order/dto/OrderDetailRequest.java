@@ -1,6 +1,6 @@
 package com.jpeony.order.dto;
 
-import com.jpeony.commons.result.AbstractRequest;
+import com.jpeony.commons.core.AbstractRequest;
 import com.jpeony.commons.tool.exception.ValidateException;
 import com.jpeony.order.constant.OrderRetCode;
 import lombok.Data;

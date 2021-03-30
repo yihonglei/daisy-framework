@@ -35,22 +35,30 @@ public class AliPaymentConfig {
     @Value("${ali.it_b_pay}")
     private String it_b_pay;
 
-    /** 商户的私钥 */
+    /**
+     * 商户的私钥
+     */
     @Value("${ali.private_key}")
     private String private_key;
 
-    /** 支付宝的公钥 */
+    /**
+     * 支付宝的公钥
+     */
     @Value("${ali.public_key}")
     private String public_key;
 
     @Value("${ali.pay_open_gateway}")
     private String pay_open_gateway;
 
-    /** 退款接口名 */
+    /**
+     * 退款接口名
+     */
     @Value("${ali.refund_service}")
     private String refund_service;
 
-    /**退款通知地址 */
+    /**
+     * 退款通知地址
+     */
     @Value("${ali.refund_notify_url}")
     private String refund_notify_url;
 
@@ -114,6 +122,7 @@ public class AliPaymentConfig {
     public void setRefund_service(String refund_service) {
         this.refund_service = refund_service;
     }
+
     public String getRefund_notify_url() {
         return refund_notify_url;
     }

@@ -1,4 +1,4 @@
-package com.jpeony.commons.result;
+package com.jpeony.commons.core;
 
 
 public class ResponseData<T> {

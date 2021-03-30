@@ -1,6 +1,6 @@
 package com.jpeony.coupon.dto;
 
-import com.jpeony.commons.result.AbstractRequest;
+import com.jpeony.commons.core.AbstractRequest;
 import lombok.Data;
 
 import java.util.List;

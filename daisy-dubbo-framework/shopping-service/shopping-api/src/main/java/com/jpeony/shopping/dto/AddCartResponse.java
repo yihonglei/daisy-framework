@@ -1,6 +1,6 @@
 package com.jpeony.shopping.dto;
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 
 public class AddCartResponse extends AbstractResponse{
 }

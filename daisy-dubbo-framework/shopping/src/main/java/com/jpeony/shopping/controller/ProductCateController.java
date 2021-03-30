@@ -1,11 +1,11 @@
 package com.jpeony.shopping.controller;
 
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
-import com.gpmall.shopping.IProductCateService;
-import com.gpmall.shopping.constants.ShoppingRetCode;
-import com.gpmall.shopping.dto.AllProductCateRequest;
-import com.gpmall.shopping.dto.AllProductCateResponse;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
+import com.jpeony.shopping.IProductCateService;
+import com.jpeony.shopping.constants.ShoppingRetCode;
+import com.jpeony.shopping.dto.AllProductCateRequest;
+import com.jpeony.shopping.dto.AllProductCateResponse;
 import com.jpeony.user.annotation.Anoymous;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -17,10 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by oahnus on 2019/8/8
- * 22:34.
- */
 @Slf4j
 @RestController
 @RequestMapping("/shopping")

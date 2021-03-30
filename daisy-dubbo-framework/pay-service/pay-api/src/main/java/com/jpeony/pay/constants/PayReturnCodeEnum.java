@@ -6,22 +6,17 @@ package com.jpeony.pay.constants;
  */
 public enum PayReturnCodeEnum {
 
-    SUCCESS                             ("000000", "成功"),
-
-
-    SYS_PARAM_NOT_RIGHT                 ("006001", "请求参数不正确"),
-    PAYMENT_PROCESSOR_FAILED            ("006002","支付失败"),
-
-    REQUISITE_PARAMETER_NOT_EXIST       ("006073", "必要的参数不能为空"),
-
-    DB_EXCEPTION                        ("006097", "数据库异常"),
-    SYSTEM_TIMEOUT                      ("006098", "系统超时"),
-    SYSTEM_ERROR                        ("006999", "系统繁忙,请稍后重试"),
-    HAD_PAY_ERROR                       ("006099","该订单已支付"),
-    NO_ORDER_NOT_EXIST                  ("006096","该订单不存在"),
-    ORDER_AMOUNT_ERROR                  ("006094","订单金额不对");
-
-
+    SUCCESS("000000", "成功"),
+    SYS_PARAM_NOT_RIGHT("006001", "请求参数不正确"),
+    PAYMENT_PROCESSOR_FAILED("006002", "支付失败"),
+    REQUISITE_PARAMETER_NOT_EXIST("006073", "必要的参数不能为空"),
+    DB_EXCEPTION("006097", "数据库异常"),
+    SYSTEM_TIMEOUT("006098", "系统超时"),
+    SYSTEM_ERROR("006999", "系统繁忙,请稍后重试"),
+    HAD_PAY_ERROR("006099", "该订单已支付"),
+    NO_ORDER_NOT_EXIST("006096", "该订单不存在"),
+    ORDER_AMOUNT_ERROR("006094", "订单金额不对");
+    
     private String code;
 
     private String msg;
@@ -40,12 +35,13 @@ public enum PayReturnCodeEnum {
     }
 
     public String getMsg(String code) {
-        return msg+":"+code;
+        return msg + ":" + code;
     }
 
-    public String getCodeString(){
-        return getCode()+"";
+    public String getCodeString() {
+        return getCode() + "";
     }
+
     @Override
     public String toString() {
         return "PayReturnCodeEnum{" +

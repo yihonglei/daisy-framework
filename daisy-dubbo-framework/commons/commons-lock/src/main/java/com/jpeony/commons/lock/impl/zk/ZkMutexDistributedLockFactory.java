@@ -10,18 +10,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
 /**
- * Description: zk分布式锁工厂
+ * zk 分布式锁工厂
  */
 public class ZkMutexDistributedLockFactory {
 
     private static Logger logger = LoggerFactory.getLogger(ZkMutexDistributedLockFactory.class);
 
-
     protected final static String lockPath = "/gpcommons_lock/curator_recipes_lock/";
+
     protected static String projectName;
 
     static CuratorFramework client = null;
-
 
     static synchronized InterProcessMutex getInterProcessMutex(String lockKey) {
         if (client == null) {
@@ -37,7 +36,6 @@ public class ZkMutexDistributedLockFactory {
         }
         return client;
     }
-
 
     /**
      * 初始化

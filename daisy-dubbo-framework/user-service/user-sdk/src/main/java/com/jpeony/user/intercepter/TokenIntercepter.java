@@ -1,8 +1,8 @@
 package com.jpeony.user.intercepter;
 
 import com.alibaba.fastjson.JSON;
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
 import com.jpeony.commons.tool.utils.CookieUtil;
 import com.jpeony.user.IUserLoginService;
 import com.jpeony.user.annotation.Anoymous;

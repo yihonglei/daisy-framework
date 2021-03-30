@@ -1,12 +1,12 @@
 package com.jpeony.shopping.controller;
 
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
 import com.jpeony.search.InitDataService;
 import com.jpeony.search.ProductSearchService;
 import com.jpeony.search.dto.SearchRequest;
 import com.jpeony.search.dto.SearchResponse;
-import com.gpmall.shopping.constants.ShoppingRetCode;
+import com.jpeony.shopping.constants.ShoppingRetCode;
 import com.jpeony.shopping.form.SearchPageInfo;
 import com.jpeony.user.annotation.Anoymous;
 import io.swagger.annotations.Api;
@@ -15,13 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.*;
 
-
 /**
  * 商城全部商品搜索和热门推荐
- *
- * @author jin
- * @version v1.0.0
- * @Date 2019年8月11日
  */
 @RestController
 @RequestMapping("/shopping")
@@ -64,10 +59,10 @@ public class SearchController {
 
     @Anoymous
     @GetMapping("/search/{key}")
-    public ResponseData search(@PathVariable("key")String key){
-        SearchRequest searchRequest=new SearchRequest();
+    public ResponseData search(@PathVariable("key") String key) {
+        SearchRequest searchRequest = new SearchRequest();
         searchRequest.setKeyword(key);
-        SearchResponse searchResponse=productSearchService.fuzzySearch(searchRequest);
+        SearchResponse searchResponse = productSearchService.fuzzySearch(searchRequest);
         if (searchResponse.getCode().equals(ShoppingRetCode.SUCCESS.getCode())) {
             return new ResponseUtil().setData(searchResponse.getData());
         }
@@ -76,7 +71,7 @@ public class SearchController {
 
     @Anoymous
     @GetMapping("/search/init")
-    public ResponseData init(){
+    public ResponseData init() {
         initDataService.initItems();
         return new ResponseUtil().setData(null);
     }

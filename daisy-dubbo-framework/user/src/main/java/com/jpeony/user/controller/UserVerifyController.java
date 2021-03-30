@@ -1,7 +1,7 @@
 package com.jpeony.user.controller;
 
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
 import com.jpeony.user.IUserRegisterService;
 import com.jpeony.user.IUserVerifyService;
 import com.jpeony.user.annotation.Anoymous;
@@ -28,17 +28,17 @@ public class UserVerifyController {
 
     @Anoymous
     @GetMapping("/verify")
-    public ResponseData register(@RequestParam String uuid,@RequestParam String username, HttpServletRequest request){
-        if(!(StringUtils.isNotBlank(uuid) &&  StringUtils.isNotBlank(username))){
+    public ResponseData register(@RequestParam String uuid, @RequestParam String username, HttpServletRequest request) {
+        if (!(StringUtils.isNotBlank(uuid) && StringUtils.isNotBlank(username))) {
             return new ResponseUtil<>().setErrorMsg("注册序号/用户名不允许为空");
         }
         UserVerifyRequest userVerifyRequest = new UserVerifyRequest();
         userVerifyRequest.setUserName(username);
         userVerifyRequest.setUuid(uuid);
         UserVerifyResponse userVerifyResponse = iUserVerifyService.verifyMemer(userVerifyRequest);
-        if(userVerifyResponse.getCode().equals(SysRetCodeConstants.SUCCESS.getCode())) {
+        if (userVerifyResponse.getCode().equals(SysRetCodeConstants.SUCCESS.getCode())) {
             return new ResponseUtil().setData(null);
-        }else{
+        } else {
             return new ResponseUtil().setData(userVerifyResponse.getMsg());
         }
     }

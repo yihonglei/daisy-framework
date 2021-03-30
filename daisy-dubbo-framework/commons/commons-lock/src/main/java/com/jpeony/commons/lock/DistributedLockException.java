@@ -1,7 +1,7 @@
 package com.jpeony.commons.lock;
 
 /**
- * Description: 分布式锁异常
+ * 分布式锁异常
  */
 public class DistributedLockException extends Exception {
 
@@ -26,4 +26,5 @@ public class DistributedLockException extends Exception {
     protected DistributedLockException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+    
 }

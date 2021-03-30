@@ -1,6 +1,6 @@
 package com.jpeony.order.dto;
 
-import com.jpeony.commons.result.AbstractRequest;
+import com.jpeony.commons.core.AbstractRequest;
 import com.jpeony.commons.tool.exception.ValidateException;
 import com.jpeony.order.constant.OrderRetCode;
 import lombok.Data;
@@ -10,8 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Data
-public class CreateOrderRequest extends AbstractRequest{
-
+public class CreateOrderRequest extends AbstractRequest {
 
     private Long userId;
 
@@ -28,13 +27,12 @@ public class CreateOrderRequest extends AbstractRequest{
     List<CartProductDto> cartProductDtoList;//购物车中的商品列表
 
     private String uniqueKey; //业务唯一id
-
-
+    
     @Override
     public void requestCheck() {
-        if(userId==null||addressId==null||
-                StringUtils.isBlank(tel)||StringUtils.isBlank(userName)|| StringUtils.isBlank(streetName)||orderTotal==null){
-            throw new ValidateException(OrderRetCode.REQUISITE_PARAMETER_NOT_EXIST.getCode(),OrderRetCode.REQUISITE_PARAMETER_NOT_EXIST.getMessage());
+        if (userId == null || addressId == null ||
+                StringUtils.isBlank(tel) || StringUtils.isBlank(userName) || StringUtils.isBlank(streetName) || orderTotal == null) {
+            throw new ValidateException(OrderRetCode.REQUISITE_PARAMETER_NOT_EXIST.getCode(), OrderRetCode.REQUISITE_PARAMETER_NOT_EXIST.getMessage());
         }
     }
 }

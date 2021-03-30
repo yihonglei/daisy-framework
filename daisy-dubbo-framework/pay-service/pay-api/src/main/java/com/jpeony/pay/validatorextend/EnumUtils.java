@@ -7,9 +7,7 @@ import com.jpeony.pay.constants.PayChannelEnum;
 /**
  * 枚举工具类
  */
-
 public class EnumUtils {
-
 
     public static boolean equalsVal(IEnum en, Object code) {
         if (code == null) {

@@ -1,6 +1,6 @@
 package com.jpeony.comment.dto;
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import lombok.Data;
 
 /**
@@ -8,4 +8,5 @@ import lombok.Data;
  */
 @Data
 public class DeleteCommentResponse extends AbstractResponse {
+    
 }

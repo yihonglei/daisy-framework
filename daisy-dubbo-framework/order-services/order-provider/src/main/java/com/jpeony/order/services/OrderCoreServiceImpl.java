@@ -1,6 +1,4 @@
-package com.jpeony.order.services;/**
- * Created by mic on 2019/7/30.
- */
+package com.jpeony.order.services;
 
 import com.jpeony.order.OrderCoreService;
 import com.jpeony.order.biz.TransOutboundInvoker;
@@ -12,7 +10,7 @@ import com.jpeony.order.dal.entitys.Order;
 import com.jpeony.order.dal.persistence.OrderItemMapper;
 import com.jpeony.order.dal.persistence.OrderMapper;
 import com.jpeony.order.dal.persistence.OrderShippingMapper;
-import com.gpmall.order.dto.*;
+import com.jpeony.order.dto.*;
 import com.jpeony.order.utils.ExceptionProcessorUtils;
 import com.jpeony.order.dto.*;
 import lombok.extern.slf4j.Slf4j;
@@ -23,12 +21,6 @@ import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/7/30-上午10:05
- */
 @Slf4j
 @Service(cluster = "failfast")
 public class OrderCoreServiceImpl implements OrderCoreService {

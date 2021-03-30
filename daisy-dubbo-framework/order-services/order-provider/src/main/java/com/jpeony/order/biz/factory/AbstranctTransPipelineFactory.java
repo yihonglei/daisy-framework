@@ -1,8 +1,6 @@
-package com.jpeony.order.biz.factory;/**
- * Created by mic on 2019/8/2.
- */
+package com.jpeony.order.biz.factory;
 
-import com.jpeony.commons.result.AbstractRequest;
+import com.jpeony.commons.core.AbstractRequest;
 import com.jpeony.order.biz.handler.DefaultTransPipeline;
 import com.jpeony.order.biz.handler.TransPipeline;
 import com.jpeony.order.biz.context.AbsTransHandlerContext;
@@ -10,13 +8,7 @@ import com.jpeony.order.biz.context.TransHandlerContext;
 import com.jpeony.order.biz.TransOutboundInvoker;
 import com.jpeony.order.biz.convert.TransConvert;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/8/2-下午10:30
- */
-public abstract class AbstranctTransPipelineFactory <T extends AbstractRequest> implements TransPipelineFactory<T>{
+public abstract class AbstranctTransPipelineFactory<T extends AbstractRequest> implements TransPipelineFactory<T> {
 
     @Override
     public final TransOutboundInvoker build(T obj) {

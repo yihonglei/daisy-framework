@@ -1,6 +1,6 @@
 package com.jpeony.user.utils;
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import com.jpeony.commons.tool.exception.ExceptionUtil;
 import com.jpeony.user.constants.SysRetCodeConstants;
 

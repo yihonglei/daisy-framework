@@ -21,7 +21,7 @@ public class WechatPaymentConfig extends WXPayConfig {
     @Value("${wechat.wechat_mch_id}")
     private String wechatMch_id;
 
-    //默认为微信证书base64证书密文
+    // 默认为微信证书base64证书密文
     @Value("${wechat.wechat_appsecret}")
     private String wechatAppsecret;
 
@@ -70,6 +70,7 @@ public class WechatPaymentConfig extends WXPayConfig {
             public void report(String domain, long elapsedTimeMillis, Exception ex) {
 
             }
+
             @Override
             public DomainInfo getDomain(WXPayConfig config) {
                 return new IWXPayDomain.DomainInfo(WXPayConstants.DOMAIN_API, true);

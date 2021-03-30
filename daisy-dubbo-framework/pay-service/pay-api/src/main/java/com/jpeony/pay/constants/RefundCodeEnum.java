@@ -4,6 +4,7 @@ package com.jpeony.pay.constants;
  * 退款异常枚举
  **/
 public enum RefundCodeEnum {
+    
     ORDER_HAD_REFUND("007001", "该订单已退款"),
     REFUND_NOTIFY_PASRE_FAIL("007002", "退款通知解密失败");
 

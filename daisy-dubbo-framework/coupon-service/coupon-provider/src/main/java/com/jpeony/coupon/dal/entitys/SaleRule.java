@@ -11,7 +11,7 @@ public class SaleRule implements Serializable {
     private Long id;
 
     /**
-     * 活动规则需要绑定acti_id ，如果是优惠券规则， 此字段为null
+     * 活动规则需要绑定 acti_id ，如果是优惠券规则， 此字段为null
      */
     @Column(name = "acti_id")
     private Long actiId;
@@ -81,8 +81,6 @@ public class SaleRule implements Serializable {
 
     /**
      * 获取满足规则条件的商品id
-     *
-     * @return item_id - 满足规则条件的商品id
      */
     public Long getItemId() {
         return itemId;
@@ -90,73 +88,45 @@ public class SaleRule implements Serializable {
 
     /**
      * 设置满足规则条件的商品id
-     *
-     * @param itemId 满足规则条件的商品id
      */
     public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 
-    /**
-     * @return full_price
-     */
     public BigDecimal getFullPrice() {
         return fullPrice;
     }
 
-    /**
-     * @param fullPrice
-     */
     public void setFullPrice(BigDecimal fullPrice) {
         this.fullPrice = fullPrice;
     }
 
-    /**
-     * @return discount_price
-     */
     public BigDecimal getDiscountPrice() {
         return discountPrice;
     }
 
-    /**
-     * @param discountPrice
-     */
     public void setDiscountPrice(BigDecimal discountPrice) {
         this.discountPrice = discountPrice;
     }
 
-    /**
-     * @return discount_rate
-     */
     public BigDecimal getDiscountRate() {
         return discountRate;
     }
 
-    /**
-     * @param discountRate
-     */
     public void setDiscountRate(BigDecimal discountRate) {
         this.discountRate = discountRate;
     }
 
-    /**
-     * @return gift_item_id
-     */
     public Long getGiftItemId() {
         return giftItemId;
     }
 
-    /**
-     * @param giftItemId
-     */
     public void setGiftItemId(Long giftItemId) {
         this.giftItemId = giftItemId;
     }
 
     /**
      * 获取是否可叠加规则
-     *
-     * @return overlap - 是否可叠加规则
      */
     public Boolean getOverlap() {
         return overlap;
@@ -164,51 +134,31 @@ public class SaleRule implements Serializable {
 
     /**
      * 设置是否可叠加规则
-     *
-     * @param overlap 是否可叠加规则
      */
     public void setOverlap(Boolean overlap) {
         this.overlap = overlap;
     }
 
-    /**
-     * @return desc
-     */
     public String getDesc() {
         return desc;
     }
 
-    /**
-     * @param desc
-     */
     public void setDesc(String desc) {
         this.desc = desc;
     }
 
-    /**
-     * @return created
-     */
     public Date getCreated() {
         return created;
     }
 
-    /**
-     * @param created
-     */
     public void setCreated(Date created) {
         this.created = created;
     }
 
-    /**
-     * @return updated
-     */
     public Date getUpdated() {
         return updated;
     }
 
-    /**
-     * @param updated
-     */
     public void setUpdated(Date updated) {
         this.updated = updated;
     }

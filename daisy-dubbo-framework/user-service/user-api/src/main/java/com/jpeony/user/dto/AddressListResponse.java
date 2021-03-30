@@ -1,6 +1,6 @@
 package com.jpeony.user.dto;
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import lombok.Data;
 
 import java.util.List;

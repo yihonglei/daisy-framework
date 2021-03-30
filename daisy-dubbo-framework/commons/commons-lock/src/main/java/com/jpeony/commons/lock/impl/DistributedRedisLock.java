@@ -12,16 +12,12 @@ public class DistributedRedisLock implements DistributedLock {
 
     private RedissonClient redissonClient;
 
-
     public DistributedRedisLock() {
         this.redissonClient = ApplicationContextUtils.getClass(RedissonClient.class);
     }
 
-
     /**
-     * 默认超时时间30s
-     *
-     * @param key
+     * 默认超时时间 30s
      */
     @Override
     public void lock(String key) {
@@ -30,10 +26,7 @@ public class DistributedRedisLock implements DistributedLock {
     }
 
     /**
-     * 未获取到锁直接返回false
-     *
-     * @param key
-     * @return
+     * 未获取到锁直接返回 false
      */
     @Override
     public boolean tryLock(String key) {
@@ -54,8 +47,6 @@ public class DistributedRedisLock implements DistributedLock {
      * @param unit      时间单位
      * @param waitTime  最多等待时间
      * @param leaseTime 上锁后自动释放锁时间
-     * @return
-     * @throws DistributedLockException
      */
     @Override
     public boolean tryLock(String lockKey, TimeUnit unit, int waitTime, int leaseTime) throws DistributedLockException {
@@ -69,8 +60,6 @@ public class DistributedRedisLock implements DistributedLock {
 
     /**
      * 释放锁
-     *
-     * @param lockKey
      */
     @Override
     public void unlock(String lockKey) {

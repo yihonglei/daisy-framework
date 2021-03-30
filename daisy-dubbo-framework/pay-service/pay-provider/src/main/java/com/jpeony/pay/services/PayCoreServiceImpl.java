@@ -9,12 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * @author 风骚的Mic 老师
- * create-date: 2019/7/30-13:54
- */
 @Slf4j
 @Service(cluster = "failover")
 public class PayCoreServiceImpl implements PayCoreService {

@@ -6,20 +6,20 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ApplicationContextUtils  implements ApplicationContextAware {
+public class ApplicationContextUtils implements ApplicationContextAware {
 
-    private static  ApplicationContext applicationContext;
+    private static ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext=applicationContext;
+        ApplicationContextUtils.applicationContext = applicationContext;
     }
 
     public ApplicationContext getApplicationContext() {
         return applicationContext;
     }
 
-    public static <T> T getClass(Class<T>t){
+    public static <T> T getClass(Class<T> t) {
         return applicationContext.getBean(t);
     }
 }

@@ -1,17 +1,9 @@
-package com.jpeony.order.biz.callback;/**
- * Created by mic on 2019/8/3.
- */
+package com.jpeony.order.biz.callback;
 
 import com.jpeony.order.biz.context.TransHandlerContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/8/3-上午10:30
- */
 @Slf4j
 @Component
 public class SendEmailCallback implements TransCallback{

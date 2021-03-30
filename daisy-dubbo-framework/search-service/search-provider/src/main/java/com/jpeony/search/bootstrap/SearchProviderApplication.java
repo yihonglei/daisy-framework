@@ -10,16 +10,15 @@ import tk.mybatis.spring.annotation.MapperScan;
 /**
  * 搜索服务启动类
  */
-
 @SpringBootApplication
 @ComponentScan(basePackages = "com.jpeony.search")
 @MapperScan(basePackages = "com.jpeony.search.dal")
 @EnableElasticsearchRepositories(basePackages = "com.jpeony.search.repository")
 public class SearchProviderApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SearchProviderApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SearchProviderApplication.class, args);
+    }
 
 }
 

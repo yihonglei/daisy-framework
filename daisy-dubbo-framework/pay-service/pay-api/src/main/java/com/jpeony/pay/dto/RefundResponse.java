@@ -1,6 +1,6 @@
 package com.jpeony.pay.dto;
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import lombok.Data;
 
 import java.math.BigDecimal;

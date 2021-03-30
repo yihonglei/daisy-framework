@@ -5,8 +5,8 @@ import com.jpeony.comment.dto.CommentListRequest;
 import com.jpeony.comment.dto.CommentListResponse;
 import com.jpeony.comment.dto.TotalCommentRequest;
 import com.jpeony.comment.dto.TotalCommentResponse;
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -17,10 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Created by oahnus on 2019/8/19
- * 21:29.
- */
 @RestController
 @RequestMapping("/shopping/comment")
 @Api(tags = "ProductCommentController", description = "商品评价控制层")

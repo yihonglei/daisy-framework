@@ -1,7 +1,7 @@
 package com.jpeony.comment.dto;
 
 import com.jpeony.comment.constant.CommentRetCode;
-import com.jpeony.commons.result.AbstractRequest;
+import com.jpeony.commons.core.AbstractRequest;
 import com.jpeony.commons.tool.exception.ValidateException;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
@@ -42,4 +42,5 @@ public class AuditCommentRequest extends AbstractRequest {
             throw new ValidateException(CommentRetCode.REQUEST_PARAMETER_ERROR.getCode(), CommentRetCode.REQUEST_PARAMETER_ERROR.getMessage());
         }
     }
+    
 }

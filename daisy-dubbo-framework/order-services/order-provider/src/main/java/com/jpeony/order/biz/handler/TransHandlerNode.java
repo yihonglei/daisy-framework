@@ -22,7 +22,6 @@ public class TransHandlerNode {
             if (success) {
                 if (transHandler.isAsync()) {
                     //TODO 如果为true，则采用异步线程去执行任务
-
                 }
                 next.exec(context);
             }
@@ -31,7 +30,7 @@ public class TransHandlerNode {
 
     private void execCallbacks(TransCallback callback, TransHandlerContext context, Throwable ex) {
         try {
-            if (ex == null&&callback!=null) {
+            if (ex == null && callback != null) {
                 callback.onDone(context);
             }
         } catch (Exception e) {

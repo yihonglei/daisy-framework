@@ -10,13 +10,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
 
     @Bean
-    public TokenIntercepter tokenIntercepter(){
+    public TokenIntercepter tokenIntercepter() {
         return new TokenIntercepter();
     }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(tokenIntercepter())
                 .addPathPatterns("/cashier/**")
                 .excludePathPatterns("/error");
     }
+
 }

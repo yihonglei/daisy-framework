@@ -2,11 +2,11 @@ package com.jpeony.shopping.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
-import com.gpmall.shopping.ICartService;
-import com.gpmall.shopping.constants.ShoppingRetCode;
-import com.gpmall.shopping.dto.*;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
+import com.jpeony.shopping.ICartService;
+import com.jpeony.shopping.constants.ShoppingRetCode;
+import com.jpeony.shopping.dto.*;
 import com.jpeony.shopping.form.CartForm;
 import com.jpeony.user.intercepter.TokenIntercepter;
 import io.swagger.annotations.Api;
@@ -18,12 +18,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/7/23-18:52
- */
 @RestController
 @RequestMapping("/shopping")
 @Api(tags = "CartController", description = "购物车控制层")

@@ -1,15 +1,11 @@
 package com.jpeony.order.constant;
 
 /**
- * user-service统一错误码为  005
+ * user-service 统一错误码为 005
  */
 public enum OrderRetCode {
-    // 系统公用
     SUCCESS("000000", "成功"),
-
     REQUISITE_PARAMETER_NOT_EXIST("005073", "必要的参数不能为空"),
-
-
     PIPELINE_RUN_EXCEPTION("005094", "系统异常"),
     SHIPPING_DB_SAVED_FAILED("005095", "物流信息保存数据库失败"),
     DB_SAVE_EXCEPTION("005096", "数据保存异常"),

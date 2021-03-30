@@ -26,10 +26,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/8/1-下午5:01
  * 初始化订单
  */
 
@@ -49,8 +45,9 @@ public class InitOrderHandler extends AbstractTransHandler {
     @Autowired
     GlobalIdGeneratorUtil globalIdGeneratorUtil;
 
-    private final String ORDER_GLOBAL_ID_CACHE_KEY="ORDER_ID";
-    private final String ORDER_ITEM_GLOBAL_ID_CACHE_KEY="ORDER_ITEM_ID";
+    private final String ORDER_GLOBAL_ID_CACHE_KEY = "ORDER_ID";
+    private final String ORDER_ITEM_GLOBAL_ID_CACHE_KEY = "ORDER_ITEM_ID";
+
     @Override
     public TransCallback getTransCallback() {
         return sendEmailCallback;
@@ -65,10 +62,10 @@ public class InitOrderHandler extends AbstractTransHandler {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     @Override
     public boolean handle(TransHandlerContext context) {
-        log.info("begin InitOrderHandler :context:"+context);
-        Order order=new Order();
+        log.info("begin InitOrderHandler :context:" + context);
+        Order order = new Order();
         try {
-            CreateOrderContext createOrderContext=(CreateOrderContext)context;
+            CreateOrderContext createOrderContext = (CreateOrderContext) context;
             String orderId = globalIdGeneratorUtil.getNextSeq(ORDER_GLOBAL_ID_CACHE_KEY, 1);
             order.setOrderId(orderId);
             order.setUserId(Long.valueOf(createOrderContext.getUserId()));
@@ -78,7 +75,7 @@ public class InitOrderHandler extends AbstractTransHandler {
             order.setUpdateTime(new Date());
             order.setStatus(OrderConstants.ORDER_STATUS_INIT);
             orderMapper.insert(order); //保存订单
-            List<Long> buyProductIds=new ArrayList<>();
+            List<Long> buyProductIds = new ArrayList<>();
             createOrderContext.getCartProductDtoList().parallelStream().forEach(cartProductDto -> {
                 OrderItem orderItem = new OrderItem();
                 orderItem.setId(globalIdGeneratorUtil.getNextSeq(ORDER_ITEM_GLOBAL_ID_CACHE_KEY, 1));
@@ -96,12 +93,12 @@ public class InitOrderHandler extends AbstractTransHandler {
             });
             createOrderContext.setOrderId(orderId);
             createOrderContext.setBuyProductIds(buyProductIds);
-        }catch(DuplicateKeyException e){
-            log.error("订单重复提交："+e);
-            throw new BizException(OrderRetCode.DB_SAVE_EXCEPTION.getCode(),OrderRetCode.DB_SAVE_EXCEPTION.getMessage());
-        }catch (Exception e){
-            log.error("InitOrderHandler occur Exception :"+e);
-            throw new BizException(OrderRetCode.DB_SAVE_EXCEPTION.getCode(),OrderRetCode.DB_SAVE_EXCEPTION.getMessage());
+        } catch (DuplicateKeyException e) {
+            log.error("订单重复提交：" + e);
+            throw new BizException(OrderRetCode.DB_SAVE_EXCEPTION.getCode(), OrderRetCode.DB_SAVE_EXCEPTION.getMessage());
+        } catch (Exception e) {
+            log.error("InitOrderHandler occur Exception :" + e);
+            throw new BizException(OrderRetCode.DB_SAVE_EXCEPTION.getCode(), OrderRetCode.DB_SAVE_EXCEPTION.getMessage());
         }
         return true;
     }

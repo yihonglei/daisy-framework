@@ -1,12 +1,10 @@
-package com.jpeony.shopping.controller;/**
- * Created by mic on 2019/8/2.
- */
+package com.jpeony.shopping.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
-import com.gpmall.shopping.constants.ShoppingRetCode;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
+import com.jpeony.shopping.constants.ShoppingRetCode;
 import com.jpeony.shopping.form.AddressForm;
 import com.jpeony.user.IAddressService;
 import com.jpeony.user.constants.SysRetCodeConstants;
@@ -21,12 +19,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/8/2-上午9:36
- */
 @Slf4j
 @RestController
 @RequestMapping("/shopping")
@@ -60,7 +52,7 @@ public class AddressController {
     @PostMapping("/addresses")
     @ApiImplicitParam(name = "form", value = "地址信息", dataType = "AddressForm", required = true)
     public ResponseData addressAdd(@RequestBody AddressForm form, HttpServletRequest servletRequest) {
-        log.debug(form.is_Default()+"");
+        log.debug(form.is_Default() + "");
         log.debug(form.toString());
 
         AddAddressRequest request = new AddAddressRequest();

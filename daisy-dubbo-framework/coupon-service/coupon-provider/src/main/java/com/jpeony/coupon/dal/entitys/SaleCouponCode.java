@@ -89,8 +89,6 @@ public class SaleCouponCode implements Serializable {
 
     /**
      * 设置优惠券id
-     *
-     * @param couponId 优惠券id
      */
     public void setCouponId(Long couponId) {
         this.couponId = couponId;
@@ -98,8 +96,6 @@ public class SaleCouponCode implements Serializable {
 
     /**
      * 获取0 未领取 1 已领取未使用 2 冻结中 3 已使用 4 已过期
-     *
-     * @return status - 0 未领取 1 已领取未使用 2 冻结中 3 已使用 4 已过期
      */
     public Byte getStatus() {
         return status;
@@ -107,31 +103,21 @@ public class SaleCouponCode implements Serializable {
 
     /**
      * 设置0 未领取 1 已领取未使用 2 冻结中 3 已使用 4 已过期
-     *
-     * @param status 0 未领取 1 已领取未使用 2 冻结中 3 已使用 4 已过期
      */
     public void setStatus(Byte status) {
         this.status = status;
     }
 
-    /**
-     * @return user_id
-     */
     public Long getUserId() {
         return userId;
     }
 
-    /**
-     * @param userId
-     */
     public void setUserId(Long userId) {
         this.userId = userId;
     }
 
     /**
      * 获取关联的订单id
-     *
-     * @return order_id - 关联的订单id
      */
     public Long getOrderId() {
         return orderId;
@@ -139,8 +125,6 @@ public class SaleCouponCode implements Serializable {
 
     /**
      * 设置关联的订单id
-     *
-     * @param orderId 关联的订单id
      */
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
@@ -148,8 +132,6 @@ public class SaleCouponCode implements Serializable {
 
     /**
      * 获取使用时间
-     *
-     * @return consume_time - 使用时间
      */
     public Date getConsumeTime() {
         return consumeTime;
@@ -157,37 +139,23 @@ public class SaleCouponCode implements Serializable {
 
     /**
      * 设置使用时间
-     *
-     * @param consumeTime 使用时间
      */
     public void setConsumeTime(Date consumeTime) {
         this.consumeTime = consumeTime;
     }
 
-    /**
-     * @return created
-     */
     public Date getCreated() {
         return created;
     }
 
-    /**
-     * @param created
-     */
     public void setCreated(Date created) {
         this.created = created;
     }
 
-    /**
-     * @return updated
-     */
     public Date getUpdated() {
         return updated;
     }
-
-    /**
-     * @param updated
-     */
+    
     public void setUpdated(Date updated) {
         this.updated = updated;
     }

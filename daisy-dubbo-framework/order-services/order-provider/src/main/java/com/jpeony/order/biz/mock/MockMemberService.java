@@ -4,9 +4,7 @@ import com.jpeony.user.IMemberService;
 import com.jpeony.user.dto.*;
 
 /**
- * @author GP17513-成都-Rigel
- * @description 会员信息mock类
- * @date 2019/8/9 14:12
+ * 会员信息 mock 类
  **/
 public class MockMemberService implements IMemberService {
     @Override

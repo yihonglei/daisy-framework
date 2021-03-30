@@ -25,8 +25,8 @@ public class InitDataServiceImpl implements InitDataService {
 
     @Override
     public void initItems() {
-        List<Item> items=itemMapper.selectAll();
-        items.parallelStream().forEach(item->{
+        List<Item> items = itemMapper.selectAll();
+        items.parallelStream().forEach(item -> {
             productRepository.save(productConverter.item2Document(item));
         });
     }

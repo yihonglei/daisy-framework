@@ -1,7 +1,7 @@
 package com.jpeony.user.controller;
 
-import com.jpeony.commons.result.ResponseData;
-import com.jpeony.commons.result.ResponseUtil;
+import com.jpeony.commons.core.ResponseData;
+import com.jpeony.commons.core.ResponseUtil;
 import com.jpeony.commons.tool.utils.CookieUtil;
 import com.jpeony.user.IKaptchaService;
 import com.jpeony.user.annotation.Anoymous;
@@ -22,16 +22,13 @@ public class CaptchaController {
     @Reference(timeout = 3000)
     IKaptchaService kaptchaService;
 
-    /**
-     *
-     */
     @Anoymous
     @GetMapping("/kaptcha")
     public ResponseData getKaptchaCode(HttpServletResponse response) {
-        KaptchaCodeRequest kaptchaCodeRequest=new KaptchaCodeRequest();
-        KaptchaCodeResponse kaptchaCodeResponse=kaptchaService.getKaptchaCode(kaptchaCodeRequest);
-        if(kaptchaCodeResponse.getCode().equals(SysRetCodeConstants.SUCCESS.getCode())){
-            Cookie cookie=CookieUtil.genCookie("kaptcha_uuid",kaptchaCodeResponse.getUuid(),"/",60);
+        KaptchaCodeRequest kaptchaCodeRequest = new KaptchaCodeRequest();
+        KaptchaCodeResponse kaptchaCodeResponse = kaptchaService.getKaptchaCode(kaptchaCodeRequest);
+        if (kaptchaCodeResponse.getCode().equals(SysRetCodeConstants.SUCCESS.getCode())) {
+            Cookie cookie = CookieUtil.genCookie("kaptcha_uuid", kaptchaCodeResponse.getUuid(), "/", 60);
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
             return new ResponseUtil<>().setData(kaptchaCodeResponse.getImageCode());
@@ -41,7 +38,7 @@ public class CaptchaController {
 
     @Anoymous
     @PostMapping("/kaptcha")
-    public ResponseData validKaptchaCode(@RequestBody String code,HttpServletRequest httpServletRequest) {
+    public ResponseData validKaptchaCode(@RequestBody String code, HttpServletRequest httpServletRequest) {
         KaptchaCodeRequest request = new KaptchaCodeRequest();
         String uuid = CookieUtil.getCookieValue(httpServletRequest, "kaptcha_uuid");
         request.setUuid(uuid);

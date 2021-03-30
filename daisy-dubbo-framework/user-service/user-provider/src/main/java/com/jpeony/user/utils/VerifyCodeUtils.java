@@ -20,33 +20,37 @@ public class VerifyCodeUtils {
 
     /**
      * 使用系统默认字符源生成验证码
-     * @param verifySize	验证码长度
+     *
+     * @param verifySize 验证码长度
      * @return
      */
-    public static String generateVerifyCode(int verifySize){
+    public static String generateVerifyCode(int verifySize) {
         return generateVerifyCode(verifySize, VERIFY_CODES);
     }
+
     /**
      * 使用指定源生成验证码
-     * @param verifySize	验证码长度
-     * @param sources	验证码字符源
+     *
+     * @param verifySize 验证码长度
+     * @param sources    验证码字符源
      * @return
      */
-    public static String generateVerifyCode(int verifySize, String sources){
-        if(sources == null || sources.length() == 0){
+    public static String generateVerifyCode(int verifySize, String sources) {
+        if (sources == null || sources.length() == 0) {
             sources = VERIFY_CODES;
         }
         int codesLen = sources.length();
         Random rand = new Random(System.currentTimeMillis());
         StringBuilder verifyCode = new StringBuilder(verifySize);
-        for(int i = 0; i < verifySize; i++){
-            verifyCode.append(sources.charAt(rand.nextInt(codesLen-1)));
+        for (int i = 0; i < verifySize; i++) {
+            verifyCode.append(sources.charAt(rand.nextInt(codesLen - 1)));
         }
         return verifyCode.toString();
     }
 
     /**
      * 生成随机验证码文件,并返回验证码值
+     *
      * @param w
      * @param h
      * @param outputFile
@@ -62,6 +66,7 @@ public class VerifyCodeUtils {
 
     /**
      * 输出随机验证码图片流,并返回验证码值
+     *
      * @param w
      * @param h
      * @param os
@@ -69,7 +74,7 @@ public class VerifyCodeUtils {
      * @return
      * @throws IOException
      */
-    public static String outputVerifyImage(int w, int h, OutputStream os, int verifySize) throws IOException{
+    public static String outputVerifyImage(int w, int h, OutputStream os, int verifySize) throws IOException {
         String verifyCode = generateVerifyCode(verifySize);
         outputImage(w, h, os, verifyCode);
         return verifyCode;
@@ -77,50 +82,52 @@ public class VerifyCodeUtils {
 
     /**
      * 生成指定验证码图像文件
+     *
      * @param w
      * @param h
      * @param outputFile
      * @param code
      * @throws IOException
      */
-    public static void outputImage(int w, int h, File outputFile, String code) throws IOException{
-        if(outputFile == null){
+    public static void outputImage(int w, int h, File outputFile, String code) throws IOException {
+        if (outputFile == null) {
             return;
         }
         File dir = outputFile.getParentFile();
-        if(!dir.exists()){
+        if (!dir.exists()) {
             dir.mkdirs();
         }
-        try{
+        try {
             outputFile.createNewFile();
             FileOutputStream fos = new FileOutputStream(outputFile);
             outputImage(w, h, fos, code);
             fos.close();
-        } catch(IOException e){
+        } catch (IOException e) {
             throw e;
         }
     }
 
     /**
      * 输出指定验证码图片流
+     *
      * @param w
      * @param h
      * @param os
      * @param code
      * @throws IOException
      */
-    public static void outputImage(int w, int h, OutputStream os, String code) throws IOException{
+    public static void outputImage(int w, int h, OutputStream os, String code) throws IOException {
         int verifySize = code.length();
         BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
         Random rand = new Random();
         Graphics2D g2 = image.createGraphics();
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         Color[] colors = new Color[5];
-        Color[] colorSpaces = new Color[] { Color.WHITE, Color.CYAN,
+        Color[] colorSpaces = new Color[]{Color.WHITE, Color.CYAN,
                 Color.GRAY, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE,
-                Color.PINK, Color.YELLOW };
+                Color.PINK, Color.YELLOW};
         float[] fractions = new float[colors.length];
-        for(int i = 0; i < colors.length; i++){
+        for (int i = 0; i < colors.length; i++) {
             colors[i] = colorSpaces[rand.nextInt(colorSpaces.length)];
             fractions[i] = rand.nextFloat();
         }
@@ -131,7 +138,7 @@ public class VerifyCodeUtils {
 
         Color c = getRandColor(200, 250);
         g2.setColor(c);// 设置背景色
-        g2.fillRect(0, 2, w, h-4);
+        g2.fillRect(0, 2, w, h - 4);
 
         //绘制干扰线
         Random random = new Random();
@@ -157,15 +164,15 @@ public class VerifyCodeUtils {
         shear(g2, w, h, c);// 使图片扭曲
 
         g2.setColor(getRandColor(100, 160));
-        int fontSize = h-4;
+        int fontSize = h - 4;
         Font font = new Font("Algerian", Font.ITALIC, fontSize);
         g2.setFont(font);
         char[] chars = code.toCharArray();
-        for(int i = 0; i < verifySize; i++){
+        for (int i = 0; i < verifySize; i++) {
             AffineTransform affine = new AffineTransform();
-            affine.setToRotation(Math.PI / 4 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1), (w / verifySize) * i + fontSize/2, h/2);
+            affine.setToRotation(Math.PI / 4 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1), (w / verifySize) * i + fontSize / 2, h / 2);
             g2.setTransform(affine);
-            g2.drawChars(chars, i, 1, ((w-10) / verifySize) * i + 5, h/2 + fontSize/2 - 10);
+            g2.drawChars(chars, i, 1, ((w - 10) / verifySize) * i + 5, h / 2 + fontSize / 2 - 10);
         }
 
         g2.dispose();
@@ -251,6 +258,7 @@ public class VerifyCodeUtils {
         }
 
     }
+
     public static ImageResult VerifyCode(int w, int h, int size) throws IOException {
         BASE64Encoder encoder = new BASE64Encoder();
         ImageResult rs = new ImageResult();

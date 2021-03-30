@@ -20,9 +20,7 @@ import java.util.SortedMap;
 public class WeChatBuildRequest {
 
     /**
-     * 随机字符串，不长于32位。
-     *
-     * @return
+     * 随机字符串，不长于32位
      */
     public static String getNonceStr() {
         Random random = new Random();
@@ -49,7 +47,7 @@ public class WeChatBuildRequest {
     public static String createSign(SortedMap<Object, Object> parameters, String key) {
         StringBuffer sb = new StringBuffer();
         // 所有参与传参的参数按照accsii排序（升序）
-        parameters.forEach((k,v) ->{
+        parameters.forEach((k, v) -> {
             if (!"sign".equals(k) && !"key".equals(k) && null != v && !"".equals(v)) {
                 sb.append(k + "=" + v + "&");
             }
@@ -114,15 +112,13 @@ public class WeChatBuildRequest {
     }
 
     /**
-     * @param parameters 请求参数
-     * @return
-     * @Description：将请求参数转换为xml格式的string
+     * 将请求参数转换为xml格式的string
      */
     @SuppressWarnings("rawtypes")
     public static String getRequestXml(SortedMap<Object, Object> parameters) {
         StringBuffer sb = new StringBuffer();
         sb.append("<xml>");
-        parameters.forEach((k,v) -> {
+        parameters.forEach((k, v) -> {
             if ("attach".equalsIgnoreCase((String) k) || "body".equalsIgnoreCase((String) k)
                     || "sign".equalsIgnoreCase((String) k)) {
                 sb.append("<" + k + ">" + "<![CDATA[" + v + "]]></" + k + ">");

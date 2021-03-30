@@ -1,6 +1,6 @@
 package com.jpeony.comment.dto;
 
-import com.jpeony.commons.result.AbstractResponse;
+import com.jpeony.commons.core.AbstractResponse;
 import lombok.Data;
 
 /**
@@ -13,4 +13,5 @@ public class ItemScoreResponse extends AbstractResponse {
      * 综合评分
      */
     private double score;
+    
 }

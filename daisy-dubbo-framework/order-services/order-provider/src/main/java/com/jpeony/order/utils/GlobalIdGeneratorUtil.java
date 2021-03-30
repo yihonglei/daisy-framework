@@ -1,6 +1,4 @@
-package com.jpeony.order.utils;/**
- * Created by mic on 2019/8/1.
- */
+package com.jpeony.order.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -21,12 +19,6 @@ import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/8/1-下午9:40
- */
 @Slf4j
 @Component
 public class GlobalIdGeneratorUtil {
@@ -43,7 +35,7 @@ public class GlobalIdGeneratorUtil {
 
     private String sha1;
 
-    private String luaScript="local function get_max_seq()\n" +
+    private String luaScript = "local function get_max_seq()\n" +
             "    local key = tostring(KEYS[1])\n" +
             "    local incr_amoutt = tonumber(KEYS[2])\n" +
             "    local seq = tostring(KEYS[3])\n" +
@@ -69,22 +61,23 @@ public class GlobalIdGeneratorUtil {
     public GlobalIdGeneratorUtil() throws IOException {
 
     }
+
     @PostConstruct
     private void init() throws Exception {
         sha1 = redissonClient.getScript().scriptLoad(luaScript);
     }
 
     public String getNextSeq(String keyName, int incrby) {
-        if(StringUtils.isBlank(keyName)||incrby<0) {
+        if (StringUtils.isBlank(keyName) || incrby < 0) {
             throw new RuntimeException("参数不正确");
         }
-        this.keyName=keyName;
-        this.incrby=incrby;
+        this.keyName = keyName;
+        this.incrby = incrby;
         try {
             return getMaxSeq();
-        }catch (Exception e){//如果redis出现故障，则采用uuid
+        } catch (Exception e) {//如果redis出现故障，则采用uuid
             e.printStackTrace();
-            return UUID.randomUUID().toString().replace("-","");
+            return UUID.randomUUID().toString().replace("-", "");
         }
     }
 
@@ -95,10 +88,10 @@ public class GlobalIdGeneratorUtil {
     }
 
     public String getMaxSeq() throws ExecutionException, InterruptedException {
-        List<Object> keys= Arrays.asList(keyName,incrby,generateSeq());
-        RedissonScript rScript=(RedissonScript) redissonClient.getScript();
+        List<Object> keys = Arrays.asList(keyName, incrby, generateSeq());
+        RedissonScript rScript = (RedissonScript) redissonClient.getScript();
         //这里遇到一个bug，默认情况下使用evalSha，不加Codec属性时，会报错。这个错误很神奇。花了3个小时才搞定。
-        Long seqNext=rScript.evalSha(RScript.Mode.READ_ONLY, JsonJacksonCodec.INSTANCE,sha1, RScript.ReturnType.VALUE,keys);
+        Long seqNext = rScript.evalSha(RScript.Mode.READ_ONLY, JsonJacksonCodec.INSTANCE, sha1, RScript.ReturnType.VALUE, keys);
         return seqNext.toString();
     }
 }

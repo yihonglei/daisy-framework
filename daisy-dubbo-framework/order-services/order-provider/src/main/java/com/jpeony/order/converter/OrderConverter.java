@@ -1,23 +1,15 @@
-package com.jpeony.order.converter;/**
- * Created by mic on 2019/7/31.
- */
+package com.jpeony.order.converter;
 
 import com.jpeony.order.dal.entitys.Order;
 import com.jpeony.order.dal.entitys.OrderItem;
 import com.jpeony.order.dal.entitys.OrderShipping;
-import com.gpmall.order.dto.*;
+import com.jpeony.order.dto.*;
 import com.jpeony.order.dto.*;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mappings;
 
 import java.util.List;
 
-/**
- * 腾讯课堂搜索【咕泡学院】
- * 官网：www.gupaoedu.com
- * 风骚的Mic 老师
- * create-date: 2019/7/31-上午9:57
- */
 @Mapper(componentModel = "spring")
 public interface OrderConverter {
 

@@ -5,9 +5,6 @@ import com.jpeony.commons.lock.DistributedLockException;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * waapper
- */
 public class DistributedLockWrapper implements DistributedLock {
 
     private DistributedLock distributedLock;

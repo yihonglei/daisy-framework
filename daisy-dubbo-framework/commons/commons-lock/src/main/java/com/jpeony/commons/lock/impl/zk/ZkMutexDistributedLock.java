@@ -7,8 +7,7 @@ import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Description: zk分布式锁实现,
- * <p1>注意:此锁可以重入，但是重入几次需要释放几次。</p1>
+ * zk分布式锁实现, 注意:此锁可以重入，但是重入几次需要释放几次。
  */
 public class ZkMutexDistributedLock implements DistributedLock {
     private InterProcessMutex interProcessMutex;
@@ -66,9 +65,7 @@ public class ZkMutexDistributedLock implements DistributedLock {
 
     /**
      * 创建interProcessMutex 客户端
-     * 因为 此类  是 每个带CustomerLock 注解的方法  在调用的时候 都会创建一个对象，因此不会出现线程安全问题。
-     *
-     * @param lockKey
+     * 因为此类是每个带 CustomerLock 注解的方法在调用的时候都会创建一个对象，因此不会出现线程安全问题。
      */
     void init(String lockKey) {
         if (interProcessMutex == null) {

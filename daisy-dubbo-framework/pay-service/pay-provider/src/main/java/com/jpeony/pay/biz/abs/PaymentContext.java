@@ -3,15 +3,22 @@ package com.jpeony.pay.biz.abs;
 import java.math.BigDecimal;
 
 public class PaymentContext extends Context {
-    /** 商户订单号（必填）*/
+    /**
+     * 商户订单号（必填）
+     */
     private String outTradeNo;
-    /** 总金额(单位为元)（必填）*/
+    /**
+     * 总金额(单位为元)（必填）
+     */
     private BigDecimal totalFee;
-    /** 用户id **/
+    /**
+     * 用户id
+     **/
     private Long userId;
-    /** 返回参数 构建html表单 */
+    /**
+     * 返回参数 构建html表单
+     */
     private String htmlStr;
-
 
     public String getHtmlStr() {
         return htmlStr;

@@ -53,13 +53,13 @@ public class ExtensionLoader<T> {
     }
 
     public static ExtensionLoader getExtensionLoader(Class t) {
-        //判断class
+        // 判断class
         check(t);
         ExtensionLoader extensionLoader = extension_load_map.get(t);
         if (extensionLoader != null) {
             return extensionLoader;
         }
-        //此时创建Extension
+        // 此时创建Extension
         synchronized (extension_load_map) {
             extensionLoader = extension_load_map.get(t);
             if (extensionLoader == null) {
