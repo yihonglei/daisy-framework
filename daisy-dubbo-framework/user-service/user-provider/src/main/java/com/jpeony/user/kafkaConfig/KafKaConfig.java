@@ -59,7 +59,7 @@ public class KafKaConfig {
         consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, "default");
         consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);//消费者的自动提交方式关闭
         // consumerProperties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG,10);//在一个的轮训方法中，返回的最大记录数
-        consumerProperties.put("spring.json.trusted.packages", "com.gpmall.user.dal.entitys,com.gpmall.user.dal.*");
+        consumerProperties.put("spring.json.trusted.packages", "com.jpeony.user.dal.entitys,com.jpeony.user.dal.*");
         /*
         earliest:当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
         latest: 当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据

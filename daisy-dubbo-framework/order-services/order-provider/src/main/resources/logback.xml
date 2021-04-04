@@ -64,7 +64,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.gpmall.order.dal.persistence" level="DEBUG"/>
+    <logger name="com.jpeony.order.dal.persistence" level="DEBUG"/>
 
     <root level="INFO">
 <!--        <appender-ref ref="INFO" />

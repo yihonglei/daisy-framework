@@ -4,8 +4,8 @@
  Source Server         : 咕泡商城
  Source Server Type    : MySQL
  Source Server Version : 50726
- Source Host           : mysql4gpmall.mysql.rds.aliyuncs.com:3306
- Source Schema         : gpmall
+ Source Host           : mysql4jpeony.mysql.rds.aliyuncs.com:3306
+ Source Schema         : jpeony
 
  Target Server Type    : MySQL
  Target Server Version : 50726
@@ -67,7 +67,7 @@ CREATE TABLE `tb_base` (
 -- Records of tb_base
 -- ----------------------------
 BEGIN;
-INSERT INTO `tb_base` VALUES (1, 'GPMALL后台管理系统 v1.0', 'GPMALL后台管理系统 v1.0,GPMALL,GPMALL购物商城后台管理系统', 'GPMALL后台管理系统 v1.0，是一款电商后台管理系统，适合中小型CMS后台系统。', '', '', '', '', 0, 'test login notice', 0, 'test all notice', '', '', 'http://istio.tech');
+INSERT INTO `tb_base` VALUES (1, '后台管理系统 v1.0', '后台管理系统 v1.0,jpeony,购物商城后台管理系统', '后台管理系统 v1.0，是一款电商后台管理系统，适合中小型CMS后台系统。', '', '', '', '', 0, 'test login notice', 0, 'test all notice', '', '', 'http://istio.tech');
 COMMIT;
 
 -- ----------------------------
@@ -142,7 +142,7 @@ CREATE TABLE `tb_dict` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `tb_dict` VALUES (1, 'Mic', 1);
-INSERT INTO `tb_dict` VALUES (2, 'GPMall', 1);
+INSERT INTO `tb_dict` VALUES (2, 'Jpeony', 1);
 INSERT INTO `tb_dict` VALUES (4, 'test', 0);
 COMMIT;
 

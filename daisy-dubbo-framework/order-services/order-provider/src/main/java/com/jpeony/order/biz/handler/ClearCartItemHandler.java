@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class ClearCartItemHandler extends AbstractTransHandler {
-    @Reference(check = false, mock = "com.gpmall.order.biz.mock.MockCartService")
+    @Reference(check = false, mock = "com.jpeony.order.biz.mock.MockCartService")
     ICartService cartService;
 
     //是否采用异步方式执行

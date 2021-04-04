@@ -1,6 +1,6 @@
 package com.jpeony.shopping.bootstrap;
 
-import com.gpmall.shopping.*;
+import com.jpeony.shopping.*;
 import com.jpeony.shopping.*;
 import com.jpeony.shopping.dto.AddCartRequest;
 import com.jpeony.shopping.dto.AllProductCateRequest;
@@ -41,6 +41,7 @@ public class ShoppingProviderApplicationTests {
 
     @Autowired
     private IHomeService homeService;
+
     @Test
     public void testHomeService() throws IOException {
         homeService.homepage();

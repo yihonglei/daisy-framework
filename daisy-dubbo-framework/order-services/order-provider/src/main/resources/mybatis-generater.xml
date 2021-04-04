@@ -37,7 +37,7 @@
 
         <sqlMapGenerator targetPackage="com.jpeony.order.dal.persistence" targetProject="src/main/java"/>
 
-        <javaClientGenerator targetPackage="com.gpmall.order.dal.persistence"
+        <javaClientGenerator targetPackage="com.jpeony.order.dal.persistence"
                              targetProject="src/main/java"
                              type="XMLMAPPER"/>
         <!--已生成的表

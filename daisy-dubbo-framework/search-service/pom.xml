@@ -14,8 +14,6 @@
     <packaging>pom</packaging>
 
     <name>search-service</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.gpmall.com</url>
 
     <distributionManagement>
         <repository>

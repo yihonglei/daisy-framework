@@ -4,7 +4,7 @@ Navicat MySQL Data Transfer
 Source Server         : MySQL
 Source Server Version : 50717
 Source Host           : localhost:3306
-Source Database       : gpmall
+Source Database       : jpeony
 
 Target Server Type    : MYSQL
 Target Server Version : 50717

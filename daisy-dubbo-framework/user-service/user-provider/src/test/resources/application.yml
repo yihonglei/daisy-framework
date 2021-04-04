@@ -2,8 +2,8 @@ spring:
   profiles:
     active: test
 mybatis:
-  mapper-locations: classpath*:com/gpmall/user/dal/persistence/*Mapper.xml"
-  type-aliases-package: com.gpmall.user.dal.entitys
+  mapper-locations: classpath*:com/jpeony/user/dal/persistence/*Mapper.xml"
+  type-aliases-package: com.jpeony.user.dal.entitys
 
 pagehelper:
   helper-dialect: mysql

@@ -236,7 +236,7 @@ public class ExtensionLoader<T> {
                                                     throw new IllegalStateException("No such extension name for the class " + clazz.getName() + " in the config " + url);
                                                 }
                                                 //name 按都逗号分隔，可以配置多个
-                                                //如：redis,redis_1=com.gpmall.commons.lock.impl.DistributedRedisLock
+                                                //如：redis,redis_1=com.jpeony.commons.lock.impl.DistributedRedisLock
                                                 String[] names = NAME_SEPARATOR.split(name);
                                                 if (names != null && names.length > 0) {
                                                     for (String n : names) {

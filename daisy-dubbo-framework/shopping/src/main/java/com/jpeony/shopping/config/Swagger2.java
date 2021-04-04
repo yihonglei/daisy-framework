@@ -67,7 +67,7 @@ public class Swagger2 {
                 .apiInfo(apiInfo())
                 .host(host)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.gpmall.shopping.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.jpeony.shopping.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .enable(enable)
@@ -77,8 +77,8 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("GPMall-Shopping的API接口")
-                .description("GPMall-Shopping")
+                .title("jpeony-Shopping的API接口")
+                .description("jpeony-Shopping")
                 .version("1.0")
                 .build();
     }

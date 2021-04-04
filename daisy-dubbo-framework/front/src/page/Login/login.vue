@@ -27,7 +27,7 @@
             <li style="text-align: right" class="pr">
               <el-checkbox class="auto-login" v-model="autoLogin">记住密码</el-checkbox>
               <!-- <span class="pa" style="top: 0;left: 0;color: #d44d44">{{ruleForm.errMsg}}</span> -->
-              <a href="javascript:;" class="register" @click="toRegister">注册 GPmall 账号</a>
+              <a href="javascript:;" class="register" @click="toRegister">注册 jpeony 账号</a>
               <a style="padding: 1px 0 0 10px" @click="open('找回密码','请联系作者邮箱找回密码或使用测试账号登录：test | test')">忘记密码 ?</a>
             </li>
           </ul>
