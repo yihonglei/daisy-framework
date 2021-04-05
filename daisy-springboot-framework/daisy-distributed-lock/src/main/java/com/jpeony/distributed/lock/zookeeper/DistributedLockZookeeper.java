@@ -17,6 +17,7 @@ public class DistributedLockZookeeper implements DistributedLock {
 
     @Override
     public boolean tryLock(String key) throws DistributedLockException {
+
         return false;
     }
 
@@ -27,6 +28,7 @@ public class DistributedLockZookeeper implements DistributedLock {
 
     @Override
     public boolean tryLock(String lockKey, TimeUnit unit, int waitTime, int leaseTime) throws DistributedLockException {
+
         return false;
     }
 
