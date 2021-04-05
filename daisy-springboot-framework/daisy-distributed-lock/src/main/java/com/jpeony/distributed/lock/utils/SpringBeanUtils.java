@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 /**
- * 获取SpringBean工具类
+ * 获取 SpringBean 工具类
  *
  * @author yihonglei
  */
@@ -40,6 +40,7 @@ public class SpringBeanUtils implements ApplicationContextAware {
     }
 
     public static <T> Map<String, T> beansOfTypeIncludingAncestors(Class<T> type) {
+
         return BeanFactoryUtils.beansOfTypeIncludingAncestors(applicationContext, type, false, false);
     }
 }
