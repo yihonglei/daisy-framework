@@ -1,6 +1,0 @@
-spring:
-  profiles:
-    active: dev
-mybatis:
-  mapper-locations: classpath*:com/jpeony/order/dal/persistence/*Mapper.xml"
-  type-aliases-package: com.jpeony.order.dal.entitys

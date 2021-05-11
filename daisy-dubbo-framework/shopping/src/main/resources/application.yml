@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: shopping
-  profiles:
-      active: prod
-server:
-  port: 8081
-
-
