@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    @Value("${user.name}")
+    @Value("${user.name:test}")
     private String userName;
 
     @GetMapping("/helloUser")
