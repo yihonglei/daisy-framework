@@ -22,17 +22,17 @@ public class RocketMqAutoConfiguration implements ApplicationListener<ContextRef
     @Override
     public void onApplicationEvent(ContextRefreshedEvent refreshedEvent) {
         ApplicationContext context = refreshedEvent.getApplicationContext();
-        if (context == null || context.getParent() != null) {
+        if (context.getParent() != null) {
             return;
         }
+
         Map<String, LifeCycle> map = context.getBeansOfType(LifeCycle.class, false, false);
-        if (map != null) {
-            map.forEach((k, v) -> {
-                v.start();
-                logger.info("启动成功完成 key:[{}] value:[{}] 启动状态:[{}]", k, v, v.isStart());
-            });
-            MAP = map;
-        }
+        map.forEach((k, v) -> {
+            v.start();
+            logger.info("启动成功完成 key:[{}] value:[{}] 启动状态:[{}]", k, v, v.isStart());
+        });
+        
+        MAP = map;
     }
 
     @PreDestroy

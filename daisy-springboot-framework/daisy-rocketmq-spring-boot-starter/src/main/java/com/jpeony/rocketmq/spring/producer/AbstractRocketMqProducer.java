@@ -21,7 +21,7 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
     protected Logger logger = LoggerFactory.getLogger(getClass());
     protected DefaultMQProducer producer = null;
     /**
-     * mq相关配置
+     * mq 相关配置
      */
     private RocketMqBaseProperty mqProperty;
     private static AtomicInteger number = new AtomicInteger(0);
