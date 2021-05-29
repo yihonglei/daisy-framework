@@ -39,7 +39,7 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle {
             init();
         }
     }
-    
+
     private void init() {
         if (start) {
             logger.warn("the consumer [{}] is started.", this);
