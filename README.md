@@ -1,18 +1,30 @@
+# 前言
+
+脚手架项目，内容分为 SpringBoot，Dubbo，SpringCloud 三部分。
+
+A：daisy-springboot-framework
+
+B：daisy-dubbo-framework
+
+C：daisy-springcloud-framework
+
 # A、daisy-springboot-framework
+
+## 1、项目说明
 
 基于 SpringBoot 分布式架构，以及各种互联网技术。
 
-## 开发环境
+## 2、开发环境
 
 - Mac + JDK8
 
-## 技术栈
+## 3、架构技术
 
 - Web框架：Spring Boot
 
-- 数据库：MySql，druid 连接池
+- 数据库：MySQL，druid 连接池
 
-- ORM框架：MyBatis
+- ORM 框架：MyBatis
 
 - 缓存中间件：Redis
 
@@ -22,17 +34,17 @@
 
 - 分布式事务：柔性事务，RocketMQ 最终一致性，定时任务做双层防护
 
-- 定时任务：elastic-job（当当分布式）
+- 分布式调度：elastic-job（当当分布式）
 
 - 系统日志：logback，elk
 
 - 系统监控：[sunflower](https://github.com/jchry/sunflower)
 
-- 工程化：idea，Maven，Git，jenkins，Docker&k8s
+- 工程化：idea，Maven，Git，jenkins，Docker，k8s
 
-- 运维部署：tomcat，linux
+- 运维部署：Tomcat，Linux
 
-## 模块说明
+## 4、模块说明
 
 ### 基础依赖
 
@@ -76,7 +88,7 @@ daisy-parent：基础依赖
 
 基于elastic-job实现分布式job。
 
-## 项目构建
+## 5、项目构建
 
 ### 基础组件构建
 
@@ -108,9 +120,9 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 - 访问: http://localhost:8765/test/test, 返回结果: {"code":1,"data":null,"msg":"daisy启动成功了!"}
 
-# 技术博客
+## 5、技术博客
 
-## 1、技术选型
+### 技术选型
 
 [微服务框架选型]
 
@@ -148,7 +160,7 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 [海量存储选型]
 
-## 2、开发实战
+### 最佳实战
 
 [项目命名规范](https://blog.csdn.net/yhl_jxy/article/details/103946580)
 
@@ -196,8 +208,34 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 # B、daisy-dubbo-framework
 
-Dubbo 脚手架。
+## 1、项目说明
+
+纯 Dubbo 脚手架，其他相关互联网技术参考 daisy-springboot-framework。
+
+## 2、架构技术
+
+分布式框架：Dubbo
+
+注册中心：Zookeeper
+
+## 3、技术博客
 
 # C、daisy-springcloud-framework
 
-SpringCloud 脚手架。
+## 1、项目说明
+
+纯 SpringCloud 脚手架，其他相关互联网技术参考 daisy-springboot-framework。
+
+## 2、架构技术
+
+微服务框架：SpringCloud
+
+注册中心&配置中心：Nacos
+
+API 网关：Gateway
+
+鉴权：OAuth
+
+## 3、技术博客
+
+
