@@ -16,15 +16,5 @@
     </properties>
 
     <dependencies>
-        <!-- canal -->
-        <dependency>
-            <groupId>com.alibaba.otter</groupId>
-            <artifactId>canal.client</artifactId>
-        </dependency>
-        <!-- rocketmq -->
-        <dependency>
-            <groupId>com.jpeony</groupId>
-            <artifactId>daisy-rocketmq-spring-boot-starter</artifactId>
-        </dependency>
     </dependencies>
 </project>

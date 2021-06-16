@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: daisy-cloud-user
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml # 假如不配置，则 nacos 远程配置文件的后缀为 .properties
+      discovery:
+        server-addr: 127.0.0.1:8848
