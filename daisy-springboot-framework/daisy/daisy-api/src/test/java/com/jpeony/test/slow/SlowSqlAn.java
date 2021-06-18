@@ -1,5 +1,7 @@
 package com.jpeony.test.slow;
 
+import org.apache.commons.collections.CollectionUtils;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -19,7 +21,7 @@ public class SlowSqlAn {
             List<ContentBO> slowSqlList = new ArrayList<>();
 
             // 读取文件
-            File file = new File("/Users/hongqi/Documents/perf/mysql-slow-20200907.log");
+            File file = new File("/Users/hongqi/Documents/perf/mysql-slow-2021061722.log");
             InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file));
             BufferedReader bf = new BufferedReader(inputReader);
             // 按行读取字符串
@@ -82,64 +84,72 @@ public class SlowSqlAn {
             // 业务处理
             Map<String, List<ContentBO>> groupMap = slowSqlList.stream().collect(Collectors.groupingBy(ContentBO::getOpeType));
             List<ContentBO> insertList = groupMap.get("insert");
-            System.out.println(
-                    "操作次数: " + insertList.size() +
-                            " 操作类型: insert" +
-                            ", 总时间: " + insertList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).toString() +
-                            ", 最大值: " + insertList.stream().map(ContentBO::getOpeTime).max(BigDecimal::compareTo).get().toString() +
-                            ", 最小值: " + insertList.stream().map(ContentBO::getOpeTime).min(BigDecimal::compareTo).get().toString() +
-                            ", 平均值: " + insertList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).divide(BigDecimal.valueOf(insertList.size()), 6, BigDecimal.ROUND_HALF_UP));
+            if (CollectionUtils.isNotEmpty(insertList)) {
+                System.out.println(
+                        "操作次数: " + insertList.size() +
+                                " 操作类型: insert" +
+                                ", 总时间: " + insertList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).toString() +
+                                ", 最大值: " + insertList.stream().map(ContentBO::getOpeTime).max(BigDecimal::compareTo).get().toString() +
+                                ", 最小值: " + insertList.stream().map(ContentBO::getOpeTime).min(BigDecimal::compareTo).get().toString() +
+                                ", 平均值: " + insertList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).divide(BigDecimal.valueOf(insertList.size()), 6, BigDecimal.ROUND_HALF_UP));
+            }
 
             List<ContentBO> selectList = groupMap.get("select");
-            System.out.println(
-                    "操作次数: " + selectList.size() +
-                            " 操作类型: select" +
-                            ", 总时间: " + selectList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).toString() +
-                            ", 最大值: " + selectList.stream().map(ContentBO::getOpeTime).max(BigDecimal::compareTo).get().toString() +
-                            ", 最小值: " + selectList.stream().map(ContentBO::getOpeTime).min(BigDecimal::compareTo).get().toString() +
-                            ", 平均值: " + selectList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).divide(BigDecimal.valueOf(selectList.size()), 6, BigDecimal.ROUND_HALF_UP));
+            if (CollectionUtils.isNotEmpty(selectList)) {
+                System.out.println(
+                        "操作次数: " + selectList.size() +
+                                " 操作类型: select" +
+                                ", 总时间: " + selectList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).toString() +
+                                ", 最大值: " + selectList.stream().map(ContentBO::getOpeTime).max(BigDecimal::compareTo).get().toString() +
+                                ", 最小值: " + selectList.stream().map(ContentBO::getOpeTime).min(BigDecimal::compareTo).get().toString() +
+                                ", 平均值: " + selectList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).divide(BigDecimal.valueOf(selectList.size()), 6, BigDecimal.ROUND_HALF_UP));
+            }
 
             List<ContentBO> updateList = groupMap.get("update");
-            System.out.println(
-                    "操作次数: " + updateList.size() +
-                            " 操作类型: update" +
-                            ", 总时间: " + updateList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).toString() +
-                            ", 最大值: " + updateList.stream().map(ContentBO::getOpeTime).max(BigDecimal::compareTo).get().toString() +
-                            ", 最小值: " + updateList.stream().map(ContentBO::getOpeTime).min(BigDecimal::compareTo).get().toString() +
-                            ", 平均值: " + updateList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).divide(BigDecimal.valueOf(updateList.size()), 6, BigDecimal.ROUND_HALF_UP));
+            if (CollectionUtils.isNotEmpty(updateList)) {
+                System.out.println(
+                        "操作次数: " + updateList.size() +
+                                " 操作类型: update" +
+                                ", 总时间: " + updateList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).toString() +
+                                ", 最大值: " + updateList.stream().map(ContentBO::getOpeTime).max(BigDecimal::compareTo).get().toString() +
+                                ", 最小值: " + updateList.stream().map(ContentBO::getOpeTime).min(BigDecimal::compareTo).get().toString() +
+                                ", 平均值: " + updateList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).divide(BigDecimal.valueOf(updateList.size()), 6, BigDecimal.ROUND_HALF_UP));
+            }
 
             List<ContentBO> deleteList = groupMap.get("delete");
-            System.out.println(
-                    "操作次数: " + deleteList.size() +
-                            " 操作类型: delete" +
-                            ", 总时间: " + deleteList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).toString() +
-                            ", 最大值: " + deleteList.stream().map(ContentBO::getOpeTime).max(BigDecimal::compareTo).get().toString() +
-                            ", 最小值: " + deleteList.stream().map(ContentBO::getOpeTime).min(BigDecimal::compareTo).get().toString() +
-                            ", 平均值: " + deleteList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).divide(BigDecimal.valueOf(deleteList.size()), 6, BigDecimal.ROUND_HALF_UP));
+            if (CollectionUtils.isNotEmpty(deleteList)) {
+                System.out.println(
+                        "操作次数: " + deleteList.size() +
+                                " 操作类型: delete" +
+                                ", 总时间: " + deleteList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).toString() +
+                                ", 最大值: " + deleteList.stream().map(ContentBO::getOpeTime).max(BigDecimal::compareTo).get().toString() +
+                                ", 最小值: " + deleteList.stream().map(ContentBO::getOpeTime).min(BigDecimal::compareTo).get().toString() +
+                                ", 平均值: " + deleteList.stream().map(ContentBO::getOpeTime).reduce(BigDecimal.ZERO, BigDecimal::add).divide(BigDecimal.valueOf(deleteList.size()), 6, BigDecimal.ROUND_HALF_UP));
+            }
 
             // insert
-            for (ContentBO bo : insertList) {
+//            for (ContentBO bo : insertList) {
 //                System.out.println("insert操作, Schema: " + bo.getSchema() +
 //                        ", 操作时间: " + bo.getExecuteTime() +
 //                        ", 耗时: " + bo.getOpeTime() +
 //                        ", SQL: " + bo.getSqlContent());
-            }
+//            }
 
             // update
-            for (ContentBO bo : updateList) {
+//            for (ContentBO bo : updateList) {
 //                System.out.println("update操作, Schema: " + bo.getSchema() +
 //                        ", 操作时间: " + bo.getExecuteTime() +
 //                        ", 耗时: " + bo.getOpeTime() +
 //                        ", SQL: " + bo.getSqlContent());
-            }
+//            }
 
             // delete
-            for (ContentBO bo : deleteList) {
-                System.out.println("delete操作, Schema: " + bo.getSchema() +
-                        ", 操作时间: " + bo.getExecuteTime() +
-                        ", 耗时: " + bo.getOpeTime() +
-                        ", SQL: " + bo.getSqlContent());
-            }
+//            for (ContentBO bo : deleteList) {
+//                System.out.println("delete操作, Schema: " + bo.getSchema() +
+//                        ", 操作时间: " + bo.getExecuteTime() +
+//                        ", 耗时: " + bo.getOpeTime() +
+//                        ", SQL: " + bo.getSqlContent());
+//            }
 
             // select
 //            for (ContentBO bo : selectList) {
@@ -149,16 +159,16 @@ public class SlowSqlAn {
 //                        ", SQL: " + bo.getSqlContent());
 //            }
             // select ip 分组
-//            Map<String, List<ContentBO>> ipGroupMap = selectList.stream().collect(Collectors.groupingBy(ContentBO::getAppIp));
-//            for (Map.Entry<String, List<ContentBO>> entry : ipGroupMap.entrySet()) {
-//                System.out.println("===========ip:" + entry.getKey());
-//                List<ContentBO> list = entry.getValue();
-//                for (ContentBO bo : list) {
-//                    System.out.println("select操作, Schema: " + bo.getSchema() +
-//                            ", 耗时: " + bo.getOpeTime() +
-//                            ", SQL: " + bo.getSqlContent());
-//                }
-//            }
+            Map<String, List<ContentBO>> ipGroupMap = selectList.stream().collect(Collectors.groupingBy(ContentBO::getAppIp));
+            for (Map.Entry<String, List<ContentBO>> entry : ipGroupMap.entrySet()) {
+                System.out.println("===========ip:" + entry.getKey());
+                List<ContentBO> list = entry.getValue();
+                for (ContentBO bo : list) {
+                    System.out.println("select操作, Schema: " + bo.getSchema() +
+                            ", 耗时: " + bo.getOpeTime() +
+                            ", SQL: " + bo.getSqlContent());
+                }
+            }
 
             bf.close();
             inputReader.close();
