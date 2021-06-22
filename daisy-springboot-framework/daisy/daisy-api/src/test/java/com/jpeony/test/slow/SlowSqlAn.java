@@ -21,7 +21,7 @@ public class SlowSqlAn {
             List<ContentBO> slowSqlList = new ArrayList<>();
 
             // 读取文件
-            File file = new File("/Users/hongqi/Documents/perf/mysql-slow-2021061722.log");
+            File file = new File("/Users/hongqi/Documents/perf/mysql-slow-20210621.log");
             InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file));
             BufferedReader bf = new BufferedReader(inputReader);
             // 按行读取字符串
