@@ -1,4 +1,4 @@
-package com.jpeony.dubbo;
+package com.jpeony.dubbo.order;
 
 /**
  * @author yihonglei
