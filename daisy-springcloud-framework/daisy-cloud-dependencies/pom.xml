@@ -6,6 +6,7 @@
 
     <groupId>com.jpeony.cloud</groupId>
     <artifactId>daisy-cloud-dependencies</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>daisy-cloud-dependencies</name>
 

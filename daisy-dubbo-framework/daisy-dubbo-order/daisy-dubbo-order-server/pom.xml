@@ -4,14 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.jpeony.cloud</groupId>
-        <artifactId>daisy-cloud-dependencies</artifactId>
+        <groupId>com.jpeony.dubbo</groupId>
+        <artifactId>daisy-dubbo-order</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>daisy-cloud-user</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>daisy-dubbo-order-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>daisy-cloud-user</name>
+    <packaging>jar</packaging>
+    <name>daisy-dubbo-order-server</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,10 +20,8 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
     </dependencies>
 
+    <build>
+    </build>
 </project>
