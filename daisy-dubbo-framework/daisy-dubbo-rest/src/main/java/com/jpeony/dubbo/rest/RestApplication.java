@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author yihonglei
  */
-@SpringBootApplication
-public class ApiApplication {
+@SpringBootApplication(scanBasePackages = "com.jpeony.dubbo.rest.*")
+public class RestApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ApiApplication.class, args);
+        SpringApplication.run(RestApplication.class, args);
     }
 }

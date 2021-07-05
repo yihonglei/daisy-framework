@@ -1,6 +1,9 @@
 package com.jpeony.dubbo.rest.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.jpeony.dubbo.common.utils.ApiResponse;
+import com.jpeony.dubbo.user.client.api.UserService;
+import com.jpeony.dubbo.user.client.api.pojo.dto.UserDTO;
+import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,11 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    @Value("${user.name:test}")
-    private String userName;
 
-    @GetMapping("/helloUser")
-    public String helloUser() {
-        return "hello user, user.name = " + userName;
+    @Reference
+    private UserService userService;
+
+    @GetMapping("/getUser")
+    public ApiResponse getUser(UserDTO userDTO) {
+        return userService.getUser(userDTO);
     }
 }

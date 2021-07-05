@@ -20,6 +20,12 @@
     </properties>
 
     <dependencies>
+        <!-- 业务 -->
+        <dependency>
+            <groupId>com.jpeony.dubbo</groupId>
+            <artifactId>daisy-dubbo-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
