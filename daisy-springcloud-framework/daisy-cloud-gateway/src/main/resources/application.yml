@@ -7,11 +7,11 @@ spring:
   cloud:
     gateway:
       routes:
-        - id:
-          uri:
+        - id: daisy-cloud-user # 路由的 id，没有规定规则但要求唯一,建议配合服务名
+          # uri: http://localhost:8765 # 匹配后提供服务的路由地址
+          uri: lb://service-provider # 匹配后提供服务的路由地址
           predicates:
-      default-filters:
-
+            - Path=/user/getUser/** # **：通配符 ；断言，路径相匹配的进行路由
 eureka:
   client:
     service-url: http://localhost:9000/eureka/
