@@ -1,0 +1,7 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/
+  instance:
+    instance-id: eureka-gateway-zuul-9003
+    prefer-ip-address: true

@@ -17,10 +17,15 @@
     </properties>
 
     <dependencies>
-        <!-- 熔断降级 -->
+        <!-- Spring Boot全栈Web开发模块，包含嵌入Tomcat、Spring、Spring MVC等等-->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- Spring Boot单服务单元测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <!-- lombok -->
         <dependency>
@@ -28,12 +33,6 @@
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
             <scope>compile</scope>
-        </dependency>
-        <!-- test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
