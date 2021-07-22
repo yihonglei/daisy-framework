@@ -1,6 +1,7 @@
 # tomcat 端口
 server:
   port: 8080
+
 # dubbo
 dubbo:
   application:
