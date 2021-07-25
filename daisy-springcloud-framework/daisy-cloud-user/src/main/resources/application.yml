@@ -3,9 +3,3 @@ server:
 spring:
   application:
     name: daisy-cloud-user
-eureka:
-  client:
-    service-url: http://localhost:9000/eureka/
-  instance:
-    instance-id: eureka-provider-user
-    prefer-ip-address: true
