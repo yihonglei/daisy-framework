@@ -24,24 +24,4 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
-
-    <!--Maven Build-->
-    <build>
-        <plugins>
-            <!-- Spring Boot Build -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!-- JDK version -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
