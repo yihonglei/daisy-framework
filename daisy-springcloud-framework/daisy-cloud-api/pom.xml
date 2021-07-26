@@ -19,5 +19,10 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>daisy-cloud-feign-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
