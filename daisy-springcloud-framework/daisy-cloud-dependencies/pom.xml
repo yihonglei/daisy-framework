@@ -17,11 +17,6 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot全栈Web开发模块，包含嵌入Tomcat、Spring、Spring MVC等等-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
         <!-- 注册中心 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>

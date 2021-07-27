@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @author yihonglei
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/query")
 public class UserController {
     @Autowired
     private UserApi userApi;
 
-    @GetMapping("/getUser/{userId}")
+    @GetMapping("/user/getUser/{userId}")
     public String helloUser(@PathVariable(value = "userId") int userId) {
         return userApi.getUser(userId);
     }
