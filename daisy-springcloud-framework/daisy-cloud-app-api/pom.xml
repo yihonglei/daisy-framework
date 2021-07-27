@@ -8,9 +8,9 @@
         <artifactId>daisy-cloud-dependencies</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>daisy-cloud-api</artifactId>
+    <artifactId>daisy-cloud-app-api</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>daisy-cloud-api</name>
+    <name>daisy-cloud-app-api</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

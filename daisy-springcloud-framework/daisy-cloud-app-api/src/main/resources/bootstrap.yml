@@ -2,7 +2,7 @@ server:
   port: 8766
 spring:
   application:
-    name: daisy-cloud-api
+    name: daisy-cloud-app-api
   cloud:
     nacos:
       discovery:
