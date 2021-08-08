@@ -8,10 +8,10 @@
         <artifactId>parent-dependencies</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>charge-service</artifactId>
+    <artifactId>commons</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>charge-service</name>
+    <name>commons</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

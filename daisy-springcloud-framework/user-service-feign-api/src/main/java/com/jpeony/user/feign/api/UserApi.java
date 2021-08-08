@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * @author yihonglei
  */
-@FeignClient(name = "daisy-cloud-user", fallback = UserApiFallBack.class)
+@FeignClient(name = "daisy-cloud-user")
 public interface UserApi {
     @RequestMapping(value = "/user/getUser/{userId}", method = RequestMethod.GET)
     String getUser(@PathVariable("userId") int userId);

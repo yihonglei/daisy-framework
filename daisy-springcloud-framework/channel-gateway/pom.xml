@@ -9,9 +9,9 @@
         <artifactId>parent-dependencies</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>passenger-gateway</artifactId>
+    <artifactId>channel-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>passenger-gateway</name>
+    <name>channel-gateway</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
