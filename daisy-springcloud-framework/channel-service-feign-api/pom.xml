@@ -8,10 +8,10 @@
         <artifactId>parent-dependencies</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>commons</artifactId>
+    <artifactId>channel-service-feign-api</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>commons</name>
+    <name>channel-service-feign-api</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,9 +20,5 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
     </dependencies>
 </project>
