@@ -20,5 +20,15 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>commons</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>order-service-feign-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>

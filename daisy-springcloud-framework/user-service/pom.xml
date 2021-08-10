@@ -20,10 +20,29 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot全栈Web开发模块，包含嵌入Tomcat、Spring、Spring MVC等等-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>commons</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>user-service-feign-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.0.1</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>

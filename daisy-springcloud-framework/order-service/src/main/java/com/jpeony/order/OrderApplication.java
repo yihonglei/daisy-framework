@@ -1,4 +1,4 @@
-package com.jpeony.user;
+package com.jpeony.order;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
@@ -20,12 +20,12 @@ import java.util.List;
 /**
  * @author yihonglei
  */
-@SpringBootApplication(scanBasePackages = "com.jpeony.user.*", exclude = {DataSourceAutoConfiguration.class,
+@SpringBootApplication(scanBasePackages = "com.jpeony.order.*", exclude = {DataSourceAutoConfiguration.class,
         RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class})
 @EnableDiscoveryClient
-public class UserApplication implements WebMvcConfigurer {
+public class OrderApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
-        SpringApplication.run(UserApplication.class, args);
+        SpringApplication.run(OrderApplication.class, args);
     }
 
     /**
@@ -38,14 +38,13 @@ public class UserApplication implements WebMvcConfigurer {
 
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.WriteMapNullValue);
-
         List<MediaType> fastMediaTypes = Lists.newArrayList();
         fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
         fastMediaTypes.add(MediaType.APPLICATION_JSON);
         fastMediaTypes.add(new MediaType("application", "*+json"));
-
         fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
         fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
+
         converters.add(fastJsonHttpMessageConverter);
     }
 }

@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: daisy-cloud-app-gateway
+    name: channel-gateway
   cloud:
     nacos:
       discovery:

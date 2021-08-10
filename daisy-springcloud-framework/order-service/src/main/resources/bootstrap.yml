@@ -1,8 +1,8 @@
 server:
-  port: 8765
+  port: 8766
 spring:
   application:
-    name: user-service
+    name: order-service
   cloud:
     nacos:
       discovery:

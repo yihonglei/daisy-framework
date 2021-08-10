@@ -5,7 +5,8 @@ import org.slf4j.MDC;
 
 import java.io.Serializable;
 
-import static com.jpeony.common.constant.TraceConstant.*;
+import static com.jpeony.commons.constant.TraceConstant.*;
+
 
 /**
  * MDC中存放的记录，便于查询日志

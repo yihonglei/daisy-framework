@@ -9,8 +9,8 @@
         <artifactId>parent-dependencies</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>user-feign-api</artifactId>
-    <name>user-feign-api</name>
+    <artifactId>user-service-feign-api</artifactId>
+    <name>user-service-feign-api</name>
     <packaging>jar</packaging>
 
     <properties>
@@ -24,6 +24,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--使用 lombok 简化 Java 代码-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
