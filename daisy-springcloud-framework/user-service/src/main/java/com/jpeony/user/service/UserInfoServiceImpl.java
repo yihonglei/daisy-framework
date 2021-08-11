@@ -5,7 +5,6 @@ import com.jpeony.feign.user.api.pojo.dto.UserDTO;
 import com.jpeony.feign.user.api.pojo.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @author yihonglei

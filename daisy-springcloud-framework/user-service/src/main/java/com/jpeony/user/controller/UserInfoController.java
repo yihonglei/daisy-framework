@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.*;
  * @author yihonglei
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping(value = "/user", produces = "application/json; charset=utf-8")
 public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
     @GetMapping("/getUserInfoByUserId")
-    public String getUser(int userId) {
+    public String getUser(@RequestBody int userId) {
         return userInfoService.getUserInfoByUserId(userId);
     }
 
     @PostMapping("/getUserInfo")
-    public UserVO getUserInfo(UserDTO userDTO) {
+    public UserVO getUserInfo(@RequestBody UserDTO userDTO) {
         return userInfoService.getUserInfo(userDTO);
     }
 }

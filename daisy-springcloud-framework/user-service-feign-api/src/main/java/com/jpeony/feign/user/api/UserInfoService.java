@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(name = "user-service")
 public interface UserInfoService {
     @GetMapping(value = "/user/getUserInfoByUserId")
-    String getUserInfoByUserId(int userId);
+    String getUserInfoByUserId(@RequestBody int userId);
 
     @PostMapping(value = "/user/getUserInfo")
-    UserVO getUserInfo(UserDTO userDTO);
+    UserVO getUserInfo(@RequestBody UserDTO userDTO);
 }
