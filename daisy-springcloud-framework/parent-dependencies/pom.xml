@@ -35,7 +35,7 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- 支持 Spring Boot 2.1.X -->
+            <!-- 支持 spring boot 2.1.X -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -57,13 +57,25 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!-- fastJson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
             <!-- guava -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>${guava.version}</version>
             </dependency>
-            <!-- 使用 lombok 简化 Java 代码 -->
+            <!-- lombok 简化 Java 代码 -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -85,11 +97,11 @@
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
             </dependency>
-            <!-- fastJson -->
+            <!-- disruptor -->
             <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>fastjson</artifactId>
-                <version>${fastjson.version}</version>
+                <groupId>com.lmax</groupId>
+                <artifactId>disruptor</artifactId>
+                <version>${disruptor.version}</version>
             </dependency>
             <!-- Redis -->
             <dependency>
@@ -103,7 +115,7 @@
                 <artifactId>elastic-job-lite-core</artifactId>
                 <version>${latest.release.version}</version>
             </dependency>
-            <!-- 使用springframework自定义命名空间时引入 -->
+            <!-- 使用 springframework 自定义命名空间时引入 -->
             <dependency>
                 <groupId>com.dangdang</groupId>
                 <artifactId>elastic-job-lite-spring</artifactId>
@@ -115,7 +127,7 @@
                 <artifactId>rocketmq-client</artifactId>
                 <version>${rocketmq-client.version}</version>
             </dependency>
-            <!--Swagger2 - RESTFUL API 文档-->
+            <!-- Swagger RESTFUL API 文档 -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
@@ -131,7 +143,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!--防止进入swagger页面报类型转换错误，排除2.9.2中的引用，手动增加1.5.21版本-->
+            <!-- 防止进入 Swagger 页面报类型转换错误，排除 2.9.2 中的引用，手动增加 1.5.21 版本 -->
             <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
@@ -144,14 +156,14 @@
                 <version>${swagger-io.version}</version>
                 <scope>compile</scope>
             </dependency>
-            <!-- swagger2-UI-->
+            <!-- Swagger UI -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
                 <scope>compile</scope>
             </dependency>
-            <!-- Swagger增强版 UI -->
+            <!-- Swagger 增强版 UI -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>swagger-bootstrap-ui</artifactId>

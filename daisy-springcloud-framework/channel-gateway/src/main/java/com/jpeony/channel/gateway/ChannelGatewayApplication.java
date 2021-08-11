@@ -1,4 +1,4 @@
-package com.jpeony.cloud.gateway;
+package com.jpeony.channel.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,8 +9,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @SpringBootApplication
 @EnableDiscoveryClient
-public class AppGatewayApplication {
+public class ChannelGatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(AppGatewayApplication.class, args);
+        SpringApplication.run(ChannelGatewayApplication.class, args);
     }
 }

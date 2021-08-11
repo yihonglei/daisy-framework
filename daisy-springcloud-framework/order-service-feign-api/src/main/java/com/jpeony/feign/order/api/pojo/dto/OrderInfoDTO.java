@@ -7,6 +7,6 @@ import lombok.Data;
  */
 @Data
 public class OrderInfoDTO {
-    private Integer orderId;
+    private String orderName;
     private Integer status;
 }

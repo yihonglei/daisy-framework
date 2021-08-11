@@ -22,7 +22,7 @@ public class UserInfoServiceImpl implements UserInfoService {
     public UserVO getUserInfo(UserDTO userDTO) {
         UserVO userVO = new UserVO();
         userVO.setUserId(1);
-        userVO.setName(userDTO.getName());
+        userVO.setUserName(userDTO.getUserName());
         userVO.setAge(userDTO.getAge());
 
         return userVO;

@@ -20,5 +20,28 @@
     </properties>
 
     <dependencies>
+        <!-- commons -->
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>commons</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- user-service -->
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>user-service-feign-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- order-service -->
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>order-service-feign-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- feign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
     </dependencies>
 </project>

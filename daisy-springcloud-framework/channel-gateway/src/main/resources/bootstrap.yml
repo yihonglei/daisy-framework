@@ -17,15 +17,7 @@ spring:
           enabled: false # 知否支持微服务名进行路径映射：true，允许，false ，不允许，一般用 false，否则会暴露服务
       enabled: true # 是否开启使用网关
       routes:
-        - id: daisy-cloud-user # id 必须要唯一
-          uri: lb://daisy-cloud-user
+        - id: channel-gateway # id 随意，但是必须要唯一
+          uri: lb://channel-web # nacosserver
           predicates:
-            - Path=/user/** # 见到请求路径带 user，全部转发到 uri 对应路径，可以配置多个，比如 - Path=/user/**,/member/**
-        - id: daisy-cloud-order
-          uri: lb://daisy-cloud-order
-          predicates:
-            - Path=/order/**
-        - id: daisy-cloud-app-api
-          uri: lb://daisy-cloud-app-api
-          predicates:
-            - Path=/query/**
+            - Path=/channel/** # 见到请求路径带 channel，全部转发到 uri 对应路径，可以配置多个，比如 - Path=/channel/**,/member/**

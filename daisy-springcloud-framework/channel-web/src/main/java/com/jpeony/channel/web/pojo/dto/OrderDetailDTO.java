@@ -1,4 +1,4 @@
-package com.jpeony.feign.order.api.pojo.vo;
+package com.jpeony.channel.web.pojo.dto;
 
 import lombok.Data;
 
@@ -6,8 +6,7 @@ import lombok.Data;
  * @author yihonglei
  */
 @Data
-public class OrderInfoVO {
+public class OrderDetailDTO {
     private Integer orderId;
-    private String orderName;
     private Integer status;
 }

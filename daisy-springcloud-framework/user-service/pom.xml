@@ -20,6 +20,11 @@
     </properties>
 
     <dependencies>
+        <!-- Spring Boot 全栈 Web 开发模块，包含嵌入Tomcat、Spring、Spring MVC 等等-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.jpeony.cloud</groupId>
             <artifactId>commons</artifactId>

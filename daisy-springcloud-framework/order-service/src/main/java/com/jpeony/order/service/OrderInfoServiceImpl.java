@@ -16,9 +16,9 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     @Override
     public OrderInfoVO getOrderInfo(OrderInfoDTO orderInfoDTO) {
         OrderInfoVO orderInfoVO = new OrderInfoVO();
-        orderInfoVO.setOrderId(orderInfoDTO.getOrderId());
+        orderInfoVO.setOrderId(1);
         orderInfoVO.setStatus(orderInfoDTO.getStatus());
-        orderInfoVO.setName("orderName-001");
+        orderInfoVO.setOrderName("orderName-001");
         return orderInfoVO;
     }
 }

@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
  */
 @FeignClient(name = "order-service")
 public interface OrderInfoService {
-    @PostMapping(value = "/user/getOrderInfo")
+    @PostMapping(value = "/order/getOrderInfo")
     OrderInfoVO getOrderInfo(@RequestBody OrderInfoDTO orderInfoDTO);
 }
