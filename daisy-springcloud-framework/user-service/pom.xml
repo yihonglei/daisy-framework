@@ -8,10 +8,10 @@
         <artifactId>parent-dependencies</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>user</artifactId>
+    <artifactId>user-service</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>user</name>
+    <name>user-service</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,16 +20,28 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Boot 全栈 Web 开发模块，包含嵌入Tomcat、Spring、Spring MVC 等等-->
+        <!-- mysql -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- commons -->
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>commons-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.jpeony.cloud</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>commons-datasource</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>commons-mybatis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- api -->
         <dependency>
             <groupId>com.jpeony.cloud</groupId>
             <artifactId>user-service-feign-api</artifactId>

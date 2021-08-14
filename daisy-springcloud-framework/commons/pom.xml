@@ -9,9 +9,16 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>commons</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>commons</name>
+
+    <modules>
+        <module>commons-core</module>
+        <module>commons-feign</module>
+        <module>commons-datasource</module>
+        <module>commons-mybatis</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -50,16 +57,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!-- mysql -->
-<!--        <dependency>-->
-<!--            <groupId>mysql</groupId>-->
-<!--            <artifactId>mysql-connector-java</artifactId>-->
-<!--        </dependency>-->
-        <!-- druid -->
-<!--        <dependency>-->
-<!--            <groupId>com.alibaba</groupId>-->
-<!--            <artifactId>druid-spring-boot-starter</artifactId>-->
-<!--        </dependency>-->
         <!-- fastJson -->
         <dependency>
             <groupId>com.alibaba</groupId>

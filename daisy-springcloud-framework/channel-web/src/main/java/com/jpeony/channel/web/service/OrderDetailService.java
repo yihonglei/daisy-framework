@@ -1,11 +1,11 @@
 package com.jpeony.channel.web.service;
 
-import com.jpeony.channel.web.pojo.dto.OrderDetailDTO;
-import com.jpeony.channel.web.pojo.vo.OrderDetailVO;
+import com.jpeony.channel.web.pojo.request.OrderDetailParam;
+import com.jpeony.channel.web.pojo.response.OrderDetailVO;
 
 /**
  * @author yihonglei
  */
 public interface OrderDetailService {
-    OrderDetailVO getOrderDetail(OrderDetailDTO orderDetailDTO);
+    OrderDetailVO getOrderDetail(OrderDetailParam orderDetailParam);
 }

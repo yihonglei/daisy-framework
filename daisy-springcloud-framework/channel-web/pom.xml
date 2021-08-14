@@ -23,7 +23,7 @@
         <!-- commons -->
         <dependency>
             <groupId>com.jpeony.cloud</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>commons-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- user-service -->

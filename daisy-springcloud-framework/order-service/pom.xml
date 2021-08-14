@@ -20,11 +20,28 @@
     </properties>
 
     <dependencies>
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!-- commons -->
         <dependency>
             <groupId>com.jpeony.cloud</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>commons-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>commons-datasource</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jpeony.cloud</groupId>
+            <artifactId>commons-mybatis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- api -->
         <dependency>
             <groupId>com.jpeony.cloud</groupId>
             <artifactId>order-service-feign-api</artifactId>

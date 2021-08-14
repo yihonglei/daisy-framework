@@ -14,16 +14,18 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
-        <spring-boot.version>2.1.10.RELEASE</spring-boot.version>
-        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
+        <spring.boot.version>2.1.10.RELEASE</spring.boot.version>
+        <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
         <guava.version>22.0</guava.version>
         <lombok.version>1.18.2</lombok.version>
         <apache.commons.collections.version>3.2.2</apache.commons.collections.version>
         <collections4.version>4.1</collections4.version>
-        <commons-io.version>2.6</commons-io.version>
+        <commons.io.version>2.6</commons.io.version>
         <fastjson.version>1.2.51</fastjson.version>
-        <druid.version>1.1.14</druid.version>
+        <dynamic.datasource.version>3.4.1</dynamic.datasource.version>
+        <mybatis.plus.version>3.4.2</mybatis.plus.version>
+        <druid.version>1.2.6</druid.version>
         <disruptor.version>3.4.2</disruptor.version>
         <redission.version>3.8.2</redission.version>
         <latest.release.version>2.1.5</latest.release.version>
@@ -39,25 +41,36 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <version>${spring.cloud.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring-boot.version}</version>
+                <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
-                <version>${spring-cloud-alibaba.version}</version>
+                <version>${spring.cloud.alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- druid -->
+            <!-- mybatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis.plus.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic.datasource.version}</version>
+            </dependency>
+            <!--druid -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
@@ -95,7 +108,7 @@
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
+                <version>${commons.io.version}</version>
             </dependency>
             <!-- disruptor -->
             <dependency>
@@ -109,13 +122,12 @@
                 <artifactId>redisson</artifactId>
                 <version>${redission.version}</version>
             </dependency>
-            <!-- 引入 elastic-job-lite 核心模块 -->
+            <!-- elastic-job -->
             <dependency>
                 <groupId>com.dangdang</groupId>
                 <artifactId>elastic-job-lite-core</artifactId>
                 <version>${latest.release.version}</version>
             </dependency>
-            <!-- 使用 springframework 自定义命名空间时引入 -->
             <dependency>
                 <groupId>com.dangdang</groupId>
                 <artifactId>elastic-job-lite-spring</artifactId>
@@ -127,7 +139,7 @@
                 <artifactId>rocketmq-client</artifactId>
                 <version>${rocketmq-client.version}</version>
             </dependency>
-            <!-- Swagger RESTFUL API 文档 -->
+            <!-- Swagger -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger2</artifactId>
@@ -143,7 +155,6 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!-- 防止进入 Swagger 页面报类型转换错误，排除 2.9.2 中的引用，手动增加 1.5.21 版本 -->
             <dependency>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-annotations</artifactId>
@@ -156,14 +167,12 @@
                 <version>${swagger-io.version}</version>
                 <scope>compile</scope>
             </dependency>
-            <!-- Swagger UI -->
             <dependency>
                 <groupId>io.springfox</groupId>
                 <artifactId>springfox-swagger-ui</artifactId>
                 <version>${swagger.version}</version>
                 <scope>compile</scope>
             </dependency>
-            <!-- Swagger 增强版 UI -->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>swagger-bootstrap-ui</artifactId>

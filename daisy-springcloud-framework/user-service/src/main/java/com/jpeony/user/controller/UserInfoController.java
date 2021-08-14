@@ -1,8 +1,8 @@
 package com.jpeony.user.controller;
 
 import com.jpeony.feign.user.api.UserInfoService;
-import com.jpeony.feign.user.api.pojo.dto.UserDTO;
-import com.jpeony.feign.user.api.pojo.vo.UserVO;
+import com.jpeony.feign.user.api.request.UserInfoParam;
+import com.jpeony.feign.user.api.response.UserInfoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.*;
  * @author yihonglei
  */
 @RestController
-@RequestMapping(value = "/user", produces = "application/json; charset=utf-8")
+@RequestMapping(value = "/user")
 public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
     @GetMapping("/getUserInfoByUserId")
-    public String getUser(@RequestBody int userId) {
+    public String getUser(@RequestParam("userId") int userId) {
         return userInfoService.getUserInfoByUserId(userId);
     }
 
-    @PostMapping("/getUserInfo")
-    public UserVO getUserInfo(@RequestBody UserDTO userDTO) {
-        return userInfoService.getUserInfo(userDTO);
+    @PostMapping(value = "/getUserInfo", produces = "application/json; charset=utf-8")
+    public UserInfoDTO getUserInfo(@RequestBody UserInfoParam userInfoParam) {
+        return userInfoService.getUserInfo(userInfoParam);
     }
 }

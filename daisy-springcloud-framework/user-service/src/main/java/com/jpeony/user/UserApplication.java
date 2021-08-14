@@ -1,9 +1,11 @@
 package com.jpeony.user;
 
+import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.google.common.collect.Lists;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
@@ -20,9 +22,11 @@ import java.util.List;
 /**
  * @author yihonglei
  */
-@SpringBootApplication(scanBasePackages = "com.jpeony.user.*", exclude = {DataSourceAutoConfiguration.class,
-        RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages = {"com.jpeony.user.*", "com.jpeony.commons.datasource.*"},
+        exclude = {DataSourceAutoConfiguration.class, RedisAutoConfiguration.class,
+                RedisRepositoriesAutoConfiguration.class, DruidDataSourceAutoConfigure.class})
 @EnableDiscoveryClient
+@MapperScan("com.jpeony.user.mapper")
 public class UserApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(UserApplication.class, args);

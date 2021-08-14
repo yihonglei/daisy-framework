@@ -1,7 +1,7 @@
 package com.jpeony.feign.user.api;
 
-import com.jpeony.feign.user.api.pojo.dto.UserDTO;
-import com.jpeony.feign.user.api.pojo.vo.UserVO;
+import com.jpeony.feign.user.api.request.UserInfoParam;
+import com.jpeony.feign.user.api.response.UserInfoDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,5 +14,5 @@ public interface UserInfoService {
     String getUserInfoByUserId(@RequestBody int userId);
 
     @PostMapping(value = "/user/getUserInfo")
-    UserVO getUserInfo(@RequestBody UserDTO userDTO);
+    UserInfoDTO getUserInfo(@RequestBody UserInfoParam userInfoParam);
 }

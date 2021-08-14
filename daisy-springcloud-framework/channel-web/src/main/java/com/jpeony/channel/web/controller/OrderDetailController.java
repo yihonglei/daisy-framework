@@ -1,8 +1,8 @@
 package com.jpeony.channel.web.controller;
 
-import com.jpeony.channel.web.pojo.dto.OrderDetailDTO;
+import com.jpeony.channel.web.pojo.request.OrderDetailParam;
 import com.jpeony.channel.web.service.OrderDetailService;
-import com.jpeony.commons.model.ResponseDataModel;
+import com.jpeony.commons.core.model.ResponseDataModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +19,7 @@ public class OrderDetailController {
     private OrderDetailService orderDetailService;
 
     @PostMapping("/order/getOrderDetail")
-    public ResponseDataModel getOrderDetail(@RequestBody OrderDetailDTO orderDetailDTO) {
-        return ResponseDataModel.success(orderDetailService.getOrderDetail(orderDetailDTO));
+    public ResponseDataModel getOrderDetail(@RequestBody OrderDetailParam orderDetailParam) {
+        return ResponseDataModel.success(orderDetailService.getOrderDetail(orderDetailParam));
     }
 }

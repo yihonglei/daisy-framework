@@ -1,9 +1,12 @@
 package com.jpeony.order.service;
 
 import com.jpeony.feign.order.api.OrderInfoService;
-import com.jpeony.feign.order.api.pojo.dto.OrderInfoDTO;
-import com.jpeony.feign.order.api.pojo.vo.OrderInfoVO;
+import com.jpeony.feign.order.api.request.OrderInfoParam;
+import com.jpeony.feign.order.api.response.OrderInfoDTO;
+import com.jpeony.order.mapper.OrderInfoMapper;
+import com.jpeony.order.pojo.dto.OrderInfoDetailDTO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,13 +15,18 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class OrderInfoServiceImpl implements OrderInfoService {
+    @Autowired
+    private OrderInfoMapper orderInfoMapper;
 
     @Override
-    public OrderInfoVO getOrderInfo(OrderInfoDTO orderInfoDTO) {
-        OrderInfoVO orderInfoVO = new OrderInfoVO();
-        orderInfoVO.setOrderId(1);
-        orderInfoVO.setStatus(orderInfoDTO.getStatus());
-        orderInfoVO.setOrderName("orderName-001");
-        return orderInfoVO;
+    public OrderInfoDTO getOrderInfo(OrderInfoParam orderInfoParam) {
+        OrderInfoDTO orderInfoDTO = new OrderInfoDTO();
+
+        OrderInfoDetailDTO orderInfoDetailDTO = orderInfoMapper.queryOrderInfoDetail(orderInfoParam.getOrderName());
+        orderInfoDTO.setOrderId(orderInfoDetailDTO.getOrderId());
+        orderInfoDTO.setOrderName(orderInfoDetailDTO.getOrderName());
+        orderInfoDTO.setStatus(orderInfoDetailDTO.getStatus());
+
+        return orderInfoDTO;
     }
 }
