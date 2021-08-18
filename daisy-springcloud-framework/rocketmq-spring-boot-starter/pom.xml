@@ -8,6 +8,7 @@
         <artifactId>parent-dependencies</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+    <groupId>com.jpeony</groupId>
     <artifactId>rocketmq-spring-boot-starter</artifactId>
     <packaging>jar</packaging>
     <version>0.0.1-SNAPSHOT</version>
