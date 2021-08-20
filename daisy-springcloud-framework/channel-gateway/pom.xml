@@ -21,7 +21,7 @@
         <!-- commons -->
         <dependency>
             <groupId>com.jpeony</groupId>
-            <artifactId>commons</artifactId>
+            <artifactId>commons-core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <exclusions>
                 <exclusion>

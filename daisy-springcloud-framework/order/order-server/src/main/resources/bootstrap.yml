@@ -2,7 +2,7 @@ server:
   port: 8766
 spring:
   application:
-    name: order-service
+    name: order-server
   cloud:
     nacos:
       discovery:
@@ -12,15 +12,15 @@ spring:
         file-extension: yml
   datasource:
     dynamic:
-      primary: user-master
+      primary: order-master
       datasource:
         order-master:
-          driver-class-name: com.mysql.cj.jdbc.Driver
+          driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/order?characterEncoding=utf-8&useSSL=false
           username: root
           password: 123456
         order-slave:
-          driver-class-name: com.mysql.cj.jdbc.Driver
+          driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/order?characterEncoding=utf-8&useSSL=false
           username: root
           password: 123456

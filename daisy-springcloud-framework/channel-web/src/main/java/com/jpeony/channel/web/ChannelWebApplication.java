@@ -21,9 +21,9 @@ import java.util.List;
 /**
  * @author yihonglei
  */
-@SpringBootApplication(scanBasePackages = "com.jpeony.channel.*", exclude = {DataSourceAutoConfiguration.class,
+@SpringBootApplication(scanBasePackages = "com.jpeony.*", exclude = {DataSourceAutoConfiguration.class,
         RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class})
-@EnableFeignClients(basePackages = "com.jpeony.feign.*")
+@EnableFeignClients(basePackages = "com.jpeony.*")
 @EnableDiscoveryClient
 public class ChannelWebApplication implements WebMvcConfigurer {
     public static void main(String[] args) {

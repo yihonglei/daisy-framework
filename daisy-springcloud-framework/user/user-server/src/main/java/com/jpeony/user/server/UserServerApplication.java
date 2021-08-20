@@ -22,11 +22,11 @@ import java.util.List;
 /**
  * @author yihonglei
  */
-@SpringBootApplication(scanBasePackages = {"com.jpeony.user.*", "com.jpeony.commons.datasource.*"},
+@SpringBootApplication(scanBasePackages = {"com.jpeony.*"},
         exclude = {DataSourceAutoConfiguration.class, RedisAutoConfiguration.class,
                 RedisRepositoriesAutoConfiguration.class, DruidDataSourceAutoConfigure.class})
 @EnableDiscoveryClient
-@MapperScan("com.jpeony.user.mapper")
+@MapperScan("com.jpeony.user.server.mapper")
 public class UserServerApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(UserServerApplication.class, args);

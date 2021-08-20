@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 /**
  * @author yihonglei
  */
-@FeignClient(name = "user-service")
+@FeignClient(name = "user-server")
 public interface UserInfoService {
     @GetMapping(value = "/user/getUserInfoByUserId")
     String getUserInfoByUserId(@RequestBody int userId);

@@ -16,16 +16,16 @@
         <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
         <spring.boot.version>2.1.10.RELEASE</spring.boot.version>
         <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
-
+        <mysql.version>5.1.47</mysql.version>
+        <druid.version>1.2.6</druid.version>
+        <mybatis.plus.version>3.4.2</mybatis.plus.version>
+        <dynamic.datasource.version>3.4.1</dynamic.datasource.version>
         <guava.version>22.0</guava.version>
         <lombok.version>1.18.2</lombok.version>
         <apache.commons.collections.version>3.2.2</apache.commons.collections.version>
         <collections4.version>4.1</collections4.version>
         <commons.io.version>2.6</commons.io.version>
         <fastjson.version>1.2.51</fastjson.version>
-        <dynamic.datasource.version>3.4.1</dynamic.datasource.version>
-        <mybatis.plus.version>3.4.2</mybatis.plus.version>
-        <druid.version>1.2.6</druid.version>
         <disruptor.version>3.4.2</disruptor.version>
         <redission.version>3.8.2</redission.version>
         <latest.release.version>2.1.5</latest.release.version>
@@ -60,6 +60,20 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- mysql -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <!--druid -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
             <!-- mybatis-plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
@@ -71,14 +85,7 @@
                 <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
                 <version>${dynamic.datasource.version}</version>
             </dependency>
-
-            <!--druid -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
-            </dependency>
-
+            
             <!-- fastJson -->
             <dependency>
                 <groupId>com.alibaba</groupId>

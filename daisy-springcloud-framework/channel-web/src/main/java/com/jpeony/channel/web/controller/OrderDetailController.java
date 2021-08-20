@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
  * @author yihonglei
  */
 @RestController
-@RequestMapping(value = "/channel", produces = "application/json; charset=utf-8")
+@RequestMapping(value = "/channel")
 public class OrderDetailController {
     @Autowired
     private OrderDetailService orderDetailService;
 
-    @PostMapping("/order/getOrderDetail")
+    @PostMapping(value = "/order/getOrderDetail", produces = "application/json; charset=utf-8")
     public ResponseDataModel getOrderDetail(@RequestBody OrderDetailParam orderDetailParam) {
         return ResponseDataModel.success(orderDetailService.getOrderDetail(orderDetailParam));
     }

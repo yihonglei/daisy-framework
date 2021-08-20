@@ -10,7 +10,6 @@
     </parent>
     <artifactId>commons-feign</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>commons-feign</name>
 
     <dependencies>
         <!-- feign -->
