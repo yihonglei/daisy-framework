@@ -13,9 +13,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.cloud.version>Greenwich.RELEASE</spring.cloud.version>
-        <spring.boot.version>2.1.10.RELEASE</spring.boot.version>
-        <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
+        <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
+        <spring.boot.version>2.3.2.RELEASE</spring.boot.version>
+        <spring.cloud.alibaba.version>2.2.6.RELEASE</spring.cloud.alibaba.version>
         <mysql.version>5.1.47</mysql.version>
         <druid.version>1.2.6</druid.version>
         <mybatis.plus.version>3.4.2</mybatis.plus.version>
@@ -29,7 +29,6 @@
         <disruptor.version>3.4.2</disruptor.version>
         <redission.version>3.8.2</redission.version>
         <latest.release.version>2.1.5</latest.release.version>
-        <rocketmq-client.version>4.0.0-incubating</rocketmq-client.version>
         <swagger.version>2.9.2</swagger.version>
         <swagger-io.version>1.5.21</swagger-io.version>
         <swagger-ui.version>1.9.6</swagger-ui.version>
@@ -85,7 +84,7 @@
                 <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
                 <version>${dynamic.datasource.version}</version>
             </dependency>
-            
+
             <!-- fastJson -->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -148,13 +147,6 @@
                 <groupId>com.dangdang</groupId>
                 <artifactId>elastic-job-lite-spring</artifactId>
                 <version>${latest.release.version}</version>
-            </dependency>
-
-            <!-- rocketmq -->
-            <dependency>
-                <groupId>org.apache.rocketmq</groupId>
-                <artifactId>rocketmq-client</artifactId>
-                <version>${rocketmq-client.version}</version>
             </dependency>
 
             <!-- Swagger -->
