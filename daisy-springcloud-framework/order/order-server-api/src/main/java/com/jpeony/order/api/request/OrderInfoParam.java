@@ -7,6 +7,5 @@ import lombok.Data;
  */
 @Data
 public class OrderInfoParam {
-    private String orderName;
-    private Integer status;
+    private Integer orderId;
 }

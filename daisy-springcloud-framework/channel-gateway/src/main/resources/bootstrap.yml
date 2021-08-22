@@ -1,5 +1,5 @@
 server:
-  port: 9010
+  port: 8084
 
 spring:
   application:
@@ -20,4 +20,4 @@ spring:
         - id: channel-gateway # id 随意，但是必须要唯一
           uri: lb://channel-web # nacosserver
           predicates:
-            - Path=/channel/** # 见到请求路径带 channel，全部转发到 uri 对应路径，可以配置多个，比如 - Path=/channel/**,/member/**
+            - Path=/channel/web/** # 见到请求路径带 channel，全部转发到 uri 对应路径，可以配置多个，比如 - Path=/channel/web/**,/member/web/**

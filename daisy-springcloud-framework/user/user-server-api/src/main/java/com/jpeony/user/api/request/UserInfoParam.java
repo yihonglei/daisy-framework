@@ -7,6 +7,5 @@ import lombok.Data;
  */
 @Data
 public class UserInfoParam {
-    private String userName;
-    private Integer age;
+    private Integer userId;
 }

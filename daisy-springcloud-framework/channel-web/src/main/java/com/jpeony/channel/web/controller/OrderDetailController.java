@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author yihonglei
  */
 @RestController
-@RequestMapping(value = "/channel")
+@RequestMapping(value = "/channel/web")
 public class OrderDetailController {
     @Autowired
     private OrderDetailService orderDetailService;

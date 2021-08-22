@@ -3,10 +3,10 @@ package com.jpeony.channel.web.service.impl;
 import com.jpeony.channel.web.pojo.request.OrderDetailParam;
 import com.jpeony.channel.web.pojo.response.OrderDetailVO;
 import com.jpeony.channel.web.service.OrderDetailService;
-import com.jpeony.order.api.OrderInfoService;
+import com.jpeony.order.api.OrderServerApi;
 import com.jpeony.order.api.request.OrderInfoParam;
 import com.jpeony.order.api.response.OrderInfoDTO;
-import com.jpeony.user.api.UserInfoService;
+import com.jpeony.user.api.UserServerApi;
 import com.jpeony.user.api.request.UserInfoParam;
 import com.jpeony.user.api.response.UserInfoDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -20,28 +20,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class OrderDetailServiceImpl implements OrderDetailService {
     @Autowired
-    private UserInfoService userInfoService;
+    private UserServerApi userInfoService;
     @Autowired
-    private OrderInfoService orderInfoService;
+    private OrderServerApi orderServerApi;
 
     @Override
     public OrderDetailVO getOrderDetail(OrderDetailParam orderDetailParam) {
         /* 用户信息 */
         UserInfoParam userInfoParam = new UserInfoParam();
-        userInfoParam.setUserName("user-001");
-        userInfoParam.setAge(18);
+        userInfoParam.setUserId(1);
         UserInfoDTO userInfoDTO = userInfoService.getUserInfo(userInfoParam);
 
         /* 订单信息 */
         OrderInfoParam orderInfoParam = new OrderInfoParam();
-        orderInfoParam.setOrderName("order-001");
-        orderInfoParam.setStatus(45);
-        OrderInfoDTO orderInfoDTO = orderInfoService.getOrderInfo(orderInfoParam);
+        orderInfoParam.setOrderId(orderDetailParam.getOrderId());
+        OrderInfoDTO orderInfoDTO = orderServerApi.getOrderInfo(orderInfoParam);
 
         /* 订单详情 */
         OrderDetailVO orderDetailVO = new OrderDetailVO();
         orderDetailVO.setUserName(userInfoDTO.getUserName());
-        orderDetailVO.setAge(userInfoParam.getAge());
+        orderDetailVO.setAge(userInfoDTO.getAge());
         orderDetailVO.setOrderName(orderInfoDTO.getOrderName());
         orderDetailVO.setStatus(orderInfoDTO.getStatus());
         orderDetailVO.setOrderId(orderInfoDTO.getOrderId());

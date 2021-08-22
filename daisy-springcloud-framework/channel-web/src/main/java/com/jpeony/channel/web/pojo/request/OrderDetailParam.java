@@ -8,5 +8,4 @@ import lombok.Data;
 @Data
 public class OrderDetailParam {
     private Integer orderId;
-    private Integer status;
 }

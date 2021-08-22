@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author yihonglei
  */
 @FeignClient(name = "user-server")
-public interface UserInfoService {
+public interface UserServerApi {
     @GetMapping(value = "/user/getUserInfoByUserId")
     String getUserInfoByUserId(@RequestBody int userId);
 

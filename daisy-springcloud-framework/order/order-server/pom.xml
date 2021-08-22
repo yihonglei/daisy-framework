@@ -12,12 +12,10 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
-        <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!-- commons -->
         <dependency>
             <groupId>com.jpeony</groupId>
             <artifactId>commons-core</artifactId>
