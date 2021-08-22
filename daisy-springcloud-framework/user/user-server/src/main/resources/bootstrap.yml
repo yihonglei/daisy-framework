@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: user-server
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
