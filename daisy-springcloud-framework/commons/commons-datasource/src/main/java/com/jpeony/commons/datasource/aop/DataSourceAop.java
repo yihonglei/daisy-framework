@@ -29,7 +29,7 @@ public class DataSourceAop {
     private static final String MASTER = "-master";
     private static final String SLAVE = "-slave";
 
-    @Pointcut("execution(* com.jpeony.*.mapper.*.*(..))")
+    @Pointcut("execution(* com.jpeony..*.mapper.*.*(..))")
     public void dsPointCut() {
     }
 
