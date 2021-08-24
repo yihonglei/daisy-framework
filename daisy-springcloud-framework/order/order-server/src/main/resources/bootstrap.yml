@@ -1,5 +1,6 @@
 server:
   port: 8082
+
 spring:
   application:
     name: order-server
@@ -10,34 +11,3 @@ spring:
       config:
         server-addr: 127.0.0.1:8848
         file-extension: yml
-  datasource:
-    dynamic:
-      primary: order-master
-      datasource:
-        order-master:
-          driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://127.0.0.1:3306/order?characterEncoding=utf-8&useSSL=false
-          username: root
-          password: 123456
-        order-slave:
-          driver-class-name: com.mysql.jdbc.Driver
-          url: jdbc:mysql://127.0.0.1:3306/order?characterEncoding=utf-8&useSSL=false
-          username: root
-          password: 123456
-      druid:
-        # 初始连接数
-        initial-size: 5
-        # 最小连接池数量
-        min-idle: 10
-        # 最大连接池数量
-        max-active: 20
-        # 配置获取连接等待超时的时间
-        max-wait: 60000
-        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-        time-between-eviction-runs-millis: 6000
-        # 配置一个连接在池中最小生存的时间，单位是毫秒
-        min-evictable-idle-time-millis: 300000
-        # 配置一个连接在池中最大生存的时间，单位是毫秒
-        max-evictable-idle-time-millis: 900000
-        # 配置检测连接是否有效
-        validation-query: SELECT 1 FROM DUAL
