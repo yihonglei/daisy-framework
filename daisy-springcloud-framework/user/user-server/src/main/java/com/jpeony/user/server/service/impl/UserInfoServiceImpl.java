@@ -1,7 +1,7 @@
 package com.jpeony.user.server.service.impl;
 
-import com.jpeony.user.api.request.UserInfoParam;
-import com.jpeony.user.api.response.UserInfoDTO;
+import com.jpeony.user.api.request.UserInfoReq;
+import com.jpeony.user.api.response.UserInfoRes;
 import com.jpeony.user.server.mapper.UserInfoMapper;
 import com.jpeony.user.server.pojo.domain.UserInfoDO;
 import com.jpeony.user.server.pojo.dto.UserInfoDetailDTO;
@@ -30,16 +30,16 @@ public class UserInfoServiceImpl implements UserInfoService {
     }
 
     @Override
-    public UserInfoDTO getUserInfo(UserInfoParam userInfoParam) {
-        UserInfoDTO userInfoDTO = new UserInfoDTO();
+    public UserInfoRes getUserInfo(UserInfoReq userInfoReq) {
+        UserInfoRes userInfoRes = new UserInfoRes();
         // info1
-        UserInfoDetailDTO userInfoDetailDTO = userInfoMapper.queryUserInfoDetailByUserId(userInfoParam.getUserId());
+        UserInfoDetailDTO userInfoDetailDTO = userInfoMapper.queryUserInfoDetailByUserId(userInfoReq.getUserId());
         // info2 ..
         // 组合返回
-        userInfoDTO.setUserId(userInfoDetailDTO.getUserId());
-        userInfoDTO.setUserName(userInfoDetailDTO.getUserName());
-        userInfoDTO.setAge(userInfoDetailDTO.getAge());
+        userInfoRes.setUserId(userInfoDetailDTO.getUserId());
+        userInfoRes.setUserName(userInfoDetailDTO.getUserName());
+        userInfoRes.setAge(userInfoDetailDTO.getAge());
 
-        return userInfoDTO;
+        return userInfoRes;
     }
 }

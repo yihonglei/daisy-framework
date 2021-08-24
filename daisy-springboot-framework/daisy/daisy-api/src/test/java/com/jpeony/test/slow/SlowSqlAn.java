@@ -21,7 +21,7 @@ public class SlowSqlAn {
             List<ContentBO> slowSqlList = new ArrayList<>();
 
             // 读取文件
-            File file = new File("/Users/hongqi/Documents/perf/mysql-slow-20210621.log");
+            File file = new File("/Users/hongqi/Documents/perf/mysql-slow-last-01.log");
             InputStreamReader inputReader = new InputStreamReader(new FileInputStream(file));
             BufferedReader bf = new BufferedReader(inputReader);
             // 按行读取字符串
@@ -65,6 +65,7 @@ public class SlowSqlAn {
                 if (str.contains("delete ") || str.contains("DELETE ")) {
                     contentBO.setOpeType("delete");
                 }
+
                 // sqlContent
                 if (str.contains("select ") || str.contains("SELECT ")
                         || str.contains("insert ") || str.contains("INSERT ")
@@ -128,36 +129,36 @@ public class SlowSqlAn {
             }
 
             // insert
-//            for (ContentBO bo : insertList) {
-//                System.out.println("insert操作, Schema: " + bo.getSchema() +
-//                        ", 操作时间: " + bo.getExecuteTime() +
-//                        ", 耗时: " + bo.getOpeTime() +
-//                        ", SQL: " + bo.getSqlContent());
-//            }
+            for (ContentBO bo : insertList) {
+                System.out.println("insert操作, Schema: " + bo.getSchema() +
+                        ", 操作时间: " + bo.getExecuteTime() +
+                        ", 耗时: " + bo.getOpeTime() +
+                        ", SQL: " + bo.getSqlContent());
+            }
 
             // update
-//            for (ContentBO bo : updateList) {
-//                System.out.println("update操作, Schema: " + bo.getSchema() +
-//                        ", 操作时间: " + bo.getExecuteTime() +
-//                        ", 耗时: " + bo.getOpeTime() +
-//                        ", SQL: " + bo.getSqlContent());
-//            }
+            for (ContentBO bo : updateList) {
+                System.out.println("update操作, Schema: " + bo.getSchema() +
+                        ", 操作时间: " + bo.getExecuteTime() +
+                        ", 耗时: " + bo.getOpeTime() +
+                        ", SQL: " + bo.getSqlContent());
+            }
 
             // delete
-//            for (ContentBO bo : deleteList) {
-//                System.out.println("delete操作, Schema: " + bo.getSchema() +
-//                        ", 操作时间: " + bo.getExecuteTime() +
-//                        ", 耗时: " + bo.getOpeTime() +
-//                        ", SQL: " + bo.getSqlContent());
-//            }
+            for (ContentBO bo : deleteList) {
+                System.out.println("delete操作, Schema: " + bo.getSchema() +
+                        ", 操作时间: " + bo.getExecuteTime() +
+                        ", 耗时: " + bo.getOpeTime() +
+                        ", SQL: " + bo.getSqlContent());
+            }
 
             // select
-//            for (ContentBO bo : selectList) {
-//                System.out.println("select操作, Schema: " + bo.getSchema() +
-//                        ", 操作时间: " + bo.getExecuteTime() +
-//                        ", 耗时: " + bo.getOpeTime() +
-//                        ", SQL: " + bo.getSqlContent());
-//            }
+            for (ContentBO bo : selectList) {
+                System.out.println("select操作, Schema: " + bo.getSchema() +
+                        ", 操作时间: " + bo.getExecuteTime() +
+                        ", 耗时: " + bo.getOpeTime() +
+                        ", SQL: " + bo.getSqlContent());
+            }
             // select ip 分组
             Map<String, List<ContentBO>> ipGroupMap = selectList.stream().collect(Collectors.groupingBy(ContentBO::getAppIp));
             for (Map.Entry<String, List<ContentBO>> entry : ipGroupMap.entrySet()) {

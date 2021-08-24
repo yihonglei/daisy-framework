@@ -13,11 +13,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.boot.version>2.3.2.RELEASE</spring.boot.version>
-        <spring.cloud.version>Hoxton.SR9</spring.cloud.version>
+        <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
+        <spring.cloud.version>Hoxton.SR12</spring.cloud.version>
         <spring.cloud.alibaba.version>2.2.6.RELEASE</spring.cloud.alibaba.version>
+        <nacos.client.version>2.0.3</nacos.client.version>
         <mysql.version>5.1.47</mysql.version>
-        <druid.version>1.2.6</druid.version>
+        <druid.boot.version>1.2.6</druid.boot.version>
         <mybatis.plus.version>3.4.2</mybatis.plus.version>
         <dynamic.datasource.version>3.4.1</dynamic.datasource.version>
         <guava.version>22.0</guava.version>
@@ -58,6 +59,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos.client.version}</version>
+            </dependency>
 
             <!-- mysql -->
             <dependency>
@@ -70,7 +76,7 @@
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.version}</version>
+                <version>${druid.boot.version}</version>
             </dependency>
 
             <!-- mybatis-plus -->

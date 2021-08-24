@@ -1,7 +1,7 @@
 package com.jpeony.user.server.controller;
 
-import com.jpeony.user.api.request.UserInfoParam;
-import com.jpeony.user.api.response.UserInfoDTO;
+import com.jpeony.user.api.request.UserInfoReq;
+import com.jpeony.user.api.response.UserInfoRes;
 import com.jpeony.user.server.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ public class UserInfoController {
     }
 
     @PostMapping(value = "/getUserInfo", produces = "application/json; charset=utf-8")
-    public UserInfoDTO getUserInfo(@RequestBody UserInfoParam userInfoParam) {
-        return userInfoService.getUserInfo(userInfoParam);
+    public UserInfoRes getUserInfo(@RequestBody UserInfoReq userInfoReq) {
+        return userInfoService.getUserInfo(userInfoReq);
     }
 }

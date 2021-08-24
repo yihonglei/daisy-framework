@@ -6,6 +6,6 @@ import lombok.Data;
  * @author yihonglei
  */
 @Data
-public class OrderInfoParam {
+public class OrderInfoReq {
     private Integer orderId;
 }

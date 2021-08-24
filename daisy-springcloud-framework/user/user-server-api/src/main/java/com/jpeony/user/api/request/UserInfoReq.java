@@ -6,6 +6,6 @@ import lombok.Data;
  * @author yihonglei
  */
 @Data
-public class UserInfoParam {
+public class UserInfoReq {
     private Integer userId;
 }

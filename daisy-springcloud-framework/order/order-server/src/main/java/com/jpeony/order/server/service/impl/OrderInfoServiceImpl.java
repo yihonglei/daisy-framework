@@ -1,6 +1,6 @@
 package com.jpeony.order.server.service.impl;
 
-import com.jpeony.order.api.response.OrderInfoDTO;
+import com.jpeony.order.api.response.OrderInfoRes;
 import com.jpeony.order.server.mapper.OrderInfoMapper;
 import com.jpeony.order.server.pojo.domain.OrderInfoDO;
 import com.jpeony.order.server.service.OrderInfoService;
@@ -18,17 +18,17 @@ public class OrderInfoServiceImpl implements OrderInfoService {
     private OrderInfoMapper orderInfoMapper;
 
     @Override
-    public OrderInfoDTO getOrderInfo(Integer orderId) {
-        OrderInfoDTO orderInfoDTO = new OrderInfoDTO();
+    public OrderInfoRes getOrderInfo(Integer orderId) {
+        OrderInfoRes orderInfoRes = new OrderInfoRes();
 
         OrderInfoDO orderInfoDO = orderInfoMapper.queryOrderInfo(orderId);
         if (orderInfoDO == null) {
             orderInfoDO = orderInfoMapper.queryOrderInfoMaster(orderId);
         }
-        orderInfoDTO.setOrderId(orderInfoDO.getOrderId());
-        orderInfoDTO.setOrderName(orderInfoDO.getOrderName());
-        orderInfoDTO.setStatus(orderInfoDO.getStatus());
+        orderInfoRes.setOrderId(orderInfoDO.getOrderId());
+        orderInfoRes.setOrderName(orderInfoDO.getOrderName());
+        orderInfoRes.setStatus(orderInfoDO.getStatus());
 
-        return orderInfoDTO;
+        return orderInfoRes;
     }
 }

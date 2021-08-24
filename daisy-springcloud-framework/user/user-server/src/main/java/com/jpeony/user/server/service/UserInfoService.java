@@ -1,7 +1,7 @@
 package com.jpeony.user.server.service;
 
-import com.jpeony.user.api.request.UserInfoParam;
-import com.jpeony.user.api.response.UserInfoDTO;
+import com.jpeony.user.api.request.UserInfoReq;
+import com.jpeony.user.api.response.UserInfoRes;
 
 /**
  * @author yihonglei
@@ -9,5 +9,5 @@ import com.jpeony.user.api.response.UserInfoDTO;
 public interface UserInfoService {
     String getUserInfoByUserId(int userId);
 
-    UserInfoDTO getUserInfo(UserInfoParam userInfoParam);
+    UserInfoRes getUserInfo(UserInfoReq userInfoReq);
 }

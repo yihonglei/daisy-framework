@@ -6,7 +6,7 @@ import lombok.Data;
  * @author yihonglei
  */
 @Data
-public class UserInfoDTO {
+public class UserInfoRes {
     private Integer userId;
     private String userName;
     private Integer age;
