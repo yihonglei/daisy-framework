@@ -20,6 +20,6 @@ public class OrderInfoController {
 
     @PostMapping(value = "/getOrderInfo", produces = "application/json; charset=utf-8")
     public OrderInfoRes getOrderInfo(@RequestBody OrderInfoReq orderInfoReq) {
-        return orderInfoService.getOrderInfo(orderInfoReq.getOrderId());
+        return orderInfoService.getOrderInfo(orderInfoReq);
     }
 }

@@ -5,7 +5,6 @@ import com.jpeony.commons.datasource.annotation.DB;
 import com.jpeony.commons.datasource.annotation.UseMaster;
 import com.jpeony.user.server.constant.DBConstant;
 import com.jpeony.user.server.pojo.domain.UserInfoDO;
-import com.jpeony.user.server.pojo.dto.UserInfoDetailDTO;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -24,11 +23,4 @@ public interface UserInfoMapper extends BaseMapper<UserInfoDO> {
     @UseMaster
     @Select("select * from user_info where user_id = #{userId}")
     UserInfoDO queryUserInfoMaster(@Param("userId") Integer userId);
-
-    /**
-     * 如果是多表关联查询返回 DTO
-     */
-    @UseMaster
-    @Select("select user_id, user_name, age from user_info where user_id = #{userId}")
-    UserInfoDetailDTO queryUserInfoDetailByUserId(@Param("userId") Integer userId);
 }

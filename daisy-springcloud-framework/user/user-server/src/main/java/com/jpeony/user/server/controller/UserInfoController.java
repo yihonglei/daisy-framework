@@ -15,11 +15,6 @@ public class UserInfoController {
     @Autowired
     private UserInfoService userInfoService;
 
-    @GetMapping("/getUserInfoByUserId")
-    public String getUser(@RequestParam("userId") int userId) {
-        return userInfoService.getUserInfoByUserId(userId);
-    }
-
     @PostMapping(value = "/getUserInfo", produces = "application/json; charset=utf-8")
     public UserInfoRes getUserInfo(@RequestBody UserInfoReq userInfoReq) {
         return userInfoService.getUserInfo(userInfoReq);
