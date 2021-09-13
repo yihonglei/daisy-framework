@@ -1,6 +1,6 @@
 package com.jpeony.test.cache;
 
-import com.jpeony.redis.cache.CacheManager;
+import com.jpeony.redis.spring.boot.cache.CacheManager;
 import com.jpeony.test.BaseServletTest;
 import org.junit.Test;
 

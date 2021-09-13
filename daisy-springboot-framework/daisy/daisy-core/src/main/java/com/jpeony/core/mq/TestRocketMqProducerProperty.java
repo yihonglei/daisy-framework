@@ -1,6 +1,6 @@
 package com.jpeony.core.mq;
 
-import com.jpeony.rocketmq.spring.property.RocketMqBaseProperty;
+import com.jpeony.rocketmq.spring.boot.property.RocketMqBaseProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.boot.context.properties.ConfigurationProperties;

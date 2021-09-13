@@ -1,11 +1,9 @@
 package com.jpeony.core.mq;
 
-import com.jpeony.rocketmq.spring.consumer.AbstractRocketMqConsumer;
-import com.jpeony.rocketmq.spring.property.RocketMqBaseProperty;
+import com.jpeony.rocketmq.spring.boot.consumer.AbstractRocketMqConsumer;
+import com.jpeony.rocketmq.spring.boot.property.RocketMqBaseProperty;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
-import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
-import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyStatus;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

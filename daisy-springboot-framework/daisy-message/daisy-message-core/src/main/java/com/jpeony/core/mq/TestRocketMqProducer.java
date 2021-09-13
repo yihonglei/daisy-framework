@@ -1,7 +1,7 @@
 package com.jpeony.core.mq;
 
-import com.jpeony.rocketmq.spring.producer.AbstractRocketMqProducer;
-import com.jpeony.rocketmq.spring.property.RocketMqBaseProperty;
+import com.jpeony.rocketmq.spring.boot.producer.AbstractRocketMqProducer;
+import com.jpeony.rocketmq.spring.boot.property.RocketMqBaseProperty;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
