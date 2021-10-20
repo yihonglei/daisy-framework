@@ -13,10 +13,22 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <dependencies>
+        <!-- commons-core -->
         <dependency>
             <groupId>com.jpeony</groupId>
             <artifactId>commons-core</artifactId>
             <version>1.0.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- gateway -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
     </dependencies>
 
