@@ -1,7 +1,7 @@
 package com.jpeony.order.api;
 
-import com.jpeony.order.api.request.OrderInfoReq;
-import com.jpeony.order.api.response.OrderInfoRes;
+import com.jpeony.order.api.req.OrderInfoReq;
+import com.jpeony.order.api.res.OrderInfoRes;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

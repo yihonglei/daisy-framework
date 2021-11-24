@@ -1,4 +1,4 @@
-package com.jpeony.order.api.request;
+package com.jpeony.order.api.req;
 
 import lombok.Data;
 

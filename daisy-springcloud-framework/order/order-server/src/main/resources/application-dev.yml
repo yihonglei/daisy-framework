@@ -1,14 +1,14 @@
 spring:
   datasource:
     dynamic:
-      primary: order-master
+      primary: master
       datasource:
-        order-master:
+        master:
           driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/order?characterEncoding=utf-8&useSSL=false
           username: root
           password: 123456
-        order-slave:
+        slave:
           driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/order?characterEncoding=utf-8&useSSL=false
           username: root

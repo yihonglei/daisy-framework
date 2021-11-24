@@ -1,7 +1,7 @@
 package com.jpeony.order.server.service.impl;
 
-import com.jpeony.order.api.request.OrderInfoReq;
-import com.jpeony.order.api.response.OrderInfoRes;
+import com.jpeony.order.api.req.OrderInfoReq;
+import com.jpeony.order.api.res.OrderInfoRes;
 import com.jpeony.order.server.mapper.OrderInfoMapper;
 import com.jpeony.order.server.pojo.domain.OrderInfoDO;
 import com.jpeony.order.server.service.OrderInfoService;

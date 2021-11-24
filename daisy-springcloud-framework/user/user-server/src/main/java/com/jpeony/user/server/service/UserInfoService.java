@@ -1,7 +1,7 @@
 package com.jpeony.user.server.service;
 
-import com.jpeony.user.api.request.UserInfoReq;
-import com.jpeony.user.api.response.UserInfoRes;
+import com.jpeony.user.api.req.UserInfoReq;
+import com.jpeony.user.api.res.UserInfoRes;
 
 /**
  * @author yihonglei

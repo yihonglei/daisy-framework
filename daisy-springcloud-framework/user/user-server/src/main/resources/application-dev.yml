@@ -1,14 +1,14 @@
 spring:
   datasource:
     dynamic:
-      primary: user-master
+      primary: master
       datasource:
-        user-master:
+        master:
           driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/user?characterEncoding=utf-8&useSSL=false
           username: root
           password: 123456
-        user-slave:
+        slave:
           driver-class-name: com.mysql.jdbc.Driver
           url: jdbc:mysql://127.0.0.1:3306/user?characterEncoding=utf-8&useSSL=false
           username: root

@@ -1,4 +1,4 @@
-package com.jpeony.user.api.response;
+package com.jpeony.user.api.res;
 
 import lombok.Data;
 

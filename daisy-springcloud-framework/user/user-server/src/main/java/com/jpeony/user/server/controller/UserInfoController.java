@@ -1,8 +1,8 @@
 package com.jpeony.user.server.controller;
 
 import com.jpeony.commons.core.model.ApiRes;
-import com.jpeony.user.api.request.UserInfoReq;
-import com.jpeony.user.api.response.UserInfoRes;
+import com.jpeony.user.api.req.UserInfoReq;
+import com.jpeony.user.api.res.UserInfoRes;
 import com.jpeony.user.server.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
