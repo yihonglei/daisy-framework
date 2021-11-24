@@ -18,15 +18,7 @@
         </dependency>
         <dependency>
             <groupId>com.jpeony</groupId>
-            <artifactId>commons-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.jpeony</groupId>
             <artifactId>commons-datasource</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.jpeony</groupId>
-            <artifactId>commons-mybatis</artifactId>
         </dependency>
         <dependency>
             <groupId>com.jpeony</groupId>

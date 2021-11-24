@@ -29,11 +29,11 @@ public class DataSourceAop {
     private static final String MASTER = "-master";
     private static final String SLAVE = "-slave";
 
-    @Pointcut("execution(* com.jpeony..*.mapper.*.*(..))")
+    //    @Pointcut("execution(* com.jpeony..*.mapper.*.*(..))")
     public void dsPointCut() {
     }
 
-    @Before("dsPointCut()")
+    //    @Before("dsPointCut()")
     public void process(JoinPoint point) {
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
@@ -64,7 +64,7 @@ public class DataSourceAop {
         return (useMaster != null || update != null || insert != null || delete != null);
     }
 
-    @After("dsPointCut()")
+    //    @After("dsPointCut()")
     public void afterAdvice() {
         DynamicDataSourceContextHolder.clear();
     }

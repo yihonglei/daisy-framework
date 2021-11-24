@@ -14,6 +14,10 @@
     <dependencies>
         <dependency>
             <groupId>com.jpeony</groupId>
+            <artifactId>commons-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.jpeony</groupId>
             <artifactId>commons-feign</artifactId>
         </dependency>
     </dependencies>

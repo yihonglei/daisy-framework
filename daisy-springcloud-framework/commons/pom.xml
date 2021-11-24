@@ -16,6 +16,5 @@
         <module>commons-core</module>
         <module>commons-feign</module>
         <module>commons-datasource</module>
-        <module>commons-mybatis</module>
     </modules>
 </project>

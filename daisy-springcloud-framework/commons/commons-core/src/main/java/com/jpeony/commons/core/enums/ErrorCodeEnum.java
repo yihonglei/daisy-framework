@@ -5,8 +5,7 @@ import lombok.Getter;
 /**
  * @author yihonglei
  */
-public enum StatusCodeEnum {
-
+public enum ErrorCodeEnum {
     /**
      * 状态码枚举类
      */
@@ -15,20 +14,19 @@ public enum StatusCodeEnum {
     ILLEGAL_ARGUMENT_ERROR(10000, "无效参数"),
     DATA_SOURCE_ERROR(20000, "多数据源切换异常");
 
-
     @Getter
     private int code;
     @Getter
     private String msg;
 
-    StatusCodeEnum(int code, String msg) {
+    ErrorCodeEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
     public static String getMsgByCode(int code) {
-        StatusCodeEnum[] enums = StatusCodeEnum.values();
-        for (StatusCodeEnum enu : enums) {
+        ErrorCodeEnum[] enums = ErrorCodeEnum.values();
+        for (ErrorCodeEnum enu : enums) {
             if (enu.getCode() == code) {
                 return enu.getMsg();
             }
