@@ -18,7 +18,7 @@
 
 - 缓存中间件：Redis
 
-- 消息中间件：RocketMQ
+- 消息中间件：RocketMQ + Canal
 
 - 分布式锁：支持 Redis 或 Zookeeper
 
@@ -30,9 +30,9 @@
 
 - 系统监控：[sunflower](https://github.com/jchry/sunflower)
 
-- 工程化：idea，Maven，Git，jenkins，Docker，k8s
+- 工程化：idea，Maven，Git
 
-- 运维部署：Tomcat，Linux
+- 运维部署：Tomcat，Linux，Docker，k8s，jenkins
 
 ## 4、模块说明
 
@@ -58,7 +58,7 @@ daisy-parent：基础依赖
 
 1、daisy
 
-提供API访问，由 daisy-api，daisy-common，daisy-core组成。
+提供API访问，由 daisy-api，daisy-common，daisy-core 组成。
 
 - api 负责对外提供接口访问；
 
@@ -68,21 +68,21 @@ daisy-parent：基础依赖
 
 2、daisy-canal
 
-监控binlog，发送MQ。
+监控 binlog，发送 MQ。
 
 3、daisy-canal-consumer
 
-消费binlog消息，触发业务。
+消费 binlog 消息，触发业务。
 
 4、daisy-job
 
-基于elastic-job实现分布式job。
+基于 elastic-job 实现分布式 job。
 
 ## 5、项目构建
 
 ### 基础组件构建
 
-从上到下clean install构建。
+从上到下 clean install 构建。
 
 - daisy-parent
 
@@ -104,9 +104,9 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 2、工程构建、启动、访问
 
-- 构建: clean install确保能编译打包通过
+- 构建: clean install 确保能编译打包通过
 
-- 启动: daisy-api下com/jpeony/api/ApiApplication.java，main方法运行即可启动
+- 启动: daisy-api下com/jpeony/api/ApiApplication.java，main 方法运行即可启动
 
 - 访问: http://localhost:8765/test/test, 返回结果: {"code":1,"data":null,"msg":"daisy启动成功了!"}
 
@@ -114,41 +114,41 @@ daisy-api/resources/application-dev.yml 修改相关配置地址。
 
 ### 技术选型
 
-[微服务框架选型]
+[微服务框架技术选型]
 
-[API网关选型]
+[API网关技术选型]
 
-[注册中心选型]
+[注册中心技术选型]
 
-[配置中心选型]
+[配置中心技术选型]
 
-[ORM选型]
+[ORM 框架技术选型]
 
-[JSON选型]
+[序列化框架技术选型]
 
-[分布式通信选型]
+[网络通信技术选型]
 
-[限流降级选型]
+[集群容错技术选型]
 
-[连接池选型]
+[连接池技术选型]
 
-[分布式事务选型](https://jpeony.blog.csdn.net/article/details/107828429)
+[分布式事务技术选型](https://jpeony.blog.csdn.net/article/details/107828429)
 
-[分布式锁选型]
+[分布式锁技术选型]
 
-[分布式定时任务选型]
+[分布式定时任务技术选型]
 
-[分库分表选型]
+[分库分表技术选型]
 
-[缓存中间件选型](https://jpeony.blog.csdn.net/article/details/105379126)
+[缓存中间件技术选型](https://jpeony.blog.csdn.net/article/details/105379126)
 
-[消息中间件选型](https://jpeony.blog.csdn.net/article/details/105350892)
+[消息中间件技术选型](https://jpeony.blog.csdn.net/article/details/105350892)
 
 [系统监控选型]
 
-[日志选型]
+[日志框架技术选型]
 
-[海量存储选型]
+[海量存储技术选型]
 
 ### 最佳实战
 
