@@ -1,0 +1,23 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: channel-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yml # 配置中心文件后缀
+    gateway:
+      discovery:
+        locator:
+          enabled: false # 是否支持微服务名进行路径映射：true，允许，false ，不允许，一般用 false，否则会暴露服务
+      enabled: true # 是否开启使用网关
+      routes:
+        - id: order # id 随意，但是必须要唯一
+          uri: lb://order # nacos 中注册的服务 server 名字
+          predicates:
+            - Path=/order/** # 见到请求路径带 order，全部转发到 uri 对应路径，可以配置多个，比如 - Path=/order/**,/member/**
