@@ -1,6 +1,6 @@
 package com.jpeony.dubbo.user.provider.service;
 
-import com.jpeony.dubbo.commons.utils.ApiResponse;
+import com.jpeony.dubbo.commons.core.utils.ApiResponse;
 import com.jpeony.dubbo.user.api.service.UserService;
 import com.jpeony.dubbo.user.api.dto.UserDTO;
 import com.jpeony.dubbo.user.provider.pojo.vo.UserVO;
