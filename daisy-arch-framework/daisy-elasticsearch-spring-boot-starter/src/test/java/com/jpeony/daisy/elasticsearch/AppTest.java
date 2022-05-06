@@ -1,4 +1,4 @@
-package com.jpeony.daisy.elastic;
+package com.jpeony.daisy.elasticsearch;
 
 import static org.junit.Assert.assertTrue;
 
