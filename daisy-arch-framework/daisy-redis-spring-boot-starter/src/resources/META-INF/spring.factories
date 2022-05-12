@@ -1,2 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.jpeony.redis.spring.boot.autoconfigure.RedisAutoConfiguration

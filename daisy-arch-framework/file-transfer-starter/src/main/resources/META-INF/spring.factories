@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.jpeony.file.transfer.config.SeaweedAutoConfiguration,\
+  com.jpeony.file.transfer.config.FtpAutoConfiguration
