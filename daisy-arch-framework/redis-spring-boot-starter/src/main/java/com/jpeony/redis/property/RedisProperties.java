@@ -36,7 +36,7 @@ public class RedisProperties {
     /**
      * 序列化方式的使用：
      * 1. 系统已实现可选值: jackson、jdk
-     * 2. 或指定自己的实现类(全类名)，该类必须实现Serializer接口
+     * 2. 或指定自己的实现类(全类名)，该类必须实现 Serializer 接口
      */
     private String serializer;
 

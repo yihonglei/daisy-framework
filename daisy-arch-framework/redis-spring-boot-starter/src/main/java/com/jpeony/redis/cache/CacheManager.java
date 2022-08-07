@@ -21,7 +21,7 @@ import java.util.Set;
 @Component
 public class CacheManager {
 
-    private static Logger logger = LoggerFactory.getLogger(CacheManager.class);
+    private static final Logger logger = LoggerFactory.getLogger(CacheManager.class);
 
     private static RedisSupport redisSupport;
 
@@ -87,7 +87,7 @@ public class CacheManager {
     }
 
     /**
-     * 获取缓存对象，不支持list，map
+     * 获取缓存对象，不支持 list，map
      *
      * @param key
      * @param classType
@@ -104,7 +104,7 @@ public class CacheManager {
     }
 
     /**
-     * 获取缓存对象，支持list，map
+     * 获取缓存对象，支持 list，map
      *
      * @param key
      * @param tr

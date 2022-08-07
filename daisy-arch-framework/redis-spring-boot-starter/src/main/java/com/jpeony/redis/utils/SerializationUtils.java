@@ -3,6 +3,7 @@ package com.jpeony.redis.utils;
 import com.jpeony.redis.exception.SerializationException;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,12 +12,12 @@ import java.util.Map;
  */
 public class SerializationUtils {
 
-    private static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+    private static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
 
     public static final byte[] EMPTY_ARRAY = new byte[0];
 
     public static final Map<byte[], byte[]> EMPTY_MAP = new HashMap<>();
-    
+
     public static boolean isEmpty(byte[] data) {
         return (data == null || data.length == 0);
     }
