@@ -22,9 +22,9 @@ import java.lang.reflect.Method;
 /**
  * @author yihonglei
  */
-@Aspect
-@Order(-10) // 在 Spring 事务生成代理对象之前指定数据源
-@Component
+//@Aspect
+//@Order(-10) // 在 Spring 事务生成代理对象之前指定数据源
+//@Component
 public class DataSourceAop {
     private static final String MASTER = "-master";
     private static final String SLAVE = "-slave";
@@ -33,7 +33,7 @@ public class DataSourceAop {
     public void dsPointCut() {
     }
 
-    //    @Before("dsPointCut()")
+    @Before("dsPointCut()")
     public void process(JoinPoint point) {
         MethodSignature signature = (MethodSignature) point.getSignature();
         Method method = signature.getMethod();
@@ -64,7 +64,7 @@ public class DataSourceAop {
         return (useMaster != null || update != null || insert != null || delete != null);
     }
 
-    //    @After("dsPointCut()")
+    @After("dsPointCut()")
     public void afterAdvice() {
         DynamicDataSourceContextHolder.clear();
     }

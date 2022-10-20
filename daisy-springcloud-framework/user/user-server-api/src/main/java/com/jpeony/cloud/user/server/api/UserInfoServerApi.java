@@ -2,7 +2,7 @@ package com.jpeony.cloud.user.server.api;
 
 import com.jpeony.cloud.user.server.api.req.UserInfoReq;
 import com.jpeony.cloud.user.server.api.res.UserInfoRes;
-import com.jpeony.commons.core.model.ApiRes;
+import com.jpeony.commons.core.model.ResponseDataModel;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,5 +13,5 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(name = "user-server")
 public interface UserInfoServerApi {
     @PostMapping(value = "/user/getUserInfo")
-    ApiRes<UserInfoRes> getUserInfo(@RequestBody UserInfoReq userInfoReq);
+    ResponseDataModel<UserInfoRes> getUserInfo(@RequestBody UserInfoReq userInfoReq);
 }

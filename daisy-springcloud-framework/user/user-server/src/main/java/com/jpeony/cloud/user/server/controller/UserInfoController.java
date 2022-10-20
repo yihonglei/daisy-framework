@@ -1,6 +1,6 @@
 package com.jpeony.cloud.user.server.controller;
 
-import com.jpeony.commons.core.model.ApiRes;
+import com.jpeony.commons.core.model.ResponseDataModel;
 import com.jpeony.cloud.user.server.api.req.UserInfoReq;
 import com.jpeony.cloud.user.server.api.res.UserInfoRes;
 import com.jpeony.cloud.user.server.service.UserInfoService;
@@ -17,7 +17,7 @@ public class UserInfoController {
     private UserInfoService userInfoService;
 
     @PostMapping(value = "/getUserInfo", produces = "application/json; charset=utf-8")
-    public ApiRes<UserInfoRes> getUserInfo(@RequestBody UserInfoReq userInfoReq) {
-        return ApiRes.success(userInfoService.getUserInfo(userInfoReq));
+    public ResponseDataModel<UserInfoRes> getUserInfo(@RequestBody UserInfoReq userInfoReq) {
+        return ResponseDataModel.success(userInfoService.getUserInfo(userInfoReq));
     }
 }

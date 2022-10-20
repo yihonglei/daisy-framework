@@ -1,8 +1,8 @@
 package com.jpeony.commons.core.exception;
 
 
-import com.jpeony.commons.core.enums.ErrorCodeEnum;
-import com.jpeony.commons.core.model.ApiRes;
+import com.jpeony.commons.core.enums.StatusCodeEnum;
+import com.jpeony.commons.core.model.ResponseDataModel;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.TypeMismatchException;
@@ -25,9 +25,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BaseException.class)
     @ResponseBody
-    public ApiRes handleBaseException(BaseException e) {
+    public ResponseDataModel handleBaseException(BaseException e) {
         printWarnLog(e);
-        return ApiRes.error(e.getErrCode(), e.getErrMessage(), e.getData());
+        return ResponseDataModel.error(e.getErrCode(), e.getErrMessage(), e.getData());
     }
 
     /**
@@ -35,23 +35,23 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = {MissingServletRequestParameterException.class, TypeMismatchException.class, BindException.class})
     @ResponseBody
-    public ApiRes handleParamException(Exception ex) {
-        ApiRes result = ApiRes.error();
+    public ResponseDataModel handleParamException(Exception ex) {
+        ResponseDataModel result = ResponseDataModel.error();
         // 如果请求参数为必填但没有传则抛异常
         if (ex instanceof MissingServletRequestParameterException) {
             MissingServletRequestParameterException e = (MissingServletRequestParameterException) ex;
             String parameterName = e.getParameterName();
-            result.setCode(ErrorCodeEnum.ILLEGAL_ARGUMENT_ERROR.getCode());
+            result.setCode(StatusCodeEnum.ILLEGAL_ARGUMENT_ERROR.getCode());
             result.setMsg(parameterName + " is required");
         } else if (ex instanceof TypeMismatchException) {
             // 参数类型不匹配异常
             TypeMismatchException e = (TypeMismatchException) ex;
-            result.setCode(ErrorCodeEnum.ILLEGAL_ARGUMENT_ERROR.getCode());
-            result.setMsg(ErrorCodeEnum.ILLEGAL_ARGUMENT_ERROR.getMsg());
+            result.setCode(StatusCodeEnum.ILLEGAL_ARGUMENT_ERROR.getCode());
+            result.setMsg(StatusCodeEnum.ILLEGAL_ARGUMENT_ERROR.getMsg());
         } else if (ex instanceof BindException) {
             // 对象参数绑定异常
             BindException e = (BindException) ex;
-            result.setCode(ErrorCodeEnum.ILLEGAL_ARGUMENT_ERROR.getCode());
+            result.setCode(StatusCodeEnum.ILLEGAL_ARGUMENT_ERROR.getCode());
             result.setMsg(e.getAllErrors().get(0).getDefaultMessage());
         }
 
@@ -72,7 +72,7 @@ public class GlobalExceptionHandler {
      * 未知异常
      */
     @ExceptionHandler({RuntimeException.class})
-    public ApiRes exceptionHandler(Exception e) {
-        return ApiRes.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+    public ResponseDataModel exceptionHandler(Exception e) {
+        return ResponseDataModel.error(StatusCodeEnum.SYSTEM_DEFAULT_ERROR);
     }
 }

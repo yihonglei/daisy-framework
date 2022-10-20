@@ -1,6 +1,6 @@
 package com.jpeony.commons.core.exception;
 
-import com.jpeony.commons.core.enums.ErrorCodeEnum;
+import com.jpeony.commons.core.enums.StatusCodeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,16 +25,16 @@ public class BaseException extends RuntimeException {
         this.errMessage = errMessage;
     }
 
-    public BaseException(ErrorCodeEnum errorEnum, Throwable cause) {
+    public BaseException(StatusCodeEnum errorEnum, Throwable cause) {
         this(errorEnum.getCode(), errorEnum.getMsg(), cause);
     }
 
-    public BaseException(ErrorCodeEnum errorEnum) {
+    public BaseException(StatusCodeEnum errorEnum) {
         this(errorEnum.getCode(), errorEnum.getMsg(), null);
     }
 
     public BaseException(String errMessage) {
-        this(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR.getCode(), errMessage, null);
+        this(StatusCodeEnum.SYSTEM_DEFAULT_ERROR.getCode(), errMessage, null);
     }
 
     public BaseException(int errCode, String errMessage) {

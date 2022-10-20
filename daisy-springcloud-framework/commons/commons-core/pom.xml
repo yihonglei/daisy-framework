@@ -9,7 +9,6 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <artifactId>commons-core</artifactId>
-    <name>commons-core</name>
 
     <dependencies>
         <!-- spring boot 全栈 Web 开发模块，包含嵌入 Tomcat、Spring、Spring MVC 等等 -->
@@ -47,6 +46,16 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+        <!-- spring boot 监控 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!-- spring boot 验证 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <!-- spring boot 单元测试 -->
         <dependency>
@@ -107,6 +116,15 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-access</artifactId>
+        </dependency>
+        <!-- skywalking -->
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-trace</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.skywalking</groupId>
+            <artifactId>apm-toolkit-logback-1.x</artifactId>
         </dependency>
     </dependencies>
 </project>
