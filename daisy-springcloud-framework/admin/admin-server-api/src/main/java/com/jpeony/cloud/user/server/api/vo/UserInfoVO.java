@@ -1,4 +1,4 @@
-package com.jpeony.cloud.user.server.api.res;
+package com.jpeony.cloud.user.server.api.vo;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import lombok.Data;
  * @author yihonglei
  */
 @Data
-public class UserInfoRes {
+public class UserInfoVO {
     private Integer userId;
     private String userName;
     private Integer age;

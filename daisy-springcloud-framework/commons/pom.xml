@@ -16,5 +16,10 @@
         <module>commons-core</module>
         <module>commons-feign</module>
         <module>commons-datasource</module>
+        <module>common-mybatis</module>
+        <module>common-seata</module>
+        <module>common-xss</module>
+        <module>common-security</module>
+        <module>common-swagger</module>
     </modules>
 </project>

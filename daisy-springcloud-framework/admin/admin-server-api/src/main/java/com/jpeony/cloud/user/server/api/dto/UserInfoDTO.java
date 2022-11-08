@@ -1,4 +1,4 @@
-package com.jpeony.cloud.user.server.api.req;
+package com.jpeony.cloud.user.server.api.dto;
 
 import lombok.Data;
 
@@ -6,6 +6,6 @@ import lombok.Data;
  * @author yihonglei
  */
 @Data
-public class UserInfoReq {
+public class UserInfoDTO {
     private Integer userId;
 }

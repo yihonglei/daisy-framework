@@ -2,7 +2,7 @@ package com.jpeony.commons.core.exception;
 
 
 import com.jpeony.commons.core.enums.StatusCodeEnum;
-import com.jpeony.commons.core.model.ResponseDataModel;
+import com.jpeony.commons.core.util.R;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.beans.TypeMismatchException;
@@ -25,9 +25,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BaseException.class)
     @ResponseBody
-    public ResponseDataModel handleBaseException(BaseException e) {
+    public R handleBaseException(BaseException e) {
         printWarnLog(e);
-        return ResponseDataModel.error(e.getErrCode(), e.getErrMessage(), e.getData());
+        return R.error(e.getErrCode(), e.getErrMessage(), e.getData());
     }
 
     /**
@@ -35,8 +35,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = {MissingServletRequestParameterException.class, TypeMismatchException.class, BindException.class})
     @ResponseBody
-    public ResponseDataModel handleParamException(Exception ex) {
-        ResponseDataModel result = ResponseDataModel.error();
+    public R handleParamException(Exception ex) {
+        R result = R.error();
         // 如果请求参数为必填但没有传则抛异常
         if (ex instanceof MissingServletRequestParameterException) {
             MissingServletRequestParameterException e = (MissingServletRequestParameterException) ex;
@@ -72,7 +72,7 @@ public class GlobalExceptionHandler {
      * 未知异常
      */
     @ExceptionHandler({RuntimeException.class})
-    public ResponseDataModel exceptionHandler(Exception e) {
-        return ResponseDataModel.error(StatusCodeEnum.SYSTEM_DEFAULT_ERROR);
+    public R exceptionHandler(Exception e) {
+        return R.error(StatusCodeEnum.SYSTEM_DEFAULT_ERROR);
     }
 }
