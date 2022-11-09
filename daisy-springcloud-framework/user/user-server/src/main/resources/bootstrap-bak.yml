@@ -1,0 +1,19 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: user-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: @hq.nacos.config.url@
+        group: @hq.nacos.config.group@
+        cluster-name: one
+        namespace: @hq.nacos.config.namespace@
+      config:
+        server-addr: @hq.nacos.config.url@
+        file-extension: yml
+        refresh-enabled: true
+        group: @hq.nacos.config.group@
+        namespace: @hq.nacos.config.namespace@

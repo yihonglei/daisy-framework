@@ -1,7 +1,7 @@
 package com.jpeony.cloud.user.server.service.impl;
 
-import com.jpeony.cloud.user.server.api.dto.UserInfoReq;
-import com.jpeony.cloud.user.server.api.vo.UserInfoRes;
+import com.jpeony.cloud.user.server.api.dto.UserInfoDTO;
+import com.jpeony.cloud.user.server.api.vo.UserInfoVO;
 import com.jpeony.cloud.user.server.mapper.UserInfoMapper;
 import com.jpeony.cloud.user.server.pojo.domain.UserInfoDO;
 import com.jpeony.cloud.user.server.service.UserInfoService;
@@ -19,11 +19,11 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public UserInfoRes getUserInfo(UserInfoReq userInfoReq) {
-        UserInfoRes userInfoRes = new UserInfoRes();
-        UserInfoDO userInfoDO = userInfoMapper.queryUserInfo(userInfoReq.getUserId());
+    public UserInfoVO getUserInfo(UserInfoDTO userInfoDTO) {
+        UserInfoVO userInfoRes = new UserInfoVO();
+        UserInfoDO userInfoDO = userInfoMapper.queryUserInfo(userInfoDTO.getUserId());
         if (userInfoDO == null) {
-            userInfoDO = userInfoMapper.queryUserInfoMaster(userInfoReq.getUserId());
+            userInfoDO = userInfoMapper.queryUserInfoMaster(userInfoDTO.getUserId());
         }
         userInfoRes.setUserId(userInfoDO.getUserId());
         userInfoRes.setUserName(userInfoDO.getUserName());

@@ -1,11 +1,11 @@
 package com.jpeony.cloud.user.server.service;
 
-import com.jpeony.cloud.user.server.api.dto.UserInfoReq;
-import com.jpeony.cloud.user.server.api.vo.UserInfoRes;
+import com.jpeony.cloud.user.server.api.dto.UserInfoDTO;
+import com.jpeony.cloud.user.server.api.vo.UserInfoVO;
 
 /**
  * @author yihonglei
  */
 public interface UserInfoService {
-    UserInfoRes getUserInfo(UserInfoReq userInfoReq);
+    UserInfoVO getUserInfo(UserInfoDTO userInfoDTO);
 }

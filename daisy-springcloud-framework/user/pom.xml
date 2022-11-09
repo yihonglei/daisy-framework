@@ -41,4 +41,46 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <nacos.config.url>10.6.202.105:8848</nacos.config.url>
+                <nacos.config.group>admin</nacos.config.group>
+                <nacos.config.cluster>one</nacos.config.cluster>
+                <nacos.config.namespace>5765a36b-be25-4ee5-b3bc-fcf0da6ac7a8</nacos.config.namespace>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <nacos.config.url>10.6.202.105:8848</nacos.config.url>
+                <nacos.config.group>admin</nacos.config.group>
+                <nacos.config.cluster>one</nacos.config.cluster>
+                <nacos.config.namespace>b753c6c2-3645-4143-8a24-26ac337aa4d6</nacos.config.namespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>pre</id>
+            <properties>
+                <nacos.config.url>inside-nacos.hqzhuanche.com:8830</nacos.config.url>
+                <nacos.config.group>admin</nacos.config.group>
+                <nacos.config.cluster>one</nacos.config.cluster>
+                <nacos.config.namespace>a78ee4ab-0dd6-4d1c-bc86-dc06c7d22a8a</nacos.config.namespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <nacos.config.url>inside-nacos.hqzhuanche.com:8830</nacos.config.url>
+                <nacos.config.group>admin</nacos.config.group>
+                <nacos.config.cluster>one</nacos.config.cluster>
+                <nacos.config.namespace>71d6128c-a623-4340-ba6a-aa90686172c1</nacos.config.namespace>
+            </properties>
+        </profile>
+    </profiles>
 </project>

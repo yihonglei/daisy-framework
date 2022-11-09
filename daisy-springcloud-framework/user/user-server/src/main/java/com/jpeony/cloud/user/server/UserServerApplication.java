@@ -28,7 +28,7 @@ import java.util.List;
                 RedisRepositoriesAutoConfiguration.class, DruidDataSourceAutoConfigure.class})
 @EnableFeignClients(basePackages = "com.jpeony.*")
 @EnableDiscoveryClient
-@MapperScan("com.jpeony.user.server.mapper")
+@MapperScan("com.jpeony.cloud.user.server.mapper")
 public class UserServerApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(UserServerApplication.class, args);

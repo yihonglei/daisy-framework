@@ -1,9 +1,9 @@
 package com.jpeony.cloud.user.server.controller;
 
-import com.jpeony.commons.core.model.ResponseDataModel;
-import com.jpeony.cloud.user.server.api.dto.UserInfoReq;
-import com.jpeony.cloud.user.server.api.vo.UserInfoRes;
+import com.jpeony.cloud.user.server.api.dto.UserInfoDTO;
+import com.jpeony.cloud.user.server.api.vo.UserInfoVO;
 import com.jpeony.cloud.user.server.service.UserInfoService;
+import com.jpeony.commons.core.util.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ public class UserInfoController {
     private UserInfoService userInfoService;
 
     @PostMapping(value = "/getUserInfo", produces = "application/json; charset=utf-8")
-    public ResponseDataModel<UserInfoRes> getUserInfo(@RequestBody UserInfoReq userInfoReq) {
-        return ResponseDataModel.success(userInfoService.getUserInfo(userInfoReq));
+    public R<UserInfoVO> getUserInfo(@RequestBody UserInfoDTO userInfoDTO) {
+        return R.success(userInfoService.getUserInfo(userInfoDTO));
     }
 }
