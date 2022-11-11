@@ -6,6 +6,7 @@ import org.apache.shardingsphere.api.hint.HintManager;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
 
@@ -22,11 +23,14 @@ import java.util.Objects;
 @Aspect
 public class DataSourceAop {
 
-    @Around("execution(* com.jpeony..*.mapper..*.*(..))")
+    @Pointcut("execution(* com.jpeony..*.mapper..*.*(..))")
+    public void dsPointCut() {
+    }
+
+    @Around("dsPointCut()")
     public Object master(ProceedingJoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         Object ret = null;
-        log.info(joinPoint.toShortString());
 
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
