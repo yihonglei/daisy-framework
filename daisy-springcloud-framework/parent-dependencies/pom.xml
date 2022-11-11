@@ -22,9 +22,8 @@
         <spring.cloud.alibaba.version>2.2.6.RELEASE</spring.cloud.alibaba.version>
         <nacos.client.version>2.0.3</nacos.client.version>
         <mysql.version>5.1.47</mysql.version>
-        <druid.boot.version>1.2.6</druid.boot.version>
-        <mybatis.plus.version>3.4.2</mybatis.plus.version>
-        <sharding.jdbc.version>4.1.0</sharding.jdbc.version>
+        <mybatis.plus.version>3.5.2</mybatis.plus.version>
+        <sharding.jdbc.version>4.1.1</sharding.jdbc.version>
         <guava.version>22.0</guava.version>
         <lombok.version>1.18.2</lombok.version>
         <apache.commons.collections.version>3.2.2</apache.commons.collections.version>
@@ -68,13 +67,6 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
-            </dependency>
-
-            <!-- druid -->
-            <dependency>
-                <groupId>com.alibaba</groupId>
-                <artifactId>druid-spring-boot-starter</artifactId>
-                <version>${druid.boot.version}</version>
             </dependency>
 
             <!-- mybatis-plus -->
@@ -274,7 +266,8 @@
                 </excludes>
             </resource>
             <resource>
-                <directory>${project.basedir}/src/main/resources/${profiles.active}</directory>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <!--                <directory>${project.basedir}/src/main/resources/${spring.active}</directory>-->
             </resource>
         </resources>
         <testResources>
