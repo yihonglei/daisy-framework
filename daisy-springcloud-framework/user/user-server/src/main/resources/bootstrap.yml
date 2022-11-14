@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: @artifactId@
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
