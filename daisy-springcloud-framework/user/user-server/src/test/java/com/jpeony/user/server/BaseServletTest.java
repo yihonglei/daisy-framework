@@ -19,9 +19,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @ContextConfiguration(classes = UserServerApplication.class)
 public class BaseServletTest {
-    static {
-        System.setProperty("spring.profiles.active", "dev");
-    }
+//    static {
+//        System.setProperty("spring.profiles.active", "dev");
+//    }
 
     @Test
     public void test() {

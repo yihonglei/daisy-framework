@@ -67,7 +67,7 @@
         <profile>
             <id>pre</id>
             <properties>
-                <nacos.config.url>inside-nacos.hqzhuanche.com:8830</nacos.config.url>
+                <nacos.config.url>inside-nacos.jpeony.com:8830</nacos.config.url>
                 <nacos.config.group>admin</nacos.config.group>
                 <nacos.config.cluster>one</nacos.config.cluster>
                 <nacos.config.namespace>a78ee4ab-0dd6-4d1c-bc86-dc06c7d22a8a</nacos.config.namespace>
@@ -76,7 +76,7 @@
         <profile>
             <id>prod</id>
             <properties>
-                <nacos.config.url>inside-nacos.hqzhuanche.com:8830</nacos.config.url>
+                <nacos.config.url>inside-nacos.jpeony.com:8830</nacos.config.url>
                 <nacos.config.group>admin</nacos.config.group>
                 <nacos.config.cluster>one</nacos.config.cluster>
                 <nacos.config.namespace>71d6128c-a623-4340-ba6a-aa90686172c1</nacos.config.namespace>

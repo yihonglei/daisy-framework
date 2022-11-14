@@ -4,16 +4,18 @@ server:
 spring:
   application:
     name: user-server
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
-        server-addr: @hq.nacos.config.url@
-        group: @hq.nacos.config.group@
+        server-addr: @nacos.config.url@
+        group: @nacos.config.group@
         cluster-name: one
-        namespace: @hq.nacos.config.namespace@
+        namespace: @nacos.config.namespace@
       config:
-        server-addr: @hq.nacos.config.url@
+        server-addr: @nacos.config.url@
         file-extension: yml
         refresh-enabled: true
-        group: @hq.nacos.config.group@
-        namespace: @hq.nacos.config.namespace@
+        group: @nacos.config.group@
+        namespace: @nacos.config.namespace@
