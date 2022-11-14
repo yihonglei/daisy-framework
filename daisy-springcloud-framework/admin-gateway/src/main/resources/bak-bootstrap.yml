@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: channel-gateway
+    name: admin-gateway
   cloud:
     nacos:
       discovery:
