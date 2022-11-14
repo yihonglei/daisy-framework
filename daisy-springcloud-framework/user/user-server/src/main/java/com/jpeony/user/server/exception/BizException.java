@@ -1,6 +1,6 @@
-package com.jpeony.boot.common.exception;
+package com.jpeony.user.server.exception;
 
-import com.jpeony.boot.common.enums.ErrorCodeEnum;
+import com.jpeony.user.server.enums.ErrorCodeEnum;
 import lombok.Data;
 
 /**

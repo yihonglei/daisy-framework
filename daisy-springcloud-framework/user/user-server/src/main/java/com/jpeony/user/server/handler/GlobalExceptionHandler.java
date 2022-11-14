@@ -1,10 +1,10 @@
-package com.jpeony.boot.common.spring;
+package com.jpeony.user.server.handler;
 
 
 import com.alibaba.fastjson.JSON;
-import com.jpeony.boot.common.exception.BizException;
-import com.jpeony.boot.common.enums.ErrorCodeEnum;
-import com.jpeony.boot.common.utils.ApiResponse;
+import com.jpeony.commons.core.util.R;
+import com.jpeony.user.server.enums.ErrorCodeEnum;
+import com.jpeony.user.server.exception.BizException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.TypeMismatchException;
@@ -35,11 +35,11 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = {BizException.class})
     @ResponseBody
-    public ApiResponse handleBusinessException(BizException e) {
+    public R handleBusinessException(BizException e) {
         // 业务异常
         logger.warn("业务处理响应处理失败 errorCode:[{}] errorMessage:[{}] data:[{}]", e.getErrCode(), e.getErrMessage(), JSON
                 .toJSONString(e.getData()));
-        return ApiResponse.error(e.getErrCode(), e.getErrMessage(), e.getData());
+        return R.error(e.getErrCode(), e.getErrMessage(), e.getData());
     }
 
     /**
@@ -49,18 +49,18 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(value = {Throwable.class})
     @ResponseBody
-    public ApiResponse handleUnexpectedServerError(HttpServletRequest request, Throwable ex) {
+    public R handleUnexpectedServerError(HttpServletRequest request, Throwable ex) {
         // 其他未知异常处理
         logger.error("url:[{}] error trace:", request.getRequestURI(), ex);
-        return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
+        return R.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
     }
 
     @ExceptionHandler(value = {MissingServletRequestParameterException.class, ConstraintViolationException.class,
             TypeMismatchException.class, BindException.class})
     @ResponseBody
-    public ApiResponse handleParamException(Throwable ex) {
+    public R handleParamException(Throwable ex) {
 
-        ApiResponse result = ApiResponse.error();
+        R result = R.error();
         // 如果请求参数为必填但没有传则抛异常
         if (ex instanceof MissingServletRequestParameterException) {
             MissingServletRequestParameterException e = (MissingServletRequestParameterException) ex;

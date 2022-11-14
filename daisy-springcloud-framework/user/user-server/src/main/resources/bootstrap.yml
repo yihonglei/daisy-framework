@@ -3,9 +3,7 @@ server:
 
 spring:
   application:
-    name: user-server
-  profiles:
-    active: dev
+    name: @artifactId@
   cloud:
     nacos:
       discovery:
