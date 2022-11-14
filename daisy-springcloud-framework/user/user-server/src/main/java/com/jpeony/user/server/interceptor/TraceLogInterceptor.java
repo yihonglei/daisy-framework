@@ -1,4 +1,4 @@
-package com.jpeony.commons.core.spring;
+package com.jpeony.user.server.interceptor;
 
 import com.alibaba.fastjson.JSON;
 import com.jpeony.commons.core.util.DecodeUtils;
