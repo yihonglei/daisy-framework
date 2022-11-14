@@ -62,14 +62,12 @@
                 <version>${nacos.client.version}</version>
             </dependency>
 
-            <!-- mysql -->
+            <!-- orm -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
-
-            <!-- mybatis-plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
@@ -223,7 +221,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.8.1</version>
                 <configuration>
                     <compilerVersion>${maven.compiler.source}</compilerVersion>
                     <source>${maven.compiler.source}</source>
@@ -234,10 +232,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>3.2.0</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*.sh</exclude>
+                        <exclude>**/*.bat</exclude>
+                        <exclude>**/assembly/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -251,7 +251,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.7</version>
+                <version>3.0.0-M5</version>
                 <configuration>
                     <skip>true</skip>
                     <testFailureIgnore>true</testFailureIgnore>
@@ -267,7 +267,16 @@
             </resource>
             <resource>
                 <directory>${project.basedir}/src/main/resources</directory>
-                <!--                <directory>${project.basedir}/src/main/resources/${spring.active}</directory>-->
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>dev/*</exclude>
+                    <exclude>prod/*</exclude>
+                    <exclude>pre/*</exclude>
+                    <exclude>test/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/main/resources/${profiles.active}</directory>
             </resource>
         </resources>
         <testResources>
@@ -275,6 +284,16 @@
                 <directory>${project.basedir}/src/test/java</directory>
                 <excludes>
                     <exclude>**/*.java</exclude>
+                </excludes>
+            </testResource>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>dev/*</exclude>
+                    <exclude>prod/*</exclude>
+                    <exclude>pre/*</exclude>
+                    <exclude>test/*</exclude>
                 </excludes>
             </testResource>
         </testResources>
@@ -299,4 +318,46 @@
     <!--            <url>http://nexus.jpeony.com:9000/content/repositories/snapshots/</url>-->
     <!--        </snapshotRepository>-->
     <!--    </distributionManagement>-->
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <nacos.config.url>10.6.202.105:8848</nacos.config.url>
+                <nacos.config.group>admin</nacos.config.group>
+                <nacos.config.cluster>one</nacos.config.cluster>
+                <nacos.config.namespace>5765a36b-be25-4ee5-b3bc-fcf0da6ac7a8</nacos.config.namespace>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <nacos.config.url>10.6.202.105:8848</nacos.config.url>
+                <nacos.config.group>admin</nacos.config.group>
+                <nacos.config.cluster>one</nacos.config.cluster>
+                <nacos.config.namespace>b753c6c2-3645-4143-8a24-26ac337aa4d6</nacos.config.namespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>pre</id>
+            <properties>
+                <nacos.config.url>inside-nacos.jpeony.com:8830</nacos.config.url>
+                <nacos.config.group>admin</nacos.config.group>
+                <nacos.config.cluster>one</nacos.config.cluster>
+                <nacos.config.namespace>a78ee4ab-0dd6-4d1c-bc86-dc06c7d22a8a</nacos.config.namespace>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <nacos.config.url>inside-nacos.jpeony.com:8830</nacos.config.url>
+                <nacos.config.group>admin</nacos.config.group>
+                <nacos.config.cluster>one</nacos.config.cluster>
+                <nacos.config.namespace>71d6128c-a623-4340-ba6a-aa90686172c1</nacos.config.namespace>
+            </properties>
+        </profile>
+    </profiles>
 </project>
