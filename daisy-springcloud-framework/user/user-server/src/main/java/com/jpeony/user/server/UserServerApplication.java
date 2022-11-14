@@ -7,6 +7,8 @@ import com.google.common.collect.Lists;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -20,9 +22,8 @@ import java.util.List;
 //@SpringBootApplication(scanBasePackages = {"com.jpeony.*"},
 //        exclude = {DataSourceAutoConfiguration.class, RedisAutoConfiguration.class,
 //                RedisRepositoriesAutoConfiguration.class})
-//@EnableFeignClients(basePackages = "com.jpeony.*")
-//@EnableDiscoveryClient
-
+@EnableFeignClients(basePackages = "com.jpeony.*")
+@EnableDiscoveryClient
 @SpringBootApplication(scanBasePackages = "com.jpeony.*")
 @MapperScan("com.jpeony.user.server.mapper")
 public class UserServerApplication implements WebMvcConfigurer {
