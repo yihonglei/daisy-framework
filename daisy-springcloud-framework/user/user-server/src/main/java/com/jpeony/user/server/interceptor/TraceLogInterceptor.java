@@ -31,9 +31,9 @@ public class TraceLogInterceptor extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String uuid = UUID.randomUUID().toString().replace("-", "");
-        MDC.put(TRACE_KEY, uuid);
-        // 日志中增加业务编号，比如订单号，要求订单号参数必须是orderNo
-        MDC.put(ORDER_NO, request.getParameter(ORDER_NO));
+        MDC.put(TRACE_ID, uuid);
+        // 日志中增加业务编号，比如订单号，要求订单号参数必须是 orderNo
+        MDC.put(UNIQUE_NO, request.getParameter("orderNo"));
         String ngTraceId = request.getHeader(NG_TRACE_ID);
         if (StringUtils.isBlank(ngTraceId)) {
             ngTraceId = uuid;
@@ -71,8 +71,8 @@ public class TraceLogInterceptor extends HandlerInterceptorAdapter {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         logger.info("api[{}]接口耗时:[{}]ms", request.getRequestURI(), THREAD_LOCAL.get().getTotalTimeMillis());
-        MDC.remove(TRACE_KEY);
-        MDC.remove(ORDER_NO);
+        MDC.remove(TRACE_ID);
+        MDC.remove(UNIQUE_NO);
         MDC.remove(NG_TRACE_ID);
         THREAD_LOCAL.remove();
     }
