@@ -7,8 +7,9 @@ import com.google.common.collect.Lists;
 import com.jpeony.user.server.interceptor.TraceLogInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+import org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -25,10 +26,8 @@ import static com.jpeony.commons.core.constant.InterceptorConstant.NGINX;
 /**
  * @author yihonglei
  */
-//@SpringBootApplication(scanBasePackages = {"com.jpeony.*"},
-//        exclude = {DataSourceAutoConfiguration.class, RedisAutoConfiguration.class,
-//                RedisRepositoriesAutoConfiguration.class})
-@SpringBootApplication(scanBasePackages = "com.jpeony.*", exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages = "com.jpeony.*", exclude = {DataSourceAutoConfiguration.class,
+        RedisAutoConfiguration.class, RedisRepositoriesAutoConfiguration.class})
 @EnableFeignClients(basePackages = "com.jpeony.*")
 @EnableDiscoveryClient
 @MapperScan("com.jpeony.user.server.mapper")
