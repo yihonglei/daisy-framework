@@ -6,13 +6,17 @@ package com.jpeony.commons.core.constant;
  * @author yihonglei
  */
 public interface TraceConstant {
-    String TRACE_KEY = "traceId";
+
     /**
-     * 追踪使用的订单号
+     * 请求 traceId
      */
-    String ORDER_NO = "orderNo";
+    String TRACE_ID = "traceId";
     /**
-     * 调用链追踪
+     * 业务追踪号（订单号，手机号，用户id等）
      */
-    String NG_TRACE_ID = "NG_TRACE_ID";
+    String UNIQUE_NO = "uniqueNo";
+    /**
+     * 请求 ngTraceId
+     */
+    String NG_TRACE_ID = "ngTraceId";
 }
