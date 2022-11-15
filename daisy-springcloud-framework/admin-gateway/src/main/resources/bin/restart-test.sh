@@ -1,10 +1,10 @@
 #!/bin/bash
 source /etc/profile
 
-service_name="passenger-gateway"
+service_name="admin-gateway"
 cd /u01/projectCAR/service/${service_name}/
 #jar
-project=passenger-gateway-1.0.0-SNAPSHOT.jar
+project=admin-gateway-1.0.0-SNAPSHOT.jar
 
 #kill -9
 pid=`ps -ef|grep ${project}|grep -v grep|awk '{print $2}'`
