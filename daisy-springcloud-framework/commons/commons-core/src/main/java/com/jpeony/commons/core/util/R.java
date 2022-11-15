@@ -1,6 +1,5 @@
 package com.jpeony.commons.core.util;
 
-import com.jpeony.commons.core.enums.StatusCodeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -75,10 +74,6 @@ public class R<T> implements Serializable {
 
     public static <T> R<T> success() {
         return success(SUCCESS.code, SUCCESS.msg, null);
-    }
-
-    public static <T> R error(StatusCodeEnum errorCodeEnum) {
-        return error(errorCodeEnum.getCode(), errorCodeEnum.getMsg(), null);
     }
 
     public static <T> R error() {

@@ -39,8 +39,8 @@ public class LogTraceInfo implements Serializable {
     /**
      * 基于当前MDC创建item
      */
-    public static LogTraceInfo createByCurrentMDC() {
-        return new LogTraceInfo(MDC.get(TRACE_KEY), MDC.get(ORDER_NO), MDC.get(NG_TRACE_ID));
+    public static com.jpeony.commons.core.logback.LogTraceInfo createByCurrentMDC() {
+        return new com.jpeony.commons.core.logback.LogTraceInfo(MDC.get(TRACE_KEY), MDC.get(ORDER_NO), MDC.get(NG_TRACE_ID));
     }
 
     /**
