@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <conversionRule conversionWord="logSort" converterClass="com.jpeony.commons.core.logback.LogSort"/>
-    <property name="appName" value="user-server"/>
+    <property name="appName" value="admin-gateway"/>
     <property name="MAX_HISTORY" value="30"/>
     <springProperty scope="context" name="ACTIVE_PROFILE" source="spring.profiles.active"/>
     <!--开发环境日志配置-->
@@ -28,25 +28,21 @@
         <!-- encoder 默认配置为PatternLayoutEncoder -->
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{15} [%M:%L] %X{traceId} %X{uniqueNo}
-                %X{ngTraceId} %logSort - %msg%n
-            </pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{15} [%M:%L] %X{traceId} %X{uniqueNo} %X{ngTraceId} %logSort - %msg%n</pattern>
         </encoder>
     </appender>
 
     <!-- all appender -->
     <appender name="allLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_HOME}/user-server.all.log</File>
+        <File>${LOG_HOME}/admin-gateway.all.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>${LOG_HOME}/history/%d{yyyyMM,aux}/user-server.all.log.%d{yyyyMMdd}</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/history/%d{yyyyMM,aux}/admin-gateway.all.log.%d{yyyyMMdd}</fileNamePattern>
             <maxHistory>${MAX_HISTORY}</maxHistory>
         </rollingPolicy>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{15} [%M:%L] %X{traceId} %X{uniqueNo}
-                %X{ngTraceId} %logSort - %msg%n
-            </pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{15} [%M:%L] %X{traceId} %X{uniqueNo} %X{ngTraceId} %logSort - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -55,17 +51,14 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
-        <File>${LOG_HOME}/user-server.error.log</File>
+        <File>${LOG_HOME}/admin-gateway.error.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/history/%d{yyyyMM,aux}/user-server.error.log.%d{yyyyMMdd}
-            </FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/history/%d{yyyyMM,aux}/admin-gateway.error.log.%d{yyyyMMdd}</FileNamePattern>
             <maxHistory>${MAX_HISTORY}</maxHistory>
         </rollingPolicy>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{15} [%M:%L] %X{traceId} %X{uniqueNo}
-                %X{ngTraceId} %logSort - %msg%n
-            </pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{15} [%M:%L] %X{traceId} %X{uniqueNo} %X{ngTraceId} %logSort - %msg%n</pattern>
         </encoder>
     </appender>
 
