@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <conversionRule conversionWord="logSort" converterClass="com.jpeony.commons.core.logback.LogSort"/>
+    <conversionRule conversionWord="tab" converterClass="com.jpeony.commons.core.logback.LogTab"/>
     <property name="appName" value="user-server"/>
     <property name="MAX_HISTORY" value="30"/>
     <springProperty scope="context" name="ACTIVE_PROFILE" source="spring.profiles.active"/>
