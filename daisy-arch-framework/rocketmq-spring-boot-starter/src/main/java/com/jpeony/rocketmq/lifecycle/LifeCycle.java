@@ -17,7 +17,7 @@ public interface LifeCycle {
     boolean isStart();
 
     /**
-     * 关闭资源
+     * 关闭
      */
     void shutdown();
 }

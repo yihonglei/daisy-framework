@@ -24,7 +24,7 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
      * mq 相关配置
      */
     private RocketMqBaseProperty mqProperty;
-    private static AtomicInteger number = new AtomicInteger(0);
+    private final static AtomicInteger NUMBER = new AtomicInteger(0);
 
     /**
      * 是否开启
@@ -58,7 +58,7 @@ public abstract class AbstractRocketMqProducer extends AbstractLifeCycle impleme
         String topic = mqProperty.getTopic();
         String instanceName = mqProperty.getInstanceName();
         if (isEmpty(instanceName)) {
-            instanceName = "producer-" + number.incrementAndGet() + "-" + currentTimeMillis();
+            instanceName = "producer-" + NUMBER.incrementAndGet() + "-" + currentTimeMillis();
         }
         producer = new DefaultMQProducer(groupName);
         producer.setInstanceName(instanceName);

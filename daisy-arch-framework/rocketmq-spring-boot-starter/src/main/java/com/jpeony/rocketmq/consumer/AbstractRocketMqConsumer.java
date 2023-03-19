@@ -21,9 +21,9 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle {
 
     protected Logger logger = LoggerFactory.getLogger(getClass());
     protected DefaultMQPushConsumer consumer = null;
-    private static AtomicInteger number = new AtomicInteger(0);
+    private final static AtomicInteger NUMBER = new AtomicInteger(0);
     /**
-     * mq相关配置
+     * mq 相关配置
      */
     private RocketMqBaseProperty mqProperty;
 
@@ -59,7 +59,7 @@ public abstract class AbstractRocketMqConsumer extends AbstractLifeCycle {
         }
         String instanceName = mqProperty.getInstanceName();
         if (isEmpty(instanceName)) {
-            instanceName = "consumer-" + number.incrementAndGet() + "-" + System.currentTimeMillis();
+            instanceName = "consumer-" + NUMBER.incrementAndGet() + "-" + System.currentTimeMillis();
         }
         int batchSize = mqProperty.getBatchMaxSize();
         if (batchSize <= 0) {
