@@ -3,11 +3,13 @@ server:
 
 spring:
   application:
-    name: user-server
+    name: @artifactId@
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
-      config:
-        server-addr: 127.0.0.1:8848
-        file-extension: yml
+        server-addr: @nacos.config.url@
+        group: @nacos.config.group@
+        cluster-name: one
+        namespace: @nacos.config.namespace@
