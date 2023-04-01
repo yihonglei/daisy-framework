@@ -16,10 +16,10 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.jpeony.cloud</groupId>
-            <artifactId>commons-datasource</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.jpeony.cloud</groupId>-->
+<!--            <artifactId>commons-datasource</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.jpeony.cloud</groupId>
             <artifactId>admin-server-api</artifactId>

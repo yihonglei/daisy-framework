@@ -3,6 +3,6 @@ package com.jpeony.admin.server.constant;
 /**
  * @author yihonglei
  */
-public class DBConstant {
+public class Test {
 //    public final static String USER = "user";
 }
