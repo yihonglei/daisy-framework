@@ -15,7 +15,7 @@ import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * 【安全】跨域请求处理
+ * 【安全】跨域配置
  *
  * @author yihonglei
  */
