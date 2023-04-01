@@ -14,8 +14,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
         exclude = {DataSourceAutoConfiguration.class, RedisAutoConfiguration.class,
                 RedisRepositoriesAutoConfiguration.class})
 @EnableDiscoveryClient
-public class GatewayApplication {
+public class AdminGatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(GatewayApplication.class, args);
+        SpringApplication.run(AdminGatewayApplication.class, args);
     }
 }

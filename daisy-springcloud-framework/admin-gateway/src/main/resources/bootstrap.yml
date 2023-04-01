@@ -30,6 +30,13 @@ spring:
           enabled: false # 是否支持微服务名进行路径映射：true，允许，false ，不允许，一般用 false，否则会暴露服务
       enabled: true # 是否开启使用网关
       routes:
+        - id: admin
+            uri: lb://admin-server
+            predicates:
+              - Path=/admin/identify/**
+            filters:
+              - IgnoreTokenFilter
+              - StripPrefix=1
         - id: admin-server # id 随意，但是必须要唯一
           uri: lb://admin-server # nacos 中注册的服务 server 名字
           predicates:
