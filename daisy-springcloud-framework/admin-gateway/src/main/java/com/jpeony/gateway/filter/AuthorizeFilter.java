@@ -43,18 +43,18 @@ public class AuthorizeFilter implements GlobalFilter, Ordered {
         }
         ServerHttpRequest request = exchange.getRequest();
         HttpHeaders headers = request.getHeaders();
-        String token = headers.getFirst(AUTHORIZE_TOKEN);
-        if (token == null) {
-            token = request.getQueryParams().getFirst(AUTHORIZE_TOKEN);
-        }
-        if (StringUtils.isBlank(token)) {
-            throw new BizException(ErrorCodeEnum.TOKEN_PARSE_ERROR);
-        }
-        String key = toString(token);
-        if (StringUtils.isBlank(key)) {
-            throw new BizException(ErrorCodeEnum.TOKEN_PARSE_ERROR);
-        }
-        String phone = key.substring(1);
+//        String token = headers.getFirst(AUTHORIZE_TOKEN);
+//        if (token == null) {
+//            token = request.getQueryParams().getFirst(AUTHORIZE_TOKEN);
+//        }
+//        if (StringUtils.isBlank(token)) {
+//            throw new BizException(ErrorCodeEnum.TOKEN_PARSE_ERROR);
+//        }
+//        String key = toString(token);
+//        if (StringUtils.isBlank(key)) {
+//            throw new BizException(ErrorCodeEnum.TOKEN_PARSE_ERROR);
+//        }
+//        String phone = key.substring(1);
         // TODO 从 redis 获取用户登录信息
 //        User user = redisService.doGetObject(key);
         User user = new User();
