@@ -85,6 +85,13 @@
                 <version>${druid.version}</version>
             </dependency>
 
+            <!-- joda-->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.10.14</version>
+            </dependency>
+
             <dependency>
                 <groupId>com.jpeony.lotus</groupId>
                 <artifactId>lotus-common</artifactId>

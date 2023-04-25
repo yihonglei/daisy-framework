@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="app-container">
     <el-tabs v-model="activeName">
       <el-tab-pane label="用户反馈" name="first">
@@ -33,7 +33,7 @@
           </el-table-column>
           <el-table-column align="center" label="创建时间" width="220">
             <template slot-scope="scope">
-              {{ scope.row.created_at|filterDate }}
+              {{ scope.row.createdAt|filterDate }}
             </template>
           </el-table-column>
         </el-table>
@@ -118,3 +118,4 @@
 <style lang="scss" scoped>
   .app-container {}
 </style>
+ -->

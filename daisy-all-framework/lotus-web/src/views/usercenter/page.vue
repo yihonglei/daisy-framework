@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="app-container">
     <el-row :gutter="24" style="margin-top:10px;">
       <el-col :span="24">
@@ -105,7 +105,7 @@
 
       <el-table-column align="center" label="加入时间" width="220">
         <template slot-scope="scope">
-          {{ scope.row.created_at|filterDate }}
+          {{ scope.row.createdAt|filterDate }}
         </template>
       </el-table-column>
       <el-table-column align="center" label="更新时间" width="220">
@@ -281,3 +281,4 @@
     }
   }
 </style>
+ -->

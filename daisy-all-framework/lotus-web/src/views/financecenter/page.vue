@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="app-container">
     <el-tabs v-model="activeName">
       <el-tab-pane label="提现管理" name="first">
@@ -79,7 +79,7 @@
           </el-table-column>
           <el-table-column align="center" label="创建时间" width="220">
             <template slot-scope="scope">
-              {{ scope.row.created_at|filterDate }}
+              {{ scope.row.createdAt|filterDate }}
             </template>
           </el-table-column>
           <el-table-column align="center" label="更新时间" width="220">
@@ -290,7 +290,7 @@
           </el-table-column>
           <el-table-column align="center" label="创建时间" width="220">
             <template slot-scope="scope">
-              {{ scope.row.created_at|filterDate }}
+              {{ scope.row.createdAt|filterDate }}
             </template>
           </el-table-column>
           <el-table-column align="center" label="支付时间" width="220">
@@ -642,3 +642,4 @@
 <style lang="scss" scoped>
   .app-container {}
 </style>
+ -->

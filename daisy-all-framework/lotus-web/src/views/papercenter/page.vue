@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div class="app-container">
     <el-tabs v-model="activeName">
       <el-tab-pane label="放入纸条" name="first">
@@ -74,7 +74,7 @@
           </el-table-column>
           <el-table-column align="center" label="创建时间" width="220">
             <template slot-scope="scope">
-              {{ scope.row.created_at|filterDate }}
+              {{ scope.row.createdAt|filterDate }}
             </template>
           </el-table-column>
           <el-table-column v-if="checkPermission(['admin'])" align="center" label="操作" width="80" fixed="right">
@@ -142,7 +142,7 @@
           </el-table-column>
           <el-table-column align="center" label="创建时间" width="220">
             <template slot-scope="scope">
-              {{ scope.row.created_at|filterDate }}
+              {{ scope.row.createdAt|filterDate }}
             </template>
           </el-table-column>
           <el-table-column v-if="checkPermission(['admin'])" align="center" label="操作" width="80" fixed="right">
@@ -364,3 +364,4 @@
     }
   }
 </style>
+ -->

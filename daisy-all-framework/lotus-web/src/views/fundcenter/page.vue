@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <div>
     <div class="filter-container" style="margin-top: 20px;">
       <label class="filter-item" style="font-size: 10pt;margin-left: 10px;">用户ID：</label>
@@ -65,7 +65,7 @@
       </el-table-column>
       <el-table-column align="center" label="创建时间" width="220">
         <template slot-scope="scope">
-          {{ scope.row.created_at|filterDate }}
+          {{ scope.row.createdAt|filterDate }}
         </template>
       </el-table-column>
       <!-- <el-table-column v-if="checkPermission(['admin'])" align="center" label="操作" width="80" fixed="right">
@@ -178,3 +178,4 @@
 <style lang="scss" scoped>
   .app-container {}
 </style>
+ -->

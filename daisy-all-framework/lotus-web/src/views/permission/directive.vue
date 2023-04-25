@@ -54,22 +54,22 @@
       </el-table-column>
       <el-table-column align="header-center" label="创建时间" width="220">
         <template slot-scope="scope">
-          {{ scope.row.created_time }}
+          {{ scope.row.createdTime }}
         </template>
       </el-table-column>
       <el-table-column align="header-center" label="创建人">
         <template slot-scope="scope">
-          {{ scope.row.created_by_username }}
+          {{ scope.row.createdByUsername }}
         </template>
       </el-table-column>
       <el-table-column align="header-center" label="更新时间" width="220">
         <template slot-scope="scope">
-          {{ scope.row.updated_time }}
+          {{ scope.row.updatedTime }}
         </template>
       </el-table-column>
       <el-table-column align="header-center" label="更新人">
         <template slot-scope="scope">
-          {{ scope.row.updated_by_username }}
+          {{ scope.row.updatedByUsername }}
         </template>
       </el-table-column>
       <el-table-column fixed="right" v-if="checkPermission(['admin'])" align="center" label="操作" width="300">

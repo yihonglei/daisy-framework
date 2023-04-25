@@ -34,8 +34,8 @@ public class TestControllerTest extends BaseServletTest {
 
     @Test
     public void cancelPrice() throws Exception {
-        mockMvc.perform(get("/test/queryTestById")
-                .param("id", "1"))
+        mockMvc.perform(get("/test/test")
+                        .param("id", "1"))
                 .andDo(print())
                 .andExpect(status().isOk());
     }

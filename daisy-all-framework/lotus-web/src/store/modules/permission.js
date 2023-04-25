@@ -33,7 +33,7 @@ export function fnAddDynamicMenuRoutes(routes = []) {
 function getRoute(item) {
   // 路由基本格式
   let route = {}
-  if (item.parent_id == 0) {
+  if (item.parentId == 0) {
     route = {
       hidden: item.hidden,
       redirect: item.redirect,
@@ -93,8 +93,8 @@ const mutations = {
 
 const actions = {
   generateRoutes({
-    commit
-  }, routes) {
+                   commit
+                 }, routes) {
     return new Promise(resolve => {
 
       let accessedRoutes = fnAddDynamicMenuRoutes(routes)
