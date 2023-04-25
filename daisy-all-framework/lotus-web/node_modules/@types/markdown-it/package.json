@@ -1,0 +1,29 @@
+{
+    "name": "@types/markdown-it",
+    "version": "0.0.7",
+    "description": "TypeScript definitions for markdown-it",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "York Yao",
+            "url": "https://github.com/plantain-00/"
+        },
+        {
+            "name": "Robert Coie",
+            "url": "https://github.com/rapropos",
+            "githubUsername": "rapropos"
+        }
+    ],
+    "main": "",
+    "types": "",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/linkify-it": "*"
+    },
+    "typesPublisherContentHash": "7c2635e83f67eb6d55b5972701eeea82844df560caf85aeac9d528bde45c9f23",
+    "typeScriptVersion": "2.3"
+}
