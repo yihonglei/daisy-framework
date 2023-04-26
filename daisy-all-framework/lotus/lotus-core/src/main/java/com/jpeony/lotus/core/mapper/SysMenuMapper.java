@@ -1,17 +1,19 @@
 package com.jpeony.lotus.core.mapper;
 
-import com.jpeony.lotus.core.pojo.domain.SysMenu;
+import com.jpeony.lotus.core.pojo.domain.SysMenuDO;
 
 import java.util.List;
 
 public interface SysMenuMapper {
-    List<SysMenu> routesWithParentId(long parentId);
 
-    SysMenu routeWithId(long id);
+    List<SysMenuDO> routesByParentId(long parentId);
 
-    int addSysRoute(SysMenu sysMenu);
+    SysMenuDO routeById(long id);
 
-    int editSysRoute(SysMenu sysMenu);
+    int addSysRoute(SysMenuDO sysMenuDO);
+
+    int editSysRoute(SysMenuDO sysMenuDO);
 
     int delSysRouteByMenuId(long menuId);
+    
 }

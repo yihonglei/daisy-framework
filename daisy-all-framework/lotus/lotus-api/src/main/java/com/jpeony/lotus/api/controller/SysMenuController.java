@@ -4,9 +4,9 @@ import com.jpeony.lotus.common.constant.CommonConstant;
 import com.jpeony.lotus.common.enums.ErrorCodeEnum;
 import com.jpeony.lotus.common.utils.ApiResponse;
 import com.jpeony.lotus.core.pojo.bo.HeaderBO;
-import com.jpeony.lotus.core.pojo.bo.SysMenuBO;
-import com.jpeony.lotus.core.pojo.dto.SysMenuDelDto;
-import com.jpeony.lotus.core.pojo.dto.SysMenuDto;
+import com.jpeony.lotus.core.pojo.vo.SysMenuVO;
+import com.jpeony.lotus.core.pojo.dto.SysMenuDelDTO;
+import com.jpeony.lotus.core.pojo.dto.SysMenuDTO;
 import com.jpeony.lotus.core.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -24,72 +24,57 @@ public class SysMenuController {
     SysMenuService sysMenuService;
 
     /**
-     * allPermissionRoutes - 登录时获取用户所有权限菜单
+     * 登录时获取用户所有权限菜单
      */
     @RequestMapping(value = "allPermissionRoutes")
-    public ApiResponse<List<SysMenuBO>> allPermissionRoutes(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO) throws Exception {
+    public ApiResponse<List<SysMenuVO>> allPermissionRoutes(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO) throws Exception {
         String token = headerBO.getToken();
         return ApiResponse.success(sysMenuService.allPermissionRoutes(token));
     }
 
     /**
-     * allRoutes - 后台管理系统用户所有菜单
+     * 后台管理系统用户所有菜单
      */
     @RequestMapping(value = "allRoutes")
-    public ApiResponse<List<SysMenuBO>> allRoutes(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO) throws Exception {
+    public ApiResponse<List<SysMenuVO>> allRoutes(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO) throws Exception {
         String token = headerBO.getToken();
         return ApiResponse.success(sysMenuService.allRoutes(token));
     }
 
     /**
-     * addSysRoute - 后台管理系统用户所有菜单
-     *
-     * @param headerBO
-     * @param sysMenuDto
-     * @return
-     * @throws Exception
+     * 后台管理系统用户所有菜单
      */
     @RequestMapping(value = "addSysRoute")
-    public ApiResponse<Boolean> addSysRoute(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysMenuDto sysMenuDto) throws Exception {
+    public ApiResponse<Boolean> addSysRoute(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysMenuDTO sysMenuDTO) throws Exception {
         try {
-            return ApiResponse.success(sysMenuService.addSysRoute(headerBO, sysMenuDto));
+            return ApiResponse.success(sysMenuService.addSysRoute(headerBO, sysMenuDTO));
         } catch (Exception e) {
             return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
         }
     }
 
     /**
-     * editSysRoute - 后台管理系统用户所有菜单
-     *
-     * @param headerBO
-     * @param sysMenuDto
-     * @return
-     * @throws Exception
+     * 后台管理系统用户所有菜单
      */
     @RequestMapping(value = "editSysRoute")
-    public ApiResponse<Boolean> editSysRoute(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysMenuDto sysMenuDto) throws Exception {
+    public ApiResponse<Boolean> editSysRoute(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysMenuDTO sysMenuDTO) throws Exception {
         try {
-            return ApiResponse.success(sysMenuService.editSysRoute(headerBO, sysMenuDto));
+            return ApiResponse.success(sysMenuService.editSysRoute(headerBO, sysMenuDTO));
         } catch (Exception e) {
             return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
         }
     }
 
     /**
-     * delSysRoute - 后台管理系统用户所有菜单
-     *
-     * @param sysMenuDelDto
-     * @return
-     * @throws Exception
+     * 后台管理系统用户所有菜单
      */
     @RequestMapping(value = "delSysRoute")
-    public ApiResponse<Boolean> delSysRoute(@RequestBody SysMenuDelDto sysMenuDelDto) {
+    public ApiResponse<Boolean> delSysRoute(@RequestBody SysMenuDelDTO sysMenuDelDTO) {
         try {
-            return ApiResponse.success(sysMenuService.delSysRoute(sysMenuDelDto));
+            return ApiResponse.success(sysMenuService.delSysRoute(sysMenuDelDTO));
         } catch (Exception e) {
             return ApiResponse.error(ErrorCodeEnum.SYSTEM_DEFAULT_ERROR);
         }
     }
-
 
 }

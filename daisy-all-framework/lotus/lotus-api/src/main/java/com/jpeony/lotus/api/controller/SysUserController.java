@@ -4,7 +4,7 @@ import com.jpeony.lotus.common.constant.CommonConstant;
 import com.jpeony.lotus.common.exception.BizException;
 import com.jpeony.lotus.common.utils.ApiResponse;
 import com.jpeony.lotus.core.pojo.bo.HeaderBO;
-import com.jpeony.lotus.core.pojo.bo.SysUserBO;
+import com.jpeony.lotus.core.pojo.vo.SysUserVO;
 import com.jpeony.lotus.core.pojo.dto.*;
 import com.jpeony.lotus.core.service.SysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +23,12 @@ public class SysUserController {
     private SysUserService sysUserService;
 
     /**
-     * doLogin - 后台管理系统登录
-     *
-     * @param sysLoginDto
+     * 后台管理系统登录
      */
     @RequestMapping(value = "doLogin")
-    public ApiResponse<SysUserBO> doLogin(@RequestBody SysLoginDto sysLoginDto) throws Exception {
+    public ApiResponse<SysUserVO> doLogin(@RequestBody SysLoginDTO sysLoginDTO) throws Exception {
         try {
-            return ApiResponse.success(sysUserService.doLogin(sysLoginDto));
+            return ApiResponse.success(sysUserService.doLogin(sysLoginDTO));
         } catch (BizException e) {
             return ApiResponse.error(e.getErrCode(), e.getErrMessage(), null);
         } catch (Exception e) {
@@ -40,15 +38,13 @@ public class SysUserController {
     }
 
     /**
-     * userinfo - 后台管理系统获取用户信息
-     *
-     * @param headerBO
+     * 后台管理系统获取用户信息
      */
     @RequestMapping(value = "userinfo")
-    public ApiResponse<SysUserBO> userinfo(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO) throws Exception {
+    public ApiResponse<SysUserVO> userinfo(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO) throws Exception {
         try {
             // TODO 基于缓存 token，转换用户信息，这里为了方便，不增加环境复杂度
-            return ApiResponse.success(sysUserService.userinfo(headerBO.getToken()));
+            return ApiResponse.success(sysUserService.userInfo(headerBO.getToken()));
         } catch (BizException e) {
             return ApiResponse.error(e.getErrCode(), e.getErrMessage(), null);
         } catch (Exception e) {
@@ -58,9 +54,7 @@ public class SysUserController {
     }
 
     /**
-     * logout - 后台管理系统用户登出
-     *
-     * @param headerBO
+     * 后台管理系统用户登出
      */
     @RequestMapping(value = "logout")
     public ApiResponse<Boolean> logout(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO) {
@@ -68,12 +62,11 @@ public class SysUserController {
     }
 
     /**
-     * usersList - 后台管理系统获取用户列表
-     *
-     * @param headerBO
+     * 后台管理系统获取用户列表
      */
     @RequestMapping(value = "getSysUsersList")
-    public ApiResponse<List<SysUserBO>> getSysUsersList(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO) throws Exception {
+    public ApiResponse<List<SysUserVO>> getSysUsersList(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO)
+            throws Exception {
         try {
             return ApiResponse.success(sysUserService.getSysUsersList(headerBO));
         } catch (BizException e) {
@@ -85,17 +78,13 @@ public class SysUserController {
     }
 
     /**
-     * addUser - 后台管理系统-新增用户
-     *
-     * @param headerBO
-     * @param sysUserDto
-     * @return
-     * @throws Exception
+     * 后台管理系统-新增用户
      */
     @RequestMapping(value = "addSysUser")
-    public ApiResponse<SysUserBO> addSysUser(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysUserDto sysUserDto) throws Exception {
+    public ApiResponse<SysUserVO> addSysUser(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO,
+                                             @RequestBody SysUserDTO sysUserDTO) throws Exception {
         try {
-            return ApiResponse.success(sysUserService.addSysUser(headerBO, sysUserDto));
+            return ApiResponse.success(sysUserService.addSysUser(headerBO, sysUserDTO));
         } catch (BizException e) {
             return ApiResponse.error(e.getErrCode(), e.getErrMessage(), null);
         } catch (Exception e) {
@@ -106,17 +95,13 @@ public class SysUserController {
 
 
     /**
-     * updateSysUser - 后台管理系统-更新用户
-     *
-     * @param headerBO
-     * @param sysUserDto
-     * @return
-     * @throws Exception
+     * 后台管理系统-更新用户
      */
     @RequestMapping(value = "updateSysUser")
-    public ApiResponse<SysUserBO> updateSysUser(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysUserDto sysUserDto) throws Exception {
+    public ApiResponse<SysUserVO> updateSysUser(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO,
+                                                @RequestBody SysUserDTO sysUserDTO) throws Exception {
         try {
-            return ApiResponse.success(sysUserService.updateSysUser(headerBO, sysUserDto));
+            return ApiResponse.success(sysUserService.updateSysUser(headerBO, sysUserDTO));
         } catch (BizException e) {
             return ApiResponse.error(e.getErrCode(), e.getErrMessage(), null);
         } catch (Exception e) {
@@ -126,18 +111,14 @@ public class SysUserController {
     }
 
     /**
-     * addUser - 后台管理系统-删除用户
-     *
-     * @param headerBO
-     * @param sysUserDto
-     * @return
-     * @throws Exception
+     * 后台管理系统-删除用户
      */
     @RequestMapping(value = "delSysUser")
-    public ApiResponse<Boolean> delSysUser(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysUserDto sysUserDto) throws Exception {
+    public ApiResponse<Boolean> delSysUser(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO,
+                                           @RequestBody SysUserDTO sysUserDTO) throws Exception {
         try {
-            long uid = sysUserDto.getId();
-            return ApiResponse.success(sysUserService.delSysUser(uid));
+            long userId = sysUserDTO.getId();
+            return ApiResponse.success(sysUserService.delSysUser(userId));
         } catch (BizException e) {
             return ApiResponse.error(e.getErrCode(), e.getErrMessage(), null);
         } catch (Exception e) {
@@ -147,18 +128,14 @@ public class SysUserController {
     }
 
     /**
-     * addUser - 后台管理系统-重置密码
-     *
-     * @param headerBO
-     * @param sysUserDto
-     * @return
-     * @throws Exception
+     * 后台管理系统-重置密码
      */
     @RequestMapping(value = "resetSysPWD")
-    public ApiResponse<Boolean> resetSysPWD(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysUserDto sysUserDto) throws Exception {
+    public ApiResponse<Boolean> resetSysPWD(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO,
+                                            @RequestBody SysUserDTO sysUserDTO) throws Exception {
         try {
-            long uid = sysUserDto.getId();
-            return ApiResponse.success(sysUserService.resetSysPWD(headerBO, uid));
+            long userId = sysUserDTO.getId();
+            return ApiResponse.success(sysUserService.resetSysPWD(headerBO, userId));
         } catch (BizException e) {
             return ApiResponse.error(e.getErrCode(), e.getErrMessage(), null);
         } catch (Exception e) {
@@ -168,17 +145,13 @@ public class SysUserController {
     }
 
     /**
-     * addUser - 后台管理系统-修改密码
-     *
-     * @param headerBO
-     * @param sysModifyPWDDto
-     * @return
-     * @throws Exception
+     * 后台管理系统-修改密码
      */
     @RequestMapping(value = "modifySysPWD")
-    public ApiResponse<Boolean> modifySysPWD(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysModifyPWDDto sysModifyPWDDto) throws Exception {
+    public ApiResponse<Boolean> modifySysPWD(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO,
+                                             @RequestBody SysModifyPWDDTO sysModifyPWDDTO) throws Exception {
         try {
-            return ApiResponse.success(sysUserService.modifySysPWD(headerBO, sysModifyPWDDto));
+            return ApiResponse.success(sysUserService.modifySysPWD(headerBO, sysModifyPWDDTO));
         } catch (BizException e) {
             return ApiResponse.error(e.getErrCode(), e.getErrMessage(), null);
         } catch (Exception e) {
@@ -188,17 +161,13 @@ public class SysUserController {
     }
 
     /**
-     * sysUpdateUserStatus - 修改管理员用户的status
-     *
-     * @param headerBO
-     * @param sysUpdateUserStatusDto
-     * @return
-     * @throws Exception
+     * 修改管理员用户的 status
      */
     @RequestMapping(value = "sysUpdateUserStatus")
-    public ApiResponse<Boolean> sysUpdateUserStatus(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO, @RequestBody SysUpdateUserStatusDto sysUpdateUserStatusDto) throws Exception {
+    public ApiResponse<Boolean> sysUpdateUserStatus(@RequestAttribute(CommonConstant.HEADER) HeaderBO headerBO,
+                                                    @RequestBody SysUpdateUserStatusDTO sysUpdateUserStatusDTO) throws Exception {
         String token = headerBO.getToken();
-        return ApiResponse.success(sysUserService.sysUpdateUserStatus(token, sysUpdateUserStatusDto));
+        return ApiResponse.success(sysUserService.sysUpdateUserStatus(token, sysUpdateUserStatusDTO));
     }
 
 }

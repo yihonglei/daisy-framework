@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="app-container">
     <el-tabs v-model="activeName">
       <el-tab-pane label="用户反馈" name="first">
@@ -118,4 +118,4 @@
 <style lang="scss" scoped>
   .app-container {}
 </style>
- -->
+

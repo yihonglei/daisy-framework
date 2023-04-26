@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="app-container">
     <el-row :gutter="24" style="margin-top:10px;">
       <el-col :span="24">
@@ -281,4 +281,4 @@
     }
   }
 </style>
- -->
+

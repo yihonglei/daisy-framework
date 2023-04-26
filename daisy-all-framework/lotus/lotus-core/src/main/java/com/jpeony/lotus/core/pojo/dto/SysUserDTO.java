@@ -3,7 +3,8 @@ package com.jpeony.lotus.core.pojo.dto;
 import lombok.Data;
 
 @Data
-public class SysUserDto {
+public class SysUserDTO {
+
     private long id;
 
     private long uid;
@@ -25,4 +26,5 @@ public class SysUserDto {
 
     // 角色 1,2,4,5
     private String roleIds;
+    
 }

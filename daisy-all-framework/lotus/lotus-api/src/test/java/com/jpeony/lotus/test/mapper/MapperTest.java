@@ -1,7 +1,7 @@
 package com.jpeony.lotus.test.mapper;
 
 import com.jpeony.lotus.core.mapper.SysUserRoleMapper;
-import com.jpeony.lotus.core.pojo.domain.SysUserRole;
+import com.jpeony.lotus.core.pojo.domain.SysUserRoleDO;
 import com.jpeony.lotus.test.BaseServletTest;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -21,7 +21,7 @@ public class MapperTest extends BaseServletTest {
 
     @Test
     public void testAnnotation() {
-        List<SysUserRole> sysUserRoles = sysUserRoleMapper.userRoleByUserId(1);
-        log.info("sysUserRoles={}", sysUserRoles);
+        List<SysUserRoleDO> sysUserRoleDOS = sysUserRoleMapper.userRoleByUserId(1);
+        log.info("sysUserRoles={}", sysUserRoleDOS);
     }
 }

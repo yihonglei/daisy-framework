@@ -1,11 +1,11 @@
-package com.jpeony.lotus.core.pojo.bo;
+package com.jpeony.lotus.core.pojo.vo;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class SysUserBO {
+public class SysUserVO {
 
     private Long id;
 
@@ -45,4 +45,5 @@ public class SysUserBO {
 
     // 角色信息
     private List<Object> roles;
+    
 }

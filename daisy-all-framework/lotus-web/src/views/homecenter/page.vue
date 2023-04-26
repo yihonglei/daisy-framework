@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="app-container">
     <el-tabs v-model="activeName">
       <el-tab-pane label="轮播图" name="first">
@@ -400,4 +400,4 @@
     }
   }
 </style>
- -->
+

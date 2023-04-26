@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="app-container">
     <el-tabs v-model="activeName">
       <el-tab-pane label="系统设置" name="first">
@@ -306,4 +306,3 @@
 <style lang="scss" scoped>
   .app-container {}
 </style>
- -->

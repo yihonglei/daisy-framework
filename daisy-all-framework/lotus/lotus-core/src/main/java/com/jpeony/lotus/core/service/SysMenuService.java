@@ -1,23 +1,25 @@
 package com.jpeony.lotus.core.service;
 
 import com.jpeony.lotus.core.pojo.bo.HeaderBO;
-import com.jpeony.lotus.core.pojo.bo.SysMenuBO;
-import com.jpeony.lotus.core.pojo.domain.SysRole;
-import com.jpeony.lotus.core.pojo.dto.SysMenuDelDto;
-import com.jpeony.lotus.core.pojo.dto.SysMenuDto;
+import com.jpeony.lotus.core.pojo.vo.SysMenuVO;
+import com.jpeony.lotus.core.pojo.domain.SysRoleDO;
+import com.jpeony.lotus.core.pojo.dto.SysMenuDelDTO;
+import com.jpeony.lotus.core.pojo.dto.SysMenuDTO;
 
 import java.util.List;
 
 public interface SysMenuService {
-    List<SysMenuBO> allPermissionRoutes(String token) throws Exception;
 
-    List<SysMenuBO> allRoutesWithRole(SysRole sysRole);
+    List<SysMenuVO> allPermissionRoutes(String token) throws Exception;
 
-    List<SysMenuBO> allRoutes(String token) throws Exception;
+    List<SysMenuVO> allRoutesByRole(SysRoleDO sysRoleDO);
 
-    Boolean addSysRoute(HeaderBO headerBO, SysMenuDto sysMenuDto) throws Exception;
+    List<SysMenuVO> allRoutes(String token) throws Exception;
 
-    Boolean editSysRoute(HeaderBO headerBO, SysMenuDto sysMenuDto) throws Exception;
+    Boolean addSysRoute(HeaderBO headerBO, SysMenuDTO sysMenuDTO) throws Exception;
 
-    Boolean delSysRoute(SysMenuDelDto sysMenuDelDto);
+    Boolean editSysRoute(HeaderBO headerBO, SysMenuDTO sysMenuDTO) throws Exception;
+
+    Boolean delSysRoute(SysMenuDelDTO sysMenuDelDTO);
+    
 }

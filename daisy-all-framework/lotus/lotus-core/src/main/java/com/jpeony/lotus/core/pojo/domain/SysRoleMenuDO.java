@@ -5,14 +5,13 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class SysRole {
+public class SysRoleMenuDO {
+
     private long id;
 
-    private String name;
+    private long roleId;
 
-    private String intro;
-
-    private int sort;
+    private long menuId;
 
     private Date createdAt;
 
@@ -21,4 +20,5 @@ public class SysRole {
     private Date updatedAt;
 
     private long updatedBy;
+    
 }

@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class SysUser {
+public class SysUserDO {
 
     private long id;
 

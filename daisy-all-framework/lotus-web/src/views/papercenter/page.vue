@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
   <div class="app-container">
     <el-tabs v-model="activeName">
       <el-tab-pane label="放入纸条" name="first">
@@ -364,4 +364,4 @@
     }
   }
 </style>
- -->
+

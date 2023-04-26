@@ -3,7 +3,10 @@ package com.jpeony.lotus.core.pojo.dto;
 import lombok.Data;
 
 @Data
-public class SysUpdateEnableDto {
+public class SysUpdateUserStatusDTO {
+
     private long id;
-    private int enable;
+
+    private int status;
+    
 }

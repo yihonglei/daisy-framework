@@ -1,21 +1,23 @@
 package com.jpeony.lotus.core.service;
 
-import com.jpeony.lotus.core.pojo.bo.SysRoleBO;
-import com.jpeony.lotus.core.pojo.domain.SysRole;
-import com.jpeony.lotus.core.pojo.dto.SysRoleDto;
+import com.jpeony.lotus.core.pojo.vo.SysRoleVO;
+import com.jpeony.lotus.core.pojo.domain.SysRoleDO;
+import com.jpeony.lotus.core.pojo.dto.SysRoleDTO;
 
 import java.util.List;
 
 public interface SysRoleService {
-    SysRole roleWithId(long roleId);
 
-    List<SysRole> allRolesIgnore();
+    SysRoleDO roleById(long roleId);
 
-    List<SysRoleBO> allRoles();
+    List<SysRoleDO> allRolesIgnore();
 
-    SysRoleBO addRole(String token, SysRoleDto sysRoleDto) throws Exception;
+    List<SysRoleVO> allRoles();
 
-    SysRoleBO editRole(String token, SysRoleDto sysRoleDto) throws Exception;
+    SysRoleVO addRole(String token, SysRoleDTO sysRoleDTO) throws Exception;
 
-    Boolean delRole(String token, SysRoleDto sysRoleDto) throws Exception;
+    SysRoleVO editRole(String token, SysRoleDTO sysRoleDTO) throws Exception;
+
+    Boolean delRole(String token, SysRoleDTO sysRoleDTO) throws Exception;
+
 }

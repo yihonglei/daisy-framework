@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jpeony.lotus.core.mapper.SysMenuMapper">
 
-    <resultMap id="BaseResultMap" type="com.jpeony.lotus.core.pojo.domain.SysMenu">
+    <resultMap id="BaseResultMap" type="com.jpeony.lotus.core.pojo.domain.SysMenuDO">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="parent_id" jdbcType="INTEGER" property="parent_id"/>
         <result column="path" jdbcType="VARCHAR" property="path"/>
@@ -25,14 +25,14 @@
         <result column="updated_by" jdbcType="INTEGER" property="updatedBy"/>
     </resultMap>
 
-    <select id="routesWithParentId" resultType="com.jpeony.lotus.core.pojo.domain.SysMenu">
+    <select id="routesByParentId" resultType="com.jpeony.lotus.core.pojo.domain.SysMenuDO">
         select *
         from sys_menu
         where parent_id = #{parentId}
         order by sort asc
     </select>
 
-    <select id="routeWithId" resultType="com.jpeony.lotus.core.pojo.domain.SysMenu">
+    <select id="routeById" resultType="com.jpeony.lotus.core.pojo.domain.SysMenuDO">
         select *
         from sys_menu
         where id = #{id}
@@ -65,7 +65,7 @@
         where id = #{id}
     </update>
 
-    <insert id="addSysRoute" parameterType="com.jpeony.lotus.core.pojo.domain.SysMenu">
+    <insert id="addSysRoute" parameterType="com.jpeony.lotus.core.pojo.domain.SysMenuDO">
         insert into sys_menu ( parent_id, path, component, hidden, redirect, alwaysShow, name
                              , title, icon, noCache, breadcrumb, affix, activeMenu, enable, sort
                              , created_at, created_by, updated_at, updated_by)

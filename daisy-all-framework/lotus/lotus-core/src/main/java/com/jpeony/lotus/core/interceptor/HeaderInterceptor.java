@@ -39,6 +39,7 @@ public class HeaderInterceptor extends HandlerInterceptorAdapter {
         HeaderBO headerBO = new HeaderBO();
         headerBO.setToken(token);
         request.setAttribute(CommonConstant.HEADER, headerBO);
+        // TODO 装入用户信息
         return true;
     }
 }

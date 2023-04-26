@@ -1,20 +1,20 @@
 package com.jpeony.lotus.core.mapper;
 
-import com.jpeony.lotus.core.pojo.domain.SysRole;
+import com.jpeony.lotus.core.pojo.domain.SysRoleDO;
 
 import java.util.List;
 
 public interface SysRoleMapper {
-    
-    SysRole roleWithId(long roleId);
 
-    SysRole roleWithRolename(String rolename);
+    SysRoleDO roleById(long roleId);
 
-    List<SysRole> allRoles();
+    SysRoleDO roleByRoleName(String roleName);
 
-    int addSysRole(SysRole sysRole);
+    List<SysRoleDO> allRoles();
 
-    int updateSysRole(SysRole sysRole);
+    int addSysRole(SysRoleDO sysRoleDO);
+
+    int updateSysRole(SysRoleDO sysRoleDO);
 
     int delByRoleId(long roleId);
 

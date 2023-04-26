@@ -1,11 +1,11 @@
-package com.jpeony.lotus.core.pojo.bo;
+package com.jpeony.lotus.core.pojo.vo;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class SysRoleBO {
+public class SysRoleVO {
 
     private long id;
 
@@ -13,6 +13,6 @@ public class SysRoleBO {
 
     private String intro;
 
-    private List<SysMenuBO> routes;
+    private List<SysMenuVO> routes;
 
 }

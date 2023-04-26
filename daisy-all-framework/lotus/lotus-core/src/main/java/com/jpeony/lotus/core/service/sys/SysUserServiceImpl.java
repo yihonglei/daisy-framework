@@ -5,14 +5,14 @@ import com.jpeony.lotus.common.exception.BizException;
 import com.jpeony.lotus.common.utils.DateUtils;
 import com.jpeony.lotus.core.mapper.SysUserMapper;
 import com.jpeony.lotus.core.pojo.bo.HeaderBO;
-import com.jpeony.lotus.core.pojo.bo.SysUserBO;
-import com.jpeony.lotus.core.pojo.domain.SysRole;
-import com.jpeony.lotus.core.pojo.domain.SysUser;
-import com.jpeony.lotus.core.pojo.domain.SysUserRole;
-import com.jpeony.lotus.core.pojo.dto.SysLoginDto;
-import com.jpeony.lotus.core.pojo.dto.SysModifyPWDDto;
-import com.jpeony.lotus.core.pojo.dto.SysUpdateUserStatusDto;
-import com.jpeony.lotus.core.pojo.dto.SysUserDto;
+import com.jpeony.lotus.core.pojo.vo.SysUserVO;
+import com.jpeony.lotus.core.pojo.domain.SysRoleDO;
+import com.jpeony.lotus.core.pojo.domain.SysUserDO;
+import com.jpeony.lotus.core.pojo.domain.SysUserRoleDO;
+import com.jpeony.lotus.core.pojo.dto.SysLoginDTO;
+import com.jpeony.lotus.core.pojo.dto.SysModifyPWDDTO;
+import com.jpeony.lotus.core.pojo.dto.SysUpdateUserStatusDTO;
+import com.jpeony.lotus.core.pojo.dto.SysUserDTO;
 import com.jpeony.lotus.core.service.SysRoleService;
 import com.jpeony.lotus.core.service.SysUserRoleService;
 import com.jpeony.lotus.core.service.SysUserService;
@@ -39,32 +39,29 @@ public class SysUserServiceImpl implements SysUserService {
 
     /**
      * 根据用户名获取用户信息
-     *
-     * @param username
-     * @return
      */
-    private SysUser getUserByUserName(String username) {
+    private SysUserDO getUserByUserName(String username) {
         return sysUserMapper.getUserByUserName(username);
     }
 
     @Override
-    public SysUser getUserById(long uid) {
-        return sysUserMapper.getUserById(uid);
+    public SysUserDO getUserById(long userId) {
+        return sysUserMapper.getUserById(userId);
     }
 
     @Override
-    public SysUserBO doLogin(SysLoginDto sysLoginDto) throws Exception {
-        String username = sysLoginDto.getUsername();
-        String password = sysLoginDto.getPassword();
+    public SysUserVO doLogin(SysLoginDTO sysLoginDTO) throws Exception {
+        String username = sysLoginDTO.getUsername();
+        String password = sysLoginDTO.getPassword();
 
         // 校验用户是否存在
-        SysUser sysUser = getUserByUserName(username);
-        if (sysUser == null) {
+        SysUserDO sysUserDO = getUserByUserName(username);
+        if (sysUserDO == null) {
             throw new BizException(ErrorCodeEnum.SYS_LOGIN_NO_USER.getCode(), ErrorCodeEnum.SYS_LOGIN_NO_USER.getMsg());
         }
 
         // 校验密码是否正确:注意校验规则 #TODO 后续需要完善
-        String dPassword = sysUser.getPassword();
+        String dPassword = sysUserDO.getPassword();
 //        String passwordmd5 = CommonUtil.MD5_32(password+CommonUtil.MD5_32(sysUser.getSalt()));
         if (!dPassword.equals(password)) {
             throw new BizException(ErrorCodeEnum.SYS_LOGIN_PWD_ERROR.getCode(), ErrorCodeEnum.SYS_LOGIN_PWD_ERROR.getMsg());
@@ -72,36 +69,36 @@ public class SysUserServiceImpl implements SysUserService {
 
         // #TODO 登录成功需要生成token，存入到 redis，这里为了方便，不增加环境复杂度
         // 登录获取用户信息&权限信息
-        SysUserBO sysUserBO = new SysUserBO();
-        BeanUtils.copyProperties(sysUser, sysUserBO);
+        SysUserVO sysUserVO = new SysUserVO();
+        BeanUtils.copyProperties(sysUserDO, sysUserVO);
 
-        return sysUserBO;
+        return sysUserVO;
     }
 
     @Override
-    public SysUserBO userinfo(String token) throws Exception {
+    public SysUserVO userInfo(String token) throws Exception {
         // 获取用户信息 TODO
-        SysUser sysUser = sysUserMapper.getUserByToken(token);
-        if (sysUser == null) {
+        SysUserDO sysUserDO = sysUserMapper.getUserByToken(token);
+        if (sysUserDO == null) {
             throw new BizException(ErrorCodeEnum.SYS_LOGIN_EXPIRE.getCode(), ErrorCodeEnum.SYS_LOGIN_EXPIRE.getMsg());
         }
 
         // 登录获取用户信息&权限信息
-        SysUserBO sysUserBO = new SysUserBO();
-        BeanUtils.copyProperties(sysUser, sysUserBO);
+        SysUserVO sysUserVO = new SysUserVO();
+        BeanUtils.copyProperties(sysUserDO, sysUserVO);
 
-        long userId = sysUser.getId();
-        List<SysUserRole> sysUserRoleList = sysUserRoleService.userRolesByUserId(userId);
+        long userId = sysUserDO.getId();
+        List<SysUserRoleDO> sysUserRoleDOList = sysUserRoleService.userRolesByUserId(userId);
 
         List<Object> roles = new ArrayList<>();
-        for (SysUserRole sysUserRole : sysUserRoleList) {
-            long roleId = sysUserRole.getRoleId();
-            SysRole sysRole = sysRoleService.roleWithId(roleId);
-            roles.add(sysRole.getName());
+        for (SysUserRoleDO sysUserRoleDO : sysUserRoleDOList) {
+            long roleId = sysUserRoleDO.getRoleId();
+            SysRoleDO sysRoleDO = sysRoleService.roleById(roleId);
+            roles.add(sysRoleDO.getName());
         }
-        sysUserBO.setRoles(roles);
+        sysUserVO.setRoles(roles);
 
-        return sysUserBO;
+        return sysUserVO;
     }
 
     @Override
@@ -111,210 +108,206 @@ public class SysUserServiceImpl implements SysUserService {
 
     /**
      * 用户管理-用户列表
-     *
-     * @param headerBO
-     * @return
      */
     @Override
-    public List<SysUserBO> getSysUsersList(HeaderBO headerBO) {
-        List<SysUserBO> result = new ArrayList<>();
-        List<SysUser> tmpList = sysUserMapper.usersList();
-        for (SysUser sysUser : tmpList) {
-            SysUserBO sysUserBO = new SysUserBO();
-            BeanUtils.copyProperties(sysUser, sysUserBO);
-            sysUserBO.setCreatedTime(DateUtils.formatString(sysUser.getCreatedAt(), DateUtils.TIME_DATE));
-            ;
-            sysUserBO.setUpdatedTime(DateUtils.formatString(sysUser.getUpdatedAt(), DateUtils.TIME_DATE));
-            long created_by = sysUser.getCreatedBy();
-            long updated_by = sysUser.getCreatedBy();
+    public List<SysUserVO> getSysUsersList(HeaderBO headerBO) {
+        List<SysUserVO> result = new ArrayList<>();
+        List<SysUserDO> tmpList = sysUserMapper.usersList();
+        for (SysUserDO sysUserDO : tmpList) {
+            SysUserVO sysUserVO = new SysUserVO();
+            BeanUtils.copyProperties(sysUserDO, sysUserVO);
+            sysUserVO.setCreatedTime(DateUtils.formatString(sysUserDO.getCreatedAt(), DateUtils.TIME_DATE));
+            sysUserVO.setUpdatedTime(DateUtils.formatString(sysUserDO.getUpdatedAt(), DateUtils.TIME_DATE));
+            long createdBy = sysUserDO.getCreatedBy();
+            long updatedBy = sysUserDO.getCreatedBy();
 
-            SysUser sysUser1 = sysUserMapper.getUserById(created_by);
-            SysUser sysUser2 = sysUserMapper.getUserById(updated_by);
+            SysUserDO sysUserDO1 = sysUserMapper.getUserById(createdBy);
+            SysUserDO sysUserDO2 = sysUserMapper.getUserById(updatedBy);
 
-            sysUserBO.setCreatedByUsername(sysUser1.getUsername());
-            sysUserBO.setUpdatedByUsername(sysUser2.getUsername());
+            sysUserVO.setCreatedByUsername(sysUserDO1.getUsername());
+            sysUserVO.setUpdatedByUsername(sysUserDO2.getUsername());
 
-            long uid = sysUser.getId();
-            List<SysUserRole> sysUserRoleList = sysUserRoleService.userRolesByUserId(uid);
+            long uid = sysUserDO.getId();
+            List<SysUserRoleDO> sysUserRoleDOList = sysUserRoleService.userRolesByUserId(uid);
             List<Object> roles = new ArrayList<>();
-            for (SysUserRole sysUserRole : sysUserRoleList) {
-                long role_id = sysUserRole.getRoleId();
-                SysRole sysRole = sysRoleService.roleWithId(role_id);
-                roles.add(sysRole);
+            for (SysUserRoleDO sysUserRoleDO : sysUserRoleDOList) {
+                long role_id = sysUserRoleDO.getRoleId();
+                SysRoleDO sysRoleDO = sysRoleService.roleById(role_id);
+                roles.add(sysRoleDO);
             }
-            sysUserBO.setRoles(roles);
+            sysUserVO.setRoles(roles);
 
-            result.add(sysUserBO);
+            result.add(sysUserVO);
         }
 
         return result;
     }
 
-    public SysUser autoAddSysUser(SysUser sysUser) {
-        sysUserMapper.addSysUser(sysUser);
+    public SysUserDO autoAddSysUser(SysUserDO sysUserDO) {
+        sysUserMapper.addSysUser(sysUserDO);
 
-        return sysUserMapper.getUserByUserName(sysUser.getUsername());
+        return sysUserMapper.getUserByUserName(sysUserDO.getUsername());
     }
 
     @Override
-    public SysUserBO addSysUser(HeaderBO headerBO, SysUserDto sysUserDto) throws Exception {
-        SysUser sysUser = new SysUser();
+    public SysUserVO addSysUser(HeaderBO headerBO, SysUserDTO sysUserDTO) throws Exception {
+        SysUserDO sysUserDO = new SysUserDO();
         String token = headerBO.getToken();
-        SysUser sysUser1 = sysUserMapper.getUserByToken(token);
-        long created_by = sysUser1.getId();
-        long updated_by = created_by;
+        SysUserDO sysUserDO1 = sysUserMapper.getUserByToken(token);
+        long createdBy = sysUserDO1.getId();
+        long updatedBy = createdBy;
         Date now = new Date();
 
-        sysUser.setCreatedAt(now);
-        sysUser.setCreatedBy(created_by);
-        sysUser.setUpdatedAt(now);
-        sysUser.setUpdatedBy(updated_by);
+        sysUserDO.setCreatedAt(now);
+        sysUserDO.setCreatedBy(createdBy);
+        sysUserDO.setUpdatedAt(now);
+        sysUserDO.setUpdatedBy(updatedBy);
 
-        String username = sysUserDto.getUsername();
-        String name = sysUserDto.getName();
-        String avatar = sysUserDto.getAvatar();
-        String phone = sysUserDto.getPhone();
-        sysUser.setUsername(username);
-        sysUser.setName(name);
-        sysUser.setAvatar(avatar);
-        sysUser.setPhone(phone);
+        String username = sysUserDTO.getUsername();
+        String name = sysUserDTO.getName();
+        String avatar = sysUserDTO.getAvatar();
+        String phone = sysUserDTO.getPhone();
+        sysUserDO.setUsername(username);
+        sysUserDO.setName(name);
+        sysUserDO.setAvatar(avatar);
+        sysUserDO.setPhone(phone);
 
         // 校验此用户名是否存在
-        SysUser sysUser2 = sysUserMapper.getUserByUserName(username);
-        if (sysUser2 != null) {
+        SysUserDO sysUserDO2 = sysUserMapper.getUserByUserName(username);
+        if (sysUserDO2 != null) {
             throw new BizException(ErrorCodeEnum.SYS_ADD_USER_EXIST.getCode(), ErrorCodeEnum.SYS_ADD_USER_EXIST.getMsg());
         }
 
         String attCode = RandomStringUtils.randomAlphanumeric(8);
-        sysUser.setAttcode(attCode);
-        sysUser.setStatus(1);
-        sysUser.setPassword(username + "123");
-        sysUser.setSalt("123456");
-        sysUser.setToken(username + "-token");
-        sysUserMapper.addSysUser(sysUser);
+        sysUserDO.setAttcode(attCode);
+        sysUserDO.setStatus(1);
+        sysUserDO.setPassword(username + "123");
+        sysUserDO.setSalt("123456");
+        sysUserDO.setToken(username + "-token");
+        sysUserMapper.addSysUser(sysUserDO);
 
         // 获取用户信息 - result
-        SysUser sysUser3 = sysUserMapper.getUserByUserName(username);
-        String roleIds = sysUserDto.getRoleIds();
+        SysUserDO sysUserDO3 = sysUserMapper.getUserByUserName(username);
+        String roleIds = sysUserDTO.getRoleIds();
         String[] roles = roleIds.split(",");
         for (String roleIdStr : roles) {
             long roleId = Long.valueOf(roleIdStr);
-            SysUserRole sysUserRole = new SysUserRole();
-            sysUserRole.setRoleId(roleId);
-            sysUserRole.setUserId(sysUser3.getId());
-            sysUserRole.setCreatedAt(now);
-            sysUserRole.setUpdatedAt(now);
-            sysUserRole.setCreatedBy(created_by);
-            sysUserRole.setUpdatedBy(updated_by);
-            sysUserRoleService.addSysUserRole(sysUserRole);
+            SysUserRoleDO sysUserRoleDO = new SysUserRoleDO();
+            sysUserRoleDO.setRoleId(roleId);
+            sysUserRoleDO.setUserId(sysUserDO3.getId());
+            sysUserRoleDO.setCreatedAt(now);
+            sysUserRoleDO.setUpdatedAt(now);
+            sysUserRoleDO.setCreatedBy(createdBy);
+            sysUserRoleDO.setUpdatedBy(updatedBy);
+            sysUserRoleService.addSysUserRole(sysUserRoleDO);
         }
 
         // 登录获取用户信息&权限信息
-        SysUserBO sysUserBO = new SysUserBO();
-        BeanUtils.copyProperties(sysUser3, sysUserBO);
-        List<SysUserRole> sysUserRoleList = sysUserRoleService.userRolesByUserId(sysUser3.getId());
+        SysUserVO sysUserVO = new SysUserVO();
+        BeanUtils.copyProperties(sysUserDO3, sysUserVO);
+        List<SysUserRoleDO> sysUserRoleDOList = sysUserRoleService.userRolesByUserId(sysUserDO3.getId());
         List<Object> sysUserBORoles = new ArrayList<>();
-        for (SysUserRole sysUserRole : sysUserRoleList) {
-            long role_id = sysUserRole.getRoleId();
-            SysRole sysRole = sysRoleService.roleWithId(role_id);
-            sysUserBORoles.add(sysRole);
+        for (SysUserRoleDO sysUserRoleDO : sysUserRoleDOList) {
+            long roleId = sysUserRoleDO.getRoleId();
+            SysRoleDO sysRoleDO = sysRoleService.roleById(roleId);
+            sysUserBORoles.add(sysRoleDO);
         }
-        sysUserBO.setRoles(sysUserBORoles);
+        sysUserVO.setRoles(sysUserBORoles);
 
-        return sysUserBO;
+        return sysUserVO;
     }
 
     @Override
-    public SysUserBO updateSysUser(HeaderBO headerBO, SysUserDto sysUserDto) throws Exception {
-        SysUser sysUser = new SysUser();
+    public SysUserVO updateSysUser(HeaderBO headerBO, SysUserDTO sysUserDTO) throws Exception {
+        SysUserDO sysUserDO = new SysUserDO();
         String token = headerBO.getToken();
-        SysUser sysUser1 = sysUserMapper.getUserByToken(token);
-        long created_by = sysUser1.getId();
-        long updated_by = created_by;
+        SysUserDO sysUserDO1 = sysUserMapper.getUserByToken(token);
+        long createdBy = sysUserDO1.getId();
+        long updatedBy = createdBy;
         Date now = new Date();
 
-        sysUser.setUpdatedAt(now);
-        sysUser.setUpdatedBy(updated_by);
+        sysUserDO.setUpdatedAt(now);
+        sysUserDO.setUpdatedBy(updatedBy);
 
-        long userId = sysUserDto.getId();
-        String username = sysUserDto.getUsername();
-        String name = sysUserDto.getName();
-        String avatar = sysUserDto.getAvatar();
-        String phone = sysUserDto.getPhone();
-        sysUser.setId(userId);
-        sysUser.setUsername(username);
-        sysUser.setName(name);
-        sysUser.setAvatar(avatar);
-        sysUser.setPhone(phone);
+        long userId = sysUserDTO.getId();
+        String username = sysUserDTO.getUsername();
+        String name = sysUserDTO.getName();
+        String avatar = sysUserDTO.getAvatar();
+        String phone = sysUserDTO.getPhone();
+        sysUserDO.setId(userId);
+        sysUserDO.setUsername(username);
+        sysUserDO.setName(name);
+        sysUserDO.setAvatar(avatar);
+        sysUserDO.setPhone(phone);
 
         // 校验此用户名是否存在
-        SysUser sysUser2 = sysUserMapper.getUserById(userId);
-        if (sysUser2 == null) {
+        SysUserDO sysUserDO2 = sysUserMapper.getUserById(userId);
+        if (sysUserDO2 == null) {
             throw new BizException(ErrorCodeEnum.SYS_EDIT_USER_NOT_EXIST.getCode(), ErrorCodeEnum.SYS_EDIT_USER_NOT_EXIST.getMsg());
         }
         // 用户名、真实姓名、头像、手机号、阿里号 - 附角色
-        sysUserMapper.updateSysUser(sysUser);
+        sysUserMapper.updateSysUser(sysUserDO);
 
         // 删除原有用户角色关系
         sysUserRoleService.delUserRolesByUserId(userId);
 
-        String roleIds = sysUserDto.getRoleIds();
+        String roleIds = sysUserDTO.getRoleIds();
         String[] roles = roleIds.split(",");
         for (String roleIdStr : roles) {
             long roleId = Long.valueOf(roleIdStr);
-            SysUserRole sysUserRole = new SysUserRole();
-            sysUserRole.setRoleId(roleId);
-            sysUserRole.setUserId(userId);
-            sysUserRole.setCreatedAt(now);
-            sysUserRole.setUpdatedAt(now);
-            sysUserRole.setCreatedBy(created_by);
-            sysUserRole.setUpdatedBy(updated_by);
-            sysUserRoleService.addSysUserRole(sysUserRole);
+            SysUserRoleDO sysUserRoleDO = new SysUserRoleDO();
+            sysUserRoleDO.setRoleId(roleId);
+            sysUserRoleDO.setUserId(userId);
+            sysUserRoleDO.setCreatedAt(now);
+            sysUserRoleDO.setUpdatedAt(now);
+            sysUserRoleDO.setCreatedBy(createdBy);
+            sysUserRoleDO.setUpdatedBy(updatedBy);
+            sysUserRoleService.addSysUserRole(sysUserRoleDO);
         }
 
         // 获取用户信息 - result
-        SysUser sysUser3 = sysUserMapper.getUserById(userId);
+        SysUserDO sysUserDO3 = sysUserMapper.getUserById(userId);
         // 登录获取用户信息&权限信息
-        SysUserBO sysUserBO = new SysUserBO();
-        BeanUtils.copyProperties(sysUser3, sysUserBO);
-        List<SysUserRole> sysUserRoleList = sysUserRoleService.userRolesByUserId(userId);
+        SysUserVO sysUserVO = new SysUserVO();
+        BeanUtils.copyProperties(sysUserDO3, sysUserVO);
+        List<SysUserRoleDO> sysUserRoleDOList = sysUserRoleService.userRolesByUserId(userId);
         List<Object> sysUserBORoles = new ArrayList<>();
-        for (SysUserRole sysUserRole : sysUserRoleList) {
-            long role_id = sysUserRole.getRoleId();
-            SysRole sysRole = sysRoleService.roleWithId(role_id);
-            sysUserBORoles.add(sysRole);
+        for (SysUserRoleDO sysUserRoleDO : sysUserRoleDOList) {
+            long roleId = sysUserRoleDO.getRoleId();
+            SysRoleDO sysRoleDO = sysRoleService.roleById(roleId);
+            sysUserBORoles.add(sysRoleDO);
         }
-        sysUserBO.setRoles(sysUserBORoles);
+        sysUserVO.setRoles(sysUserBORoles);
 
-        return sysUserBO;
+        return sysUserVO;
     }
 
     @Override
-    public boolean delSysUser(long uid) {
-        return sysUserMapper.realDelByUserId(uid) == 1;
+    public boolean delSysUser(long userId) {
+        return sysUserMapper.realDelByUserId(userId) == 1;
     }
 
     @Override
-    public boolean resetSysPWD(HeaderBO headerBO, long uid) {
+    public boolean resetSysPWD(HeaderBO headerBO, long userId) {
         String token = headerBO.getToken();
-        SysUser sysUser = sysUserMapper.getUserByToken(token);
+        SysUserDO sysUserDO = sysUserMapper.getUserByToken(token);
         Date now = new Date();
 
         String password = "123456";
-        Boolean flag = sysUserMapper.resetSysPWD(uid, password, sysUser.getId(), now) == 1;
+        Boolean flag = sysUserMapper.resetSysPWD(userId, password, sysUserDO.getId(), now) == 1;
         return flag;
     }
 
     @Override
-    public boolean modifySysPWD(HeaderBO headerBO, SysModifyPWDDto sysModifyPWDDto) throws Exception {
+    public boolean modifySysPWD(HeaderBO headerBO, SysModifyPWDDTO sysModifyPWDDTO) throws Exception {
         String token = headerBO.getToken();
-        String originPWD = sysModifyPWDDto.getOriginPWD();
-        String pwd = sysModifyPWDDto.getPwd();
-        String surePWD = sysModifyPWDDto.getSurePWD();
+        String originPWD = sysModifyPWDDTO.getOriginPWD();
+        String pwd = sysModifyPWDDTO.getPwd();
+        String surePWD = sysModifyPWDDTO.getSurePWD();
 
         // 校验原密码
-        SysUser sysUser = sysUserMapper.getUserByToken(token);
-        String dbPWD = sysUser.getPassword();
+        SysUserDO sysUserDO = sysUserMapper.getUserByToken(token);
+        String dbPWD = sysUserDO.getPassword();
         if (!originPWD.equals(dbPWD)) {
             throw new BizException(ErrorCodeEnum.SYS_MODIFY_PWD_NOT_RIGHT.getCode(), ErrorCodeEnum.SYS_MODIFY_PWD_NOT_RIGHT.getMsg());
         }
@@ -323,17 +316,17 @@ public class SysUserServiceImpl implements SysUserService {
             throw new BizException(ErrorCodeEnum.SYS_MODIFY_PWD_SURE_NOT_RIGHT.getCode(), ErrorCodeEnum.SYS_MODIFY_PWD_SURE_NOT_RIGHT.getMsg());
         }
 
-        return sysUserMapper.resetSysPWD(sysUser.getId(), pwd, sysUser.getId(), new Date()) == 1;
+        return sysUserMapper.resetSysPWD(sysUserDO.getId(), pwd, sysUserDO.getId(), new Date()) == 1;
     }
 
     @Override
-    public Boolean sysUpdateUserStatus(String token, SysUpdateUserStatusDto sysUpdateUserStatusDto) {
+    public Boolean sysUpdateUserStatus(String token, SysUpdateUserStatusDTO sysUpdateUserStatusDTO) {
         Date now = new Date();
-        SysUser sysUser = sysUserMapper.getUserByToken(token);
+        SysUserDO sysUserDO = sysUserMapper.getUserByToken(token);
 
-        int status = sysUpdateUserStatusDto.getStatus();
-        long id = sysUpdateUserStatusDto.getId();
-        return sysUserMapper.updateSysEnable(id, status, sysUser.getId(), now) == 1;
+        int status = sysUpdateUserStatusDTO.getStatus();
+        long id = sysUpdateUserStatusDTO.getId();
+        return sysUserMapper.updateSysEnable(id, status, sysUserDO.getId(), now) == 1;
     }
 
 }

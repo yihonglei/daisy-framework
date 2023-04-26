@@ -3,12 +3,12 @@ package com.jpeony.lotus.core.service.sys;
 import com.jpeony.lotus.common.enums.ErrorCodeEnum;
 import com.jpeony.lotus.common.exception.BizException;
 import com.jpeony.lotus.core.mapper.SysRoleMapper;
-import com.jpeony.lotus.core.pojo.bo.SysMenuBO;
-import com.jpeony.lotus.core.pojo.bo.SysRoleBO;
-import com.jpeony.lotus.core.pojo.bo.SysUserBO;
-import com.jpeony.lotus.core.pojo.domain.SysRole;
-import com.jpeony.lotus.core.pojo.domain.SysRoleMenu;
-import com.jpeony.lotus.core.pojo.dto.SysRoleDto;
+import com.jpeony.lotus.core.pojo.vo.SysMenuVO;
+import com.jpeony.lotus.core.pojo.vo.SysRoleVO;
+import com.jpeony.lotus.core.pojo.vo.SysUserVO;
+import com.jpeony.lotus.core.pojo.domain.SysRoleDO;
+import com.jpeony.lotus.core.pojo.domain.SysRoleMenuDO;
+import com.jpeony.lotus.core.pojo.dto.SysRoleDTO;
 import com.jpeony.lotus.core.service.SysMenuService;
 import com.jpeony.lotus.core.service.SysRoleMenuService;
 import com.jpeony.lotus.core.service.SysRoleService;
@@ -36,36 +36,34 @@ public class SysRoleServiceImpl implements SysRoleService {
     SysRoleMenuService sysRoleMenuService;
 
     @Override
-    public SysRole roleWithId(long roleId) {
-        return sysRoleMapper.roleWithId(roleId);
+    public SysRoleDO roleById(long roleId) {
+
+        return sysRoleMapper.roleById(roleId);
     }
 
     @Override
-    public List<SysRole> allRolesIgnore() {
-        List<SysRole> roleList = sysRoleMapper.allRoles();
+    public List<SysRoleDO> allRolesIgnore() {
 
-        return roleList;
+        return sysRoleMapper.allRoles();
     }
 
     /**
      * 权限管理获取所有的角色及角色权限信息
-     *
-     * @return
      */
     @Override
-    public List<SysRoleBO> allRoles() {
-        List<SysRole> roleList = sysRoleMapper.allRoles();
+    public List<SysRoleVO> allRoles() {
+        List<SysRoleDO> roleList = sysRoleMapper.allRoles();
 
-        List<SysRoleBO> resultList = new ArrayList<>();
-        for (SysRole sysRole : roleList) {
-            SysRoleBO sysRoleBO = new SysRoleBO();
-            sysRoleBO.setId(sysRole.getId());
-            sysRoleBO.setName(sysRole.getName());
-            sysRoleBO.setIntro(sysRole.getIntro());
+        List<SysRoleVO> resultList = new ArrayList<>();
+        for (SysRoleDO sysRoleDO : roleList) {
+            SysRoleVO sysRoleVO = new SysRoleVO();
+            sysRoleVO.setId(sysRoleDO.getId());
+            sysRoleVO.setName(sysRoleDO.getName());
+            sysRoleVO.setIntro(sysRoleDO.getIntro());
 
-            List<SysMenuBO> list = sysMenuService.allRoutesWithRole(sysRole);
-            sysRoleBO.setRoutes(list);
-            resultList.add(sysRoleBO);
+            List<SysMenuVO> list = sysMenuService.allRoutesByRole(sysRoleDO);
+            sysRoleVO.setRoutes(list);
+            resultList.add(sysRoleVO);
         }
 
         return resultList;
@@ -74,144 +72,136 @@ public class SysRoleServiceImpl implements SysRoleService {
 
     /**
      * 权限管理 新增角色
-     *
-     * @return
      */
     @Override
-    public SysRoleBO addRole(String token, SysRoleDto sysRoleDto) throws Exception {
-        long created_by = 1;
-        SysRoleBO sysRoleBO = new SysRoleBO();
+    public SysRoleVO addRole(String token, SysRoleDTO sysRoleDto) throws Exception {
+        long createdBy = 1;
+        SysRoleVO sysRoleVO = new SysRoleVO();
 
         // 校验角色名称是否存在
-        SysRole sysRole0 = sysRoleMapper.roleWithRolename(sysRoleDto.getName());
-        if (sysRole0 != null) {
+        SysRoleDO sysRoleDO0 = sysRoleMapper.roleByRoleName(sysRoleDto.getName());
+        if (sysRoleDO0 != null) {
             throw new BizException(ErrorCodeEnum.SYS_ADD_ROLE_EXIST.getCode(), ErrorCodeEnum.SYS_ADD_ROLE_EXIST.getMsg());
         }
 
         // 获取角色创建者
-        SysUserBO sysUserBO = sysUserService.userinfo(token);
-        created_by = sysUserBO.getId();
+        SysUserVO sysUserVO = sysUserService.userInfo(token);
+        createdBy = sysUserVO.getId();
 
         // 获取橘色序号
         Date now = new Date();
-        List<SysRole> sysRoleList = sysRoleMapper.allRoles();
+        List<SysRoleDO> sysRoleDOList = sysRoleMapper.allRoles();
         int sort = 0;
-        for (SysRole sysRole : sysRoleList) {
-            int tmpSort = sysRole.getSort();
+        for (SysRoleDO sysRoleDO : sysRoleDOList) {
+            int tmpSort = sysRoleDO.getSort();
             if (tmpSort > sort) {
                 sort = tmpSort;
             }
         }
 
-        SysRole sysRole = new SysRole();
-        sysRole.setName(sysRoleDto.getName());
-        sysRole.setIntro(sysRoleDto.getIntro());
-        sysRole.setSort(sort + 1);
-        sysRole.setCreatedAt(now);
-        sysRole.setCreatedBy(created_by);
-        sysRole.setUpdatedAt(now);
-        sysRole.setUpdatedBy(created_by);
+        SysRoleDO sysRoleDO = new SysRoleDO();
+        sysRoleDO.setName(sysRoleDto.getName());
+        sysRoleDO.setIntro(sysRoleDto.getIntro());
+        sysRoleDO.setSort(sort + 1);
+        sysRoleDO.setCreatedAt(now);
+        sysRoleDO.setCreatedBy(createdBy);
+        sysRoleDO.setUpdatedAt(now);
+        sysRoleDO.setUpdatedBy(createdBy);
 
-        boolean flag = sysRoleMapper.addSysRole(sysRole) == 1;
+        boolean flag = sysRoleMapper.addSysRole(sysRoleDO) == 1;
 
         if (flag) {
-            // 返回值
-            SysRole sysRole1 = sysRoleMapper.roleWithRolename(sysRoleDto.getName());
-            BeanUtils.copyProperties(sysRole1, sysRoleBO);
+            SysRoleDO sysRoleDO1 = sysRoleMapper.roleByRoleName(sysRoleDto.getName());
+            BeanUtils.copyProperties(sysRoleDO1, sysRoleVO);
 
-            // 更新rolemenu
-            long roleid = sysRole1.getId();
+            // 更新 rolemenu
+            long roleId = sysRoleDO1.getId();
             String routeIds = sysRoleDto.getRouteIds();
             String[] menus = routeIds.split(",");
             for (String menu : menus) {
                 long menuId = Long.valueOf(menu);
-                SysRoleMenu sysRoleMenu = new SysRoleMenu();
-                sysRoleMenu.setRoleId(roleid);
-                sysRoleMenu.setMenuId(menuId);
-                sysRoleMenu.setCreatedAt(now);
-                sysRoleMenu.setCreatedBy(created_by);
-                sysRoleMenu.setUpdatedAt(now);
-                sysRoleMenu.setUpdatedBy(created_by);
-                sysRoleMenuService.addRoleMenu(sysRoleMenu);
+                SysRoleMenuDO sysRoleMenuDO = new SysRoleMenuDO();
+                sysRoleMenuDO.setRoleId(roleId);
+                sysRoleMenuDO.setMenuId(menuId);
+                sysRoleMenuDO.setCreatedAt(now);
+                sysRoleMenuDO.setCreatedBy(createdBy);
+                sysRoleMenuDO.setUpdatedAt(now);
+                sysRoleMenuDO.setUpdatedBy(createdBy);
+                sysRoleMenuService.addRoleMenu(sysRoleMenuDO);
             }
 
-            List<SysMenuBO> sysMenuBOList = sysMenuService.allRoutesWithRole(sysRole1);
-            sysRoleBO.setRoutes(sysMenuBOList);
+            List<SysMenuVO> sysMenuVOList = sysMenuService.allRoutesByRole(sysRoleDO1);
+            sysRoleVO.setRoutes(sysMenuVOList);
         }
 
-        return sysRoleBO;
+        return sysRoleVO;
     }
 
     /**
      * 权限管理 编辑角色
-     *
-     * @return
      */
     @Override
-    public SysRoleBO editRole(String token, SysRoleDto sysRoleDto) throws Exception {
-        long updated_by = 1;
-        SysRoleBO sysRoleBO = new SysRoleBO();
+    public SysRoleVO editRole(String token, SysRoleDTO sysRoleDTO) throws Exception {
+        long updatedBy = 1;
+        SysRoleVO sysRoleVO = new SysRoleVO();
 
-        long roleId = sysRoleDto.getId();
-        String name = sysRoleDto.getName();
-        String intro = sysRoleDto.getIntro();
-        String routeIds = sysRoleDto.getRouteIds();
+        long roleId = sysRoleDTO.getId();
+        String name = sysRoleDTO.getName();
+        String intro = sysRoleDTO.getIntro();
+        String routeIds = sysRoleDTO.getRouteIds();
 
         // 获取角色创建者
-        SysUserBO sysUserBO = sysUserService.userinfo(token);
-        updated_by = sysUserBO.getId();
+        SysUserVO sysUserVO = sysUserService.userInfo(token);
+        updatedBy = sysUserVO.getId();
 
-        // 删除id对应的rolemenu菜单
+        // 删除 id 对应的 rolemenu 菜单
         sysRoleMenuService.delByRoleId(roleId);
 
         // 组装最新的模型
         Date now = new Date();
         // 获取橘色序号
-        SysRole sysRole = sysRoleMapper.roleWithId(roleId);
-        sysRole.setName(name);
-        sysRole.setIntro(intro);
-        sysRole.setUpdatedAt(now);
-        sysRole.setUpdatedBy(updated_by);
+        SysRoleDO sysRoleDO = sysRoleMapper.roleById(roleId);
+        sysRoleDO.setName(name);
+        sysRoleDO.setIntro(intro);
+        sysRoleDO.setUpdatedAt(now);
+        sysRoleDO.setUpdatedBy(updatedBy);
 
-        boolean flag = sysRoleMapper.updateSysRole(sysRole) == 1;
+        boolean flag = sysRoleMapper.updateSysRole(sysRoleDO) == 1;
 
         if (flag) {
-            // 返回值
-            SysRole sysRole1 = sysRoleMapper.roleWithRolename(sysRoleDto.getName());
-            BeanUtils.copyProperties(sysRole1, sysRoleBO);
+            SysRoleDO sysRoleDO1 = sysRoleMapper.roleByRoleName(sysRoleDTO.getName());
+            BeanUtils.copyProperties(sysRoleDO1, sysRoleVO);
 
-            // 更新rolemenu
-            long roleid = sysRole1.getId();
+            // 更新 rolemenu
+            long roleid = sysRoleDO1.getId();
             String[] menus = routeIds.split(",");
             for (String menu : menus) {
                 long menuId = Long.valueOf(menu);
-                SysRoleMenu sysRoleMenu = new SysRoleMenu();
-                sysRoleMenu.setRoleId(roleid);
-                sysRoleMenu.setMenuId(menuId);
-                sysRoleMenu.setCreatedAt(now);
-                sysRoleMenu.setCreatedBy(updated_by);
-                sysRoleMenu.setUpdatedAt(now);
-                sysRoleMenu.setUpdatedBy(updated_by);
-                sysRoleMenuService.addRoleMenu(sysRoleMenu);
+                SysRoleMenuDO sysRoleMenuDO = new SysRoleMenuDO();
+                sysRoleMenuDO.setRoleId(roleid);
+                sysRoleMenuDO.setMenuId(menuId);
+                sysRoleMenuDO.setCreatedAt(now);
+                sysRoleMenuDO.setCreatedBy(updatedBy);
+                sysRoleMenuDO.setUpdatedAt(now);
+                sysRoleMenuDO.setUpdatedBy(updatedBy);
+                sysRoleMenuService.addRoleMenu(sysRoleMenuDO);
             }
 
-            List<SysMenuBO> sysMenuBOList = sysMenuService.allRoutesWithRole(sysRole1);
-            sysRoleBO.setRoutes(sysMenuBOList);
+            List<SysMenuVO> sysMenuVOList = sysMenuService.allRoutesByRole(sysRoleDO1);
+            sysRoleVO.setRoutes(sysMenuVOList);
         }
 
-        return sysRoleBO;
+        return sysRoleVO;
     }
 
     /**
      * 权限管理 删除角色
-     *
-     * @return
      */
     @Override
-    public Boolean delRole(String token, SysRoleDto sysRoleDto) throws Exception {
-        long roleId = sysRoleDto.getId();
+    public Boolean delRole(String token, SysRoleDTO sysRoleDTO) throws Exception {
+        long roleId = sysRoleDTO.getId();
 
-        // 删除id对应的rolemenu菜单
+        // 删除 id 对应的 rolemenu 菜单
         sysRoleMenuService.delByRoleId(roleId);
 
         return sysRoleMapper.delByRoleId(roleId) == 1;

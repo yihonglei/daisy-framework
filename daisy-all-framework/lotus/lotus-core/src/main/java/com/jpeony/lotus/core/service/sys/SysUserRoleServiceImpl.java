@@ -1,7 +1,7 @@
 package com.jpeony.lotus.core.service.sys;
 
 import com.jpeony.lotus.core.mapper.SysUserRoleMapper;
-import com.jpeony.lotus.core.pojo.domain.SysUserRole;
+import com.jpeony.lotus.core.pojo.domain.SysUserRoleDO;
 import com.jpeony.lotus.core.service.SysUserRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
     SysUserRoleMapper sysUserRoleMapper;
 
     @Override
-    public List<SysUserRole> userRolesByUserId(long userId) {
+    public List<SysUserRoleDO> userRolesByUserId(long userId) {
         return sysUserRoleMapper.userRoleByUserId(userId);
     }
 
@@ -25,8 +25,8 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
     }
 
     @Override
-    public Boolean addSysUserRole(SysUserRole sysUserRole) {
-        return sysUserRoleMapper.addSysUserRole(sysUserRole) == 1;
+    public Boolean addSysUserRole(SysUserRoleDO sysUserRoleDO) {
+        return sysUserRoleMapper.addSysUserRole(sysUserRoleDO) == 1;
     }
 
 }

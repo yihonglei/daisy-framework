@@ -4,14 +4,14 @@ import com.jpeony.lotus.common.enums.ErrorCodeEnum;
 import com.jpeony.lotus.common.exception.BizException;
 import com.jpeony.lotus.core.mapper.SysMenuMapper;
 import com.jpeony.lotus.core.pojo.bo.HeaderBO;
-import com.jpeony.lotus.core.pojo.bo.SysMenuBO;
-import com.jpeony.lotus.core.pojo.bo.SysUserBO;
-import com.jpeony.lotus.core.pojo.domain.SysMenu;
-import com.jpeony.lotus.core.pojo.domain.SysRole;
-import com.jpeony.lotus.core.pojo.domain.SysRoleMenu;
-import com.jpeony.lotus.core.pojo.domain.SysUserRole;
-import com.jpeony.lotus.core.pojo.dto.SysMenuDelDto;
-import com.jpeony.lotus.core.pojo.dto.SysMenuDto;
+import com.jpeony.lotus.core.pojo.vo.SysMenuVO;
+import com.jpeony.lotus.core.pojo.vo.SysUserVO;
+import com.jpeony.lotus.core.pojo.domain.SysMenuDO;
+import com.jpeony.lotus.core.pojo.domain.SysRoleDO;
+import com.jpeony.lotus.core.pojo.domain.SysRoleMenuDO;
+import com.jpeony.lotus.core.pojo.domain.SysUserRoleDO;
+import com.jpeony.lotus.core.pojo.dto.SysMenuDelDTO;
+import com.jpeony.lotus.core.pojo.dto.SysMenuDTO;
 import com.jpeony.lotus.core.service.SysMenuService;
 import com.jpeony.lotus.core.service.SysUserRoleService;
 import org.springframework.beans.BeanUtils;
@@ -42,59 +42,54 @@ public class SysMenuServiceImpl implements SysMenuService {
 
     /**
      * 登录时获取用户所有权限菜单
-     *
-     * @param token
-     * @return
      */
     @Override
-    public List<SysMenuBO> allPermissionRoutes(String token) throws Exception {
+    public List<SysMenuVO> allPermissionRoutes(String token) throws Exception {
         // 获取当前用户的角色
-        SysUserBO sysUserBO = sysUserService.userinfo(token);
-        long uid = sysUserBO.getId();
+        SysUserVO sysUserVO = sysUserService.userInfo(token);
+        long userId = sysUserVO.getId();
 
         // 获取当前用户角色 一个用户有多个角色
-        List<SysUserRole> sysUserRoleList = sysUserRoleService.userRolesByUserId(uid);
+        List<SysUserRoleDO> sysUserRoleDOList = sysUserRoleService.userRolesByUserId(userId);
 
-        if (sysUserRoleList == null) {
+        if (sysUserRoleDOList == null) {
             throw new BizException(ErrorCodeEnum.SYS_LOGIN_USER_NOROLE.getCode(), ErrorCodeEnum.SYS_LOGIN_USER_NOROLE.getMsg());
         }
 
-        List<SysMenuBO> resultList = filterAsyncRoutes(0, uid, sysUserRoleList);
-
-        return resultList;
+        return filterAsyncRoutes(0, userId, sysUserRoleDOList);
     }
 
-    private List<SysMenuBO> filterAsyncRoutes(long parentId, long uid, List<SysUserRole> sysUserRoleList) {
-        List<SysMenuBO> resultList = new ArrayList<>();
+    private List<SysMenuVO> filterAsyncRoutes(long parentId, long userId, List<SysUserRoleDO> sysUserRoleDOList) {
+        List<SysMenuVO> resultList = new ArrayList<>();
         // 获取所有菜单 带权限
-        List<SysMenu> sysMenuList = sysMenuMapper.routesWithParentId(parentId);
-        for (int i = 0; i < sysMenuList.size(); i++) {
-            SysMenuBO sysMenuBO = new SysMenuBO();
+        List<SysMenuDO> sysMenuDOList = sysMenuMapper.routesByParentId(parentId);
+        for (int i = 0; i < sysMenuDOList.size(); i++) {
+            SysMenuVO sysMenuVO = new SysMenuVO();
 
-            SysMenu sysMenu = sysMenuList.get(i);
-            BeanUtils.copyProperties(sysMenu, sysMenuBO);
+            SysMenuDO sysMenuDO = sysMenuDOList.get(i);
+            BeanUtils.copyProperties(sysMenuDO, sysMenuVO);
 
-            long menuId = sysMenu.getId();
-            List<SysRoleMenu> roleMenuList = sysRoleMenuService.rolesWithMenuId(menuId);
+            long menuId = sysMenuDO.getId();
+            List<SysRoleMenuDO> roleMenuList = sysRoleMenuService.rolesByMenuId(menuId);
 
             Boolean hasPermission = false;
             List<String> roles = new ArrayList<>();
-            if (uid == 1) {
+            if (userId == 1) {
                 hasPermission = true;
-                List<SysRole> sysRoleList = sysRoleService.allRolesIgnore();
-                for (SysRole sysRole1 : sysRoleList) {
-                    roles.add(sysRole1.getName());
+                List<SysRoleDO> sysRoleDOList = sysRoleService.allRolesIgnore();
+                for (SysRoleDO sysRoleDO1 : sysRoleDOList) {
+                    roles.add(sysRoleDO1.getName());
                 }
             } else {
-                // 根据menuid获取对应的权限roles
+                // 根据 menuid 获取对应的权限 roles
                 if (roleMenuList != null) {
-                    for (SysRoleMenu sysRoleMenu : roleMenuList) {
-                        long roleid = sysRoleMenu.getRoleId();
-                        SysRole sysRole = sysRoleService.roleWithId(roleid);
-                        for (SysUserRole sysUserRole : sysUserRoleList) {
-                            if (roleid == sysUserRole.getRoleId()) {
+                    for (SysRoleMenuDO sysRoleMenuDO : roleMenuList) {
+                        long roleid = sysRoleMenuDO.getRoleId();
+                        SysRoleDO sysRoleDO = sysRoleService.roleById(roleid);
+                        for (SysUserRoleDO sysUserRoleDO : sysUserRoleDOList) {
+                            if (roleid == sysUserRoleDO.getRoleId()) {
                                 hasPermission = true;
-                                roles.add(sysRole.getName());
+                                roles.add(sysRoleDO.getName());
                             }
                         }
                     }
@@ -102,15 +97,15 @@ public class SysMenuServiceImpl implements SysMenuService {
             }
 
             if (hasPermission) {
-                sysMenuBO.setRoles(roles);
-                List<SysMenuBO> children = filterAsyncRoutes(menuId, uid, sysUserRoleList);
+                sysMenuVO.setRoles(roles);
+                List<SysMenuVO> children = filterAsyncRoutes(menuId, userId, sysUserRoleDOList);
                 if (children != null && children.size() != 0) {
-                    sysMenuBO.setChildren(children);
+                    sysMenuVO.setChildren(children);
                 } else {
-                    sysMenuBO.setChildren(new ArrayList<>());
+                    sysMenuVO.setChildren(new ArrayList<>());
                 }
 
-                resultList.add(sysMenuBO);
+                resultList.add(sysMenuVO);
             }
         }
         return resultList;
@@ -120,140 +115,134 @@ public class SysMenuServiceImpl implements SysMenuService {
      * 权限管理页面 - 编辑 - 根据角色获取角色对应的权限列表
      */
     @Override
-    public List<SysMenuBO> allRoutesWithRole(SysRole sysRole) {
-        List<SysMenuBO> resultList = filterAsyncRoutesWithRole(0, sysRole);
+    public List<SysMenuVO> allRoutesByRole(SysRoleDO sysRoleDO) {
 
-        return resultList;
+        return filterAsyncRoutesByRole(0, sysRoleDO);
     }
 
-    private List<SysMenuBO> filterAsyncRoutesWithRole(long parentId, SysRole sysRole) {
-        List<SysMenuBO> resultList = new ArrayList<>();
+    private List<SysMenuVO> filterAsyncRoutesByRole(long parentId, SysRoleDO sysRoleDO) {
+        List<SysMenuVO> resultList = new ArrayList<>();
         // 获取所有菜单 带权限
-        List<SysMenu> sysMenuList = sysMenuMapper.routesWithParentId(parentId);
-        for (int i = 0; i < sysMenuList.size(); i++) {
-            SysMenuBO sysMenuBO = new SysMenuBO();
+        List<SysMenuDO> sysMenuDOList = sysMenuMapper.routesByParentId(parentId);
+        for (int i = 0; i < sysMenuDOList.size(); i++) {
+            SysMenuVO sysMenuVO = new SysMenuVO();
 
-            SysMenu sysMenu = sysMenuList.get(i);
-            BeanUtils.copyProperties(sysMenu, sysMenuBO);
+            SysMenuDO sysMenuDO = sysMenuDOList.get(i);
+            BeanUtils.copyProperties(sysMenuDO, sysMenuVO);
 
-            long menuId = sysMenu.getId();
-            List<SysRoleMenu> roleMenuList = sysRoleMenuService.rolesWithMenuId(menuId);
+            long menuId = sysMenuDO.getId();
+            List<SysRoleMenuDO> roleMenuList = sysRoleMenuService.rolesByMenuId(menuId);
 
             Boolean hasPermission = false;
             List<String> roles = new ArrayList<>();
-            if (sysRole.getName().equalsIgnoreCase("admin")) {
+            if (sysRoleDO.getName().equalsIgnoreCase("admin")) {
                 hasPermission = true;
-                List<SysRole> sysRoleList = sysRoleService.allRolesIgnore();
-                for (SysRole sysRole1 : sysRoleList) {
-                    roles.add(sysRole1.getName());
+                List<SysRoleDO> sysRoleDOList = sysRoleService.allRolesIgnore();
+                for (SysRoleDO sysRoleDO1 : sysRoleDOList) {
+                    roles.add(sysRoleDO1.getName());
                 }
-                sysMenuBO.setChecked(1);
+                sysMenuVO.setChecked(1);
             } else {
-                // 根据menuid获取对应的权限roles
+                // 根据 menuid 获取对应的权限 roles
                 if (roleMenuList != null) {
-                    for (SysRoleMenu sysRoleMenu : roleMenuList) {
-                        long roleid = sysRoleMenu.getRoleId();
-                        SysRole msysRole = sysRoleService.roleWithId(roleid);
-                        if (roleid == sysRole.getId()) {
+                    for (SysRoleMenuDO sysRoleMenuDO : roleMenuList) {
+                        long roleId = sysRoleMenuDO.getRoleId();
+                        SysRoleDO msysRoleDO = sysRoleService.roleById(roleId);
+                        if (roleId == sysRoleDO.getId()) {
                             hasPermission = true;
-                            roles.add(msysRole.getName());
+                            roles.add(msysRoleDO.getName());
                         }
                     }
                 }
             }
 
             if (hasPermission) {
-                sysMenuBO.setRoles(roles);
-                List<SysMenuBO> children = filterAsyncRoutesWithRole(menuId, sysRole);
+                sysMenuVO.setRoles(roles);
+                List<SysMenuVO> children = filterAsyncRoutesByRole(menuId, sysRoleDO);
                 if (children != null && children.size() != 0) {
-                    sysMenuBO.setChildren(children);
+                    sysMenuVO.setChildren(children);
                 } else {
-                    sysMenuBO.setChildren(new ArrayList<>());
+                    sysMenuVO.setChildren(new ArrayList<>());
                 }
 
-                resultList.add(sysMenuBO);
+                resultList.add(sysMenuVO);
             }
         }
         return resultList;
     }
 
     /**
-     * 权限管理页面获取tree数据，所有权限列表
-     *
-     * @param token
-     * @return
-     * @throws Exception
+     * 权限管理页面获取 tree 数据，所有权限列表
      */
     @Override
-    public List<SysMenuBO> allRoutes(String token) throws Exception {
-        List<SysMenuBO> resultList = allSysRoutes(0);
+    public List<SysMenuVO> allRoutes(String token) throws Exception {
 
-        return resultList;
+        return allSysRoutes(0);
     }
 
-    private List<SysMenuBO> allSysRoutes(long parentId) {
-        List<SysMenuBO> resultList = new ArrayList<>();
+    private List<SysMenuVO> allSysRoutes(long parentId) {
+        List<SysMenuVO> resultList = new ArrayList<>();
         // 获取所有菜单 带权限
-        List<SysMenu> sysMenuList = sysMenuMapper.routesWithParentId(parentId);
-        for (int i = 0; i < sysMenuList.size(); i++) {
-            SysMenuBO sysMenuBO = new SysMenuBO();
+        List<SysMenuDO> sysMenuDOList = sysMenuMapper.routesByParentId(parentId);
+        for (int i = 0; i < sysMenuDOList.size(); i++) {
+            SysMenuVO sysMenuVO = new SysMenuVO();
 
-            SysMenu sysMenu = sysMenuList.get(i);
-            BeanUtils.copyProperties(sysMenu, sysMenuBO);
+            SysMenuDO sysMenuDO = sysMenuDOList.get(i);
+            BeanUtils.copyProperties(sysMenuDO, sysMenuVO);
 
-            long menuId = sysMenu.getId();
-            List<SysMenuBO> children = allSysRoutes(menuId);
+            long menuId = sysMenuDO.getId();
+            List<SysMenuVO> children = allSysRoutes(menuId);
             if (children != null && children.size() != 0) {
-                sysMenuBO.setChildren(children);
+                sysMenuVO.setChildren(children);
             } else {
-                sysMenuBO.setChildren(new ArrayList<>());
+                sysMenuVO.setChildren(new ArrayList<>());
             }
 
-            resultList.add(sysMenuBO);
+            resultList.add(sysMenuVO);
         }
         return resultList;
     }
 
     @Override
-    public Boolean addSysRoute(HeaderBO headerBO, SysMenuDto sysMenuDto) throws Exception {
+    public Boolean addSysRoute(HeaderBO headerBO, SysMenuDTO sysMenuDTO) throws Exception {
         String token = headerBO.getToken();
-        SysUserBO sysUserBO = sysUserService.userinfo(token);
+        SysUserVO sysUserVO = sysUserService.userInfo(token);
         Date now = new Date();
 
-        SysMenu sysMenu = new SysMenu();
-        BeanUtils.copyProperties(sysMenuDto, sysMenu);
-        sysMenu.setParentId(sysMenuDto.getParentid());
-        sysMenu.setCreatedAt(now);
-        sysMenu.setCreatedBy(sysUserBO.getId());
-        sysMenu.setUpdatedAt(now);
-        sysMenu.setUpdatedBy(sysUserBO.getId());
+        SysMenuDO sysMenuDO = new SysMenuDO();
+        BeanUtils.copyProperties(sysMenuDTO, sysMenuDO);
+        sysMenuDO.setParentId(sysMenuDTO.getParentId());
+        sysMenuDO.setCreatedAt(now);
+        sysMenuDO.setCreatedBy(sysUserVO.getId());
+        sysMenuDO.setUpdatedAt(now);
+        sysMenuDO.setUpdatedBy(sysUserVO.getId());
 
-        return sysMenuMapper.addSysRoute(sysMenu) == 1;
+        return sysMenuMapper.addSysRoute(sysMenuDO) == 1;
     }
 
     @Override
-    public Boolean editSysRoute(HeaderBO headerBO, SysMenuDto sysMenuDto) throws Exception {
+    public Boolean editSysRoute(HeaderBO headerBO, SysMenuDTO sysMenuDTO) throws Exception {
         String token = headerBO.getToken();
-        SysUserBO sysUserBO = sysUserService.userinfo(token);
+        SysUserVO sysUserVO = sysUserService.userInfo(token);
         Date now = new Date();
 
-        long id = sysMenuDto.getId();
-        SysMenu sysMenu0 = sysMenuMapper.routeWithId(id);
-        if (sysMenu0 == null) {
+        long id = sysMenuDTO.getId();
+        SysMenuDO sysMenuDO0 = sysMenuMapper.routeById(id);
+        if (sysMenuDO0 == null) {
             throw new BizException(ErrorCodeEnum.SYS_EDIT_ROUTE_NOT_EXIST.getCode(), ErrorCodeEnum.SYS_EDIT_ROUTE_NOT_EXIST.getMsg());
         }
 
-        SysMenu sysMenu = new SysMenu();
-        BeanUtils.copyProperties(sysMenuDto, sysMenu);
-        sysMenu.setUpdatedAt(now);
-        sysMenu.setUpdatedBy(sysUserBO.getId());
+        SysMenuDO sysMenuDO = new SysMenuDO();
+        BeanUtils.copyProperties(sysMenuDTO, sysMenuDO);
+        sysMenuDO.setUpdatedAt(now);
+        sysMenuDO.setUpdatedBy(sysUserVO.getId());
 
-        return sysMenuMapper.editSysRoute(sysMenu) == 1;
+        return sysMenuMapper.editSysRoute(sysMenuDO) == 1;
     }
 
     @Override
-    public Boolean delSysRoute(SysMenuDelDto sysMenuDelDto) {
-        String ids = sysMenuDelDto.getIds();
+    public Boolean delSysRoute(SysMenuDelDTO sysMenuDelDTO) {
+        String ids = sysMenuDelDTO.getIds();
         String[] idsArr = ids.split(",");
         for (String id : idsArr) {
             long menuId = Long.valueOf(id);
@@ -263,6 +252,5 @@ public class SysMenuServiceImpl implements SysMenuService {
         }
         return true;
     }
-
 
 }

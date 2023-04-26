@@ -1,13 +1,14 @@
-package com.jpeony.lotus.core.pojo.bo;
+package com.jpeony.lotus.core.pojo.vo;
 
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class SysMenuBO {
+public class SysMenuVO {
 
     private long id;
+
     private long parentId;
 
     private String path;
@@ -42,6 +43,6 @@ public class SysMenuBO {
 
     private List<String> roles;
 
-    private List<SysMenuBO> children;
+    private List<SysMenuVO> children;
 
 }

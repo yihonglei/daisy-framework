@@ -1,12 +1,15 @@
-package com.jpeony.lotus.core.pojo.dto;
+package com.jpeony.lotus.core.pojo.domain;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
-public class SysMenuDto {
+public class SysMenuDO {
 
     private long id;
-    private long parentid;
+
+    private long parentId;
 
     private String path;
 
@@ -32,7 +35,16 @@ public class SysMenuDto {
 
     private String activeMenu;
 
-    private String enable;
+    private int enable;
 
     private int sort;
+
+    private Date createdAt;
+
+    private long createdBy;
+
+    private Date updatedAt;
+
+    private long updatedBy;
+    
 }

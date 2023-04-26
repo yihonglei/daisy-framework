@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jpeony.lotus.core.mapper.SysRoleMenuMapper">
 
-    <resultMap id="BaseResultMap" type="com.jpeony.lotus.core.pojo.domain.SysRoleMenu">
+    <resultMap id="BaseResultMap" type="com.jpeony.lotus.core.pojo.domain.SysRoleMenuDO">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="role_id" jdbcType="INTEGER" property="roleId"/>
         <result column="menu_id" jdbcType="INTEGER" property="menuId"/>
@@ -12,7 +12,7 @@
         <result column="updated_by" jdbcType="INTEGER" property="updatedBy"/>
     </resultMap>
 
-    <select id="rolesWithMenuId" resultType="com.jpeony.lotus.core.pojo.domain.SysRoleMenu">
+    <select id="rolesByMenuId" resultType="com.jpeony.lotus.core.pojo.domain.SysRoleMenuDO">
         select *
         from sys_role_menu
         where menu_id = #{menuId}
@@ -30,7 +30,7 @@
         where menu_id = #{menuId}
     </delete>
 
-    <insert id="addSysRoleMenu" parameterType="com.jpeony.lotus.core.pojo.domain.SysRoleMenu">
+    <insert id="addSysRoleMenu" parameterType="com.jpeony.lotus.core.pojo.domain.SysRoleMenuDO">
         insert into sys_role_menu (role_id, menu_id, created_at, created_by, updated_at, updated_by)
         values ( #{role_id,jdbcType=VARCHAR}, #{menu_id,jdbcType=VARCHAR}
                , #{createdAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=INTEGER}

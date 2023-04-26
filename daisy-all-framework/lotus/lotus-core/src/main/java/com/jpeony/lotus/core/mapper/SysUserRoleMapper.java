@@ -1,14 +1,15 @@
 package com.jpeony.lotus.core.mapper;
 
-import com.jpeony.lotus.core.pojo.domain.SysUserRole;
+import com.jpeony.lotus.core.pojo.domain.SysUserRoleDO;
 
 import java.util.List;
 
 public interface SysUserRoleMapper {
 
-    List<SysUserRole> userRoleByUserId(long userId);
+    List<SysUserRoleDO> userRoleByUserId(long userId);
 
-    int addSysUserRole(SysUserRole sysUserRole);
+    int addSysUserRole(SysUserRoleDO sysUserRoleDO);
 
     int delUserRolesByUserId(long userId);
+    
 }

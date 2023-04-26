@@ -1,37 +1,37 @@
 package com.jpeony.lotus.core.service;
 
 import com.jpeony.lotus.core.pojo.bo.HeaderBO;
-import com.jpeony.lotus.core.pojo.bo.SysUserBO;
-import com.jpeony.lotus.core.pojo.domain.SysUser;
-import com.jpeony.lotus.core.pojo.dto.SysLoginDto;
-import com.jpeony.lotus.core.pojo.dto.SysModifyPWDDto;
-import com.jpeony.lotus.core.pojo.dto.SysUpdateUserStatusDto;
-import com.jpeony.lotus.core.pojo.dto.SysUserDto;
+import com.jpeony.lotus.core.pojo.vo.SysUserVO;
+import com.jpeony.lotus.core.pojo.domain.SysUserDO;
+import com.jpeony.lotus.core.pojo.dto.SysLoginDTO;
+import com.jpeony.lotus.core.pojo.dto.SysModifyPWDDTO;
+import com.jpeony.lotus.core.pojo.dto.SysUpdateUserStatusDTO;
+import com.jpeony.lotus.core.pojo.dto.SysUserDTO;
 
 import java.util.List;
 
 public interface SysUserService {
 
-    SysUser getUserById(long uid);
+    SysUserDO getUserById(long userId);
 
-    SysUserBO doLogin(SysLoginDto sysLoginDto) throws Exception;
+    SysUserVO doLogin(SysLoginDTO sysLoginDTO) throws Exception;
 
-    SysUserBO userinfo(String token) throws Exception;
+    SysUserVO userInfo(String token) throws Exception;
 
     Boolean logout(HeaderBO headerBO);
 
-    List<SysUserBO> getSysUsersList(HeaderBO headerBO);
+    List<SysUserVO> getSysUsersList(HeaderBO headerBO);
 
-    SysUserBO addSysUser(HeaderBO headerBO, SysUserDto sysUserDto) throws Exception;
+    SysUserVO addSysUser(HeaderBO headerBO, SysUserDTO sysUserDTO) throws Exception;
 
-    SysUserBO updateSysUser(HeaderBO headerBO, SysUserDto sysUserDto) throws Exception;
+    SysUserVO updateSysUser(HeaderBO headerBO, SysUserDTO sysUserDTO) throws Exception;
 
-    boolean delSysUser(long uid);
+    boolean delSysUser(long userId);
 
-    boolean resetSysPWD(HeaderBO headerBO, long uid);
+    boolean resetSysPWD(HeaderBO headerBO, long userId);
 
-    boolean modifySysPWD(HeaderBO headerBO, SysModifyPWDDto sysModifyPWDDto) throws Exception;
+    boolean modifySysPWD(HeaderBO headerBO, SysModifyPWDDTO sysModifyPWDDTO) throws Exception;
 
-    Boolean sysUpdateUserStatus(String token, SysUpdateUserStatusDto sysUpdateUserStatusDto);
+    Boolean sysUpdateUserStatus(String token, SysUpdateUserStatusDTO sysUpdateUserStatusDTO);
 
 }

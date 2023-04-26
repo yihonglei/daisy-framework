@@ -5,9 +5,10 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class SysUserRole {
+public class SysUserRoleDO {
+
     private long id;
-    
+
     private long userId;
 
     private long roleId;
@@ -19,4 +20,5 @@ public class SysUserRole {
     private Date updatedAt;
 
     private Long updatedBy;
+    
 }

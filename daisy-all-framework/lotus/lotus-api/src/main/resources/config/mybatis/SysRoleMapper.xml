@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jpeony.lotus.core.mapper.SysRoleMapper">
 
-    <resultMap id="BaseResultMap" type="com.jpeony.lotus.core.pojo.domain.SysRole">
+    <resultMap id="BaseResultMap" type="com.jpeony.lotus.core.pojo.domain.SysRoleDO">
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="intro" jdbcType="VARCHAR" property="intro"/>
@@ -13,24 +13,24 @@
         <result column="updated_by" jdbcType="INTEGER" property="updatedBy"/>
     </resultMap>
 
-    <select id="allRoles" resultType="com.jpeony.lotus.core.pojo.domain.SysRole">
+    <select id="allRoles" resultType="com.jpeony.lotus.core.pojo.domain.SysRoleDO">
         select *
         from sys_role
     </select>
 
-    <select id="roleWithId" resultType="com.jpeony.lotus.core.pojo.domain.SysRole">
+    <select id="roleById" resultType="com.jpeony.lotus.core.pojo.domain.SysRoleDO">
         select *
         from sys_role
         where id = #{roleId}
     </select>
 
-    <select id="roleWithRolename" resultType="com.jpeony.lotus.core.pojo.domain.SysRole">
+    <select id="roleByRoleName" resultType="com.jpeony.lotus.core.pojo.domain.SysRoleDO">
         select *
         from sys_role
-        where name = #{rolename}
+        where name = #{roleName}
     </select>
 
-    <insert id="addSysRole" parameterType="com.jpeony.lotus.core.pojo.domain.SysRole">
+    <insert id="addSysRole" parameterType="com.jpeony.lotus.core.pojo.domain.SysRoleDO">
         insert into sys_role (name, intro, sort, created_at, created_by, updated_at, updated_by)
         values ( #{name,jdbcType=VARCHAR}, #{intro,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}
                , #{createdAt,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=INTEGER}

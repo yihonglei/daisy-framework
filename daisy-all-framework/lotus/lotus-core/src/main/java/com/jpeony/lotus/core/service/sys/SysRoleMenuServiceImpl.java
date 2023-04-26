@@ -1,7 +1,7 @@
 package com.jpeony.lotus.core.service.sys;
 
 import com.jpeony.lotus.core.mapper.SysRoleMenuMapper;
-import com.jpeony.lotus.core.pojo.domain.SysRoleMenu;
+import com.jpeony.lotus.core.pojo.domain.SysRoleMenuDO;
 import com.jpeony.lotus.core.service.SysRoleMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +15,8 @@ public class SysRoleMenuServiceImpl implements SysRoleMenuService {
     SysRoleMenuMapper sysRoleMenuMapper;
 
     @Override
-    public List<SysRoleMenu> rolesWithMenuId(long menuId) {
-        return sysRoleMenuMapper.rolesWithMenuId(menuId);
+    public List<SysRoleMenuDO> rolesByMenuId(long menuId) {
+        return sysRoleMenuMapper.rolesByMenuId(menuId);
     }
 
     @Override
@@ -30,8 +30,8 @@ public class SysRoleMenuServiceImpl implements SysRoleMenuService {
     }
 
     @Override
-    public Boolean addRoleMenu(SysRoleMenu sysRoleMenu) {
-        return sysRoleMenuMapper.addSysRoleMenu(sysRoleMenu) == 1;
+    public Boolean addRoleMenu(SysRoleMenuDO sysRoleMenuDO) {
+        return sysRoleMenuMapper.addSysRoleMenu(sysRoleMenuDO) == 1;
     }
 
 }

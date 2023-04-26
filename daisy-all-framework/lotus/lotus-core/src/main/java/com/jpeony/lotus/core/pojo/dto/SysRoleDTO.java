@@ -3,7 +3,8 @@ package com.jpeony.lotus.core.pojo.dto;
 import lombok.Data;
 
 @Data
-public class SysRoleDto {
+public class SysRoleDTO {
+
     private long id;
 
     private String name;
@@ -11,4 +12,5 @@ public class SysRoleDto {
     private String intro;
 
     private String routeIds;
+    
 }

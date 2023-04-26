@@ -1,28 +1,28 @@
 package com.jpeony.lotus.core.mapper;
 
-import com.jpeony.lotus.core.pojo.domain.SysUser;
+import com.jpeony.lotus.core.pojo.domain.SysUserDO;
 
 import java.util.Date;
 import java.util.List;
 
 public interface SysUserMapper {
 
-    SysUser getUserByUserName(String username);
+    SysUserDO getUserByUserName(String username);
 
-    SysUser getUserByToken(String token);
+    SysUserDO getUserByToken(String token);
 
-    SysUser getUserById(long id);
+    SysUserDO getUserById(long id);
 
-    int addSysUser(SysUser sysUser);
+    int addSysUser(SysUserDO sysUserDO);
 
-    int updateSysEnable(long id, int status, long updated_by, Date updated_at);
+    int updateSysEnable(long id, int status, long updatedBy, Date updatedAt);
 
     int realDelByUserId(long id);
 
-    int updateSysUser(SysUser sysUser);
+    int updateSysUser(SysUserDO sysUserDO);
 
-    int resetSysPWD(long id, String password, long updated_by, Date updated_at);
+    int resetSysPWD(long id, String password, long updatedBy, Date updatedAt);
 
-    List<SysUser> usersList();
+    List<SysUserDO> usersList();
 
 }
