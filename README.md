@@ -2,13 +2,19 @@
 
 SpringBoot，Dubbo，SpringCloud 脚手架实战项目。
 
-daisy-springboot-framework
+daisy-component：基础组件
 
-daisy-dubbo-framework
+daisy-basic: 基础服务
 
-daisy-springcloud-framework
+daisy-springboot：springboot 基本应用
 
-# 技术架构总图
+daisy-springcloud：springcloud 基本应用
+
+daisy-dubbo：dubbo 基本应用
+
+daisy-manager：前后端分离权限管理系统
+
+# 架构图
 
 ![image](https://user-images.githubusercontent.com/28671275/127163740-1eea8598-1084-4d36-80cc-07aa9e5b8c12.png)
 
