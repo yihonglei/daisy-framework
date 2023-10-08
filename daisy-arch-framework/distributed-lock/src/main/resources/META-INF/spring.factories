@@ -1,3 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.jpeony.distributed.lock.config.RedisConfig\
-  com.jpeony.distributed.lock.config.ZookeeperConfig
