@@ -14,7 +14,7 @@
     <groupId>com.jpeony.rocketmq</groupId>
     <artifactId>rocketmq-spring-boot-starter</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>rocketmq-spring-boot-starter</name>
 
     <properties>
