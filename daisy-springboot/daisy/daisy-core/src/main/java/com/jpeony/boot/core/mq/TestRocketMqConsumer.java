@@ -1,7 +1,7 @@
 package com.jpeony.boot.core.mq;
 
-import com.jpeony.rocketmq.spring.boot.consumer.AbstractRocketMqConsumer;
-import com.jpeony.rocketmq.spring.boot.property.RocketMqBaseProperty;
+import com.jpeony.rocketmq.consumer.AbstractRocketMqConsumer;
+import com.jpeony.rocketmq.property.RocketMqBaseProperty;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.common.message.MessageExt;

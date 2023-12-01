@@ -95,13 +95,13 @@
         </dependency>
         <!-- RocketMQ -->
         <dependency>
-            <groupId>com.jpeony</groupId>
-            <artifactId>daisy-rocketmq-spring-boot-starter</artifactId>
+            <groupId>com.jpeony.rocketmq</groupId>
+            <artifactId>rocketmq-spring-boot-starter</artifactId>
         </dependency>
         <!-- Redis -->
         <dependency>
-            <groupId>com.jpeony</groupId>
-            <artifactId>daisy-redis-spring-boot-starter</artifactId>
+            <groupId>com.jpeony.redis</groupId>
+            <artifactId>redis-spring-boot-starter</artifactId>
         </dependency>
         <!-- swagger2-->
         <dependency>
