@@ -31,12 +31,12 @@ spring:
       enabled: true # 是否开启使用网关
       routes:
         - id: account
-            uri: lb://account-server
-            predicates:
-              - Path=/account/identify/**
-            filters:
-              - IgnoreTokenFilter
-              - StripPrefix=1
+          uri: lb://account-server
+          predicates:
+            - Path=/account/identify/*
+          filters:
+            - IgnoreTokenFilter
+            - StripPrefix=1
         - id: account-server # id 随意，但是必须要唯一
           uri: lb://account-server # nacos 中注册的服务 server 名字
           predicates:
