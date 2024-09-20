@@ -5,7 +5,7 @@ import ch.qos.logback.classic.spi.ILoggingEvent;
 import ch.qos.logback.core.CoreConstants;
 
 /**
- * 自定义 logback tab
+ * 自定义logback tab
  *
  * @author yihonglei
  */

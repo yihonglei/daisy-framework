@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Map;
 
 /**
- * 获取 SpringBean 工具类
+ * 获取SpringBean工具类
  *
  * @author yihonglei
  */

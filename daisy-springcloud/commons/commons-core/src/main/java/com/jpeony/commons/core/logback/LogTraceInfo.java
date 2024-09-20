@@ -9,7 +9,7 @@ import static com.jpeony.commons.core.constant.TraceConstant.*;
 
 
 /**
- * MDC 中存放的记录，便于查询日志
+ * MDC中存放的记录，便于查询日志
  *
  * @author yihonglei
  */
@@ -18,46 +18,39 @@ public class LogTraceInfo implements Serializable {
     private static final long serialVersionUID = 3697722045461880439L;
 
     /**
-     * 请求 traceId
+     * 请求traceId
      */
     private String traceId;
     /**
-     * 业务追踪号（订单号，手机号，用户id等）
+     * 订单号
      */
-    private String uniqueNo;
-    /**
-     * 请求 ngTraceId
-     */
-    private String ngTraceId;
+    private String orderNo;
 
-    public LogTraceInfo(String traceId, String uniqueNo, String ngTraceId) {
+    public LogTraceInfo(String traceId, String orderNo) {
         this.traceId = traceId;
-        this.uniqueNo = uniqueNo;
-        this.ngTraceId = ngTraceId;
+        this.orderNo = orderNo;
     }
 
     /**
      * 基于当前MDC创建item
      */
     public static LogTraceInfo createByCurrentMDC() {
-        return new LogTraceInfo(MDC.get(TRACE_ID), MDC.get(UNIQUE_NO), MDC.get(NG_TRACE_ID));
+        return new LogTraceInfo(MDC.get(TRACE_KEY), MDC.get(ORDER_NO));
     }
 
     /**
-     * 往当前线程的 MDC 中放值
+     * 往当前线程的MDC中放值
      */
     public void putAll() {
-        MDC.put(TRACE_ID, getTraceId());
-        MDC.put(UNIQUE_NO, getUniqueNo());
-        MDC.put(NG_TRACE_ID, getNgTraceId());
+        MDC.put(TRACE_KEY, getTraceId());
+        MDC.put(ORDER_NO, getOrderNo());
     }
 
     /**
-     * 移除 MDC 中的值
+     * 移除MDC中的值
      */
     public void removeAll() {
-        MDC.remove(TRACE_ID);
-        MDC.remove(UNIQUE_NO);
-        MDC.remove(NG_TRACE_ID);
+        MDC.remove(TRACE_KEY);
+        MDC.remove(ORDER_NO);
     }
 }
